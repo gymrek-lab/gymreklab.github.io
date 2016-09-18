@@ -8,7 +8,7 @@ title: "Gymrek Lab"
 #  use site.url only inside the web feed template (e.g. requires full url incl. protocol)
 path: ""
 url:  "http://gymreklab.github.io"
-
+description: "Gymrek Lab website UCSD"
 
 ########
 # more settings
