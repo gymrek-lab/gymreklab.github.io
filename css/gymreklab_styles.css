@@ -14,7 +14,10 @@ footer {
     color: #777;
 }
 
-html,body{height:100%;}
+html,body{
+  height: 100%;
+  font-size: 12pt;
+}
 
 .container {
     max-width: 1024px;
@@ -24,8 +27,12 @@ html,body{height:100%;}
 
 .headshot {
 	width: 150px;
-	height: 200px;
 	margin: 0px 0px;
+}
+
+.researchpic {
+  width: 300px;
+  margin: 0px 0px;
 }
 
 .building {
@@ -33,10 +40,14 @@ html,body{height:100%;}
 }
 
 .softwaretable td {
-	vertical-align: top;
-	padding: 15px;
+  vertical-align: top;
+  padding: 15px;
 }
 
+.peopletable td {
+  vertical-align: center;
+  padding: 15px;
+}
 
 img-responsive {
   border: 0 none;
