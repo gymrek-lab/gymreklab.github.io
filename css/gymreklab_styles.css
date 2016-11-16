@@ -44,6 +44,12 @@ html,body{
   padding: 15px;
 }
 
+.schedule td {
+  vertical-align: left;
+  padding: 5px;
+  border: 1px;
+}
+
 .peopletable td {
   vertical-align: center;
   padding: 15px;
