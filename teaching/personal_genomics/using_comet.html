@@ -1,0 +1,55 @@
+---
+layout: default
+title:  'Personal Genomics - Getting started with comet'
+---
+
+<h1>Getting started with comet</h1>
+
+<h3>Set up an account on XSEDE</h3>
+Go to <a href="https://portal.xsede.org">https://portal.xsede.org</a> and create an account. Send your username to me (mgymrek AT ucsd DOT edu) to be added to the class list.
+
+<h3>Log into comet</h3>
+From the command line on your computer, type:
+<p>
+<code>ssh $USER@comet.sdsc.xsede.org</code>
+</p>
+where <code>$USER</code> is your username. Make sure you're added to the class allocation by typing:
+<p>
+<code>show_accounts</code>
+</p>
+and ensuring that you see <code>csd524</code> in the list.
+
+<h3>Navigate to your working directory</h3>
+Once logged into comet, go to your directory for the course:
+<p>
+ <code>cd /oasis/projects/nsf/csd524/$USER</code>
+</p>
+
+<h3>Loading tools</h3>
+<p>
+Many commonly used tools are preinstalled on comet. You can see available modules using the command <code>module avail</code>. To load a specific module, e.g. bedtools, do <code>module load bedtools/2.25.0</code>.
+</p>
+Most of the commands you'll need to load tools for this course are already pre-compiled. To automatically execute these commands upon logging into comet, add the following line to the file <code>~/.bash_profile</code>:
+<p>
+<code>/oasis/projects/nsf/csd524/mgymrek/utils/load_modules.sh</code>
+</p>
+To load once, simply execute that script.
+
+<h3>Data</h3>
+Data files used for the course can be found in the appropriate subdirectory in:
+<p>
+<code>
+/oasis/projects/nsf/csd524/mgymrek/data/
+</code>
+</p>
+
+e.g. data for problem set 1 can be found in:
+<p>
+<code>
+/oasis/projects/nsf/csd524/mgymrek/data/ps1
+</code>
+</p>
+
+<h3>Running jobs</h3>
+For compute intensive tasks, you'll need to submit jobs to the cluster. On comet this can be done using the command <code>sbatch</code>. This tool is documented extensively on the <a href="https://portal.xsede.org/sdsc-comet#running-regularnodes">XSEDE page for comet</a> and there will be example scripts available when relevant. To charge jobs to the class allocation, be sure to add the flag <code>-A csd524</code> to sbatch commands.
+
