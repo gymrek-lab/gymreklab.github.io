@@ -1,0 +1,24 @@
+---
+layout: default
+title:  'Personal Genomics - Using 23andMe'
+---
+
+<p>
+You are welcome to explore your own 23andMe data in the problem sets. However, keep in mind that the final submitted problem set should be done on the provided genome files.
+</p>
+
+<h3>Downloading raw data from 23andMe</h3>
+Sign into your 23andMe account. Go to Tools - Browse Raw Data. You will see a button at the top that says <a href="https://you.23andme.com/tools/data/download/">Download</a>. Scroll to the bottom, select "All DNA" from the drop down. Re-enter your password to download the raw file to your computer. If you want to move your results to comet to analyze there, you can use your favorite file transferring tool, e.g. scp:
+<p>
+<code>
+scp genome_Firstname_Lastname_v3_Full_date.zip $USER@comet.sdsc.xsede.org:/oasis/projects/nsf/csd524/$USER/23andMe/
+</code>
+</p>
+
+<h3>Converting 23andMe file to VCF</h3>
+23andMe files are in a slightly different format than we'll need for the problem sets. You can convert your results to VCF format using <a href="https://github.com/arrogantrobot/23andme2vcf">23andme2vcf</a>. This should already be loaded on comet for you to use. You can convert your file using:
+<p>
+<code>
+23andme2vcf.pl genome_Firstname_Lastname_v3_Full_date.zip genome_Firstname_Lastname_v3_Full_date.vcf
+</code>
+</p>
