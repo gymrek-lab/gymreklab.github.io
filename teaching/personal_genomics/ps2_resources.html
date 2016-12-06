@@ -1,0 +1,59 @@
+---
+layout: default
+title:  'Personal Genomics - Problem Set 2 Resources'
+---
+
+<h1>Problem Set 2 - Ancestry</h1>
+
+<p>
+[<a href="https://github.com/gymreklab/personal-genomics-course-2017/raw/master/problem_sets/pset2_ancestry/CSE291_Genomes_Pset2.pdf">Problem Set 2 PDF</a>]
+</p>
+
+<h3>Overview</h3>
+Data files and code templates for this problem set are available on comet at:
+<p>
+<code>/oasis/projects/nsf/csd524/mgymrek/data/ps2/</code><br>
+<code>/oasis/projects/nsf/csd524/mgymrek/templates/ps2/</code>
+</p>
+You should make a directory for problem set 2 in your working directory with subdirectories for code and results:
+<p>
+<code>
+mkdir /oasis/projects/nsf/csd524/$USER/ps2<br>
+mkdir /oasis/projects/nsf/csd524/$USER/ps2/code<br>
+mkdir /oasis/projects/nsf/csd524/$USER/ps2/results<br>
+</code>	
+</p>
+
+<h3>Installing python packages</h3>
+Use the following commands to install useful python packages:
+<p>
+<code>pip install --user sklearn pandas pyvcf</code>
+</p>
+
+<h3>PS2 data</h3>
+The data directory contains the following files you will use in the problem set:
+<ul>
+<li><code>ps2_pca.samples.txt</code></li>
+<li><code>ps2_pca.genotypes.tab</code></li>
+<li><code>ps2_reference_labels.csv</code></li>
+</ul>
+</p>
+
+To see how these files were created from the original 1000 Genomes file, see:
+<p>
+<code>/oasis/projects/nsf/csd524/mgymrek/templates/ps2/preprocess.sh</code>
+</p>
+
+<h3>PS2 templates</h3>
+The templates directory contains:
+<ul>
+<li><code>pset2_pca_template.py</code></li>
+<li><code>run_ps2_pca.sh</code></li>
+</ul>
+
+<h3>Using 23andMe data</h3>
+To include your own 23andme results in the data used for the PCA problem, see:
+<p>
+<code>/oasis/projects/nsf/csd524/mgymrek/templates/ps2/preprocess_23andme.sh</code>
+</p>
+and edit the paths appropriately.
