@@ -36,19 +36,27 @@ The data directory contains the following files you will use in the problem set:
 <li><code>ps2_pca.samples.txt</code></li>
 <li><code>ps2_pca.genotypes.tab</code></li>
 <li><code>ps2_reference_labels.csv</code></li>
+<li><code>ps2_ibd.lwk.bed</code></li>
+<li><code>ps2_ibd.lwk.bim</code></li>
+<li><code>ps2_impute.subset.gen.gz</code></li>
+<li><code>ps2_impute.heldout.gen.gz</code></li>
 </ul>
 </p>
 
 To see how these files were created from the original 1000 Genomes file, see:
-<p>
-<code>/oasis/projects/nsf/csd524/mgymrek/templates/ps2/preprocess.sh</code>
-</p>
+<ul>
+<li><code>/oasis/projects/nsf/csd524/mgymrek/templates/ps2/preprocess_pca.sh</code></li>
+<li><code>/oasis/projects/nsf/csd524/mgymrek/templates/ps2/preprocess_ibd.sh</code></li>
+<li><code>/oasis/projects/nsf/csd524/mgymrek/templates/ps2/preprocess_impute.sh</code></li>
+</ul>
 
 <h3>PS2 templates</h3>
 The templates directory contains:
 <ul>
 <li><code>pset2_pca_template.py</code></li>
 <li><code>run_ps2_pca.sh</code></li>
+<li><code>run_ps2_ibd.sh</code></li>
+<li><code>run_ps2_impute.sh</code></li>
 </ul>
 
 <h3>Using 23andMe data</h3>
