@@ -6,4 +6,46 @@ title:  'Personal Genomics - Problem Set 3 Resources'
 
 <h1>Problem Set 3 - Complex Traits</h1>
 
-Coming soon
+<p>
+[<a href="https://s3-us-west-2.amazonaws.com/cse291personalgenomics/CSE291_Genomes_Pset3.pdf">Problem Set 3 PDF</a>]
+</p>
+
+
+<h3>Overview</h3>
+Data files and code templates for this problem set are available on comet at:
+<p>
+<code>/oasis/projects/nsf/csd524/mgymrek/data/ps3/</code><br>
+<code>/oasis/projects/nsf/csd524/mgymrek/templates/ps3/</code>
+</p>
+You should make a directory for problem set 3 in your working directory with subdirectories for code and results:
+<p>
+<code>
+mkdir /oasis/projects/nsf/csd524/$USER/ps3<br>
+mkdir /oasis/projects/nsf/csd524/$USER/ps3/code<br>
+mkdir /oasis/projects/nsf/csd524/$USER/ps3/results<br>
+</code>	
+</p>
+
+<h3>PS3 data</h3>
+The data directory contains the following files you will use in the problem set:
+<ul>
+<li><code>ps3_gwas.bed</code></li>
+<li><code>ps3_gwas.bim</code></li>
+<li><code>ps3_gwas.ped</code></li>
+<li><code>ps3_gwas.map</code></li>
+<li><code>ps3_gwas.fam</code></li>
+<li><code>ps3_gwas.phen</code></li>
+</ul>
+</p>
+
+To see how these files were created from the original 1000 Genomes file, see:
+<ul>
+<li><code>/oasis/projects/nsf/csd524/mgymrek/templates/ps3/preprocess_gwa.sh</code></li>
+</ul>
+
+<h3>PS3 templates</h3>
+The templates directory contains:
+<ul>
+<li><code>run_ps3_gwas_plink.sh</code></li>
+<li><code>ps3_manhattan.py</code></li>
+</ul>
