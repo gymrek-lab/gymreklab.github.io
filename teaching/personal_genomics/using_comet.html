@@ -3,6 +3,7 @@ layout: default
 title:  'Personal Genomics - Getting started with comet'
 ---
 [<a href="personal_genomics_2017.html">course homepage</a>]
+[<a href="https://s3-us-west-2.amazonaws.com/cse291personalgenomics/Lectures2017/CSE291_XSEDE_Tips.pptx">Slides on using comet</a>]
 
 <h1>Getting started with comet</h1>
 
@@ -14,7 +15,23 @@ From the command line on your computer, type:
 <p>
 <code>ssh $USER@comet.sdsc.xsede.org</code>
 </p>
-where <code>$USER</code> is your username. Make sure you're added to the class allocation by typing:
+where <code>$USER</code> is your username. Note, if your XSEDE portal username is different than your comet username, you might have to use these steps:
+<ul>
+<li>Sign up for DUO (top right corner when you go to <a href="https://portal.xsede.org/group/xup/profile#/">https://portal.xsede.org/group/xup/profile#/</a></li>
+<li>SSH in to the log in cluster for XSEDE (using your portal username):
+<p>
+<code>ssh $USER@login.xsede.org</code>
+</p>
+</li>
+<li>Log in to comet. It will automatically detect your username.
+<p>
+<code>gsissh comet</code>
+</p>
+</li>
+</ul>
+
+
+Make sure you're added to the class allocation by typing:
 <p>
 <code>show_accounts</code>
 </p>
