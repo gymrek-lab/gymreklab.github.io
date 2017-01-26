@@ -1,8 +1,47 @@
----
-layout: default
-title:  'Personal Genomics - Problem Set 3 Resources'
----
-[<a href="personal_genomics_2017.html">course homepage</a>]
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Personal Genomics - Problem Set 3 Resources - Gymrek Lab</title>
+
+   <link rel="stylesheet" type="text/css" href="/css/style.css" >
+  
+   <link href="/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/css/gymreklab_styles.css" rel="stylesheet">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+   <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index.html">Gymrek Lab</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+	    <li><a class="active" href="/people.html">People</a></li>
+	    <li><a class="active" href="/research.html">Research</a></li>
+	    <li><a class="active" href="/publications.html">Publications</a></li>
+	    <li><a class="active" href="/software.html">Resources</a></li>
+	    <li><a class="active" href="/teaching/">Teaching</a></li>
+	    <li><a class="active" href="/jobs.html">Jobs</a></li>
+	    <li><a class="active" href="/contact.html">Contact</a></li>
+	    <li><a class="active" href="/blog/">Blog</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="content">
+        [<a href="personal_genomics_2017.html">course homepage</a>]
 
 <h1>Problem Set 3 - Complex Traits</h1>
 
@@ -35,12 +74,17 @@ The data directory contains the following files you will use in the problem set:
 <li><code>ps3_gwas.map</code></li>
 <li><code>ps3_gwas.fam</code></li>
 <li><code>ps3_gwas.phen</code></li>
+<li><code>eyecolor_snps_irisplex.bed</code></li>
+<li><code>ps3_pred_eyecolor.vcf.gz</code></li>
+<li><code>ps3_pred_eyecolor.vcf.gz.tbi</code></li>
 </ul>
 </p>
 
 To see how these files were created from the original 1000 Genomes file, see:
 <ul>
 <li><code>/oasis/projects/nsf/csd524/mgymrek/templates/ps3/preprocess_gwa.sh</code></li>
+<li><code>/oasis/projects/nsf/csd524/mgymrek/templates/ps3/preprocess_prediction.sh</code></li>
+
 </ul>
 
 <h3>PS3 templates</h3>
@@ -49,3 +93,26 @@ The templates directory contains:
 <li><code>run_ps3_gwas_plink.sh</code></li>
 <li><code>ps3_manhattan.py</code></li>
 </ul>
+
+      </div>
+    </div><!-- /.container -->
+
+<footer>
+<div class="subfooter">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <address>
+      <strong>Gymrek Lab</strong><br />
+      University of California, San Diego<br />
+      9500 Gilman Drive<br />
+      La Jolla, CA 92093<br />
+        </address>
+      </div>
+     </div>
+  </div>
+</div>
+</footer>
+
+</body>
+</html>
