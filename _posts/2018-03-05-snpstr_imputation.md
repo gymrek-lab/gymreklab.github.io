@@ -5,8 +5,6 @@ title:  'Gymrek Lab - SNPSTR Imputation'
 
 # A reference haplotype panel for genome-wide imputation of short tandem repeats
 
-These resources are described in our recent <a href="TODO">biorxiv preprint</a>.
-
 ## 1000 Genomes SNP-STR Haplotype Panel
 
 ### Data Description:
