@@ -7,6 +7,8 @@ title:  'Gymrek Lab - SNPSTR Imputation'
 
 These resources are described in our recent <a href="TODO">biorxiv preprint</a>.
 
+## 1000 Genomes SNP-STR Haplotype Panel
+
 ### Data Description:
 
 - 2,504 samples from the [1000 Genomes Project](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/) Phase 3 SNP Haplotypes
@@ -14,7 +16,6 @@ These resources are described in our recent <a href="TODO">biorxiv preprint</a>.
 - Total 27,185,239 SNP + 445,725 STR markers
 - All the coordinates are based on the b37 human reference genome.
 
-## 1000 Genomes SNP-STR Haplotype Panel
 ### Availability: Amazon S3 bucket s3://snp-str-imputation/1000genomes
 {% for i in (1..22) %}
 [[SNP-STR Panel chr{{ i }}](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr{{ i }}.vcf.gz)] [[chr{{ i }} index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr{{ i }}.vcf.gz.tbi)]
