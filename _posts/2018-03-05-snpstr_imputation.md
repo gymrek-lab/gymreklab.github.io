@@ -21,7 +21,6 @@ Usage:
 1. Download [Beagle](https://faculty.washington.edu/browning/beagle/beagle.html) .jar to impute STRs from our reference panel into SNP genotype data.
 We suggest using the latest version 4.1. If you are working with related samples and want to use pedigree information, use [Beagle version 4.0](https://faculty.washington.edu/browning/beagle/b4_0.html)
 2. Ensure that the alleles in the target SNP file match our reference panel. We suggest using [conform-gt](https://faculty.washington.edu/browning/conform-gt.html). Example:
-
 {% highlight bash %}
 java -jar conform-gt.jar \
 gt=snp.vcf.gz \
