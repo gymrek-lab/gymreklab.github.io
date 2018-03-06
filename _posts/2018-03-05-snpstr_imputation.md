@@ -17,10 +17,11 @@ Data Description:
 - Total 27,185,239 SNP + 445,725 STR markers
 - All the coordinates are based on the b37 human reference genome.
 
-Usage:
-1. Download [Beagle](https://faculty.washington.edu/browning/beagle/beagle.html) .jar to impute STRs from our reference panel into SNP genotype data.
-We suggest using the latest version 4.1. If you are working with related samples and want to use pedigree information, use [Beagle version 4.0](https://faculty.washington.edu/browning/beagle/b4_0.html)
-2. Ensure that the alleles in the target SNP file match our reference panel. We suggest using [conform-gt](https://faculty.washington.edu/browning/conform-gt.html). Example:
+### Usage:
+Download [Beagle](https://faculty.washington.edu/browning/beagle/beagle.html) .jar to impute STRs from our reference panel into SNP genotype data. We suggest using the latest version 4.1. If you are working with related samples and want to use pedigree information, use [Beagle version 4.0](https://faculty.washington.edu/browning/beagle/b4_0.html)
+
+Ensure that the alleles in the target SNP file match our reference panel. We suggest using [conform-gt](https://faculty.washington.edu/browning/conform-gt.html). Example:
+
 {% highlight bash %}
 java -jar conform-gt.jar \
 gt=snp.vcf.gz \
@@ -29,7 +30,7 @@ chrom=1 match=POS \
 out=snp.chr1.consistent
 {% endhighlight %}
 
-3. Impute STRs into your SNP file:
+Impute STRs into your SNP file:
 
 {% highlight bash %}
 java -Xmx8g -jar  beagle.version.jar \
@@ -39,7 +40,7 @@ out=snp.str.chr1.vcf.gz
 {% endhighlight %}
 
 ## FAQ
-1. **How do I convert Plink BED format files to VCF format?**
+**How do I convert Plink BED format files to VCF format?**
 Solution: Use [Plink](http://www.cog-genomics.org/plink2) to convert from plink bed to VCF format. Ensure that the reference allele matches our panel.
 
 {% highlight bash %}
@@ -56,8 +57,8 @@ plink \
 --a2-allele refpanel_chr1_alleles.txt 4 3 '#'
 {% endhighlight %}
 
-2. **Do I need phased SNPs as input?**
+**Do I need phased SNPs as input?**
 No, Beagle will phase the input SNPs during the imputation process.
 
-3. **How do I measure the STR imputation accuracy?**
+**How do I measure the STR imputation accuracy?**
 We measure the per locus accuracy of imputing STRs from Simon's Simplex Collection into the 1000 Genomes data for three different populations: EUR, EAS and AFR. This data is available in the Amazon S3 bucket mentioned earlier (Saini_etal_SuppTable2.xlsx). You can expect to impute STRs with similar accuracy if your SNP data is from one of these populations.
