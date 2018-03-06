@@ -54,7 +54,7 @@ plink \
 --extract refpanel_chr1_snps.txt \
 --real-ref-alleles \
 --a2-allele refpanel_chr1_alleles.txt 4 3 '#'
-{% endhiglight %}
+{% endhighlight %}
 
 2. **Do I need phased SNPs as input?**
 No, Beagle will phase the input SNPs during the imputation process.
