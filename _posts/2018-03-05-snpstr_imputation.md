@@ -8,7 +8,29 @@ title:  'Gymrek Lab - SNPSTR Imputation'
 These resources are described in our recent <a href="TODO">biorxiv preprint</a>.
 
 ## 1000 Genomes SNP-STR Panel
-Availability: [Amazon S3 Bucket snp-str-imputation](s3://snp-str-imputation/1000genomes)
+Availability: Amazon S3 bucket s3://snp-str-imputation/1000genomes
+[SNP-STR Panel chr1](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr1.vcf.gz) [chr1 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr1.vcf.gz.tbi)
+[SNP-STR Panel chr2](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr2.vcf.gz) [chr2 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr2.vcf.gz.tbi)
+[SNP-STR Panel chr3](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr3.vcf.gz) [chr3 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr3.vcf.gz.tbi)
+[SNP-STR Panel chr4](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr4.vcf.gz) [chr4 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr4.vcf.gz.tbi)
+[SNP-STR Panel chr5](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr5.vcf.gz) [chr5 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr5.vcf.gz.tbi)
+[SNP-STR Panel chr6](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr6.vcf.gz) [chr6 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr6.vcf.gz.tbi)
+[SNP-STR Panel chr7](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr7.vcf.gz) [chr7 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr7.vcf.gz.tbi)
+[SNP-STR Panel chr8](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr8.vcf.gz) [chr8 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr8.vcf.gz.tbi)
+[SNP-STR Panel chr9](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr9.vcf.gz) [chr9 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr9.vcf.gz.tbi)
+[SNP-STR Panel chr10](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr10.vcf.gz) [chr10 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr10.vcf.gz.tbi)
+[SNP-STR Panel chr11](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr11.vcf.gz) [chr11 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr11.vcf.gz.tbi)
+[SNP-STR Panel chr12](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr12.vcf.gz) [chr12 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr12.vcf.gz.tbi)
+[SNP-STR Panel chr13](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr13.vcf.gz) [chr13 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr13.vcf.gz.tbi)
+[SNP-STR Panel chr14](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr14.vcf.gz) [chr14 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr14.vcf.gz.tbi)
+[SNP-STR Panel chr15](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr15.vcf.gz) [chr15 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr15.vcf.gz.tbi)
+[SNP-STR Panel chr16](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr16.vcf.gz) [chr16 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr16.vcf.gz.tbi)
+[SNP-STR Panel chr17](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr17.vcf.gz) [chr17 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr17.vcf.gz.tbi)
+[SNP-STR Panel chr18](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr18.vcf.gz) [chr18 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr18.vcf.gz.tbi)
+[SNP-STR Panel chr19](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr19.vcf.gz) [chr19 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr19.vcf.gz.tbi)
+[SNP-STR Panel chr20](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr20.vcf.gz) [chr20 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr20.vcf.gz.tbi)
+[SNP-STR Panel chr21](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr21.vcf.gz) [chr21 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr21.vcf.gz.tbi)
+[SNP-STR Panel chr22](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr22.vcf.gz) [chr22 index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr22.vcf.gz.tbi)
 
 Data Description:
 
