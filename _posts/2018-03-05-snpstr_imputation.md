@@ -20,6 +20,25 @@ title:  'Gymrek Lab - SNPSTR Imputation'
 
 {% endfor %}
 
+### Tredparse pathogenic loci
+[Huntington’s Disease](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr4.3076604.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr4.3076604.vcf.gz.tbi)
+
+[Spinocerebellar Ataxia 1](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr6.16327867.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr6.16327867.vcf.gz.tbi)
+
+[Spinocerebellar Ataxia 17](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr6.170870996.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr6.170870996.vcf.gz.tbi)
+
+[Dentatorubral-pallidoluysian Atrophy](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr12.7045892.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr12.7045892.vcf.gz.tbi)
+
+[Spinocerebellar Ataxia 2](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr12.112036755.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr12.112036755.vcf.gz.tbi)
+
+[Spinocerebellar Ataxia 8](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr13.70713516.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr13.70713516.vcf.gz.tbi)
+
+[Spinocerebellar Ataxia 3](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr14.92537355.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr14.92537355.vcf.gz.tbi)
+
+[Spinocerebellar Ataxia 6](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr19.13318673.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr19.13318673.vcf.gz.tbi)
+
+[Myotonic Dystrophy Type 1](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr19.46273463.vcf.gz) - [index](https://s3.amazonaws.com/snp-str-imputation/1000genomes/1kg.snp.str.chr19.46273463.vcf.gz.tbi)
+
 ### Supplementary Data
 Supplementary Tables 2 and 3 give imputation summary statistics for each locus:
 
