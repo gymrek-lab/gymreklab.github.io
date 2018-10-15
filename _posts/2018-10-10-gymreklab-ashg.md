@@ -10,10 +10,10 @@ We have a lot of exciting things to present at this year's American Society of H
 ## Talks
 
 * "Genome-wide detection and characterization of de novo repeat mutations in healthy trio families." **Ileena Mitra** and Melissa Gymrek. Thursday 10/18 9:30-9:45, Room 6A (#151)
-* "GangSTR: Genome-wide genotyping of short tandem repeat expansions." **Nima Mouavi**, Sharona Shleizer-Burko, and Melissa Gymrek. Thursday 10/18 11:45-12:00, Ballroom 20A (#188) [GangSTR preprint](https://www.biorxiv.org/content/early/2018/07/03/361162)
+* "GangSTR: Genome-wide genotyping of short tandem repeat expansions." **Nima Mousavi**, Sharona Shleizer-Burko, and Melissa Gymrek. Thursday 10/18 11:45-12:00, Ballroom 20A (#188) [GangSTR preprint](https://www.biorxiv.org/content/early/2018/07/03/361162)
 
 ## Posters
-* "A reference haplotype panel for genome-wide imputation of short tandem repeat variants." **Shubham Saini**, Ileena Mitra, Nima Mouavi, Stephanie F. Fotsing, Melissa Gymrek. Thursday 10/18 3-4pm (#1546) [SNP-STR panel preprint](https://www.biorxiv.org/content/early/2018/07/24/277673)
+* "A reference haplotype panel for genome-wide imputation of short tandem repeat variants." **Shubham Saini**, Ileena Mitra, Nima Mousavi, Stephanie F. Fotsing, Melissa Gymrek. Thursday 10/18 3-4pm (#1546) [SNP-STR panel preprint](https://www.biorxiv.org/content/early/2018/07/24/277673)
 * "To bind or not to bind: A deep learning approach for explaining TF-DNA recognition." **An Zheng**, Michael Lamkin, Hao Su, and Melissa Gymrek. Friday 10/19 2-3pm (#1697)
 * "Deep characterization of the contribution of short tandem repeats (STRs) to gene expression across tissues." **Stephanie F. Fotsing**, Alon Goren, Melissa Gymrek. Friday 10/19 2-3pm (#417)
 
