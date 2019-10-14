@@ -5,12 +5,12 @@ title:  'Gymrek Lab - ASHG 2019'
 
 # Gymrek Lab happenings at ASHG 2019
 
-Look for Gymrek Lab members or our collaborators at any of the following:
+Look for Gymrek Lab members at any of the following:
 
 ## Talks
 
 * "Multi-tissue analysis reveals short tandem repeats as ubiquitous regulators of gene expression and complex traits." M. Gymrek; S. Feupe Fotsing; C. Wang; S. Saini; R. Yanicky; S. Shleizer-Burko; A. Goren. Thursday 10/17 9:00-9:15, Room 310A, Level 3 (#120) [eSTR preprint](https://www.biorxiv.org/content/10.1101/495226v2)
-* " Interrogating regulatory consequences of genetic variation in DNA associated proteins." C. Wu; S. Shleizer-Burko; A. Goren; M. Gymrek. Thursday 10/17 4:45-5:00, Hall B - Level 1 (#206)
+* "Interrogating regulatory consequences of genetic variation in DNA associated proteins." C. Wu; S. Shleizer-Burko; A. Goren; M. Gymrek. Thursday 10/17 4:45-5:00, Hall B - Level 1 (#206)
 
 ## Posters
 * "Genome-wide detection and characterization of de novo repeat expansions in the general population." I. Mitra; N. Mousavi; R. Yanicky; M. Gymrek. 2-3pm Wednesday, 10/16. (#2319)
