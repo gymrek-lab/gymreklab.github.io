@@ -1,15 +1,18 @@
 ---
 layout: default
-title:  'Paper published finding STR impacts on gene expression in the GTEx cohort.'
+title:  'New results: STRs impact gene expression in the GTEx cohort.'
 tags: science STRs
 categories: science
 date: 04 Nov 2019
 ---
 
+# STRs influence gene expression in the GTEx cohort
+
 We just published a paper[1] on our efforts to figure out which 
 [Short Tandem Repeats (STRs)](https://en.wikipedia.org/wiki/Microsatellite)
-can be strongly associated with gene expression levels. You can find
-the paper [here](https://www.nature.com/articles/s41588-019-0521-9). (You can also 
+can be strongly associated with gene expression levels. We also show that these STR mediated 
+changes in gene expression likely are driving genetic associations with height 
+and other complex traits. You can find the paper [here](https://www.nature.com/articles/s41588-019-0521-9). (You can also 
 see a less edited but free version [here](https://www.biorxiv.org/content/10.1101/495226v2) if you do not have access to the Nature 
 Genetics journal).
 
