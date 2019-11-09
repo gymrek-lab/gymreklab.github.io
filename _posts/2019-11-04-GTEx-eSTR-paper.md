@@ -20,7 +20,7 @@ Due to length constraints, we had to cut many explanations from the final paper.
 anyone who wants to be able to read the paper, even if they only have a basic background in genetics
 and statistics. So I've written a [glossary](https://docs.google.com/document/d/1r-UzcQiRFtoJvObUIP8cPyHO3E1gkQG3DmlmgnEp1y8/edit)
 for those readers - whenever you come across a term or acronym that's new to you, or a topic you don't quite understand,
-feel free to look it up there.
+feel free to look it up there. Hopefully this helps someone.
 
 -- Jonathan M.
 
