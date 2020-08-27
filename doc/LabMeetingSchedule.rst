@@ -5,7 +5,8 @@ General schedule info
 ---------------------
 
 * Meetings are posted on our "Gymrek Lab" Google calendar. 
-* Announcements are sent to gymrek-lab@googlegroups.com.
+* Announcements are sent to gymrek-lab AT googlegroups DOT com
+.
 
 If you do not have access to the calendar or mailing list, please request access from Melissa or Dorit.
 
