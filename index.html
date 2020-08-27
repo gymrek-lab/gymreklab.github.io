@@ -18,6 +18,101 @@ The Gymrek Lab is located at the University of California San Diego. We are part
 </p>
 
 <h2>What do we do?</h2>
-Our overall goal is to understand complex genetic variants that underlie human disease. We are particularly interested in repetitive DNA variants known as short tandem repeats (STRs) as a model for complex variation. Our work focuses on developing computational tools for analyzing and visualizing complex variation from large-scale sequencing data and applying these tools to learn about the contribution of repetitive variation to human disease. See the <a href="research.html">research page</a> to learn more!
+Our overall goal is to understand complex genetic variants that underlie human disease. We are particularly interested in repetitive DNA variants known as short tandem repeats (STRs) as a model for complex variation. Our work focuses on developing computational tools for analyzing complex variation from large-scale sequencing data and applying these tools to learn about the contribution of repetitive variation to human disease. Another major interest of our group is understanding how repeats and other types of genetic variation impact gene regulation and other complex traits.
+
+<table class="softwaretable" border="0" width=100% align="center">
+  <tbody>
+    <tr>
+      <td width=33%>
+        <center>
+          <a href="http://webstr.ucsd.edu" target="_blank"><img width=65% src="images/icon_webstr.jpg"></a>
+          <br>
+          <a href="http://webstr.ucsd.edu" target="_blank">webstr.ucsd.edu</a>
+        </center>
+      </td>
+      <td width=33%>
+        <center>
+          <a href="http://gymreklab.com/software.html" target="_blank"><img width=65% src="images/icon_code.jpg"></a>
+          <br>
+          <a href="http://gymreklab.com/software.html" target="_blank">Toolkit for STR Analysis</a>
+        </center>
+      </td>
+      <td width=33%>
+        <center>
+          <a href="http://gymreklab.com/2018/03/05/snpstr_imputation.html" target="_blank"><img width=65% src="images/icon_imputation.jpg"></a>
+          <br>
+          <a href="http://gymreklab.com/2018/03/05/snpstr_imputation.html" target="_blank">STR Imputation</a>
+        </center>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Featured publications</h2>
+
+<table class="softwaretable" border="1" width=100% textalign="left">
+  <tbody>
+    <tr>
+      <td width=75% bgcolor=#EEEEEE>
+        <h4>TRTools: a toolkit for genome-wide analysis of tandem repeats.</h4>
+        Nima Mousavi, Jonathan Margoliash, Neha Pusarla, Shubham Saini, Richard Yanicky, Melissa Gymrek (<em>Bioinformatics</em> 2020). [<a href="https://pubmed.ncbi.nlm.nih.gov/32805020/" target="_blank">pubmed</a>]
+        <br>
+        <img width=100% src="images/trtools_fig.jpg">
+      </td>
+      <td width=25%>
+          This manuscript describes <a href="github.com/gymreklab/trtools">TRTools</a>, a suite of tools for analysis of tandem repeat variation. It offers command-line tools for filtering, merging, and performing QC on VCFs containing tandem repeat genotypes. TRTools can also be imported as a Python library into custom scripts.
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table class="softwaretable" border="1" width=100% textalign="left">
+  <tbody>
+    <tr>
+      <td width=25%>
+        In this study we demonstrate that variation at thousands of tandem repeats across the genome have an impact on expression of nearby genes across many human tissue types. Effects are strongest for GC-rich STRs near transcription start sites. This work was a fun collaboration with the <a href="https://goren-lab.github.io/">Goren Lab</a> next door!
+      </td>
+      <td width=75% bgcolor=#EEEEEE>
+          <h4>The impact of short tandem repeat variation on gene expression.</h4>
+          Stephanie Feupe Fotsing, Catherine Wang, Shubham Saini, Sharona Shleizer-Burko, Alon Goren, Melissa Gymrek (<em>Nature Genetics</em> 2019). [<a href="https://pubmed.ncbi.nlm.nih.gov/31676866/">pubmed</a>]
+          <br>
+          <img width=100% src="images/estrs_fig.jpg">
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table class="softwaretable" border="1" width=100% textalign="left">
+  <tbody>
+    <tr>
+      <td width=75% bgcolor=#EEEEEE>
+        <h4>Profiling the genome-wide landscape of tandem repeat expansions.</h4>
+        Nima Mousavi, Sharona Shleizer-Burko, Richard Yanicky, Melissa Gymrek (<em>Nucleic Acids Research</em> 2019). [<a href="https://pubmed.ncbi.nlm.nih.gov/31194863/" target="_blank">pubmed</a>] 
+        <br>
+        <img width=100% src="images/gangstr_fig.jpg">
+      </td>
+      <td width=25%>
+          <a href="github.com/gymreklab/gangstr">GangSTR</a> is a tool for profiling tandem repeat variation from next-generation sequencing datasets. It takes as input aligned reads (BAMs) for one or more samples and outputs VCF files with estimated repeated lengths at a reference set of TRs. GangSTR can capture variation both at short and expanded TRs.
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table class="softwaretable" border="1" width=100% textalign="left">
+  <tbody>
+    <tr>
+      <td width=25%>
+        In this study we generate a SNP-STR haplotype panel by phasing STRs onto SNP haplotypes. This panel can be used to impute STR genotypes into datasets for which they cannot be directly genotyped (e.g. SNP genotyping array data commonly used for GWAS studies). We found that the majority of STRs can be accurately imputed, with a mean genome-wide imputation accuracy 97% for European samples.
+      </td>
+      <td width=75% bgcolor=#EEEEEE>
+          <h4>A reference haplotype panel for genome-wide imputation of short tandem repeats.</h4>
+          Shubham Saini, Ileena Mitra, Nima Mousavi, Stephanie Feupe Fotsing, Melissa Gymrek (<em>Nature Communications</em> 2018). [<a href="https://www.ncbi.nlm.nih.gov/pubmed/30353011" target="_blank">pubmed</a>] 
+          <br>
+          <img width=100% src="images/imputation_fig.jpg">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 </div>
