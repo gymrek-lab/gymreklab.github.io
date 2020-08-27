@@ -3,18 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GymrekLab's documentation!
-=====================================
+GymrekLab Internal Docs
+=======================
+
+This site has internal info relevant to Gymrek Lab members. To find our public-facing lab webpage, see: http://gymreklab.com.
+
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   LabMeetingSchedule
