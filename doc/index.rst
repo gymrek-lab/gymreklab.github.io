@@ -16,3 +16,5 @@ This site has internal info relevant to Gymrek Lab members. To find our public-f
    ComputeResources
    Onboarding
    LabWebsite
+
+If you need help with any lab resources, or need to request access to things, email gymreklab-help AT googlegroups DOT com.
