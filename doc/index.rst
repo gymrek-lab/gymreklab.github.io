@@ -17,4 +17,5 @@ This site has internal info relevant to Gymrek Lab members. To find our public-f
    Onboarding
    LabWebsite
 
-If you need help with any lab resources, or need to request access to things, email gymreklab-help AT googlegroups DOT com.
+Many additional resources, such as presentations and fellowship applications are available on our shared "Gymrek Lab" Google Drive. If you don't have access to the shared drive or additional lab resource, request access by emailing gymreklab-help AT googlegroups DOT com.
+
