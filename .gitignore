@@ -5,3 +5,7 @@ Gemfile.lock
 .DS_Store
 images/homepage_banner.pdf
 images/research_figure1.pdf
+doc/_build
+twistd.pid
+*.swp
+*.swo
