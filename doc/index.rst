@@ -16,6 +16,7 @@ This site has internal info relevant to Gymrek Lab members. To find our public-f
    ComputeResources
    Onboarding
    LabWebsite
+   WetLab
    MiscTopics
 
 Many additional resources, such as presentations and fellowship applications are available on our shared "Gymrek Lab" Google Drive. If you don't have access to the shared drive or additional lab resource, request access by emailing gymreklab-help AT googlegroups DOT com.
