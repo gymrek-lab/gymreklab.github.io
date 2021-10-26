@@ -109,7 +109,7 @@ First consider :code:`condo`
 
 * We have a large number of compute hours here, and they are cheap
 * Jobs are limited to 8 hrs.
-* The architectures off condo nodes vary wildly - if you might hit the mem/core or cores/node limit, go to hotel where (last I checked) you always get at least 4.57 GB memory/node and at least up to 28 cores/node.
+* The architectures of condo nodes vary wildly - if you might hit the mem/core or cores/node limit, go to hotel where (last I checked) you always get at least 4.57 GB memory/node and at least up to 28 cores/node.
 
 If you have a single long running job, consider :code:`home`
 
