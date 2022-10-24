@@ -10,7 +10,7 @@ Look for Gymrek Lab members at any of the following:
 ## Talks
 * "A global reference for human genetic variation at tandem repeats." H. Ziaei Jam, N. Mousavi, N. Ma, R. DeVito, B. Huang, M. Maksimov, E. Dolzhenko, Y. Qiu, M. Bakhtiari, J. Park, V. Bafna, M. Gymrek. Wednesday 10/26 2:30-2:45pm, Concourse Hall E. (ProgNbr 209)
 * "Non-linear effects of short tandem repeats on gene expression." M. Lamkin, Y. Li, M. Gymrek. Wednesday, 10/26 2:30-2:45pm, Room 502. (ProgNbr 215)
-* "Polymorphic short tandem repeats make widespread contributions to blood and serum traits." Y. Li, A. Massarat, S. Fuchs, A. Goren, M. Gymrek. Saturday 10/26 10:30-10:45am, Concourse Hall E. (ProgNbr 576)
+* "Polymorphic short tandem repeats make widespread contributions to blood and serum traits." J. Margoliash, Y. Li, A. Massarat, S. Fuchs, A. Goren, M. Gymrek. Saturday 10/26 10:30-10:45am, Concourse Hall E. (ProgNbr 576)
 
 ## Posters
 * "Discovering determinants of short tandem repeat stability in local sequence context using gradient-based attribution scores." R. DeVito, M. Gymrek. Wednesday 10/26 3:00-4:45pm. (PB2781)
