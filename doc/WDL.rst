@@ -95,6 +95,7 @@ Cromwell will require configuration before working well (see below), but just as
 1. Grab an interactive node.
 2. Copy the config below to a location you want and modify it as necessary, and get your WDL workflow.
 3. Stand up the MySQL server (see below) 
+4. Have singularity cache whatever containers you plan to use (see the Singularity section of the Expanse notes)
 4. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar utilities/cromwell-84.jar run <path_to_WDL>`
 5. If you want to submit jobs for each task instead of running them directly on the interactive node,
    change which :code:`backend.default` is commented out in the config.
@@ -204,6 +205,7 @@ from Cromwell's docs if you want to take a look, but it doesn't explain everythi
           # We're asking bash-within-singularity to run the script, but the script's location on the machine
           # is different then the location its mounted to in the container, so need to change the path with sed
           submit-docker = """
+            module load singularitypro && \
             singularity exec --containall --bind ${cwd}:${docker_cwd} docker://${docker} bash \
                  "$(echo ${script} | sed -e 's@.*cromwell-executions@/cromwell-executions@')"
           """
@@ -271,6 +273,7 @@ from Cromwell's docs if you want to take a look, but it doesn't explain everythi
               --time=$(echo ${dx_timeout} | sed -e 's/m/:00/' -e 's/h/:00:00/' -e 's/ //g') \
               --chdir ${cwd} \
               --wrap "
+                module load singularitypro && \
                 singularity exec --containall --bind ${cwd}:${docker_cwd} docker://${docker} bash \
                      \"$(echo ${script} | sed -e 's@.*cromwell-executions@/cromwell-executions@')\"
               "
@@ -306,6 +309,7 @@ Note that
   }
 
 is equivalent to :code:`foo.bar.baz = "bop"`
+
 
 * :code:`backends.providers.<backend>.config.submit` and :code:`submit-docker` are what control
   how tasks are submitted as jobs.
