@@ -130,22 +130,17 @@ Terminology:
   a supported version of singularity
 
 
-The general idea is:
+The general idea is, first grab an interactive node (or put this in a script that you submit) and then:
 
 .. code-block:: bash
 
   module load singularitypro
   export SINGULARITY_CACHEDIR=/expanse/projects/gymreklab/<username>/.singularity_cache`
-  export SINGULARITY_TMPDIR=<path_to_your_tmpdir>
-  singularity exec --containall docker://<docker_image_url> <command>
+  SINGULARITY_TMPDIR=/scratch/$USER/job_$SLURM_JOB_ID singularity exec --containall docker://<docker_image_url> <command>
 
-I put the first three lines in my bashrc file. You need
-to set the tmpdir to something 
-in your project space, e.g. :code:`/expanse/projects/gymreklab/<username>/scratch`,
-because the default tempdir :code:`/tmp` runs out of space which will cause you
-pulling new containers to crash. Remember to periodically clean out your tmpdir
+I put the first two lines in my bashrc file. 
 
-You'll notice the first time you run a new docker image Singularity takes a while building
+You'll notice the first time you run a new docker image Singularity takes a while (~10min) building
 it into a singularity image. They are cached at :code:`$SINGUALRITY_CACHEDIR` if that's set
 or :code:`~/.singularity/cache` otherwise. For Expanse, IIRC the home directory is
 slower than the project folder so I set :code:`$SINGUALRITY_CACHEDIR` to somewhere
@@ -157,7 +152,7 @@ of jobs, either cache the image before hand, or have them all check. So:
 
 .. code-block:: bash
    
-   singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
+   SINGULARITY_TMPDIR=/scratch/$USER/job_$SLURM_JOB_ID singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
 
 or, to make sure this is synchronizd
 
@@ -170,7 +165,7 @@ or, to make sure this is synchronizd
    mkdir -p $CACHE_DIR
    LOCK_FILE=$CACHE_DIR/singularity_pull_flock
    flock --verbose --exclusive --timeout 900 $LOCK_FILE \
-   singularity exec --containall docker://<docker_image_url> echo "successfully pulled image"
+   SINGULARITY_TMPDIR=/scratch/$USER/job_$SLURM_JOB_ID singularity exec --containall docker://<docker_image_url> echo "successfully pulled image"
 
 
 Singularity run tips
