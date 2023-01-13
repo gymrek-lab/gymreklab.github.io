@@ -92,7 +92,7 @@ If your ssh connection dies because of a choppy internet connection, your Jupyte
       jupyter notebook --port 8888
 
 5. In a browser running on your own computer, go to http://localhost:8888
-6. If your ssh connection dies, you can just reattach the screen session
+6. If your ssh connection dies, everything in your ``screen`` session will continue running. Just log back in and reattach the session
 
    .. code-block:: bash
 
