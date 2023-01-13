@@ -106,6 +106,12 @@ If you want more logs from cromwell for debugging purposes (you don't), prepend 
 Cromwell has a server mode where you stand it up and can inspect running jobs through a web interface. I haven't
 learned how to use that, so I'm not documenting it here.
 
+Inputs and outputs 
+^^^^^^^^^^^^^^^^^^
+
+If you're using a container then you're inputs cannot contain symlinks. (You'll get something like file
+does not exist errors). Use hardlinks instead.
+
 Cromwell will dump its outputs to :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/execution`
 That folder can also be used to inspect the stdout and stderr of that task for debugging.
 To check a task's inputs, looks at :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/inputs/<arbitrary_number>/<input_file>`
@@ -116,6 +122,9 @@ I would instead hard link or copy them if you want the output in a more memorabl
 Cromwell's outputs will keep growing as you keep running it if you don't delete them. And due to randomized workflow run IDs it'll be very
 hard to track which workflows have results important to caching and which errored out or are no longer needed.
 No clue how to make managing that easier.
+
+Configuration
+^^^^^^^^^^^^^
 
 I've saved my configuration as :code:`cromwell.conf`. I've copied it below, and then will explain it. 
 Here's the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
