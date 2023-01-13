@@ -104,4 +104,4 @@ If your ssh connection dies because of a choppy internet connection, your Jupyte
 
       exit
 
-   Or, if you’d like to detach from a session (instead of terminating it) while you’re inside of it, press Ctrl+A and then the letter d
+   Or, if you’d like to detach from a session (instead of terminating it) while you’re inside of it, press ctrl+a and then the letter d
