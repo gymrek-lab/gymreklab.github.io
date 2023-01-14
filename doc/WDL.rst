@@ -395,8 +395,8 @@ Opening an interactive session with the MySQL server for debugging purposes:
 
 Notice there is no space between the -p and the password, unlike all the other flags.
 
-Docker container hashing as part of call hasing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unexpected call caching behaviors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If you set the docker runtime attribute for a task
 then for call caching Cromwell insists on trying to find
 the corresponding docker image and using its digest (i.e. hash code)
@@ -407,6 +407,11 @@ Cromwell's log method of telling you this is very unclear, I think
 it's something like "task not eligible for call caching".
 Because of this design choice, I'm not sure if you can get Cromwell
 call caching to work with local docker image tarballs. 
+
+Another unexpected input to call caching seems to be the backend 
+(though I've not seen this confirmed in the docs), so for instance
+if you run your job sometimes with SLURM and sometimes on an interactive
+node, I can't seem to use the results of one in the other.
 
 Other call caching optimizations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -424,6 +429,19 @@ Not 100% sure which. They both have some details that might be worth knowing.
   This reduces the amount of file that's read by the hashing strategy. Note that this means that two files
   with the first MB of data identical and the sam mod time will be treated as identical, even if the 
   remaining MBs differ
+
+Disabling call caching
+~~~~~~~~~~~~~~~~~~~~~~
+
+Add
+
+```
+  meta {
+    volatile: true
+  }
+```  
+
+to a task definition to prevent it from being cached.
 
 WDL with dxCompiler on DNANexus/UKB Research Analysis Platform
 --------------------------------------------------------------
