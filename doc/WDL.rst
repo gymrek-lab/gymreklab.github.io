@@ -110,8 +110,11 @@ learned how to use that, so I'm not documenting it here.
 Inputs and outputs 
 ^^^^^^^^^^^^^^^^^^
 
-If you're using a container then you're inputs cannot contain symlinks. (You'll get something like file
-does not exist errors). Use hardlinks instead.
+If you're using a container then you're inputs cannot contain symlinks.i
+
+* You'll get something like file does not exist errors.
+* It's possible symlinks to files underneath the root of the run will work, but not to files outside of the run root. I'd just avoid.
+*  Use hardlinks instead.
 
 Cromwell will dump its outputs to :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/execution`
 That folder can also be used to inspect the stdout and stderr of that task for debugging.
