@@ -15,7 +15,8 @@ WDL by itself is just configuration, it needs an executor to run it. If you're u
 you'll use Cromwell. If you're using DNANexus, you'll use dxCompiler. You'll need to understand
 the ins and outs of those in addition to how to write WDL.
 
-TODO WDL intro
+TODO intro to writing WDL - all the below assumes you can write basic WDL and is about running it
+or making it runnable on certain platforms
 
 Containers
 ----------
@@ -92,12 +93,12 @@ Requires Java. Download the JAR file from `here <https://github.com/broadinstitu
 
 Cromwell will require configuration before working well (see below), but just as an intro:
 
-1. Grab an interactive node.
-2. Copy the config below to a location you want and modify it as necessary, and get your WDL workflow.
-3. Stand up the MySQL server (see below) 
-4. Have singularity cache whatever containers you plan to use (see the Singularity section of the Expanse notes)
-4. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar utilities/cromwell-84.jar run <path_to_WDL>`
-5. If you want to submit jobs for each task instead of running them directly on the interactive node,
+#. Grab an interactive node.
+#. Copy the config below to a location you want and modify it as necessary, and get your WDL workflow.
+#. Stand up the MySQL server (see below) 
+#. Have singularity cache whatever containers you plan to use (see the Singularity section of the Expanse notes)
+#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar utilities/cromwell-84.jar run <path_to_WDL>`
+#. If you want to submit jobs for each task instead of running them directly on the interactive node,
    change which :code:`backend.default` is commented out in the config.
 
 Either way, you need to be running cromwell on an interactive node.
@@ -114,10 +115,15 @@ does not exist errors). Use hardlinks instead.
 
 Cromwell will dump its outputs to :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/execution`
 That folder can also be used to inspect the stdout and stderr of that task for debugging.
+Worfklow run ids are unhelpful randomly generated strings. To figure out which belongs to your
+most recent run, you can look at the logs on the terminal for that run, or use
+:code:`ls -t` to sort them by recency, e.g. :code:`cd cromwell-executions/<workflow_name> | ls -t | head -1`.
 To check a task's inputs, looks at :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/inputs/<arbitrary_number>/<input_file>`
-(if you use subworkflows in your WDL then there will be further nesting).
-If you move task outputs from those folders they will no longer be available for call caching (see below).
-I would instead hard link or copy them if you want the output in a more memorable location.
+If you use subworkflows in your WDL then those workflows will be represented by nested folders between
+the base workflow and the end task leaf. If your task has multiple inputs, then you'll have to look
+at all the input folders with arbitrary numbers to determine which is the input you're looking for.
+If you move task outputs from those folders they will no longer be available for call caching (see below),
+so don't do that. I would instead hard link or copy them if you want the output in a more memorable location.
 
 Cromwell's outputs will keep growing as you keep running it if you don't delete them. And due to randomized workflow run IDs it'll be very
 hard to track which workflows have results important to caching and which errored out or are no longer needed.
@@ -435,11 +441,11 @@ Disabling call caching
 
 Add
 
-```
+.. code-block:
+
   meta {
     volatile: true
   }
-```  
 
 to a task definition to prevent it from being cached.
 
