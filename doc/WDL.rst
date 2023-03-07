@@ -88,7 +88,7 @@ Cromwell only supports WDL 1.0, not 1.1 or development (2.0)
 Running
 ^^^^^^^
 
-Requires Java. Download the JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`_.
+Requires Java. Download the JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`__.
 (Can ignore womtool)
 
 Cromwell will require configuration before working well (see below), but just as an intro:
@@ -410,7 +410,7 @@ If you set the docker runtime attribute for a task
 then for call caching Cromwell insists on trying to find
 the corresponding docker image and using its digest (i.e. hash code)
 as one of the keys for caching that task (not just the docker string
-itself) (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`_). If cromwell can't figure out how to locate the docker image
+itself) (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`__). If cromwell can't figure out how to locate the docker image
 then it simply refuses to try to load the call from cache.
 Cromwell's log method of telling you this is very unclear, I think
 it's something like "task not eligible for call caching".
