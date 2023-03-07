@@ -139,7 +139,7 @@ I've saved my configuration as :code:`cromwell.conf`. I've copied it below, and 
 Here's the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
 from Cromwell's docs if you want to take a look, but it doesn't explain everything or have every option
 
-.. code-block::
+.. code-block:: text
 
   # See https://cromwell.readthedocs.io/en/stable/Configuring/
   # this configuration only accepts double quotes! not singule quotes
@@ -318,7 +318,7 @@ Before using the configuration you'll need to insert your email address where sp
 
 Note that
 
-.. code-block::
+.. code-block:: text
 
   foo {
     bar {
@@ -444,7 +444,7 @@ Disabling call caching
 
 Add
 
-.. code-block:
+.. code-block: text
 
   meta {
     volatile: true
@@ -482,7 +482,7 @@ get around this, I've written the following script:
 
 and I include it in my container with the following Dockerfile commands:
 
-.. code-block::
+.. code-block:: docker
 
   RUN mkdir /container_install
   COPY envsetup /container_install/envsetup
@@ -490,7 +490,7 @@ and I include it in my container with the following Dockerfile commands:
  
 and then in the command sections of my WDL tasks I simply write 
 
-.. code-block::
+.. code-block:: text
     
   command <<<
     envsetup <mycommand> <arg1> ...
