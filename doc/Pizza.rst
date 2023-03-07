@@ -9,7 +9,7 @@ If you order with Domino's, make sure to look for coupon codes on their website.
 How many pizzas should I buy?
 -----------------------------
 For a party of 15, I usually buy 5-6 large pizzas, but if you're purchasing for a lot more people, you might want to aim for extra large pizzas instead.
-Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza>`_, but it's always better to overestimate than to underestimate. I'm of the opinion that the estimates they give are always too little.
+Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza>`__, but it's always better to overestimate than to underestimate. I'm of the opinion that the estimates they give are always too little.
 You'll get more "bang for your buck" if you buy extra large pizzas than large pizzas. But if you buy extra large pizzas, be aware of the fact that people will often eat more than if you bought large pizzas -- just because the slices are larger. Also, the extra large pizzas are usually "Brooklyn style" only, which means that the dough is really thin and the toppings usually slide off the pizza when you try to take a bite. For these reasons, I almost always stick to the large pizzas for most occassions and only order extra larges for larger events.
 
 What kinds of pizza should I buy?
@@ -37,4 +37,4 @@ Also, call them ahead of time to see if they can deliver plates and knapkins. Th
 
 How do I get reimbursed?
 ------------------------
-Email Dorit at gymreklab-help@googlegroups.com with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). She will enter the receipt into UCSD's Concur system, which will route your reimbursement through four or five different people at UCSD who will need to approve it. The first time this is done, you will first need to consent to having her submit reimbursements on your behalf via Concur as described `here <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`_.
+Email Dorit at gymreklab-help@googlegroups.com with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). She will enter the receipt into UCSD's Concur system, which will route your reimbursement through four or five different people at UCSD who will need to approve it. The first time this is done, you will first need to consent to having her submit reimbursements on your behalf via Concur as described `here <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.
