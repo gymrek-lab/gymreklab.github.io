@@ -88,7 +88,7 @@ Cromwell only supports WDL 1.0, not 1.1 or development (2.0)
 Running
 ^^^^^^^
 
-Requires Java. Download the JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`_.
+Requires Java. Download the JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`__.
 (Can ignore womtool)
 
 Cromwell will require configuration before working well (see below), but just as an intro:
@@ -139,7 +139,7 @@ I've saved my configuration as :code:`cromwell.conf`. I've copied it below, and 
 Here's the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
 from Cromwell's docs if you want to take a look, but it doesn't explain everything or have every option
 
-.. code-block::
+.. code-block:: text
 
   # See https://cromwell.readthedocs.io/en/stable/Configuring/
   # this configuration only accepts double quotes! not singule quotes
@@ -318,7 +318,7 @@ Before using the configuration you'll need to insert your email address where sp
 
 Note that
 
-.. code-block::
+.. code-block:: text
 
   foo {
     bar {
@@ -410,7 +410,7 @@ If you set the docker runtime attribute for a task
 then for call caching Cromwell insists on trying to find
 the corresponding docker image and using its digest (i.e. hash code)
 as one of the keys for caching that task (not just the docker string
-itself) (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`_). If cromwell can't figure out how to locate the docker image
+itself) (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`__). If cromwell can't figure out how to locate the docker image
 then it simply refuses to try to load the call from cache.
 Cromwell's log method of telling you this is very unclear, I think
 it's something like "task not eligible for call caching".
@@ -444,7 +444,7 @@ Disabling call caching
 
 Add
 
-.. code-block:
+.. code-block: text
 
   meta {
     volatile: true
@@ -482,7 +482,7 @@ get around this, I've written the following script:
 
 and I include it in my container with the following Dockerfile commands:
 
-.. code-block::
+.. code-block:: docker
 
   RUN mkdir /container_install
   COPY envsetup /container_install/envsetup
@@ -490,7 +490,7 @@ and I include it in my container with the following Dockerfile commands:
  
 and then in the command sections of my WDL tasks I simply write 
 
-.. code-block::
+.. code-block:: text
     
   command <<<
     envsetup <mycommand> <arg1> ...
