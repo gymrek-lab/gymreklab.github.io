@@ -63,3 +63,45 @@ This example uses port 8888 as an example. You'll have to use a different port i
 
 You can try ports in the range 1024+. 5000 is typically in use for WebSTR development. Other ports may be reserved for use by other programs or used by labmates. If you know how to check which ports are available, feel free to submit a PR and update this page :). (see https://gymreklabgithubio.readthedocs.io/en/latest/LabWebsite.html).
 
+Use ``screen`` to keep things running even with spotty internet
+---------------------------------------------------------------
+If your ssh connection dies because of a choppy internet connection, your Jupyter instance will die, too. You can run jupyter from within a ``screen`` session to make it persist. Let's adapt the instructions from above.
+
+1. First, log into snorlax
+
+   .. code-block:: bash
+
+      ssh -L 8888:localhost:8888 $USER@snorlax.ucsd.edu
+
+2. Next, create and enter a ``screen`` session named **jupyter**
+
+   .. code-block:: bash
+
+      screen -S jupyter
+
+3. View a list of running screen sessions
+
+   .. code-block:: bash
+
+      screen -ls
+
+4. Start jupyter on the cluster
+
+   .. code-block:: bash
+
+      jupyter notebook --port 8888
+
+5. In a browser running on your own computer, go to http://localhost:8888
+6. If your ssh connection dies, everything in your ``screen`` session will continue running. Just log back in and reattach the session
+
+   .. code-block:: bash
+
+      screen -r jupyter
+
+7. You can also terminate a session while inside of it
+
+   .. code-block:: bash
+
+      exit
+
+   Or, if you’d like to detach from a session (instead of terminating it) while you’re inside of it, press ctrl+a and then the letter d
