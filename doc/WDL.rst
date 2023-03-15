@@ -97,7 +97,7 @@ Cromwell will require configuration before working well (see below), but just as
 #. Copy the config below to a location you want and modify it as necessary, and get your WDL workflow.
 #. Stand up the MySQL server (see below) 
 #. Have singularity cache whatever containers you plan to use (see the Singularity section of the Expanse notes)
-#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar utilities/cromwell-84.jar run <path_to_WDL>`
+#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>/cromwell-<version>.jar run <path_to_WDL>`
 #. If you want to submit jobs for each task instead of running them directly on the interactive node,
    change which :code:`backend.default` is commented out in the config.
 
