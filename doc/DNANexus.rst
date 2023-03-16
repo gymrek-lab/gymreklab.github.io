@@ -7,11 +7,11 @@ Getting access to the RAP
 -------------------------
 
 #. Sign up `here <https://bbams.ndph.ox.ac.uk/ams/resProjects>`_
-  UKB takes about a week to approve your application.
+   UKB takes about a week to approve your application.
 #. Once that's done, ask Melissa or Jonathan to add you to our UKB application.
-  That's instantaneous.
+   That's instantaneous.
 #. Then create an account on `DNANexus's website <https://ukbiobank.dnanexus.com/landing>`_
-  This is instantaneous. You must use your UCSD email.
+   This is instantaneous. You must use your UCSD email.
 #. Then email Melissa and ask her to add you to our project (currently :code:`UKB_Test`)
 
 Using DNANexus from the command line
