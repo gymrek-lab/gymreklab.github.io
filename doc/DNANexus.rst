@@ -6,7 +6,7 @@ Last update: 2023/03/16
 Getting access to the RAP
 -------------------------
 
-#. Sign up `here <https://bbams.ndph.ox.ac.uk/ams/resProjects>`_
+#. `Sign up here <https://bbams.ndph.ox.ac.uk/ams/resProjects>`_
    UKB takes about a week to approve your application.
 #. Once that's done, ask Melissa or Jonathan to add you to our UKB application.
    That's instantaneous.
