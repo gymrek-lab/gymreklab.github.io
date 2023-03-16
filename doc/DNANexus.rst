@@ -1,7 +1,7 @@
 DNANexus & UK Biobank Research Analysis Platform (RAP)
 ======================================================
 
-Last update: 2023/01/29
+Last update: 2023/03/16
 
 Getting access to the RAP
 -------------------------
@@ -53,3 +53,12 @@ a data field with three instances, you could append the following to the command
 .. code-block:: bash
 
   $(for i in $(seq 0 2); do echo "-ifield_names=p<field ID>_i${i}" ; done)
+
+Choosing Instance Types
+-----------------------
+Instances are the virtual machines allocated for each job in the cloud.
+The link `here <https://dnanexus.gitbook.io/uk-biobank-rap/working-on-the-research-analysis-platform/billing-and-costs#rates>`_
+(under the words `rate card`) describes
+the costs of the various instances. At the time of writing, asking for more memory per core doesn't seem to cost more 
+(:code:`mem1` vs :code:`mem3`). `Here <https://documentation.dnanexus.com/developer/api/running-analyses/instance-types>`_
+is an explanation of the naming conventions for instance types.
