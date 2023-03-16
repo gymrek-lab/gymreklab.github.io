@@ -37,7 +37,7 @@ If anyone wants to update this page with mysql instructions, go for it!
 Ensembl
 -------
 
-Ensembl is a genome browser from The European Bioinformatics Institute (EMBL-EBI). **BioMart** (`BioMart help docs <http://uswest.ensembl.org/info/data/biomart/index.html>`_) is a data mining tool from Ensemble for exporting custom datasets. Gene annotations obtained from Ensemble should be nearly identical to those downloaded from UCSC, which serves GENCODE annotations by default. The `UCSC gene FAQ <https://genome.ucsc.edu/FAQ/FAQgenes.html#ens)>`_ discusses this point in addition to other common questions about gene prediction and annotation. 
+Ensembl is a genome browser from The European Bioinformatics Institute (EMBL-EBI). **BioMart** (`BioMart help docs <http://uswest.ensembl.org/info/data/biomart/index.html>`_) is a data mining tool from Ensemble for exporting custom datasets. Gene annotations obtained from Ensemble should be nearly identical to those downloaded from UCSC, which serves GENCODE annotations by default. The `UCSC gene FAQ <https://genome.ucsc.edu/FAQ/FAQgenes.html#ens>`__ discusses this point in addition to other common questions about gene prediction and annotation. 
 
 How can one interface with BioMart?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -114,7 +114,7 @@ Genes
 
 Here we are querying the "mmusculus_gene_ensembl" dataset and requesting some common information like the unique Ensemble identifier, the genomic position of the gene, it's colloquial name and description. 
 
-Because most vertebrate genes are represented by multiple transcripts, the precise definition of a "gene" is not straightforward. For an informative discussion about this see the `UCSC gene FAQ <https://genome.ucsc.edu/FAQ/FAQgenes.html#justsingle>`_. Even though for many applications it is unecessary to select a single representative gene, a unique list of genes can simplify certain analyses. 
+Because most vertebrate genes are represented by multiple transcripts, the precise definition of a "gene" is not straightforward. For an informative discussion about this see the `UCSC gene FAQ <https://genome.ucsc.edu/FAQ/FAQgenes.html#justsingle>`__. Even though for many applications it is unecessary to select a single representative gene, a unique list of genes can simplify certain analyses. 
 
 The query below gives chromosome, start and end positions of the "representative" transript for each gene.
 
