@@ -21,6 +21,24 @@ Using DNANexus from the command line
 1. Install the DNA nexus command line tools vended through pip: :code:`pip3 install dxpy`.
 2. Run :code:`dx login` and :code:`dx select <project name>`.
 
+Choosing Instance Types
+-----------------------
+Instances are the virtual machines allocated for each job in the cloud.
+The link `here <https://dnanexus.gitbook.io/uk-biobank-rap/working-on-the-research-analysis-platform/billing-and-costs#rates>`_
+(under the words `rate card`) describes
+the costs of the various instances. At the time of writing, asking for more memory per core doesn't seem to cost more 
+(:code:`mem1` vs :code:`mem3`). `Here <https://documentation.dnanexus.com/developer/api/running-analyses/instance-types>`_
+is an explanation of the naming conventions for instance types.
+
+Job runtimes
+------------
+Jobs listed under the `Monitor` tab on the web GUI have a `Status` and a `Duration`. Note that the `Status` will be listed
+as `In Progress` and the `Duration` will start counting from when the job is submitted, regardless of whether or not the other
+jobs that job is dependent on are all finished. Thus this `Duration` is effectively meaningless. While it's hard to
+see this number, the important information is their actual runtime. Actual runtime determines costs. If actual runtime
+exceeds one day, you will receive a warning message. As far as I understand, if actual runtime for any one job exceeds two
+days, the job will be killed. `Duration` exceeding two days is irrelevant.
+
 Exporting UKB phenotypes as TSVs
 --------------------------------
 
@@ -54,11 +72,3 @@ a data field with three instances, you could append the following to the command
 
   $(for i in $(seq 0 2); do echo "-ifield_names=p<field ID>_i${i}" ; done)
 
-Choosing Instance Types
------------------------
-Instances are the virtual machines allocated for each job in the cloud.
-The link `here <https://dnanexus.gitbook.io/uk-biobank-rap/working-on-the-research-analysis-platform/billing-and-costs#rates>`_
-(under the words `rate card`) describes
-the costs of the various instances. At the time of writing, asking for more memory per core doesn't seem to cost more 
-(:code:`mem1` vs :code:`mem3`). `Here <https://documentation.dnanexus.com/developer/api/running-analyses/instance-types>`_
-is an explanation of the naming conventions for instance types.
