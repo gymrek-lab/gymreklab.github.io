@@ -4,14 +4,14 @@ Lab websites
 Main lab website
 ----------------
 
-The lab website (gymreklab.com) is generated using Github pages from this repository: https://github.com/gymreklab/gymreklab.github.io using github-pages.
+The lab website (gymreklab.com) is generated using Github pages from this repository: https://github.com/gymreklab/gymreklab.github.io
 
 Adding your photo
 +++++++++++++++++
 
 Below is the workflow for adding your photo to the lab webpage. Follow a similar worfklow to make other types of changes via Github.
 
-1. Go to https://github.com/gymreklab/gymreklab.github.io/
+1. Go to https://github.com/gymrek-lab/gymreklab.github.io/
 
 2. Click "Fork" on the top far right to make your own copy of the repository. This will create a new repo https://github.com/<yourgitusername>/gymreklab.github.io/.
 
@@ -49,8 +49,11 @@ If all went well, you can navigate to: localhost:4000 in your web browser to pre
 Internal lab website
 --------------------
 
-The lab internal website (this site) is generated from doc/ folder within the repository https://github.com/gymreklab/gymreklab.github.io using sphinx. It is hosted on readthedocs.
+The lab internal website (this site) is generated from the ``doc/`` folder within the repository https://github.com/gymrek-lab/gymreklab.github.io using sphinx. It is hosted on readthedocs.
 
-To make changes in your forked repo, you can either edit files directly in the web browser from github, or clone the repo and edit files locally using the instructions above.
+To make changes, you can either edit files directly in the web browser from github, or clone the repo and edit files locally using the instructions above. If you are a member of `our Github organization <https://github.com/gymrek-lab>`_, you shouldn't need to fork the repository but you'll need to create a new branch, instead.
 
-To build the docs locally, make sure sphinx is installed (e.g. :code:`conda install sphinx`) then within the :code:`doc/` directory, type :code:`make html`. This will build the html files in the :code:`_build/` directory, which you can preview in your web browser.
+To build the docs locally, make sure sphinx is installed (e.g. :code:`conda install sphinx`) then within the :code:`doc/` directory, type :code:`make html`. This 
+will build the html files in the :code:`_build/` directory, which you can preview in your web browser.
+
+Once you've finished making changes, create a pull request to merge your branch back into the master branch. Make sure to set the base repository to `this repo <https://github.com/gymrek-lab/gymreklab.github.io>`_ **not** `this one <https://github.com/gymreklab/gymreklab.github.io>`_.

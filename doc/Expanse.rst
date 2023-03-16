@@ -88,7 +88,7 @@ Some notes:
   (e.g. :code:`sbatch --output=$SOMEWHERE/out slurm_script.sh`) 
 
 Managing jobs
-------------
+-------------
 
 * :code:`squeue -u <user>` - look at your jobs
 * :code:`-p <partition>` - look at a specific partition
