@@ -1,7 +1,7 @@
 WDL
 ===
 
-Last update: 2023/01/10
+Last update: 2023/01/25
 
 You'll want to read the "Constraints on how you write your WDL" sections
 for each runtime environment you plan to execute your WDL in before
@@ -97,7 +97,7 @@ Cromwell will require configuration before working well (see below), but just as
 #. Copy the config below to a location you want and modify it as necessary, and get your WDL workflow.
 #. Stand up the MySQL server (see below) 
 #. Have singularity cache whatever containers you plan to use (see the Singularity section of the Expanse notes)
-#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar utilities/cromwell-84.jar run <path_to_WDL>`
+#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>/cromwell-<version>.jar run <path_to_WDL>`
 #. If you want to submit jobs for each task instead of running them directly on the interactive node,
    change which :code:`backend.default` is commented out in the config.
 
@@ -457,9 +457,21 @@ WDL with dxCompiler on DNANexus/UKB Research Analysis Platform
 
 Constraints on how you write your WDL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You'll want your tasks' custom runtime attribute that denotes their timelimits
+Unlike Cromwell, dxCompiler supports WDL 1.1. So if you don't need your WDL to be cross-platform,
+you can use those features.
+
+dxCompiler's implementation of WDL has a few limitations, read them `here <https://github.com/dnanexus/dxCompiler#Limitations>`_.
+
+Additionally, you'll want your tasks' custom runtime attribute that denotes their timelimits
 to be called :code:`dx_timeout`. (Cromwell is agnostic to what attribute you
 use for denoting time limits, if any, but dxCompiler requires this specific attribute)
+
+From personal correspondence with Rylie Yeakley from ukbiobank-support@dnanexus.com on 2023/01/25,
+you currently cannot access record objects (e.g. the UKBiobank phenotype database) from within
+WDL. Neither writing a python script to access those records and calling that from WDL nor calling
+the existing table_exporter app from WDL will work. So instead, you'll need to extract all data fields
+from that dataset (presumably to a TSV) using the GUI, JupyterLab, or the command line before
+running your WDL pipeline. See the docs we've written about DNANexus for info on how to do that on the command line.
 
 dxCompiler only seems to run commands
 directly in the container (it does not seem to support any setup after container start before
@@ -499,7 +511,6 @@ and then in the command sections of my WDL tasks I simply write
 (`This Dockerfile <https://github.com/fritzsedlazeck/parliament2/blob/master/Dockerfile>`_
 suggests an alternative by mucking directly with env variables to simulate
 a conda activation, but that seems like a bad idea)
-
 
 Running
 ^^^^^^^
