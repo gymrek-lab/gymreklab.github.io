@@ -232,7 +232,7 @@ from Cromwell's docs if you want to take a look, but it doesn't explain everythi
               localization: ["hard-link"]
               caching {
                 duplication-strategy: ["hard-link"]
-                hasing-strategy: "fingerprint"
+                hashing-strategy: "fingerprint"
                 check-sibling-md5: true
                 fingerprint-size: 1048576 # 1 MB 
               }
@@ -304,7 +304,7 @@ from Cromwell's docs if you want to take a look, but it doesn't explain everythi
               caching {
                 duplication-strategy: ["hard-link"]
                 check-sibling-md5: true
-                hasing-strategy: "fingerprint"
+                hashing-strategy: "fingerprint"
                 fingerprint-size: 1048576 # 1 MB 
               }
             }
@@ -373,8 +373,22 @@ which is not secure. I'm just assuming the Expanse nodes are secure enough alrea
 malicious is on them. Also, this uses the default MySQL port (3306). You may need to change that
 if someone's already taken that port.
 
-If cromwell doesn't shut down cleanly the MySQL server may remain locked and uninteractable with the next
-cromwell session. To fix this, run:
+The first time you stand up the mysql database with those paths, you'll need to run the following:
+
+.. code-block:: bash
+
+   # start an interactive my sql session
+   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass cromwell
+   # from within the mysql prompt
+   create database cromwell;
+   exit;
+
+You should now (finally!) be good to go with call caching.
+
+*Cromwell hangs at*  :code:`[info] Running with database db.url = jdbc:mysql://localhost/cromwell?rewriteBatchedStatements=true`:
+
+If cromwell doesn't shut down cleanly (say, you kill it because it's hanging) then the MySQL server may remain locked and
+uninteractable, causing the next cromwell session to hang. To fix this, run:
 
 .. code-block:: bash
 
