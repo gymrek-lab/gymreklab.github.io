@@ -385,9 +385,9 @@ The first time you stand up the mysql database with those paths, you'll need to 
 
 You should now (finally!) be good to go with call caching.
 
-*Cromwell hangs at*  :code:`[info] Running with database db.url = jdbc:mysql://localhost/cromwell?rewriteBatchedStatements=true`:
+*Debugging tip if cromwell hangs at*  :code:`[info] Running with database db.url = jdbc:mysql://localhost/cromwell?rewriteBatchedStatements=true`:
 
-If cromwell doesn't shut down cleanly (say, you kill it because it's hanging) then the MySQL server may remain locked and
+If the previous cromwell execution didn't shut down cleanly (say, you kill it because it's hanging) then the MySQL server may remain locked and
 uninteractable, causing the next cromwell session to hang. To fix this, run:
 
 .. code-block:: bash
@@ -409,8 +409,11 @@ that should return output something like:
   ID      LOCKED  LOCKGRANTED     LOCKEDBY
   1       \0      NULL    NULL
 
+*Debugging tip if the mysql log at path3 says* :code:`another process is using this socket`
 
-Opening an interactive session with the MySQL server for debugging purposes:
+Delete the lock files at `<path2>/*lock`, kill the mysql server and then restart it and it should work.
+
+*Debugging tip*: Opening an interactive session with the MySQL server for debugging purposes:
 
 .. code-block:: bash
 
