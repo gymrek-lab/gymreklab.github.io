@@ -27,7 +27,8 @@ Instances are the virtual machines allocated for each job in the cloud.
 The link `here <https://dnanexus.gitbook.io/uk-biobank-rap/working-on-the-research-analysis-platform/billing-and-costs#rates>`__
 (under the words `rate card`) describes
 the costs of the various instances. At the time of writing, asking for more memory per core doesn't seem to cost more 
-(:code:`mem1` vs :code:`mem3`). `Here <https://documentation.dnanexus.com/developer/api/running-analyses/instance-types>`_
+(:code:`mem1` vs :code:
+`mem3`). `Here <https://documentation.dnanexus.com/developer/api/running-analyses/instance-types>`_
 is an explanation of the naming conventions for instance types.
 
 Job runtimes
