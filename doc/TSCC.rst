@@ -90,9 +90,9 @@ Notes:
   that's what happened. 
 * Aside from the first shebang line, PBS will stop looking for settings after the first line that does not start with :code:`#PBS`.
   This includes blank lines and lines with comments.
-* Your job will be allocated memory in proportion to the number of processors your request. If you request 1 core on a node with 64GB
-  of memory and 16 cores (a hotel node), your process will be allocated 64GB/16 = 4GB of memory and will be killed it if it exceeds
-  that limit. If you want more memory, request more processors per node accordingly. (e.g. :code:`ppn=4`)
+* Your job will be allocated memory in proportion to the number of processors your request. If you request 1 core and are assigned a node with 128GB
+  of memory and 28 cores (the smaller of the two architectures of hotel nodes), your process will be allocated 128GB/28 = 4.57GB of memory and will
+  be killed it if it exceeds that limit. If you want more memory, request more processors per node accordingly. (e.g. :code:`ppn=4`)
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
   passing). Instead, just submit more jobs
 * You can have max 1500 jobs in the queues at once.
@@ -102,13 +102,14 @@ Notes:
 
 Queues
 ^^^^^^
-We have access to three queues: :code:`condo`, :code:`hotel` and :code:`home`. Nodes on :code:`hotel` have 16 cores and 4GB memory/core.
+We have access to three queues: :code:`condo`, :code:`hotel` and :code:`home`. Nodes on :code:`hotel` have a minimum of 28 cores and 4.57GB memory/core.
 I do not know about the specs of the other nodes.
 
 First consider :code:`condo`
 
 * We have a large number of compute hours here, and they are cheap
 * Jobs are limited to 8 hrs.
+* The architectures of condo nodes vary wildly - if you might hit the mem/core or cores/node limit, go to hotel where (last I checked) you always get at least 4.57 GB memory/node and at least up to 28 cores/node.
 
 If you have a single long running job, consider :code:`home`
 

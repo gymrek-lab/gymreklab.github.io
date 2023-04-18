@@ -8,4 +8,7 @@ We use three primary compute resources. Our local server (snorlax) is used for s
 
    Snorlax.rst
    TSCC.rst
+   Expanse.rst
+   DNANexus.rst
    AWS.rst
+   WDL.rst

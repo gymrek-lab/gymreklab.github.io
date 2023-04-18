@@ -13,6 +13,8 @@ If you are new to the group, this page has a list of things you should do to get
 
 * Request access to our shared Google Drive where you can find additional resources.
 
+* If you will be working in the wet lab, please see the wetlab_ onboarding page.
+
 To request access to any of these resources, email gymreklab-help AT googlegroups DOT com and someone will help you out.
 
 
@@ -37,3 +39,4 @@ There are many channels on slack. Most are for specific projects that you will b
 
 .. _snorlax: https://gymreklabgithubio.readthedocs.io/en/latest/Snorlax.html
 .. _schedule: https://gymreklabgithubio.readthedocs.io/en/latest/LabMeetingSchedule.html
+.. _wetlab: https://gymreklabgithubio.readthedocs.io/en/latest/WetLab.html
