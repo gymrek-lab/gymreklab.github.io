@@ -1,7 +1,7 @@
 WDL
 ===
 
-Last update: 2023/01/10
+Last update: 2023/01/25
 
 You'll want to read the "Constraints on how you write your WDL" sections
 for each runtime environment you plan to execute your WDL in before
@@ -88,7 +88,7 @@ Cromwell only supports WDL 1.0, not 1.1 or development (2.0)
 Running
 ^^^^^^^
 
-Requires Java. Download the JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`_.
+Requires Java. Download the JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`__.
 (Can ignore womtool)
 
 Cromwell will require configuration before working well (see below), but just as an intro:
@@ -97,7 +97,7 @@ Cromwell will require configuration before working well (see below), but just as
 #. Copy the config below to a location you want and modify it as necessary, and get your WDL workflow.
 #. Stand up the MySQL server (see below) 
 #. Have singularity cache whatever containers you plan to use (see the Singularity section of the Expanse notes)
-#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar utilities/cromwell-84.jar run <path_to_WDL>`
+#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>/cromwell-<version>.jar run <path_to_WDL>`
 #. If you want to submit jobs for each task instead of running them directly on the interactive node,
    change which :code:`backend.default` is commented out in the config.
 
@@ -139,7 +139,7 @@ I've saved my configuration as :code:`cromwell.conf`. I've copied it below, and 
 Here's the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
 from Cromwell's docs if you want to take a look, but it doesn't explain everything or have every option
 
-.. code-block::
+.. code-block:: text
 
   # See https://cromwell.readthedocs.io/en/stable/Configuring/
   # this configuration only accepts double quotes! not singule quotes
@@ -232,7 +232,7 @@ from Cromwell's docs if you want to take a look, but it doesn't explain everythi
               localization: ["hard-link"]
               caching {
                 duplication-strategy: ["hard-link"]
-                hasing-strategy: "fingerprint"
+                hashing-strategy: "fingerprint"
                 check-sibling-md5: true
                 fingerprint-size: 1048576 # 1 MB 
               }
@@ -304,7 +304,7 @@ from Cromwell's docs if you want to take a look, but it doesn't explain everythi
               caching {
                 duplication-strategy: ["hard-link"]
                 check-sibling-md5: true
-                hasing-strategy: "fingerprint"
+                hashing-strategy: "fingerprint"
                 fingerprint-size: 1048576 # 1 MB 
               }
             }
@@ -318,7 +318,7 @@ Before using the configuration you'll need to insert your email address where sp
 
 Note that
 
-.. code-block::
+.. code-block:: text
 
   foo {
     bar {
@@ -373,8 +373,22 @@ which is not secure. I'm just assuming the Expanse nodes are secure enough alrea
 malicious is on them. Also, this uses the default MySQL port (3306). You may need to change that
 if someone's already taken that port.
 
-If cromwell doesn't shut down cleanly the MySQL server may remain locked and uninteractable with the next
-cromwell session. To fix this, run:
+The first time you stand up the mysql database with those paths, you'll need to run the following:
+
+.. code-block:: bash
+
+   # start an interactive my sql session
+   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass cromwell
+   # from within the mysql prompt
+   create database cromwell;
+   exit;
+
+You should now (finally!) be good to go with call caching.
+
+*Debugging tip if cromwell hangs at*  :code:`[info] Running with database db.url = jdbc:mysql://localhost/cromwell?rewriteBatchedStatements=true`:
+
+If the previous cromwell execution didn't shut down cleanly (say, you kill it because it's hanging) then the MySQL server may remain locked and
+uninteractable, causing the next cromwell session to hang. To fix this, run:
 
 .. code-block:: bash
 
@@ -395,8 +409,11 @@ that should return output something like:
   ID      LOCKED  LOCKGRANTED     LOCKEDBY
   1       \0      NULL    NULL
 
+*Debugging tip if the mysql log at path3 says* :code:`another process is using this socket`
 
-Opening an interactive session with the MySQL server for debugging purposes:
+Delete the lock files at `<path2>/*lock`, kill the mysql server and then restart it and it should work.
+
+*Debugging tip*: Opening an interactive session with the MySQL server for debugging purposes:
 
 .. code-block:: bash
 
@@ -410,7 +427,7 @@ If you set the docker runtime attribute for a task
 then for call caching Cromwell insists on trying to find
 the corresponding docker image and using its digest (i.e. hash code)
 as one of the keys for caching that task (not just the docker string
-itself) (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`_). If cromwell can't figure out how to locate the docker image
+itself) (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`__). If cromwell can't figure out how to locate the docker image
 then it simply refuses to try to load the call from cache.
 Cromwell's log method of telling you this is very unclear, I think
 it's something like "task not eligible for call caching".
@@ -444,7 +461,7 @@ Disabling call caching
 
 Add
 
-.. code-block:
+.. code-block: text
 
   meta {
     volatile: true
@@ -457,9 +474,21 @@ WDL with dxCompiler on DNANexus/UKB Research Analysis Platform
 
 Constraints on how you write your WDL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You'll want your tasks' custom runtime attribute that denotes their timelimits
+Unlike Cromwell, dxCompiler supports WDL 1.1. So if you don't need your WDL to be cross-platform,
+you can use those features.
+
+dxCompiler's implementation of WDL has a few limitations, read them `here <https://github.com/dnanexus/dxCompiler#Limitations>`_.
+
+Additionally, you'll want your tasks' custom runtime attribute that denotes their timelimits
 to be called :code:`dx_timeout`. (Cromwell is agnostic to what attribute you
 use for denoting time limits, if any, but dxCompiler requires this specific attribute)
+
+From personal correspondence with Rylie Yeakley from ukbiobank-support@dnanexus.com on 2023/01/25,
+you currently cannot access record objects (e.g. the UKBiobank phenotype database) from within
+WDL. Neither writing a python script to access those records and calling that from WDL nor calling
+the existing table_exporter app from WDL will work. So instead, you'll need to extract all data fields
+from that dataset (presumably to a TSV) using the GUI, JupyterLab, or the command line before
+running your WDL pipeline. See the docs we've written about DNANexus for info on how to do that on the command line.
 
 dxCompiler only seems to run commands
 directly in the container (it does not seem to support any setup after container start before
@@ -482,7 +511,7 @@ get around this, I've written the following script:
 
 and I include it in my container with the following Dockerfile commands:
 
-.. code-block::
+.. code-block:: docker
 
   RUN mkdir /container_install
   COPY envsetup /container_install/envsetup
@@ -490,7 +519,7 @@ and I include it in my container with the following Dockerfile commands:
  
 and then in the command sections of my WDL tasks I simply write 
 
-.. code-block::
+.. code-block:: text
     
   command <<<
     envsetup <mycommand> <arg1> ...
@@ -499,7 +528,6 @@ and then in the command sections of my WDL tasks I simply write
 (`This Dockerfile <https://github.com/fritzsedlazeck/parliament2/blob/master/Dockerfile>`_
 suggests an alternative by mucking directly with env variables to simulate
 a conda activation, but that seems like a bad idea)
-
 
 Running
 ^^^^^^^
