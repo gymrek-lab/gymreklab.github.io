@@ -4,7 +4,7 @@ Lab websites
 Main lab website
 ----------------
 
-The lab website (gymreklab.com) is generated using Github pages from this repository: https://github.com/gymreklab/gymreklab.github.io
+The lab website (gymreklab.com) is generated using Github pages from this repository: https://github.com/gymrek-lab/gymreklab.github.io
 
 Adding your photo
 +++++++++++++++++
