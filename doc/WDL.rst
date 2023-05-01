@@ -78,6 +78,8 @@ Tips on building a container with conda
   or SHELL if you're running the container with run or shell, or make sure
   to call that script manually as part of the container exec invocation.
 
+.. _WDL_with_Cromwell_on_Expanse:
+
 WDL with Cromwell on Expanse (or other clusters)
 ------------------------------------------------
 
@@ -101,7 +103,7 @@ Cromwell will require configuration before working well (see below), but just as
 #. If you want to submit jobs for each task instead of running them directly on the interactive node,
    change which :code:`backend.default` is commented out in the config.
 
-Either way, you need to be running cromwell on an interactive node.
+Either way, you need to be running Cromwell on an interactive node.
 If you want more logs from cromwell for debugging purposes (you don't), prepend the flag :code:`-DLOG_LEVEL=DEBUG`
 
 Cromwell has a server mode where you stand it up and can inspect running jobs through a web interface. I haven't
@@ -110,11 +112,11 @@ learned how to use that, so I'm not documenting it here.
 Inputs and outputs 
 ^^^^^^^^^^^^^^^^^^
 
-If you're using a container then you're inputs cannot contain symlinks.i
+If you're using a container then your inputs cannot contain symlinks.
 
-* You'll get something like file does not exist errors.
+* If they do, you'll get something like file does not exist errors.
 * It's possible symlinks to files underneath the root of the run will work, but not to files outside of the run root. I'd just avoid.
-*  Use hardlinks instead.
+* Instead of symlinks, use hardlinks.
 
 Cromwell will dump its outputs to :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/execution`
 That folder can also be used to inspect the stdout and stderr of that task for debugging.
@@ -135,186 +137,17 @@ No clue how to make managing that easier.
 Configuration
 ^^^^^^^^^^^^^
 
-I've saved my configuration as :code:`cromwell.conf`. I've copied it below, and then will explain it. 
-Here's the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
-from Cromwell's docs if you want to take a look, but it doesn't explain everything or have every option
+I recommend you make a copy of my config `here <https://github.com/LiterallyUniqueLogin/ukbiobank_strs/blob/master/workflow/cromwell.conf>`.
+Another reference is the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
+from Cromwell's docs, but it doesn't explain everything or have every option
 
-.. code-block:: text
+After copying my config, you will need to:
 
-  # See https://cromwell.readthedocs.io/en/stable/Configuring/
-  # this configuration only accepts double quotes! not singule quotes
-  include required(classpath("application"))
-
-  system {
-    abort-jobs-on-terminate = true
-    io {
-      number-of-requests = 30
-      per = 1 second
-    }
-    file-hash-cache = true
-  }
-
-  # necessary for call result caching
-  # will need to stand up the MySQL server each time before running cromwell
-  # stand it up on the same node that's running cromwell
-  database {
-    profile = "slick.jdbc.MySQLProfile$"
-    db {
-      driver = "com.mysql.cj.jdbc.Driver"
-      url = "jdbc:mysql://localhost/cromwell?rewriteBatchedStatements=true"
-      user = "root"
-      password = "pass"
-      connectionTimeout = 5000
-    }
-  }
-
-  ### file based persistent database
-  # the implementation here proved to be poorly designed and so much too slow
-  #database {
-  #  profile = "slick.jdbc.HsqldbProfile$"
-  #  db {
-  #    driver = "org.hsqldb.jdbcDriver"
-  #    url = """
-  #    jdbc:hsqldb:file:cromwell-executions/cromwell-db/cromwell-db;
-  #    shutdown=false;
-  #    hsqldb.default_table_type=cached;hsqldb.tx=mvcc;
-  #    hsqldb.result_max_memory_rows=10000;
-  #    hsqldb.large_data=true;
-  #    hsqldb.applog=1;
-  #    hsqldb.lob_compressed=true;
-  #    hsqldb.script_format=3
-  #    """
-  #    connectionTimeout = 120000
-  #    numThreads = 1
-  #   }
-  #}
-
-  call-caching {
-    enabled = true
-    invalidate-bad-cache-results = true
-  }
-
-  docker {
-    hash-lookup {
-      enabled = true
-      method = "remote"
-    }
-  }
-
-  backend {
-    # which backend do you want to use?
-    # Right now I don't know how to choose this via command line, only here
-    #default = "Local" # For running jobs on an interactive node
-    default = "SLURM" # For running jobs by submitting them from an interactive node to the cluster
-    providers {  
-      # For running jobs on an interactive node
-      Local {
-        actor-factory = "cromwell.backend.impl.sfs.config.ConfigBackendLifecycleActorFactory"
-        config {
-          concurrent-job-limit = 10
-          run-in-background = true
-          root = "cromwell-executions"
-          dockerRoot = "/cromwell-executions"
-          runtime-attributes = """
-            String? docker
-          """
-          submit = "/usr/bin/env bash ${script}"
-
-          # We're asking bash-within-singularity to run the script, but the script's location on the machine
-          # is different then the location its mounted to in the container, so need to change the path with sed
-          submit-docker = """
-            module load singularitypro && \
-            singularity exec --containall --bind ${cwd}:${docker_cwd} docker://${docker} bash \
-                 "$(echo ${script} | sed -e 's@.*cromwell-executions@/cromwell-executions@')"
-          """
-          filesystems {
-            local {
-              localization: ["hard-link"]
-              caching {
-                duplication-strategy: ["hard-link"]
-                hashing-strategy: "fingerprint"
-                check-sibling-md5: true
-                fingerprint-size: 1048576 # 1 MB 
-              }
-            }
-          }
-        }
-      }
-      # For running jobs by submitting them from an interactive node to the cluster
-      SLURM {
-        actor-factory = "cromwell.backend.impl.sfs.config.ConfigBackendLifecycleActorFactory"
-        config {
-          concurrent-job-limit = 500
-          root = "cromwell-executions"
-          dockerRoot = "/cromwell-executions"
-
-          runtime-attributes = """
-            Int cpus = 1
-            String mem = "2g"
-            String dx_timeout
-            String? docker
-          """
-          check-alive = "squeue -j ${job_id}"
-          exit-code-timeout-seconds = 500
-          job-id-regex = "Submitted batch job (\\d+).*"
-
-          submit = """
-            sbatch \
-              --account ddp268 \
-              --partition ind-shared \
-              --nodes 1 \
-              --job-name=${job_name} \
-              -o ${out} -e ${err}  \
-              --mail-type FAIL --mail-user <your_email> \
-              --ntasks-per-node=${cpus} \
-              --mem=${mem} \
-              -c ${cpus} \
-              --time=$(echo ${dx_timeout} | sed -e 's/m/:00/' -e 's/h/:00:00/' -e 's/ //g') \
-              --chdir ${cwd} \
-              --wrap "/bin/bash ${script}"
-          """
-          kill = "scancel ${job_id}"
-
-          # We're asking bash-within-singularity to run the script, but the script's location on the machine
-          # is different then the location its mounted to in the container, so need to change the path with sed
-          submit-docker = """
-            sbatch \
-              --account ddp268 \
-              --partition ind-shared \
-              --nodes 1 \
-              --job-name=${job_name} \
-              -o ${out} -e ${err}  \
-              --mail-type FAIL --mail-user <your_email> \
-              --ntasks-per-node=${cpus} \
-              --mem=${mem} \
-              -c ${cpus} \
-              --time=$(echo ${dx_timeout} | sed -e 's/m/:00/' -e 's/h/:00:00/' -e 's/ //g') \
-              --chdir ${cwd} \
-              --wrap "
-                module load singularitypro && \
-                singularity exec --containall --bind ${cwd}:${docker_cwd} docker://${docker} bash \
-                     \"$(echo ${script} | sed -e 's@.*cromwell-executions@/cromwell-executions@')\"
-              "
-          """
-          kill-docker = "scancel ${job_id}"
-
-          filesystems {
-            local {
-              localization: ["hard-link"]
-              caching {
-                duplication-strategy: ["hard-link"]
-                check-sibling-md5: true
-                hashing-strategy: "fingerprint"
-                fingerprint-size: 1048576 # 1 MB 
-              }
-            }
-          }
-
-        }
-      }
-  }}
-
-Before using the configuration you'll need to insert your email address where specified.
+* swap my email address for yours
+* Either set up call caching below, or call-caching.enabled = False
+  If you disable it, then every time you run a job it will be run again from scratch
+* When running jobs, if you want to run them all on the local node, change
+  :code:`default = "SLRUM"` to :code:`default = "Local"`
 
 Note that
 
@@ -327,7 +160,6 @@ Note that
   }
 
 is equivalent to :code:`foo.bar.baz = "bop"`
-
 
 * :code:`backends.providers.<backend>.config.submit` and :code:`submit-docker` are what control
   how tasks are submitted as jobs.
@@ -344,13 +176,13 @@ the same inputs. This is generally necessary for developing most large workflows
 these tasks may have different runtime-attributes and still be equivalent for call-caching,
 docker is the main exception, see below)
 
-You need to configure Cromwell with a database to store the cache results. Cromwell has a
-simple to use database but unfortunately it's slow so I'd avoid it (if you want to use it anyway,
-uncomment the section :code:`### file based persistent database` in the config above and
-remove the MySQL database section)
+You need to configure Cromwell with a database to store the cache results. While its unpleasantly complex,
+I'd if you want call caching I'd recommend the MySQL database as the others do not function well.
+This requires a running MySQL server.
 
-Instead, use the MySQL database. Unfortuantely, this requires a running MySQL server. From the node which
-you plan to execute cromwell from, run:
+First, make sure you've set up your :code:`.bashrc` to handle :ref:`Using_Singularity_to_run_Docker_containers`
+
+Then, from the node which you plan to execute cromwell from, run:
 
 .. code-block:: bash
 
@@ -554,4 +386,33 @@ TODO
 Constraints on how you write your WDL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Cromwell only supports WDL 1.0, not 1.1 or development (2.0)
+
+Gotchas
+-------
+(I'm unclear if these gotchas only exist for Cromwell running WDL 1.0 or for all versions of WDL and also for dxCompiler)
+
+* There are no :code:`else` statements to pair with :code:`if` statements. Instead
+  write :code:`if (x) {}`, then :code:`if (!x) {}`, and then use :code:`select_first()`
+  to condense the results of both branches to single variables.
+* For whatever reason, trying :code:`my_array[x+1]` will fail at compile time. Instead, write
+  :code:`Int x_plus_one = x + 1` and then :code:`my_array[x_plus_one]`.
+* There is no array slicing. If you want to scatter over :code:`item in my_array[1:]`, instead
+  scatter over :code:`idx in range(length(my_array)-1)` and manually access the array at
+  `Int idx_plus_one = idx + 1`
+* If you want to create an array literal that's easier to specify via a list comprehension than to type it all out,
+  do so by writing out the expression inside a scatter block in a worfklow. There's no way to get list comprehensions to work
+  anywhere in tasks or within the input or output sections of a workflow.
+* The :code:`glob()` library function can only be used within tasks, not within workflows.
+  It will not error out at language examination time but at runtime if used within a workflow.
+* The :code:`write_XXX()` functions will fail in weird ways if used in a workflow and not a task.
+* The :code:`write_XXX()` functions will not accept :code:`Array[X?]`, only :code:`Array[X]`.
+
+These gotchas I know only apply to WDL 1.0 (but perhaps to both Cromwell and dxCompiler?)
+
+* The :code:`write_objects()` function will crash when passed an empty array of structs
+  instead of writing a header line and no content rows.
+* The :code:`write_objects()` function will crash at runtime when passed a struct with a member
+  that is a compound type (struct, map, array, object).
+* While structs can contain members of multiple types, maps cannot, and so to create such a struct
+  it must be assigned from an object literal and not a map literal.
 

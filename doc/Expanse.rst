@@ -27,9 +27,12 @@ I use miniconda to do this when possible. Miniconda can be installed into your h
 Running jobs
 ------------
 
-Only use the login nodes for small tasks. Some libraries (including python libraries) have been disabled
-on the login nodes and will cause weird error messages if you try to use them. So most work should
-be done via an interactive job.
+Only use the login nodes for small tasks.
+Any large tasks should be done in a job, either interactively or noninteractively.
+To encourage this, Expanse staff has disabled some array/plotting libraries 
+on the login nodes, which will cause weird error messages if you try to use them there.
+
+First: :code:`module load slurm`. I like to put this in my `.bashrc`
 
 Grabbing an interactive job:
 
@@ -39,7 +42,7 @@ Grabbing an interactive job:
 
 ``--pty`` is what specifically makes this treated as an interactive session
 
-To run a script with SLURM: first add special flags to the script
+To run a script noninteractively with SLURM: first add special :code:`SBATCH` flags to the script
 
 .. code-block:: bash
 
@@ -53,14 +56,14 @@ To run a script with SLURM: first add special flags to the script
   #SBATCH --output=<...>/logs/%x_%j.out
   #SBATCH --mail-type=FAIL
   #SBATCH --mail-user=<...>
-  #SBATCH --export=ALL
 
+  # an example input variable
   if [ -z "$TARGET" ] ; then echo "TARGET variable is unset" ; exit 1 ; fi
   # write script inputs to log files
   echo "TARGET $TARGET"
   echo "TARGET $TARGET" >&2
 
-  # do stuff with $TARGET
+  # your script which does stuff with $TARGET
   ...
 
 then run
@@ -105,16 +108,7 @@ Looking at account balances:
   module load sdsc
   expanse-client user -p
 
-Environment
------------
-
-I have the following in my bashrc
-
-.. code-block:: bash
-
-  module load gcc
-  module load slurm
-  module load singularitypro/3.9
+.. _Using_Singularity_to_run_Docker_containers:
 
 Using Singularity to run Docker containers
 ------------------------------------------
@@ -129,16 +123,21 @@ Terminology:
 * Sylabs is the company that owns SingularityPro which is just
   a supported version of singularity
 
-
-The general idea is, first grab an interactive node (or put this in a script that you submit) and then:
+To make singularity work, I add the following to my :code:`.bashrc`:
 
 .. code-block:: bash
 
   module load singularitypro
   export SINGULARITY_CACHEDIR=/expanse/projects/gymreklab/<username>/.singularity_cache`
-  SINGULARITY_TMPDIR=/scratch/$USER/job_$SLURM_JOB_ID singularity exec --containall docker://<docker_image_url> <command>
+  if [[ -n "$SLURM_JOB_ID" ]] ; then
+    export SINGULARITY_TMPDIR="/scratch/$USER/job_$SLURM_JOB_ID"
+  fi
 
-I put the first two lines in my bashrc file. 
+The general idea is, first grab an interactive node (or put this in a script that you submit) and then:
+
+.. code-block:: bash
+
+  singularity exec --containall docker://<docker_image_url> <command>
 
 You'll notice the first time you run a new docker image Singularity takes a while (~10min) building
 it into a singularity image. They are cached at :code:`$SINGUALRITY_CACHEDIR` if that's set
@@ -148,13 +147,15 @@ in my project space
 
 Any calls to :code:`singularity exec|shell|pull` will cache the image. I wouldn't
 trust that the cache is thread-safe, so if you're going to kick off a bunch
-of jobs, either cache the image before hand, or have them all check. So:
+of jobs, either cache the image before hand, or have them all check.
+
+To cache the image beforehand:
 
 .. code-block:: bash
    
-   SINGULARITY_TMPDIR=/scratch/$USER/job_$SLURM_JOB_ID singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
+   singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
 
-or, to make sure this is synchronizd
+or, to check in a synchronized manner:
 
 .. code-block:: bash
   
