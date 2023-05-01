@@ -39,9 +39,25 @@ Create a json options file specifying where you want your output to be written:
 
 Then, get set up with :ref:`WDL_with_Cromwell_on_Expanse`.
 
+In the cromwell.conf file you create, add this:
+
+.. code-block:: text
+
+  workflow-options {
+    workflow-log-dir = "absolute_path_to_store_cromwell_logs_in"
+  } 
+
+And then for the two lines that says :code:`root = "cromwell-executions`, change them to an
+absolute path to the location you want all of your Cromwell run's work to be stored in.
+
 Once you're ready to run WDL
 
 .. code-block:: bash
+
+  # you need to be in this directory for the WDL config to find the scripts
+  # appropriately, but all the work, outputs and logs will be written to locations
+  # you've specified and not this directory
+  cd /expanse/projects/gymreklab/jmargoli/ukbiobank
 
   java \
     -Dconfig.file=<path_to_your_cromwell.conf_file> \
@@ -50,9 +66,9 @@ Once you're ready to run WDL
     -i <path_to_your_input_file> \
     -o <path_to_your_options_file> \
     /expanse/projects/gymreklab/jmargoli/ukbiobank/workflow/expanse_targets/expanse_gwas_workflow.wdl \
-    > output.log
+    > <path_to_your_output.log>
 
-Then you can follow along in another window with :code:`tail -f output.log`
+Then you can follow along in another window with :code:`tail -f <your_output.log>`
 
 What the GWAS does
 ------------------
