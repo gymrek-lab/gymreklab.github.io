@@ -1,8 +1,9 @@
 UKB Expanse SNP/indel/STR GWAS
 ==============================
 
-This guide will show you how to run a GWAS against a UK Biobank phenotype
-with both SNPs, indels and STRs on Expanse.
+This guide will show you how to run a GWAS against a UK Biobank phenotype on Expanse.
+The GWAS will include both SNPs, indels and STRs. This uses the WDL and scripts pipeline
+written for the UKB blood-traits imputed STRs paper.
 
 First, choose a phenotype you want to perform the GWAS against.
 You can explore UKB phenotypes `here <https://biobank.ndph.ox.ac.uk/showcase/index.cgi>`__.
