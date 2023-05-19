@@ -210,7 +210,7 @@ The first time you stand up the mysql database with those paths, you'll need to 
 .. code-block:: bash
 
    # start an interactive my sql session
-   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass cromwell
+   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass
    # from within the mysql prompt
    create database cromwell;
    exit;
@@ -415,4 +415,6 @@ These gotchas I know only apply to WDL 1.0 (but perhaps to both Cromwell and dxC
   that is a compound type (struct, map, array, object).
 * While structs can contain members of multiple types, maps cannot, and so to create such a struct
   it must be assigned from an object literal and not a map literal.
-
+* dxCompiler will not allow casts from Strings to Ints implicitly (Cromwell allows this implicit cast).
+  But WDL 1.0 has no support for explicit casts, so this is just impossible with dxCompiler and WDL 1.0.
+  If you want to read a data structure of Ints, use read_json().
