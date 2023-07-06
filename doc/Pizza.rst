@@ -19,7 +19,7 @@ If you know that you'll need to order the pizza ahead of time, you can send out 
 
 Should I add a tip?
 -------------------
-Yes. Definitely. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $5-8 (or around 8-9% of the order total).
+Yes. Definitely. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $4-7 (or around 6-7% of the order total).
 
 When should I have them deliver?
 --------------------------------
@@ -30,10 +30,16 @@ If you have the ability to park on campus then it might be easier to just pick i
 
 What should I do prior to the event?
 ------------------------------------
-Watch for phone calls! They usually call a couple minutes before the delivery to confirm the delivery location.
-If you don't answer your phone and/or they can't find you at the designated location, they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you.
+Watch for phone calls! They usually call 2-3 minutes before the delivery to confirm the delivery location.
+If you don't answer your phone and/or they can't find you at the designated location (for FAH: the corner of Voigt Dr and Equality Ln), they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you.
 Be aware that they might deliver early or late. At most, I've seen them deliver 20 minutes early or 40 minutes late.
-Also, call them ahead of time to see if they can deliver plates and knapkins. They usually don't have plates -- in which case, you can use some of the paper plates in the cupboards of the kitchen. You can ask Dorit to buy new paper plates (every couple months).
+Also, call them ahead of time to see if they can deliver plates and knapkins. They usually don't have plates -- in which case, you can use some of the lab's paper plates. (Currently, these are stored in the top shelf of the drawer under Arya's desk.) You can ask Dorit to buy new paper plates (every couple months).
+
+What should I do after the event?
+---------------------------------
+You can return plates and knapkins to wherever you found them: either Arya's desk drawer or the kitchen. You can put any leftover pizza in the kitchen fridge. Message the #food channel of the `collaboratory Slack <https://join.slack.com/t/cpg-collaboratory>`_ to let them know that there's free pizza!
+
+Note that FAH facilities has asked that we refrain from overloading the trash bins at FAH with pizza boxes. Instead, you can use the trash dumpster outside of the FAH loading dock. You can access the loading dock via the basement level of FAH. Go to the end of the hall and turn left.
 
 How do I get reimbursed?
 ------------------------
