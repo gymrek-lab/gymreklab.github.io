@@ -10,6 +10,9 @@ General schedule info
 If you do not have access to the calendar or mailing list, please request access from Melissa or Dorit.
 
 
+*Note*: As of Fall 2021, schedules are no longer posted here. Watch for an email (from the lab Google group) for an announcement of the schedule at the beginning of each quarter.
+
+
 Summer 2021
 -----------
 
