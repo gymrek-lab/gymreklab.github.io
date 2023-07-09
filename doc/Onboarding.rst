@@ -7,7 +7,7 @@ If you are new to the group, this page has a list of things you should do to get
 
 * Request permission to join the "Gymrek Lab" google calendar and our mailing list gymrek-lab AT googlegroups DOT com. 
 
-* Request an account on our slack channel (https://gymreklab.slack.com/).
+* Request an account on our slack channels (https://gymreklab.slack.com/ and https://cpg-collaboratory.slack.com)
 
 * Take a look at the schedule_ for lab meetings to note when you or others are presenting research talks or journal clubs.
 
@@ -16,6 +16,10 @@ If you are new to the group, this page has a list of things you should do to get
 * If you will be working in the wet lab, please see the wetlab_ onboarding page.
 
 To request access to any of these resources, email gymreklab-help AT googlegroups DOT com and someone will help you out.
+
+You should also add a picture of yourself to `the lab website <https://gymreklab.com/people>`_! Just follow `these directions <labwebsite-add-your-photo>`. Note that this process should automatically give you access to our `Github organization <https://github.com/gymrek-lab>`_, as well.
+
+.. TODO: set up lab website PRs to automatically give access to the org
 
 
 Slack overview
@@ -36,6 +40,8 @@ There are many channels on slack. Most are for specific projects that you will b
 * "students" top secret students socializing channel
 
 * "random" used to have things like free food announcements. But can be for anything you want to discuss, work related or not.
+
+* "food" for announcing free food and surveying preferences when catering for an event
 
 .. _snorlax: https://gymreklabgithubio.readthedocs.io/en/latest/Snorlax.html
 .. _schedule: https://gymreklabgithubio.readthedocs.io/en/latest/LabMeetingSchedule.html
