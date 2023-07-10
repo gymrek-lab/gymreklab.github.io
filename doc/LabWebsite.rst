@@ -4,7 +4,7 @@ Lab websites
 Main lab website
 ----------------
 
-The lab website (gymreklab.com) is generated using Github pages from this repository: https://github.com/gymreklab/gymreklab.github.io
+The lab website (gymreklab.com) is generated using Github pages from this repository: https://github.com/gymrek-lab/gymreklab.github.io
 
 .. _labwebsite-add-your-photo:
 
@@ -58,6 +58,6 @@ To make changes, you can either edit files directly in the web browser from gith
 To build the docs locally, make sure sphinx is installed (e.g. :code:`conda install sphinx`) then within the :code:`doc/` directory, type :code:`make html`. This 
 will build the html files in the :code:`_build/` directory, which you can preview in your web browser.
 
-Once you've finished making changes, create a pull request to merge your branch back into the master branch. Make sure to set the base repository to `this repo <https://github.com/gymrek-lab/gymreklab.github.io>`_ **not** `this one <https://github.com/gymreklab/gymreklab.github.io>`_.
+Once you've finished making changes, create a pull request to merge your branch back into the master branch.
 
 At this stage, Github actions will automatically generate a preview of the documentation. To access it, click on the green check-mark next to your most recent commit listed on the pull request. Then click "Details". If you see a red X instead of a green check-mark, it means there was an error or warning while building the documentation. Follow the same directions to view it.
