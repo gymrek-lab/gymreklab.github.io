@@ -17,7 +17,7 @@ If you are new to the group, this page has a list of things you should do to get
 
 To request access to any of these resources, email gymreklab-help AT googlegroups DOT com and someone will help you out.
 
-You should also add a picture of yourself to `the lab website <https://gymreklab.com/people>`_! Just follow `these directions <labwebsite-add-your-photo>`. Note that this process should automatically give you access to our `Github organization <https://github.com/gymrek-lab>`_, as well.
+You should also add a picture of yourself to `the lab website <https://gymreklab.com/people>`_! Just follow :ref:`these directions <labwebsite-add-your-photo>`. Note that this process should automatically give you access to our `Github organization <https://github.com/gymrek-lab>`_, as well.
 
 .. TODO: set up lab website PRs to automatically give access to the org
 
