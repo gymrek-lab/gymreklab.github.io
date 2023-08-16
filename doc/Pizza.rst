@@ -14,8 +14,8 @@ You'll get more "bang for your buck" if you buy extra large pizzas than large pi
 
 What kinds of pizza should I buy?
 ---------------------------------
-I aim for ratios of 3:2:1 for vegetarian : meat : regular cheese. So if I'm purchasing 6 pizzas, I get 3 vegetarian, 2 meat, and one cheese. For the meat pizzas, I try to get one chicken pizza and one pepperoni in case there are a few people who don't eat red meat / pork.
-If you know that you'll need to order the pizza ahead of time, you can send out a poll to see what people like. I recommend doing this at least a day before, in case they don't see it immediately. Sending out a poll can also help you get a list of names for later when you need to request reimbursement (see below).
+I aim for ratios of 1:2:1 for vegetarian : chicken : pepperoni. So if I'm purchasing 4 pizzas, I get 1 vegetarian, 2 chicken, and 1 pepperoni. Sometimes I order 2 pepperoni and 1 chicken, but it's important that there be at least one chicken option in case there are a few people who don't eat red meat / pork. For the vegetarian pizza, I usually order "Pacific Veggie" under *Specialty Pizzas*.
+If you know that you'll need to order the pizza ahead of time, you can send out a poll (in the #food channel on Slack) to see what people like. I recommend doing this at least a day before, in case they don't see it immediately. Sending out a poll can also help you get a list of names for later when you need to request reimbursement (see below).
 
 Should I add a tip?
 -------------------
@@ -28,6 +28,10 @@ I submit my order at least 2.5 hrs ahead of the event time. For a really large p
 
 If you have the ability to park on campus then it might be easier to just pick it up from them. I have never done this myself, though.
 
+How should I pay?
+-----------------
+Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for her credit card when you're ready to order. If you can't find her, ask Arya.
+
 What should I do prior to the event?
 ------------------------------------
 Watch for phone calls! They usually call 2-3 minutes before the delivery to confirm the delivery location.
@@ -39,8 +43,8 @@ What should I do after the event?
 ---------------------------------
 You can return plates and knapkins to wherever you found them: either Arya's desk drawer or the kitchen. You can put any leftover pizza in the kitchen fridge. Message the #food channel of the `collaboratory Slack <https://join.slack.com/t/cpg-collaboratory>`_ to let them know that there's free pizza!
 
-Note that FAH facilities has asked that we refrain from overloading the trash bins at FAH with pizza boxes. Instead, you can use the trash dumpster outside of the FAH loading dock. You can access the loading dock via the basement level of FAH. Go to the end of the hall and turn left.
+Note that FAH facilities has asked that we refrain from overloading the trash bins at FAH with pizza boxes. Instead, you can dump the trash into one of the black wagons in the FAH loading dock. You can access the loading dock via the basement level of FAH. Go to the end of the hall and turn left.
 
-How do I get reimbursed?
-------------------------
-Email Dorit at gymreklab-help@googlegroups.com with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). She will enter the receipt into UCSD's Concur system, which will route your reimbursement through four or five different people at UCSD who will need to approve it. The first time this is done, you will first need to consent to having her submit reimbursements on your behalf via Concur as described `here <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.
+Reimbursement
+-------------
+Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed.
