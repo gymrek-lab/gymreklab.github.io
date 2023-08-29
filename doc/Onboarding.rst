@@ -23,7 +23,7 @@ You should also add a picture of yourself to `the lab website <https://gymreklab
 
 To get access to our lab's computing resources on Expanse, just follow :ref:`these directions <expanse-get-account>`.
 
-Finally, you should request badge access to our lab by filling out `this form <https://ucsd.co1.qualtrics.com/jfe/form/SV_4SB1zEZdwfLeljE>`. You should mark that you are requesting access to our collaboratory, the "Center for Precision Genomics" (CPG).
+Finally, you should request badge access to our lab by filling out `this form <https://ucsd.co1.qualtrics.com/jfe/form/SV_4SB1zEZdwfLeljE>`_. You should mark that you are requesting access to our collaboratory, the "Center for Precision Genomics" (CPG).
 
 
 Slack overview
