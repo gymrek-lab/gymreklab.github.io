@@ -35,11 +35,15 @@ I submit my order at least 2.5 hrs ahead of the event time. For a really large p
 
 If you have the ability to park on campus then it might be easier to just pick it up from them. I have never done this myself, though.
 
+Where should I have them deliver?
+---------------------------------
+For Franlin Antonio Hall I usually pick "Bldg 603 - W C - Atkinson Hall" from the dropdown menu and in the delivery instructions I say to meet at the corner of Equality Ln and Voigt Dr.
+
 What should I do prior to the event?
 ------------------------------------
 Watch for phone calls! They usually call 2-3 minutes before the delivery to confirm the delivery location.
 
-If you don't answer your phone and/or they can't find you at the designated location (for FAH: the corner of Voigt Dr and Equality Ln), they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you.
+If you don't answer your phone and/or they can't find you at the designated location, they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you.
 
 Be aware that they might deliver early or late. At most, I've seen them deliver 20 minutes early or 40 minutes late.
 
@@ -56,7 +60,7 @@ Rubio's
 1. I usually order the "Family Taco Kits" under their "Family Meals" menu. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of meat people want. In the past, I've provided the following options: Chicken, Steak, Fish, Shrimp, and Vegetarian. For 15-16 people, I usually order 3 taco kits (one chicken, one steak, and one shrimp). Note that Melissa does not usually reply to the poll but should always be included in the headcount.
 2. Rubio's offers a vast array of ordering options for the taco kits. I usually try to get a mix of everything: corn/flour tortillas, different kinds of rice, different beans, different sauces, limes, cheese, etc. See `here <https://drive.google.com/file/d/1ZdZOidkk5E_WFE5UG0ME0_OL_zuGVf3r>`_ for a screenshot of my typical order. Make sure that you order catering utensils attached with every taco kit.
 3. I usually order online 2-2.5 hrs before the event and ask them to have it ready ~30 minutes before the event. You will need to provide credit card info online.
-4. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in the FAH loading dock that the FAH building manager has given us permission to borrow.
+4. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in the FAH loading dock that the FAH building manager has given us permission to borrow. Note that you might need to show them the email confirmation before they will give you the food.
 5. Before the event, it can help to lay out all of the food in a decently organized fashion. Do not throw out any of the bags until after the event in case you need them for carrying stuff afterward!
 6. After the event, try to consolidate leftovers into a single taco kit container. Throw out the remaining containers in the FAH loading dock according to the instructions below. Put the leftover sauces, chips, and taco kit in the fridge.
 
@@ -77,3 +81,5 @@ If there are a lot of crumbs and things lying around, please wipe down the surfa
 Reimbursement
 -------------
 Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed.
+
+It's best to remove any personal information from PDF receipts before you submit them for reimbursement. Before printing your email receipt as a PDF, you should feel free to delete any information like your phone number or email address. You can use the `Inspect Element <https://devtoolstips.org/tips/en/remove-annoying-overlays>`_ trick to do this.
