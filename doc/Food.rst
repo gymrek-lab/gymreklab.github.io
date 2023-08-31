@@ -82,4 +82,4 @@ Reimbursement
 -------------
 Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed.
 
-It's best to remove any personal information from PDF receipts before you submit them for reimbursement. Before printing your email receipt as a PDF, you should feel free to delete any information like your phone number or email address. You can use the `Inspect Element <https://devtoolstips.org/tips/en/remove-annoying-overlays>`_ trick to do this.
+It's best to remove any personal information from PDF receipts before you submit them for reimbursement. Before printing your email receipt as a PDF, you should feel free to delete any information like your phone number or email address. You can use the `Inspect Element <https://yamm.com/blog/how-to-print-email-from-gmail-without-header>`_ trick to do this.
