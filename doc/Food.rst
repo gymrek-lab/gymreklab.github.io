@@ -68,7 +68,13 @@ General Questions
 ~~~~~~~~~~~~~~~~~
 How should I pay?
 -----------------
-Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for her credit card when you're ready to order. If you can't find her, ask Arya.
+Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for her credit card when you're ready to order. If you can't find her, ask Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
+
+Reimbursement
+-------------
+Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed.
+
+It's best to remove any personal information from PDF receipts before you submit them for reimbursement. Before printing your email receipt as a PDF, you should feel free to delete any information like your phone number or email address. You can use the `Inspect Element <https://yamm.com/blog/how-to-print-email-from-gmail-without-header>`_ trick to do this.
 
 What should I do after the event?
 ---------------------------------
@@ -77,9 +83,3 @@ You can return plates and knapkins to wherever you found them: either Arya's des
 Note that FAH facilities has asked that we refrain from overloading the trash bins at FAH with pizza boxes or leftover containers. Instead, you can dump the trash into one of the black wagons in the FAH loading dock. You can access the loading dock via the basement level of FAH. Go to the end of the hall and turn left.
 
 If there are a lot of crumbs and things lying around, please wipe down the surfaces of the meeting room with the sanitizing wipes provided in the corner.
-
-Reimbursement
--------------
-Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed.
-
-It's best to remove any personal information from PDF receipts before you submit them for reimbursement. Before printing your email receipt as a PDF, you should feel free to delete any information like your phone number or email address. You can use the `Inspect Element <https://yamm.com/blog/how-to-print-email-from-gmail-without-header>`_ trick to do this.
