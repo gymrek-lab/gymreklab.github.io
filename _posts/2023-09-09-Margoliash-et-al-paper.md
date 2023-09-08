@@ -17,7 +17,7 @@ There supplementary datasets are:
 ## STR association tests performed in the White British population, by phenotype
 ## STR association tests performed in the other populations, by phenotype and population
 
-The README for these association files is [here](https://gymreklab.com/2023/Margoliash/et/al/GWAS/README.html).
+The README for these association files is [here](/2023/09/08/Margoliash-et-al-GWAS-README.html).
 Association statistics referred to in the text are from the White British population unless otherwise specified. Association tests
 in the White British population were performed genome-wide, while STR association tests in the other populations were performed in 
 fine-mapping regions identified by the White British association tests.
@@ -47,6 +47,6 @@ from the standard fine-mapping runs and followup fine-mapping runs under alterna
 each tarball contains all the raw fine-mapping outputs for each fine-mapping run for both SuSiE and FINEMAP. Note that
 fine-mapping was only performed in the White British population.
 
-The README for these files is [here](https://gymreklab.com/2023/Margoliash/et/al/finemapping/README.html).
+The README for these files is [here](/2023/09/08/Margoliash-et-al-finemapping/README.html).
 
 URLs are of the form: https://margoliash-et-al-2023.s3.amazonaws.com/finemapping/finemapping\_{phenotype}.tgz

@@ -41,47 +41,47 @@ In these files
   (say, a variant with p-value of 1e-3 in the 1e-4 threshold column)
 
 In addition to the two summary files, the tarballs contain raw fine-mapping output files for each region.  
-The files for FINEMAP are ( described at http://christianbenner.com/ ):
+The files for FINEMAP are ( described at [http://christianbenner.com/](http://christianbenner.com/) ):
 
-    FINEMAP\_first\_pass\_${region}\_finemap\_output.log
-    FINEMAP\_first\_pass\_${region}\_finemap\_output.snp
-    FINEMAP\_first\_pass\_${region}\_finemap\_output.config
-    FINEMAP\_first\_pass\_${region}\_finemap\_output.credX
+    FINEMAP_first_pass_${region}_finemap_output.log
+    FINEMAP_first_pass_${region}_finemap_output.snp
+    FINEMAP_first_pass_${region}_finemap_output.config
+    FINEMAP_first_pass_${region}_finemap_output.credX
 
 and the following files for SuSiE:
 
-    SuSiE\_first\_pass\_${region}\_alpha.tab
-    SuSiE\_first\_pass\_${region}\_colnames.txt
-    SuSiE\_first\_pass\_${region}\_csX.txt
-    SuSiE\_first\_pass\_${region}\_lbf.tab
-    SuSiE\_first\_pass\_${region}\_lbf\_variable.tab
-    SuSiE\_first\_pass\_${region}\_lfsr.tab
-    SuSiE\_first\_pass\_${region}\_sigma2.txt
-    SuSiE\_first\_pass\_${region}\_V.tab
+    SuSiE_first_pass_${region}_alpha.tab
+    SuSiE_first_pass_${region}_colnames.txt
+    SuSiE_first_pass_${region}_csX.txt
+    SuSiE_first_pass_${region}_lbf.tab
+    SuSiE_first_pass_${region}_lbf_variable.tab
+    SuSiE_first_pass_${region}_lfsr.tab
+    SuSiE_first_pass_${region}_sigma2.txt
+    SuSiE_first_pass_${region}_V.tab
 
 * Except for the colnames and cs files, these are arrays written from the output fields of the susie() function described at
-  https://stephenslab.github.io/susieR/reference/susie.html  
+  [https://stephenslab.github.io/susieR/reference/susie.html](https://stephenslab.github.io/susieR/reference/susie.html)
 * colnames contains one variant name per line, each line corresponding to one column of the alpha array
 * csX contains three rows:
 
   - the first contains the 1-indexed numbers of the variables included in the credible set, in ascending order
   - the second contains the coverage of the credible set (Always greater than 0.9 which was the requested coverage)
   - the third contains three numbers, the min, mean and median absolute correlations between each variable in the credible set 
-    ( see susie\_get\_cs() at https://stephenslab.github.io/susieR/reference/susie\_get\_methods.html )
+    ( see susie\_get\_cs() at [https://stephenslab.github.io/susieR/reference/susie_get_methods.html](https://stephenslab.github.io/susieR/reference/susie_get_methods.html) )
   - the 1-indexed number in the filename corresponds to the corresponding row of the alpha.tab array
 
 Additionally, for each of the regions we followed up on, this tarball contains the same files as above, but with
 the following prefixes, corresponding to the follow-up fine-mapping condition being tested:
 
-    FINEMAP\_derived\_effect\_size\_prior - (effect size prior of 0.05%)
-    FINEMAP\_low\_effect\_size\_prior - (effect size prior of 0.0025%)
-    FINEMAP\_mac\_threshold\_100 - (non-major allele dosage threshold of 100)
-    FINEMAP\_prior\_4\_signals - (prior of 4 causal variants per region)
-    FINEMAP\_prior\_snps\_over\_strs - (prior of favoring SNP over STR causality by a 4-to-1 ratio)
-    FINEMAP\_pval\_threshold\_1e4 - (p\_value threshold of 1e-4)
-    FINEMAP\_stricter\_stopping\_threshold - (using the flag --prob-conv-sss-tol 0.0001)
-    SuSiE\_prior\_snps\_over\_strs - (prior of favoring SNP over STR causality by a 4-to-1 ratio)
-    SuSiE\_best\_guess\_genotypes - (the use of best guess genotypes from imputation for fine-mapping)
+    FINEMAP_derived_effect_size_prior - (effect size prior of 0.05%)
+    FINEMAP_low_effect_size_prior - (effect size prior of 0.0025%)
+    FINEMAP_mac_threshold_100 - (non-major allele dosage threshold of 100)
+    FINEMAP_prior_4_signals - (prior of 4 causal variants per region)
+    FINEMAP_prior_snps_over_strs - (prior of favoring SNP over STR causality by a 4-to-1 ratio)
+    FINEMAP_pval_threshold_1e4 - (p_value threshold of 1e-4)
+    FINEMAP_stricter_stopping_threshold - (using the flag --prob-conv-sss-tol 0.0001)
+    SuSiE_prior_snps_over_strs - (prior of favoring SNP over STR causality by a 4-to-1 ratio)
+    SuSiE_best_guess_genotypes - (the use of best guess genotypes from imputation for fine-mapping)
 
 See the paper and Supplementary Note 3 for more details on each follow-up condition.  
 We do not have raw output files for FINEMAP\_repeat runs.
