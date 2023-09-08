@@ -1,5 +1,8 @@
 ---
 hide: true
+layout: default
+date: 09 September 2023
+title: Associations README
 ---
 
 
