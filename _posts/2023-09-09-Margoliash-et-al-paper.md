@@ -9,7 +9,7 @@ date: 08 September 2023
 
 This page contains links to the supplementary dataset files for 
 
-###### Margoliash, Jonathan, et al. "Polymorphic short tandem repeats make widespread contributions to blood and serum traits." bioRxiv (2022): 2022-08.
+#### Margoliash, Jonathan, et al. "Polymorphic short tandem repeats make widespread contributions to blood and serum traits." bioRxiv (2022): 2022-08.
 
 The supplementary datasets are:
 
