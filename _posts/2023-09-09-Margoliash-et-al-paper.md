@@ -46,6 +46,6 @@ from the standard fine-mapping runs and followup fine-mapping runs under alterna
 each tarball contains all the raw fine-mapping outputs for each fine-mapping run for both SuSiE and FINEMAP. Note that
 fine-mapping was only performed in the White British population.
 
-The README for these files is [here](/2023/09/08/Margoliash-et-al-finemapping/README.html).
+The README for these files is [here](/2023/09/08/Margoliash-et-al-finemapping-README.html).
 
 URLs are of the form: https://margoliash-et-al-2023.s3.amazonaws.com/finemapping/finemapping\_{phenotype}.tgz
