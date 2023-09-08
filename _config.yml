@@ -22,7 +22,11 @@ sass:
 
 
 exclude:
-- README.md
+  - tmp/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
 
 
 safe: true
