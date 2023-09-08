@@ -7,7 +7,7 @@ title: Fine-mapping README
 
 # Fine-mapping Supplementary Dataset README
 
-One tarball finemapping\_${trait}.tgz for each trait
+One tarball finemapping\_{trait}.tgz for each trait
 
 The tarball contains two summary files
 
@@ -17,7 +17,7 @@ The tarball contains two summary files
 In these files
 
 - positions are hg19 and 1-indexed
-- Regions are denoted by ${chrom}\_${start\_pos\_inclusive}\_${end\_pos\_inclusive}
+- Regions are denoted by {chrom}\_{start\_pos\_inclusive}\_{end\_pos\_inclusive}
 - variant names for SNPS are SNP\_{position}\_{ref}\_{alt}
 - variant names for STRs are STR\_{start\_position}
 - p\_val, coeff and se are from the association of that variant with the trait being fine-mapped
@@ -43,21 +43,21 @@ In these files
 In addition to the two summary files, the tarballs contain raw fine-mapping output files for each region.  
 The files for FINEMAP are ( described at [http://christianbenner.com/](http://christianbenner.com/) ):
 
-    FINEMAP_first_pass_${region}_finemap_output.log
-    FINEMAP_first_pass_${region}_finemap_output.snp
-    FINEMAP_first_pass_${region}_finemap_output.config
-    FINEMAP_first_pass_${region}_finemap_output.credX
+    FINEMAP_first_pass_{region}_finemap_output.log
+    FINEMAP_first_pass_{region}_finemap_output.snp
+    FINEMAP_first_pass_{region}_finemap_output.config
+    FINEMAP_first_pass_{region}_finemap_output.credX
 
 and the following files for SuSiE:
 
-    SuSiE_first_pass_${region}_alpha.tab
-    SuSiE_first_pass_${region}_colnames.txt
-    SuSiE_first_pass_${region}_csX.txt
-    SuSiE_first_pass_${region}_lbf.tab
-    SuSiE_first_pass_${region}_lbf_variable.tab
-    SuSiE_first_pass_${region}_lfsr.tab
-    SuSiE_first_pass_${region}_sigma2.txt
-    SuSiE_first_pass_${region}_V.tab
+    SuSiE_first_pass_{region}_alpha.tab
+    SuSiE_first_pass_{region}_colnames.txt
+    SuSiE_first_pass_{region}_csX.txt
+    SuSiE_first_pass_{region}_lbf.tab
+    SuSiE_first_pass_{region}_lbf_variable.tab
+    SuSiE_first_pass_{region}_lfsr.tab
+    SuSiE_first_pass_{region}_sigma2.txt
+    SuSiE_first_pass_{region}_V.tab
 
 * Except for the colnames and cs files, these are arrays written from the output fields of the susie() function described at
   [https://stephenslab.github.io/susieR/reference/susie.html](https://stephenslab.github.io/susieR/reference/susie.html)
