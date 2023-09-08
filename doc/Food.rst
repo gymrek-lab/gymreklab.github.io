@@ -1,3 +1,5 @@
+.. _food:
+
 Ordering Food for the Lab
 =========================
 
