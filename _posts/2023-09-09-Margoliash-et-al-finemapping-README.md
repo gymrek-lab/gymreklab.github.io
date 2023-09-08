@@ -1,9 +1,11 @@
 ---
 hide: true
-layout:default
-date: 09 September 2023
+layout: default
+date: 08 September 2023
 title: Fine-mapping README
 ---
+
+# Fine-mapping Supplementary Dataset README
 
 One tarball finemapping\_${trait}.tgz for each trait
 
