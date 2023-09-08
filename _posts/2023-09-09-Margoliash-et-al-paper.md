@@ -1,7 +1,6 @@
 ---
 layout: default
 title:  'Supplementary Datasets for Margoliash et al. "Polymorphic short tandem repeats make widespread contributions to blood and serum traits"'
-tags: science STRs
 categories: science
 date: 08 September 2023
 ---
