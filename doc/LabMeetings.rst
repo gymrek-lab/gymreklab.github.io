@@ -42,6 +42,6 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
         :align: center
         :width: 400px
 
-7. Connect your Zoom audio to the room's speakers. In FAH 4002, you can select *"Creston (Intel(R) Display Audio)"* from among the list of options. Have someone else log into the Zoom and say something through their device.
+7. Connect your Zoom audio to the room's speakers. In FAH 4002, you can select *"Crestron (Intel(R) Display Audio)"* from among the list of options. Have someone else log into the Zoom and say something through their device.
 8. Don't forget to switch to full screen mode on Zoom. Under *"More"* in the top bar, click *"Hide / Show Floating Meeting Control"*.
 9. Knock it out of the park!
