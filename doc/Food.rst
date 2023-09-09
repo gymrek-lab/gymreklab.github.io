@@ -1,53 +1,29 @@
 Ordering Food for the Lab
 =========================
 
-Pizza
-~~~~~
-Who should I buy pizza from?
-----------------------------
-I've been using Domino's. It can be hard for delivery drivers to find you on UCSD's campus, but Domino's has a dropdown menu with every building on campus! You can even enter the exact room number, but it's probably easier if you just tell them to deliver to the nearest street or parking lot. You should specify those details in the delivery notes.
+Domino's Pizza
+~~~~~~~~~~~~~~
+1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of toppings people want. In the past, I've offered vegetarian, chicken, pepperoni, and regular cheese options in my polls. Sending out polls helps you get a headcount for the number of pizzas. It also gets you a list of names, which you'll need for requesting reimbursement later (see below). Note that Melissa does not usually reply to the poll but should always be included in the headcount.
+2. It can be hard to judge the number of pizzas you'll need. Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza>`__, but I'm of the opinion that the estimates they give are always too little.
+    a. **How many pizzas should I buy?** Over time, I've developed my own formula: divide the number of attendees by 3, round up, and then add one. That way, we always have at least a little pizza left over. Note that this isn't a hard and fast rule. For example, if there are more than 15 attendees, I recommend dividing by 4 instead of 3. Or if the number of attendees is just a little smaller than the nearest factor of 3, you might consider making the extra pizza a medium pizza instead of a large.
+    b. **What size pizza should I buy?** In general, it's usually best to buy large pizzas - not extra large. Admittedly, you'll get more "bang for your buck" if you buy extra large pizzas than large pizzas. But if you buy extra large pizzas, be aware of the fact that people will often eat more than if you bought large pizzas -- just because the slices are larger. Also, the extra large pizzas are usually "Brooklyn style" only, which means that the dough is really thin and the toppings usually slide off the pizza when you try to take a bite. For these reasons, I almost always stick to the large pizzas for most occassions and only order extra larges for larger events.
+3. Start making your order online at least 2.5 hrs ahead of the event time. (Everyone orders pizza during lunch time, so the sooner you make the order, the more likely they will be to deliver it on time.) For a really large party (of 40, for example), I would submit the order 3 or 4 hrs ahead of time. You might even want to call them to confirm they received it and can handle it, especially for such a large group.
+4. When specifying the delivery options, you should use Dominos' detailed dropdown menu for the UCSD campus. It has nearly every building on campus! For delivery to Franlin Antonio Hall, I usually pick "Bldg 603 - W C - Atkinson Hall" from the dropdown menu and in the delivery instructions I say to meet at the corner of Equality Ln and Voigt Dr.
 
-If you order with Domino's, make sure to look for coupon codes on their website. There's usually one for 20% off.
+    .. figure:: https://drive.google.com/uc?export=view&id=1Q3LVcZfzcRm1wgbbaDSaAZJNzViFgJh7
+        :alt: FAH Delivery Instructions
+        :align: center
+        :width: 400px
 
-How many pizzas should I buy?
------------------------------
-For a party of 15, I usually buy 4-6 large pizzas, but if you're purchasing for a lot more people, you might want to aim for extra large pizzas instead.
-
-Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza>`__, but it's always better to overestimate than to underestimate. I'm of the opinion that the estimates they give are always too little.
-
-You'll get more "bang for your buck" if you buy extra large pizzas than large pizzas. But if you buy extra large pizzas, be aware of the fact that people will often eat more than if you bought large pizzas -- just because the slices are larger. Also, the extra large pizzas are usually "Brooklyn style" only, which means that the dough is really thin and the toppings usually slide off the pizza when you try to take a bite. For these reasons, I almost always stick to the large pizzas for most occassions and only order extra larges for larger events.
-
-What kinds of pizza should I buy?
----------------------------------
-I aim for ratios of 1:2:1 for vegetarian : chicken : pepperoni. So if I'm purchasing 4 pizzas, I get 1 vegetarian, 2 chicken, and 1 pepperoni. Sometimes I order 2 pepperoni and 1 chicken, but it's important that there be at least one chicken option in case there are a few people who don't eat red meat / pork. For the vegetarian pizza, I usually order "Pacific Veggie" under *Specialty Pizzas*.
-
-If you know that you'll need to order the pizza ahead of time, you can send out a poll (in the #food channel on Slack) to see what people like. I recommend doing this at least a day before (and preferably, during working hours), in case people don't see it immediately. Sending out a poll can also help you get a list of names for later when you need to request reimbursement (see above). Note that Melissa does not usually reply to the poll but should always be included in the headcount.
-
-Should I add a tip?
--------------------
-Yes. Definitely. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $4-7 (or around 6-7% of the order total).
-
-When should I have them deliver?
---------------------------------
-At least 30 (preferably, 45) minutes before the event. You never know when something will go wrong, and you'll want to leave some time to call them and reorder the pizza if they somehow lost the order. (This hasn't happened to me with Domino's yet, just other providers.)
-
-I submit my order at least 2.5 hrs ahead of the event time. For a really large party (of 40, for example), I would make it 3 or 4 hrs ahead of time. You might even want to call them to confirm they received it and can handle it, especially for such a large group.
-
-If you have the ability to park on campus then it might be easier to just pick it up from them. I have never done this myself, though.
-
-Where should I have them deliver?
----------------------------------
-For Franlin Antonio Hall I usually pick "Bldg 603 - W C - Atkinson Hall" from the dropdown menu and in the delivery instructions I say to meet at the corner of Equality Ln and Voigt Dr.
-
-What should I do prior to the event?
-------------------------------------
-Watch for phone calls! They usually call 2-3 minutes before the delivery to confirm the delivery location.
-
-If you don't answer your phone and/or they can't find you at the designated location, they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you.
-
-Be aware that they might deliver early or late. At most, I've seen them deliver 20 minutes early or 40 minutes late.
-
-Also, call them ahead of time to see if they can deliver plates and knapkins. They usually don't have plates -- in which case, you can use some of the lab's paper plates. (Currently, these are stored in the top shelf of the drawer under Arya's desk.) You can ask Dorit to buy new paper plates (every couple months).
+5. Select your pizzas and add them to the cart. For the vegetarian option, I usually get "Pacific Veggie" under *Specialty Pizzas*. Otherwise, you can find a lot of commonly ordered pizzas (like pepperoni) under the *Featured Items* menu.
+6. You can select the delivery time in the menu on the right-hand side. It's best to have them deliver 30 (preferably, 45) minutes before the event. You never know when something will go wrong, and you'll want to leave some time to call them and reorder the pizza if they somehow lost the order.
+7. Domino's always has a coupon code for 20% of on their website. Make sure to apply it to your order!
+8. You're now ready to checkout! At this stage, you should enter your contact info and the delivery instructions (for FAH: "Meet at the corner of Equality Ln and Voigt Dr. Call 3 mins before").
+    You should also add a tip. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $4-7 (or around 6-7% of the order total).
+9. Do not pay for the order with your credit card! Ask Melissa for the lab credit card, instead.
+10. After ordering, call Domino's to ask them to include plates and knapkins in their delivery. They might not have plates -- in which case, you can use some of the lab's backup paper plates. (Currently, these are stored in the top shelf of the drawer under Arya's desk.) You can ask Dorit to buy new paper plates (every couple months).
+11. During the delivery time, watch your phone for calls from them. They usually call 2-3 minutes before the delivery to confirm the delivery location. If you don't answer your phone and/or they can't find you at the designated location, they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you. Be aware that they might deliver early or late. At most, I've seen them deliver 20 minutes early or 40 minutes late.
+12. After the event, make sure to clean up the meeting room and submit a reimbursement request. Refer to the directions below.
 
 Taco Villa
 ~~~~~~~~~~
@@ -68,7 +44,7 @@ General Questions
 ~~~~~~~~~~~~~~~~~
 How should I pay?
 -----------------
-Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for her credit card when you're ready to order. If you can't find her, ask Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
+Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for the lab credit card info when you're ready to order. If you can't find her, ask Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
 
 Reimbursement
 -------------
