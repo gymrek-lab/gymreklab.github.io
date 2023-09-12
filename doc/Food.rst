@@ -1,10 +1,12 @@
+.. _food:
+
 Ordering Food for the Lab
 =========================
 
 Domino's Pizza
 ~~~~~~~~~~~~~~
 1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of toppings people want. In the past, I've offered vegetarian, chicken, pepperoni, and regular cheese options in my polls. Sending out polls helps you get a headcount for the number of pizzas. It also gets you a list of names, which you'll need for requesting reimbursement later (see :ref:`below <food-reimbursement>`). Note that Melissa does not usually reply to the poll but should always be included in the headcount.
-2. It can be hard to judge the number of pizzas you'll need. Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza>`__, but I'm of the opinion that the estimates they give are always too little.
+2. It can be hard to judge the number of pizzas you'll need. Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza/>`__, but I'm of the opinion that the estimates they give are always too little.
     a. **How many pizzas should I buy?** Over time, I've developed my own formula: divide the number of attendees by 3, round up, and then add one. That way, we always have at least a little pizza left over. Note that this isn't a hard and fast rule. For example, if there are more than 15 attendees, I recommend dividing by 4 instead of 3. Or if the number of attendees is just a little smaller than the nearest factor of 3, you might consider making the extra pizza a medium pizza instead of a large.
     b. **What size pizza should I buy?** In general, it's usually best to buy large pizzas - not extra large. Admittedly, you'll get more "bang for your buck" if you buy extra large pizzas than large pizzas. But if you buy extra large pizzas, be aware of the fact that people will often eat more than if you bought large pizzas -- just because the slices are larger. Also, the extra large pizzas are usually "Brooklyn style" only, which means that the dough is really thin and the toppings usually slide off the pizza when you try to take a bite. For these reasons, I almost always stick to the large pizzas for most occassions and only order extra larges for larger events.
 3. Start making your order online at least 2.5 hrs ahead of the event time. (Everyone orders pizza during lunch time, so the sooner you make the order, the more likely they will be to deliver it on time.) For a really large party (of 40, for example), I would submit the order 3 or 4 hrs ahead of time. You might even want to call them to confirm they received it and can handle it, especially for such a large group.
@@ -17,7 +19,7 @@ Domino's Pizza
 
 5. Select your pizzas and add them to the cart. For the vegetarian option, I usually get "Pacific Veggie" under *Specialty Pizzas*. Otherwise, you can find a lot of commonly ordered pizzas (like pepperoni) under the *Featured Items* menu.
 6. You can select the delivery time in the menu on the right-hand side. It's best to have them deliver 30 (preferably, 45) minutes before the event. You never know when something will go wrong, and you'll want to leave some time to call them and reorder the pizza if they somehow lost the order.
-7. Domino's always has a coupon code for 20% of on their website. Make sure to apply it to your order!
+7. Domino's always has a coupon code for 20% on their website under *"Coupons"* in the top menu bar. Make sure to apply it to your order!
 8. You're now ready to checkout! At this stage, you should enter your contact info and the delivery instructions (for FAH: "Meet at the corner of Equality Ln and Voigt Dr. Call 3 mins before").
     You should also add a tip. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $4-7 (or around 6-7% of the order total).
 9. Do not pay for the order with your credit card! Ask Melissa for the lab credit card info, instead.
@@ -52,7 +54,7 @@ Do not use your own credit card! (Reimbursement requires Dorit to `register you 
 
 Reimbursement
 -------------
-Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed. `Here is an example email <https://docs.google.com/document/d/1xz_NneMW69KFlzqnAXqu4Zo9LqukAGhuVnaie1U5-LQ>`_ you can use. (Note that you will need to be a part of the Gymrek Lab Shared Google Drive to view the doc.)
+Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed. `Here is an example email <https://docs.google.com/document/d/1xz_NneMW69KFlzqnAXqu4Zo9LqukAGhuVnaie1U5-LQ>`_ you can use. (Note that you will need to be a part of the Gymrek Lab Shared Google Drive to view the doc. See :ref:`the onboarding doc <onboarding>` for instructions on joining it.)
 
 It's best to remove any personal information from PDF receipts before you submit them for reimbursement. Before printing your email receipt as a PDF, you should feel free to delete any information like your phone number or email address. You can use the `Inspect Element <https://yamm.com/blog/how-to-print-email-from-gmail-without-header>`_ trick to do this.
 
