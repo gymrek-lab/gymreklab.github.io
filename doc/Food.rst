@@ -19,7 +19,7 @@ Domino's Pizza
 
 5. Select your pizzas and add them to the cart. For the vegetarian option, I usually get "Pacific Veggie" under *Specialty Pizzas*. Otherwise, you can find a lot of commonly ordered pizzas (like pepperoni) under the *Featured Items* menu.
 6. You can select the delivery time in the menu on the right-hand side. It's best to have them deliver 30 (preferably, 45) minutes before the event. You never know when something will go wrong, and you'll want to leave some time to call them and reorder the pizza if they somehow lost the order.
-7. Domino's always has a coupon code for 20% of on their website. Make sure to apply it to your order!
+7. Domino's always has a coupon code for 20% on their website under *"Coupons"* in the top menu bar. Make sure to apply it to your order!
 8. You're now ready to checkout! At this stage, you should enter your contact info and the delivery instructions (for FAH: "Meet at the corner of Equality Ln and Voigt Dr. Call 3 mins before").
     You should also add a tip. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $4-7 (or around 6-7% of the order total).
 9. Do not pay for the order with your credit card! Ask Melissa for the lab credit card info, instead.
