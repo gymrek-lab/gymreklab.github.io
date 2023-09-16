@@ -5,17 +5,17 @@ Onboarding
 
 If you are new to the group, this page has a list of things you should do to get set up with helpful lab resources.
 
-* Get an account on our lab server, :ref:`Snorlax <snorlax>`_. 
+* Get an account on our lab server, :ref:`Snorlax <snorlax>`. 
 
 * Request permission to join the "Gymrek Lab" google calendar and our mailing list gymrek-lab AT googlegroups DOT com. 
 
 * Request an account on our slack channels (https://gymreklab.slack.com/ and https://cpg-collaboratory.slack.com)
 
-* Take a look at :ref:`the schedule for lab meetings <labmeetings-schedule>`_ to note when you or others are presenting research talks or journal clubs.
+* Take a look at :ref:`the schedule for lab meetings <labmeetings-schedule>` to note when you or others are presenting research talks or journal clubs.
 
 * Request access to our shared Google Drive where you can find additional resources.
 
-* If you will be working in the wet lab, please see the :ref:`wetlab onboarding page <wetlab>`_.
+* If you will be working in the wet lab, please see the :ref:`wetlab onboarding page <wetlab>`.
 
 To request access to any of these resources, email gymreklab-help AT googlegroups DOT com and someone will help you out.
 
