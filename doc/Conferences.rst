@@ -10,12 +10,15 @@ Here are some helpful tips!
 1. Always check the size requirements before starting! It's generally a good idea to specify these dimensions as the canvas size in your graphics software
 2. Leave at least 0.5 inches of padding on all sides of your poster just in case the printer requires it
 3. When placing figures onto your poster, try to use vector image formats (.svg, .pdf, etc) rather than raster formats (.png, .jpg, .jpeg, etc).
-
   Raster is the traditional format that you're probably familiar with. It stores colors for each pixel in your image. By contrast, vector formats store each component of your figure as an object. For example, a line in your image will be defined in vector format by a start position, end position, and color -- rather than a series of black pixels.
 
   If you place a raster image on your poster, there's a good chance it will appear blurry when printed. The advantage of vector formats is that they can be rescaled to any arbitrary size and will never appear blurry!
 
   If you use matplotlib or pandas to create your figures, you can easily just change the desired output filename from ".png" to ".pdf" to create a vector version of the figure.
+
+  .. warning::
+    Some images (like Manhattan plots) will have so many objects in them that Adobe Illustrator will freeze and crash when you try to load them. For situations like these, it's best to import them as PNG. To minimize blurrines, you can try to recreate the figure with a high DPI (or PPI) and then resize it down within Illustrator.
+
 4. When creating your poster, try to use software that will allow you to work with vector (as opposed to raster) images.
 
   So don't use google slides/drawings! Adobe illustrator is probably the best option. You can ask Dorit to get you a license.
