@@ -33,7 +33,7 @@ Domino's Pizza
 
 Taco Villa
 ~~~~~~~~~~
-1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of burritos people want. In the past, I've provided `the following options <https://www.tacovillasd.com/#burritos>`_ since they seem to cover all of the meats: Bean & Cheese, Pollo Asado, Avocado, Fish, Al Pastor, Carne Asada, and Shrimp. Note that Melissa does not usually reply to the poll but should always be included in the headcount (for Bean and Cheese).
+1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of burritos people want. In the past, I've provided `the following options <https://www.tacovillasd.com/#burritos>`_ since they seem to cover all of the meats: Bean & Cheese, Pollo Asado, Avocado, Fish, Al Pastor, Carne Asada, and Shrimp. Make sure to specify that everyone should vote only for one option! Note that Melissa does not usually reply to the poll but should always be included in the headcount (for "Bean and Cheese").
 2. To order the burritos, I usually call Taco Villa 2.5-3 hrs before the event and ask them to have it ready ~40 minutes before the event. You will need to provide credit card info over the phone.
 3. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in the FAH loading dock that the FAH building manager has given us permission to borrow.
 4. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
