@@ -3,6 +3,10 @@
 Ordering Food for the Lab
 =========================
 
+Choose from the catering locations listed below. Note that you'll need to get prior approval from Melissa for anywhere besides Domino's.
+
+If you'd like to order from somewhere that isn't listed here, you'll also need to keep the order <$200, in addition to requesting prior approval from Melissa. Afterwards, please also update this page with instructions for ordering from that location, so that others can order from there again in the future.
+
 Domino's Pizza
 ~~~~~~~~~~~~~~
 1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of toppings people want. In the past, I've offered vegetarian, chicken, pepperoni, and regular cheese options in my polls. Sending out polls helps you get a headcount for the number of pizzas. It also gets you a list of names, which you'll need for requesting reimbursement later (see :ref:`below <food-reimbursement>`). Note that Melissa does not usually reply to the poll but should always be included in the headcount.
