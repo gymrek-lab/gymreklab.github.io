@@ -66,9 +66,9 @@ and the following files for SuSiE:
 
   - the first contains the 1-indexed numbers of the variables included in the credible set, in ascending order
   - the second contains the coverage of the credible set (Always greater than 0.9 which was the requested coverage)
-  - the third contains three numbers, the min, mean and median absolute correlations between each variable in the credible set 
-    ( see susie\_get\_cs() at [https://stephenslab.github.io/susieR/reference/susie_get_methods.html](https://stephenslab.github.io/susieR/reference/susie_get_methods.html) )
-  - the 1-indexed number in the filename corresponds to the corresponding row of the alpha.tab array
+  - the third contains three numbers, the min, mean and median absolute correlations between each variant in the credible set 
+    (or between 100 randomly subsampled variants if there are more than 100 variants)
+  - the 1-indexed number in the filename corresponds to the corresponding column of the alpha.tab array
 
 Additionally, for each of the regions we followed up on, this tarball contains the same files as above, but with
 the following prefixes, corresponding to the follow-up fine-mapping condition being tested:
