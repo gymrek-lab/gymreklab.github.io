@@ -5,6 +5,9 @@ This guide will show you how to run a GWAS against a UK Biobank phenotype on Exp
 The GWAS will include both SNPs, indels and STRs. This uses the WDL and scripts pipeline
 written for the UKB blood-traits imputed STRs paper.
 
+Setting up the GWAS and WDL inputs
+----------------------------------
+
 First, choose a phenotype you want to perform the GWAS against.
 You can explore UKB phenotypes `here <https://biobank.ndph.ox.ac.uk/showcase/index.cgi>`__.
 You'll need the data field ID of the phenotype, and the data field IDs of any fields
@@ -37,7 +40,11 @@ Create a json options file specifying where you want your output to be written:
   }
 
 
-Then, get set up with :ref:`WDL_with_Cromwell_on_Expanse`.
+Running the GWAS
+----------------
+
+Then, get set up with :ref:`WDL_with_Cromwell_on_Expanse`, including the bit about Singularity.
+The docker container you'll want to cache with Singularity is :code:`quay.io/thedevilinthedetails/work/ukb_strs:v1.3`
 
 In the cromwell.conf file you create, add this:
 

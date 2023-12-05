@@ -1,116 +1,222 @@
 WDL
 ===
 
-Last update: 2023/01/25
+Last update: 2023/12/04
 
-You'll want to read the "Constraints on how you write your WDL" sections
-for each runtime environment you plan to execute your WDL in before
-beginning to write your WDL
+WDL is a configuration language. You use an executor to run it. If you're using Expanse or All of Us,
+you'll use Cromwell as the executor. If you're using DNANexus, you'll use dxCompiler.
 
-* `WDL 1.0 spec <https://github.com/openwdl/wdl/blob/main/versions/1.0/SPEC.md>`_
-  (it's quite readable!)
-* `differences between WDL versions <https://github.com/openwdl/wdl/blob/main/versions/Differences.md>`_
+The first sections below are about getting set up with those executors on the platform you're using.
+You should read those whether you're planning on writing your own WDL or running someone else's. 
 
-WDL by itself is just configuration, it needs an executor to run it. If you're using Expanse or All of Us,
-you'll use Cromwell. If you're using DNANexus, you'll use dxCompiler. You'll need to understand
-the ins and outs of those in addition to how to write WDL.
-
-TODO intro to writing WDL - all the below assumes you can write basic WDL and is about running it
-or making it runnable on certain platforms
-
-Containers
-----------
-You'll likely want to specify a container with the :code:`docker` runtime flag as it's
-necessary to execute your WDL on cloud platforms. (Cromwell doesn't support the 
-equivalent :code:`container` flag).
-
-Constraints imposed by runtime environments:
-
-* If running All of Us, seems like you'll need to host on Google Container Registry? (not tested)
-* If running with Cromwell on Expanse, will need to either store the image locally, or host
-  on one of the following supported environments: quay.io, dockerhub, google container registry (GCR)
-  or google artifact registry (GAR). I'm not sure storing locally will work though,
-  as I'm not sure you can get call caching to work with that - haven't tried.
-* No constraints for UKB RAP as far as I know - you can upload the docker container to DNA Nexus,
-  or pull from an cloud container registry.
-
-quay.io is my cloud container registry of choice. Terminology:
-
-* quay.io - Red Hat's cloud container registry
-* Red Hat Quay - Red Hat's private deployment container registry service
-* Project quay - an open source version of Red Hat Quay where you can
-  deploy and stand up your own private container registry
-
-It's my container registry of choice because it has free accounts 
-(though this isn't super clear from their pricing docs), doesn't charge
-for public containers, and because at least
-so far I haven't found any pull restrictions. If you do run into issues,
-I'd recommend moving to GCR. Yang has tried Dockerhub, but that has really
-restrictive pull limits if you're using the free account. The paid account
-isn't such an issue (only $7/mo.) but Yang couldn't figure out how to get
-the authentication to work on UKB RAP so that you could log in from each task
-before pulling the docker container so as to circumvent the pull limit.
-
-Repositories in quay.io start as private, even on the free account 
-which in theory hasn't paid for private repos (not sure why?).
-After pushing to them for the first time,
-sign into the web interface, select the repo, click on the wheel icon
-on the left (settings) and click Make Public.
-
-To push to quay.io after building your docker image, do
-
-.. code-block:: bash
-
-  docker login --username <user_name> quay.io
-  docker tag <existing_image_name>:<existing_image_tag> quay.io/<user_name>/<container_repository_name>:<tag>
-  docker push quay.io/<user_name>/<container_repository_name>:<tag>
-
-depending on how you configured docker, you may need to run those commands with sudo.
-
-Tips on building a container with conda
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Use :code:`continuumio/miniconda3` as the base container.
-* Put :code:`RUN conda init --system bash` in your Dockerfile
-* See the section about conda and dxCompiler below to get
-  a script for activating conda. Then either configure that to run
-  automatically with the Dockerfile commands ENTRYPOINT
-  or SHELL if you're running the container with run or shell, or make sure
-  to call that script manually as part of the container exec invocation.
+After that there's some information if you're planning to learn to write your own WDL pipelines.
+Note that each executor has different constraints on the WDL you write, so if you're writing your own WDL,
+first figure out what platforms you want it to run on and then read the "Constraints" sections
+for those executors/platforms before beginning to write your WDL.
 
 .. _WDL_with_Cromwell_on_Expanse:
 
 WDL with Cromwell on Expanse (or other clusters)
 ------------------------------------------------
 
-Constraints on how you write your WDL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Constraints (important if you're writing your own WDL)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Cromwell only supports WDL 1.0, not 1.1 or development (2.0)
+
+Getting Cromwell
+^^^^^^^^^^^^^^^^
+
+First, install java.
+
+Jonathan compiled Cromwell from source with two changes to make it run better on Expanse. You can access that JAR 
+at :code:`/expanse/projects/gymreklab/jmargoli/ukbiobank/utilities/cromwell-86-90af36d-SNAP-600ReadWaitTimeout-FingerprintNoTimestamp.jar`.
+
+Alternatively, you can download Cromwell's JAR official file from `here <https://github.com/broadinstitute/cromwell/releases>`__. You can
+ignore the womtool JAR at that location.
 
 Running
 ^^^^^^^
 
-Requires Java. Download the JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`__.
-(Can ignore womtool)
+Once you have the WDL pipeline you want to run, here are the steps for running it with Cromwell:
 
-Cromwell will require configuration before working well (see below), but just as an intro:
+#. See :ref:`_cromwell_configuration` below for setting up your cromwell configuration.
+#. If you're running with Docker containers, see :ref:`_Using_Singularity_to_run_Docker_containers` for setting up your :code:`.bashrc` file to make singularity work on Expanse,
+   and then cache the singularity images before you start your job, also documented there.
+#. Start by :ref:`_getting_an_interactive_node_on_Expanse`. That should last for as long as the entire pipeline you are running with WDL.
+   Depending on how long it will take, consider :ref:`_increasing_job_runtime_up_to_one_week`.
+#. If you want to enable call-caching, stand up the MySQL server on the interactive node (see below) 
+#. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL>`
+   to run the WDL using Cromwell. Feel free to omit the input and options flags if you're not using them.
 
-#. Grab an interactive node.
-#. Copy the config below to a location you want and modify it as necessary, and get your WDL workflow.
-#. Stand up the MySQL server (see below) 
-#. Have singularity cache whatever containers you plan to use (see the Singularity section of the Expanse notes)
-#. To run the WDL in cromwell on the interactive node, run the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>/cromwell-<version>.jar run <path_to_WDL>`
-#. If you want to submit jobs for each task instead of running them directly on the interactive node,
-   change which :code:`backend.default` is commented out in the config.
-
-Either way, you need to be running Cromwell on an interactive node.
-If you want more logs from cromwell for debugging purposes (you don't), prepend the flag :code:`-DLOG_LEVEL=DEBUG`
-
-Cromwell has a server mode where you stand it up and can inspect running jobs through a web interface. I haven't
+Note: Cromwell has a server mode where you stand it up and can inspect running jobs through a web interface. As I (Jonathan) haven't
 learned how to use that, so I'm not documenting it here.
 
-Inputs and outputs 
-^^^^^^^^^^^^^^^^^^
+Cromwell 
+
+.. _cromwell_configuration:
+
+Configuration
+^^^^^^^^^^^^^
+
+I (Jonathan) recommend you make a copy of my config `here <https://github.com/LiterallyUniqueLogin/ukbiobank_strs/blob/master/workflow/cromwell.conf>`.
+Another reference is the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
+from Cromwell's docs, but it doesn't explain everything or have every option you might want.
+
+After copying my config, you will need to:
+
+* swap my email address for yours
+* Either set up :ref:`_call_caching_with_Cromwell`, or set :code:`call-caching.enabled = False`.
+  If you disable it, then every time you run a job it will be run again from the beginning instead of reusing intermediate results that finished successfully.
+* When running jobs, if you want to run them all on the cluster, make sure under backend that :code:`default = "SLURM"`. If you only have a small number of jobs and 
+  you'd rather run them on your local node for debugging purposes or because the Expanse queue is backed up right now, instead change that to :code:`default = "Local"`
+
+If you want to understand the config file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: text
+
+  foo {
+    bar {
+      baz = "bop"
+    }
+  }
+
+is equivalent to :code:`foo.bar.baz = "bop"`
+
+* :code:`backends.providers.<backend>.config.submit` and :code:`submit-docker` are what control
+  how tasks are submitted as jobs.
+* :code:`backends.providers.<backend>.config.runtime-attributes` is where you configure which
+  attributes from the :code:`runtime-attributes` section of a WDL task are actually used when
+  submitting the job corresponding to that task. Any runtime attributes in the WDL but not in the config
+  are ignored. Runtime attributes with :code:`?` or that have defaults :code:`= <default>` are optional,
+  runtime attributes that are just declared (e.g. :code:`String dx_timeout`) are required.
+
+.. _call_caching_with_cromwell:
+
+Call caching with Cromwell
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Call caching allows you to reuse results of a successful previous run of a WDL task in place of rerunning that task.
+Note that the task being reused must have had the exact same inputs and docker file as the task being replaced.
+
+Call caching is generally helpful for large workflows where you might find an error halfway through your workflow run
+and want to restart the workflow without having to rerun everything from the beginning. Unfortunately, this requires configuring Cromwell with a database to store the cache results
+which is unpleasantly complex, as it requires running a MySQL server.
+
+To enable call caching, you will need to do the following once:
+* make sure you've set up your :code:`.bashrc` to handle :ref:`Using_Singularity_to_run_Docker_containers`
+* :code:`cd` into the directory you want to launch cromwell from and make the following directories:
+
+.. code-block:: bash
+
+     mkdir -p cromwell-executions/mysql_var_run_mysqld
+     mkdir -p cromwell-executions/mysqldb
+
+Then, each time you want to run Cromwell, after logging in to the interactive node but before running Cromwell, run
+
+.. code-block:: bash
+
+   singularity run --containall --env MYSQL_ROOT_PASSWORD=pass --bind ${PWD}/cromwell-executions/mysqldb:/var/lib/mysql --bind ${PWD}/cromwell-executions/mysql_var_run_mysqld:/var/run/mysqld docker://mysql > cromwell-executions/mysql.run.log 2>&1 &
+
+This starts a MySQL server running on the interactive node by using singularity to run the the default MySQL docker.
+This command stores the MySQL log at :code:`cromwell-executions/mysql.run.log` if you need it for debuging. 
+
+The first time you stand up MySQL, you'll need to run the following:
+
+.. code-block:: bash
+
+   # start an interactive my sql session
+   mysql -h localhost -P 3306 --protocol tcp -u root -ppass cromwell
+   # from within the mysql prompt
+   create database cromwell;
+   exit;
+
+You should now (finally!) be good to go with call caching.
+
+Debugging MySQL issues
+~~~~~~~~~~~~~~~~~~~~~~
+
+To take down the MySQL server, just kill the process spawned by that command.
+   
+Note: I've configured the MySQL database with a dummy user and password (user = root, password = pass)
+which is not secure. I'm just assuming the Expanse nodes are secure enough already and no one
+malicious is on them. Also, this uses the default MySQL port (3306). You may need to change that
+(I don't know how) if someone's already taken that port.
+
+*Debugging tip if cromwell hangs at*  :code:`[info] Running with database db.url = jdbc:mysql://localhost/cromwell?rewriteBatchedStatements=true`:
+
+If the previous cromwell execution didn't shut down cleanly (say, you kill it because it's hanging) then the MySQL server may remain locked and
+uninteractable, causing the next cromwell session to hang. To fix this, run:
+
+.. code-block:: bash
+
+   mysql -h localhost -P 3306 --protocol tcp -u root -ppass cromwell \
+   < <(echo "update DATABASECHANGELOGLOCK set locked=0, lockgranted=null, lockedby=null where id=1;" )
+   mysql -h localhost -P 3306 --protocol tcp -u root -ppass cromwell \
+   < <(echo "update SQLMETADATADATABASECHANGELOGLOCK set locked=0, lockgranted=null, lockedby=null where id=1;" )
+
+To check this has worked, you can run:
+
+.. code-block:: bash
+
+   mysql -h localhost -P 3306 --protocol tcp -u root -ppass cromwell \
+   < <(echo "select * from DATABASECHANGELOGLOCK;")
+   mysql -h localhost -P 3306 --protocol tcp -u root -ppass cromwell \
+   < <(echo "select * from SQLMETADATADATABASECHANGELOGLOCK;")
+
+that should return output something like:
+
+..
+
+  ID      LOCKED  LOCKGRANTED     LOCKEDBY
+  1       \0      NULL    NULL
+  ID      LOCKED  LOCKGRANTED     LOCKEDBY
+  1       \0      NULL    NULL
+
+*Debugging tip if the mysql log at path3 says* :code:`another process is using this socket`
+
+Delete the lock files at `<path2>/*lock`, kill the mysql server and then restart it and it should work.
+
+*Debugging tip*: Opening an interactive session with the MySQL server for debugging purposes:
+
+.. code-block:: bash
+
+   mysql -h localhost -P 3306 --protocol tcp -u root -ppass cromwell
+
+Notice there is no space between the -p and the password, unlike all the other flags.
+
+Unexpected call caching behaviors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If you set the docker runtime attribute for a task
+then Cromwell insists on looking up the 
+corresponding docker image and using its digest (i.e. hash code) 
+as one of the keys for caching that task. This is unintuitive because it's not just using the string
+in the runtime attribute as the cache key (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`__).
+Moreover, if cromwell can't figure out how to locate the docker image's digest during this process,
+then it simply refuses to try to load the call from cache at all, with a very inspecific
+log message to the effect of "task not eligible for call caching".
+Because of this design choice, I'm not sure if you can get Cromwell
+call caching to work with local docker image tarballs, which cause the image digest lookup step to fail. 
+
+Another surprising behavior is that call caching seems to be backend specific
+(though I've not seen this confirmed in the docs), so for instance
+if you run your job sometimes with SLURM and sometimes locally on an interactive
+node, I can't seem to use the cached results of one for the other.
+
+Disabling call caching for a task
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Add
+
+.. code-block:: text
+
+  meta {
+    volatile: true
+  }
+
+to a task definition to prevent it from being cached.
+
+Cromwell Inputs and outputs 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're using a container then your inputs cannot contain symlinks.
 
@@ -134,178 +240,11 @@ Cromwell's outputs will keep growing as you keep running it if you don't delete 
 hard to track which workflows have results important to caching and which errored out or are no longer needed.
 No clue how to make managing that easier.
 
-Configuration
-^^^^^^^^^^^^^
-
-I recommend you make a copy of my config `here <https://github.com/LiterallyUniqueLogin/ukbiobank_strs/blob/master/workflow/cromwell.conf>`.
-Another reference is the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
-from Cromwell's docs, but it doesn't explain everything or have every option
-
-After copying my config, you will need to:
-
-* swap my email address for yours
-* Either set up call caching below, or call-caching.enabled = False
-  If you disable it, then every time you run a job it will be run again from scratch
-* When running jobs, if you want to run them all on the local node, change
-  :code:`default = "SLRUM"` to :code:`default = "Local"`
-
-Note that
-
-.. code-block:: text
-
-  foo {
-    bar {
-      baz = "bop"
-    }
-  }
-
-is equivalent to :code:`foo.bar.baz = "bop"`
-
-* :code:`backends.providers.<backend>.config.submit` and :code:`submit-docker` are what control
-  how tasks are submitted as jobs.
-* :code:`backends.providers.<backend>.config.runtime-attributes` is where you configure which
-  attributes from the :code:`runtime-attributes` section of a WDL task are actually used when
-  submitting the job corresponding to that task. Any runtime attributes in the WDL but not in the config
-  are ignored. Runtime attributes with :code:`?` or that have defaults :code:`= <default>` are optional,
-  runtime attributes that are just declared (e.g. :code:`String dx_timeout`) are required.
-
-Call caching with Cromwell
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-Call caching allows you to reuse results of an old call in place of rerunning it if they have
-the same inputs. This is generally necessary for developing most large workflows. (In general
-these tasks may have different runtime-attributes and still be equivalent for call-caching,
-docker is the main exception, see below)
-
-You need to configure Cromwell with a database to store the cache results. While its unpleasantly complex,
-I'd if you want call caching I'd recommend the MySQL database as the others do not function well.
-This requires a running MySQL server.
-
-First, make sure you've set up your :code:`.bashrc` to handle :ref:`Using_Singularity_to_run_Docker_containers`
-
-Then, from the node which you plan to execute cromwell from, run:
-
-.. code-block:: bash
-
-   singularity run --containall --env MYSQL_ROOT_PASSWORD=pass --bind <path1>:/var/lib/mysql --bind <path2>:/var/run/mysqld docker://mysql > <path3> 2>&1 &
-
-This uses the default mysql docker continaer from DockerHub to start a mysql server. Here :code:`<path1>` should
-be an absolute path to the directory where you want to store the MySQL database, :code:`<path2>` should be an absolute
-path to a directory where MySQL can store some working files (I have it as be a sibling directory to :code:`<path1>`), and :code:`<path3>`
-should be a path to a file where you want MySQL to write its log for the current session (for debugging if necessary).
-So, for example
-
-.. code-block:: bash
-
-   singularity run --containall --env MYSQL_ROOT_PASSWORD=pass --bind ${PWD}/cromwell-executions/mysqldb:/var/lib/mysql --bind ${PWD}/cromwell-executions/mysql_var_run_mysqld:/var/run/mysqld docker://mysql > cromwell-executions/mysql.run.log 2>&1 &
-
-To take down the MySQL server, just kill the process from that command.
-   
-Note: I've configured the MySQL database with a dummy user and password (user = root, password = pass)
-which is not secure. I'm just assuming the Expanse nodes are secure enough already and no one
-malicious is on them. Also, this uses the default MySQL port (3306). You may need to change that
-if someone's already taken that port.
-
-The first time you stand up the mysql database with those paths, you'll need to run the following:
-
-.. code-block:: bash
-
-   # start an interactive my sql session
-   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass cromwell
-   # from within the mysql prompt
-   create database cromwell;
-   exit;
-
-You should now (finally!) be good to go with call caching.
-
-*Debugging tip if cromwell hangs at*  :code:`[info] Running with database db.url = jdbc:mysql://localhost/cromwell?rewriteBatchedStatements=true`:
-
-If the previous cromwell execution didn't shut down cleanly (say, you kill it because it's hanging) then the MySQL server may remain locked and
-uninteractable, causing the next cromwell session to hang. To fix this, run:
-
-.. code-block:: bash
-
-   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass cromwell \
-   < <(echo "update DATABASECHANGELOGLOCK set locked=0, lockgranted=null, lockedby=null where id=1;" )
-
-To check this has worked, you can run:
-
-.. code-block:: bash
-
-   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass cromwell \
-   < <(echo "select * from DATABASECHANGELOGLOCK;")
-
-that should return output something like:
-
-..
-
-  ID      LOCKED  LOCKGRANTED     LOCKEDBY
-  1       \0      NULL    NULL
-
-*Debugging tip if the mysql log at path3 says* :code:`another process is using this socket`
-
-Delete the lock files at `<path2>/*lock`, kill the mysql server and then restart it and it should work.
-
-*Debugging tip*: Opening an interactive session with the MySQL server for debugging purposes:
-
-.. code-block:: bash
-
-   mysql -h localhost -P <your_port> --protocol tcp -u root -ppass cromwell
-
-Notice there is no space between the -p and the password, unlike all the other flags.
-
-Unexpected call caching behaviors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you set the docker runtime attribute for a task
-then for call caching Cromwell insists on trying to find
-the corresponding docker image and using its digest (i.e. hash code)
-as one of the keys for caching that task (not just the docker string
-itself) (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`__). If cromwell can't figure out how to locate the docker image
-then it simply refuses to try to load the call from cache.
-Cromwell's log method of telling you this is very unclear, I think
-it's something like "task not eligible for call caching".
-Because of this design choice, I'm not sure if you can get Cromwell
-call caching to work with local docker image tarballs. 
-
-Another unexpected input to call caching seems to be the backend 
-(though I've not seen this confirmed in the docs), so for instance
-if you run your job sometimes with SLURM and sometimes on an interactive
-node, I can't seem to use the results of one in the other.
-
-Other call caching optimizations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Even with the above, my caching was quite slow, I think one of these options sped it up.
-Not 100% sure which. They both have some details that might be worth knowing.
-
-* :code:`backend.SLURM.filesystems.local.caching.check-sibling-md5: true`. In theory
-  this means that if your input file is `foo.txt.` and you have `foo.txt.md5` in the same directory
-  then instead of hashing the entirety of `foo.txt` you just read the md5 from the nearby file.
-  This can be used to avoid hashing large input files more than once. Just use
-  :code:`md5sum $file | awk '{print $1}'> ${file}.md5` to write the md5 checksum.
-* :code:`backend.SLURM.filesystems.local.caching.fingerprint-size: true`. This isn't documented
-  anywhere that I saw, but does exist in the `code <https://github.com/broadinstitute/cromwell/blob/32d5d0cbf07e46f56d3d070f457eaff0138478d5/supportedBackends/sfs/src/main/scala/cromwell/backend/impl/sfs/config/ConfigHashingStrategy.scala>`_
-  This reduces the amount of file that's read by the hashing strategy. Note that this means that two files
-  with the first MB of data identical and the sam mod time will be treated as identical, even if the 
-  remaining MBs differ
-
-Disabling call caching
-~~~~~~~~~~~~~~~~~~~~~~
-
-Add
-
-.. code-block: text
-
-  meta {
-    volatile: true
-  }
-
-to a task definition to prevent it from being cached.
-
 WDL with dxCompiler on DNANexus/UKB Research Analysis Platform
 --------------------------------------------------------------
 
-Constraints on how you write your WDL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Constraints (important if you're writing your own WDL)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Unlike Cromwell, dxCompiler supports WDL 1.1. So if you don't need your WDL to be cross-platform,
 you can use those features.
 
@@ -386,6 +325,80 @@ TODO
 Constraints on how you write your WDL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Cromwell only supports WDL 1.0, not 1.1 or development (2.0)
+
+
+!!!! TODO
+
+I recommend these links for learning WDL. Supplement with tutorials as helps.
+
+* `WDL 1.0 spec <https://github.com/openwdl/wdl/blob/main/versions/1.0/SPEC.md>`_
+  (it's quite readable!)
+* `differences between WDL versions <https://github.com/openwdl/wdl/blob/main/versions/Differences.md>`_
+
+
+TODO intro to writing WDL - all the below assumes you can write basic WDL and is about running it
+or making it runnable on certain platforms
+
+Containers
+----------
+You'll likely want to specify a container with the :code:`docker` runtime flag as it's
+necessary to execute your WDL on cloud platforms. (Cromwell doesn't support the 
+equivalent :code:`container` flag).
+
+Constraints imposed by runtime environments:
+
+* If running All of Us, seems like you'll need to host on Google Container Registry? (not tested)
+* If running with Cromwell on Expanse, will need to either store the image locally, or host
+  on one of the following supported environments: quay.io, dockerhub, google container registry (GCR)
+  or google artifact registry (GAR). I'm not sure storing locally will work though,
+  as I'm not sure you can get call caching to work with that - haven't tried.
+* No constraints for UKB RAP as far as I know - you can upload the docker container to DNA Nexus,
+  or pull from an cloud container registry.
+
+quay.io is my cloud container registry of choice. Terminology:
+
+* quay.io - Red Hat's cloud container registry
+* Red Hat Quay - Red Hat's private deployment container registry service
+* Project quay - an open source version of Red Hat Quay where you can
+  deploy and stand up your own private container registry
+
+It's my container registry of choice because it has free accounts 
+(though this isn't super clear from their pricing docs), doesn't charge
+for public containers, and because at least
+so far I haven't found any pull restrictions. If you do run into issues,
+I'd recommend moving to GCR. Yang has tried Dockerhub, but that has really
+restrictive pull limits if you're using the free account. The paid account
+isn't such an issue (only $7/mo.) but Yang couldn't figure out how to get
+the authentication to work on UKB RAP so that you could log in from each task
+before pulling the docker container so as to circumvent the pull limit.
+
+Repositories in quay.io start as private, even on the free account 
+which in theory hasn't paid for private repos (not sure why?).
+After pushing to them for the first time,
+sign into the web interface, select the repo, click on the wheel icon
+on the left (settings) and click Make Public.
+
+To push to quay.io after building your docker image, do
+
+.. code-block:: bash
+
+  docker login --username <user_name> quay.io
+  docker tag <existing_image_name>:<existing_image_tag> quay.io/<user_name>/<container_repository_name>:<tag>
+  docker push quay.io/<user_name>/<container_repository_name>:<tag>
+
+depending on how you configured docker, you may need to run those commands with sudo.
+
+Tips on building a container with conda
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Use :code:`continuumio/miniconda3` as the base container.
+* Put :code:`RUN conda init --system bash` in your Dockerfile
+* See the section about conda and dxCompiler below to get
+  a script for activating conda. Then either configure that to run
+  automatically with the Dockerfile commands ENTRYPOINT
+  or SHELL if you're running the container with run or shell, or make sure
+  to call that script manually as part of the container exec invocation.
+
 
 Gotchas
 -------

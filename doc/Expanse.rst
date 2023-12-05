@@ -34,7 +34,10 @@ on the login nodes, which will cause weird error messages if you try to use them
 
 First: :code:`module load slurm`. I like to put this in my `.bashrc`
 
-Grabbing an interactive job:
+.. _getting_an_interactive_node_on_expanse:
+
+Grabbing an interactive node
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -42,7 +45,10 @@ Grabbing an interactive job:
 
 ``--pty`` is what specifically makes this treated as an interactive session
 
-To run a script noninteractively with SLURM: first add special :code:`SBATCH` flags to the script
+Running a script noninteractively with SLURM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+First add special :code:`SBATCH` flags to the script
 
 .. code-block:: bash
 
@@ -90,8 +96,17 @@ Some notes:
   environment variables to set such values, you must pass them to the :code:`sbatch` command directly
   (e.g. :code:`sbatch --output=$SOMEWHERE/out slurm_script.sh`) 
 
-Managing jobs
--------------
+.. _increasing_job_runtime_up_to_one_week:
+
+Increasing job runtime up to one week
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You should be able to submit jobs/grab interactive nodes for up to two days. If you want to be able to do so for up to a week,
+* first ask the Expanse team for :code:`ind-shared-oneweek` permissions
+* then add :code:`--qos ind-shared-oneweek` to your interactive node/noninteractive job submission and increase the time you're requesting for that node/job.
+
+Managing noninteractive jobs
+----------------------------
 
 * :code:`squeue -u <user>` - look at your jobs
 * :code:`-p <partition>` - look at a specific partition
