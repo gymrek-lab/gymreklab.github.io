@@ -25,6 +25,7 @@ Create a json file for input:
 .. code-block:: json
 
   {
+    "expanse_gwas.script_dir": "...",
     "expanse_gwas.phenotype_name": "your_phenotype_name",
     "expanse_gwas.phenotype_id": "its_ID",
     "expanse_gwas.categorical_covariate_names": ["a_list_of_categorical_covariates"],
@@ -47,12 +48,6 @@ Then, get set up with :ref:`WDL_with_Cromwell_on_Expanse`, including the bit abo
 The docker container you'll want to cache with Singularity is :code:`quay.io/thedevilinthedetails/work/ukb_strs:v1.3`
 
 In the cromwell.conf file you create, add this:
-
-.. code-block:: text
-
-  workflow-options {
-    workflow-log-dir = "absolute_path_to_store_cromwell_logs_in"
-  } 
 
 And then for the two lines that says :code:`root = "cromwell-executions`, change them to an
 absolute path to the location you want all of your Cromwell run's work to be stored in.

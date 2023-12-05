@@ -9,7 +9,7 @@ you'll use Cromwell as the executor. If you're using DNANexus, you'll use dxComp
 The first sections below are about getting set up with those executors on the platform you're using.
 You should read those whether you're planning on writing your own WDL or running someone else's. 
 
-After that there's some information if you're planning to learn to write your own WDL pipelines.
+After that there's some information if you're planning to learn to write your own WDL workflows.
 Note that each executor has different constraints on the WDL you write, so if you're writing your own WDL,
 first figure out what platforms you want it to run on and then read the "Constraints" sections
 for those executors/platforms before beginning to write your WDL.
@@ -34,24 +34,57 @@ at :code:`/expanse/projects/gymreklab/jmargoli/ukbiobank/utilities/cromwell-86-9
 Alternatively, you can download Cromwell's JAR official file from `here <https://github.com/broadinstitute/cromwell/releases>`__. You can
 ignore the womtool JAR at that location.
 
+Specifying inputs to WDL workflows with Cromwell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Cromwell passes inputs to WDL workflows via a JSON file which looks like:
+
+.. code-block:: json
+
+  {
+    "workflow_name.input1_name": "value1",
+    "workflow_name.input2_name": "value2",
+    ...
+  }
+
+Add `-i <input_file>.json` to your Cromwell run command to pass the input file.
+
+If the WDL workflow you're running uses containers (e.g. Docker) then file inputs to the workflow cannot be symlinks.
+If the files are symlinks, you'll get something like "file does not exist" errors. Instead of symlinks, use hardlinks.
+
+Specifying Cromwell output locations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:ref:`_Cromwells_execution_directory` is confusingly organized, so it's hard to find the outputs of a Cromwell run
+if you don't tell it to put them anywhere specific. Instead, add an options JSON file to your Cromwell run with `-o <option_file>.json`
+and tell it to put the workflow's outputs in the location you'd like:
+
+.. code-block:: json
+
+  {
+    "final_workflow_outputs_dir": "<your_output_directory>"
+  }
+
 Running
 ^^^^^^^
 
-Once you have the WDL pipeline you want to run, here are the steps for running it with Cromwell:
+Here are the steps for running it with Cromwell:
 
 #. See :ref:`_cromwell_configuration` below for setting up your cromwell configuration.
 #. If you're running with Docker containers, see :ref:`_Using_Singularity_to_run_Docker_containers` for setting up your :code:`.bashrc` file to make singularity work on Expanse,
    and then cache the singularity images before you start your job, also documented there.
-#. Start by :ref:`_getting_an_interactive_node_on_Expanse`. That should last for as long as the entire pipeline you are running with WDL.
+#. Start by :ref:`_getting_an_interactive_node_on_Expanse`. You should set that to last for as long as the entire WDL workflow you are running with Cromwell.
    Depending on how long it will take, consider :ref:`_increasing_job_runtime_up_to_one_week`.
 #. If you want to enable call-caching, stand up the MySQL server on the interactive node (see below) 
-#. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL>`
+#. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL> | tee <your_logfile>.txt` 
    to run the WDL using Cromwell. Feel free to omit the input and options flags if you're not using them.
 
 Note: Cromwell has a server mode where you stand it up and can inspect running jobs through a web interface. As I (Jonathan) haven't
 learned how to use that, so I'm not documenting it here.
 
-Cromwell 
+If you need help debugging, start by looking at Cromwell's log file, which will be written to the log file you specified at the end of the command above.
+If the workflow completed successfully, the lines toward the end of the log should tell you where it put the workflow's outputs (if you didn't specify an output location above).
+If a task failed and you want to inspect its intermediate inputs/outputs for debugging, see :ref:`_Cromwells_execution_directory`.
 
 .. _cromwell_configuration:
 
@@ -215,26 +248,42 @@ Add
 
 to a task definition to prevent it from being cached.
 
-Cromwell Inputs and outputs 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _Cromwells_execution_directory:
 
-If you're using a container then your inputs cannot contain symlinks.
+Cromwell's execution directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* If they do, you'll get something like file does not exist errors.
-* It's possible symlinks to files underneath the root of the run will work, but not to files outside of the run root. I'd just avoid.
-* Instead of symlinks, use hardlinks.
-
-Cromwell will dump its outputs to :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/execution`
-That folder can also be used to inspect the stdout and stderr of that task for debugging.
+Cromwell runs its executions (including task inputs and outputs) in :code:`cromwell-executions/<workflow_name>/<workflow_run_id>`
 Worfklow run ids are unhelpful randomly generated strings. To figure out which belongs to your
 most recent run, you can look at the logs on the terminal for that run, or use
 :code:`ls -t` to sort them by recency, e.g. :code:`cd cromwell-executions/<workflow_name> | ls -t | head -1`.
-To check a task's inputs, looks at :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<task_alias>/inputs/<arbitrary_number>/<input_file>`
-If you use subworkflows in your WDL then those workflows will be represented by nested folders between
-the base workflow and the end task leaf. If your task has multiple inputs, then you'll have to look
-at all the input folders with arbitrary numbers to determine which is the input you're looking for.
-If you move task outputs from those folders they will no longer be available for call caching (see below),
-so don't do that. I would instead hard link or copy them if you want the output in a more memorable location.
+Once you're in the your workflow run's folder, you should see one folder named `call-<task_alias>`
+for each task called in the workflow. The task folder will contain two important directories :code:`inputs` and :code:`executions`.
+:code:`inputs` contains a bunch of subfolders with random numbers, each of which contain one or more input files (input files
+originally stored in the same directory will be put into the same inputs subdirectory). Note that input files will be named
+by their original filenames, not by the variable names they were referred to in the task, so it can be hard to match which inputs
+in this directory correspond to which inputs in the task. :code:`executions` contains a number of useful files for debugging:
+
+* :code:`rc` contains the return code of the task (if it completed)
+* :code:`script.submit` is the script used to submit the task to SLURM (not sure if this is present on local runs)
+* :code:`stdout.submit` and :code:`stderr.submit` are the stdout/err for the job submission to SLURM.
+* :code:`script` contains the script that Cromwell executed to run this task on a SLRUM node (which is the command section of the task wrapped in 
+  some autogenerated code)
+* :code:`stdout` and :code:`stderr` are the stdout/err for the actual run of the task (if you didn't capture them inside 
+  WDL with :code:`stdout()` or :code:`stderr()`).
+* All the output files generated by the task should be in this folder as well.
+  If you move task outputs from this folders they will no longer be available for call caching,
+  so don't do that. Instead, hard or symlink them to another location.
+
+If the task was call cached, then instead `call-<task_alias>` will contain `cacheCopy/execution` as a subdirectory
+and there will be no inputs folder you can cross reference against (which can make debugging harder).
+
+If the workflow you called in turn called subworkflows, those workflows will be represented by nested folders between
+the base workflow and the end task leaf, looking something like:
+:code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<subworkflow_alias>/<subworkflow_name>/<subworkflow_run_id>/call-...`
+If a task or subworkflow is called in a scatter block, then between the `call-<alias>` folder and its
+usual contents there will be a bunch of `shard-<number>` folders which contain each of the scattered subcalls. All this nesting
+can get a bit overwhelming when you're trying to debug.
 
 Cromwell's outputs will keep growing as you keep running it if you don't delete them. And due to randomized workflow run IDs it'll be very
 hard to track which workflows have results important to caching and which errored out or are no longer needed.
@@ -327,21 +376,49 @@ Constraints on how you write your WDL
 Cromwell only supports WDL 1.0, not 1.1 or development (2.0)
 
 
-!!!! TODO
+Learning WDL
+------------
 
-I recommend these links for learning WDL. Supplement with tutorials as helps.
+I recommend these links for learning WDL. There are also good tutorials you can find for parts of the spec you're confused by.
 
 * `WDL 1.0 spec <https://github.com/openwdl/wdl/blob/main/versions/1.0/SPEC.md>`_
   (it's quite readable!)
 * `differences between WDL versions <https://github.com/openwdl/wdl/blob/main/versions/Differences.md>`_
 
+WDL Gotchas
+^^^^^^^^^^^
 
-TODO intro to writing WDL - all the below assumes you can write basic WDL and is about running it
-or making it runnable on certain platforms
+(I'm unclear if these gotchas only exist for Cromwell running WDL 1.0 or for all versions of WDL and also for dxCompiler)
 
-Containers
-----------
-You'll likely want to specify a container with the :code:`docker` runtime flag as it's
+* There are no :code:`else` statements to pair with :code:`if` statements. Instead
+  write :code:`if (x) {}`, then :code:`if (!x) {}`, and then use :code:`select_first()`
+  to condense the results of both branches to single variables.
+* For whatever reason, trying :code:`my_array[x+1]` will fail at compile time. Instead, write
+  :code:`Int x_plus_one = x + 1` and then :code:`my_array[x_plus_one]`.
+* There is no array slicing. If you want to scatter over :code:`item in my_array[1:]`, instead
+  scatter over :code:`idx in range(length(my_array)-1)` and manually access the array at
+  `Int idx_plus_one = idx + 1`
+* If you want to create an array literal that's easier to specify via a list comprehension than to type it all out,
+  do so by writing out the expression inside a scatter block in a worfklow. There's no way to get list comprehensions to work
+  anywhere in tasks or within the input or output sections of a workflow.
+* The :code:`glob()` library function can only be used within tasks, not within workflows.
+  It will not error out at language examination time but at runtime if used within a workflow.
+* The :code:`write_XXX()` functions will fail in weird ways if used in a workflow and not a task.
+* The :code:`write_XXX()` functions will not accept :code:`Array[X?]`, only :code:`Array[X]`.
+
+These gotchas I know only apply to WDL 1.0 (but perhaps to both Cromwell and dxCompiler?)
+
+* The :code:`write_objects()` function will crash when passed an empty array of structs
+  instead of writing a header line and no content rows.
+* The :code:`write_objects()` function will crash at runtime when passed a struct with a member
+  that is a compound type (struct, map, array, object).
+* While structs can contain members of multiple types, maps cannot, and so to create such a struct
+  it must be assigned from an object literal and not a map literal.
+
+Using Docker containers from WDL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You'll likely want to specify a container within each tasks' :code:`docker` runtime flag as that's
 necessary to execute your WDL on cloud platforms. (Cromwell doesn't support the 
 equivalent :code:`container` flag).
 
@@ -398,34 +475,4 @@ Tips on building a container with conda
   automatically with the Dockerfile commands ENTRYPOINT
   or SHELL if you're running the container with run or shell, or make sure
   to call that script manually as part of the container exec invocation.
-
-
-Gotchas
--------
-(I'm unclear if these gotchas only exist for Cromwell running WDL 1.0 or for all versions of WDL and also for dxCompiler)
-
-* There are no :code:`else` statements to pair with :code:`if` statements. Instead
-  write :code:`if (x) {}`, then :code:`if (!x) {}`, and then use :code:`select_first()`
-  to condense the results of both branches to single variables.
-* For whatever reason, trying :code:`my_array[x+1]` will fail at compile time. Instead, write
-  :code:`Int x_plus_one = x + 1` and then :code:`my_array[x_plus_one]`.
-* There is no array slicing. If you want to scatter over :code:`item in my_array[1:]`, instead
-  scatter over :code:`idx in range(length(my_array)-1)` and manually access the array at
-  `Int idx_plus_one = idx + 1`
-* If you want to create an array literal that's easier to specify via a list comprehension than to type it all out,
-  do so by writing out the expression inside a scatter block in a worfklow. There's no way to get list comprehensions to work
-  anywhere in tasks or within the input or output sections of a workflow.
-* The :code:`glob()` library function can only be used within tasks, not within workflows.
-  It will not error out at language examination time but at runtime if used within a workflow.
-* The :code:`write_XXX()` functions will fail in weird ways if used in a workflow and not a task.
-* The :code:`write_XXX()` functions will not accept :code:`Array[X?]`, only :code:`Array[X]`.
-
-These gotchas I know only apply to WDL 1.0 (but perhaps to both Cromwell and dxCompiler?)
-
-* The :code:`write_objects()` function will crash when passed an empty array of structs
-  instead of writing a header line and no content rows.
-* The :code:`write_objects()` function will crash at runtime when passed a struct with a member
-  that is a compound type (struct, map, array, object).
-* While structs can contain members of multiple types, maps cannot, and so to create such a struct
-  it must be assigned from an object literal and not a map literal.
 
