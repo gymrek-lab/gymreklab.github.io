@@ -148,7 +148,7 @@ To make singularity work, I add the following to my :code:`.bashrc`:
     export SINGULARITY_TMPDIR="/scratch/$USER/job_$SLURM_JOB_ID"
   fi
 
-The general idea is, first grab an interactive node (or put this in a script that you submit) and then:
+If you want to run inside a singularity image, first grab an interactive node (or put this in a script that you submit) and then:
 
 .. code-block:: bash
 

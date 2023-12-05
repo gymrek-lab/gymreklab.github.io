@@ -44,7 +44,7 @@ Cromwell passes inputs to WDL workflows via a JSON file which looks like:
   {
     "workflow_name.input1_name": "value1",
     "workflow_name.input2_name": "value2",
-    ...
+    "...": "..."
   }
 
 Add `-i <input_file>.json` to your Cromwell run command to pass in the input file.
@@ -55,7 +55,7 @@ If the files are symlinks, you'll get something like "file does not exist" error
 Specifying Cromwell output locations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:ref:`_Cromwells_execution_directory` is confusingly organized, so it's hard to find the outputs of the final tasks(s) in a Cromwell run
+:ref:`Cromwells_execution_directory` is confusingly organized, so it's hard to find the outputs of the final tasks(s) in a Cromwell run
 if you don't tell it to put them anywhere specific. Instead, add an options JSON file to your Cromwell run with `-o <option_file>.json`
 and tell it to put the workflow's outputs in the location you'd like:
 
@@ -68,16 +68,23 @@ and tell it to put the workflow's outputs in the location you'd like:
 Running
 ^^^^^^^
 
-Here are the steps for running it with Cromwell:
+Here are the steps you need for running Cromwell the first time:
 
-#. See :ref:`_cromwell_configuration` below for setting up your cromwell configuration.
-#. If you're running with Docker containers, see :ref:`_Using_Singularity_to_run_Docker_containers` for setting up your :code:`.bashrc` file to make singularity work on Expanse,
+#. See :ref:`cromwell_configuration` below for setting up your cromwell configuration.
+#. If you're running with Docker containers, see :ref:`Using_Singularity_to_run_Docker_containers` for setting up your :code:`.bashrc` file to make singularity work on Expanse,
    and then cache the singularity images before you start your job (also documented there).
-#. Start by :ref:`_getting_an_interactive_node_on_Expanse`. You should set that to last for as long as the entire WDL workflow you are running with Cromwell.
-   Depending on how long it will take, consider :ref:`_increasing_job_runtime_up_to_one_week`.
-#. To enable :ref:`call-caching <_call_caching_with_Cromwell>`, (create the necessary directories, if this is your first time) and stand up the MySQL server on the interactive node (and
-   then create the cromwell database, if this is your first time)
-#. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL> | tee <your_logfile>.txt` 
+
+And here are the steps you'll perform each time you run Cromwell:
+
+#. Start by :ref:`getting_an_interactive_node_on_Expanse`. You should set that to last for as long as the entire WDL workflow you are running with Cromwell.
+   Depending on how long it will take, consider :ref:`increasing_job_runtime_up_to_one_week`.
+#. Enable :ref:`call-caching <call_caching_with_Cromwell>`, which outlines the following steps:
+   
+   #. First time only: create the necessary directories
+   #. Each time: stand up the MySQL server on the interactive node
+   #. First time only: create the the cromwell database
+
+#. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL_workflow> | tee <your_logfile>.txt` 
    to run the WDL using Cromwell. Feel free to omit the input and options flags if you're not using them.
 
 Note: Cromwell has a server mode where you stand it up and can inspect running jobs through a web interface. As I (Jonathan) haven't
@@ -85,7 +92,7 @@ learned how to use that, so I'm not documenting it here.
 
 If you need help debugging, start by looking at Cromwell's log file, which will be written to the log file you specified at the end of the command above.
 If the workflow completed successfully, the lines toward the end of the log should tell you where it put the workflow's outputs (if you didn't specify an output location above).
-If a task failed and you want to inspect its intermediate inputs/outputs for debugging, see :ref:`_Cromwells_execution_directory`.
+If a task failed and you want to inspect its intermediate inputs/outputs for debugging, see :ref:`Cromwells_execution_directory`.
 
 .. _cromwell_configuration:
 
@@ -99,7 +106,7 @@ from Cromwell's docs, but it doesn't explain everything or have every option you
 After copying my config, you will need to:
 
 * swap my email address for yours
-* Either set up :ref:`_call_caching_with_Cromwell`, or set :code:`call-caching.enabled = False`.
+* Either set up :ref:`call_caching_with_Cromwell`, or set :code:`call-caching.enabled = False`.
   If you disable it, then every time you run a job it will be run again from the beginning instead of reusing intermediate results that finished successfully.
 * When running jobs, if you want to run them all on the cluster, make sure under backend that :code:`default = "SLURM"`. If you only have a small number of jobs and 
   you'd rather run them on your local node for debugging purposes or because the Expanse queue is backed up right now, instead change that to :code:`default = "Local"`
