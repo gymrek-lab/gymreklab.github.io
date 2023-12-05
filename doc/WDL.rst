@@ -111,6 +111,8 @@ After copying my config, you will need to:
 * When running jobs, if you want to run them all on the cluster, make sure under backend that :code:`default = "SLURM"`. If you only have a small number of jobs and 
   you'd rather run them on your local node for debugging purposes or because the Expanse queue is backed up right now, instead change that to :code:`default = "Local"`
 
+Note that this is configured to put cromwell's execution directory in the subfolder :code:`cromwell-executions` of wherever you launch Cromwell from.
+
 If you want to understand the config file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -159,9 +161,10 @@ Then, each time you want to run Cromwell, after logging in to the interactive no
    singularity run --containall --env MYSQL_ROOT_PASSWORD=pass --bind ${PWD}/cromwell-executions/mysqldb:/var/lib/mysql --bind ${PWD}/cromwell-executions/mysql_var_run_mysqld:/var/run/mysqld docker://mysql > cromwell-executions/mysql.run.log 2>&1 &
 
 This starts a MySQL server running on the interactive node by using singularity to run the the default MySQL docker.
-This command stores the MySQL log at :code:`cromwell-executions/mysql.run.log` if you need it for debuging. 
+This command stores the MySQL log at :code:`cromwell-executions/mysql.run.log`.
+Wait to proceed till the last line in that file says :code:`X Plugin ready for connections`.
 
-The first time you stand up MySQL, you'll need to run the following:
+After that, if this is your first time running MySQL this way, you'll need to run the following:
 
 .. code-block:: bash
 
