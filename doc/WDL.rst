@@ -31,7 +31,7 @@ First, install java.
 Jonathan compiled Cromwell from source with two changes to make it run better on Expanse. You can access that JAR 
 at :code:`/expanse/projects/gymreklab/jmargoli/ukbiobank/utilities/cromwell-86-90af36d-SNAP-600ReadWaitTimeout-FingerprintNoTimestamp.jar`.
 
-Alternatively, you can download Cromwell's JAR official file from `here <https://github.com/broadinstitute/cromwell/releases>`__. You can
+Alternatively, you can download Cromwell's official JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`__. You can
 ignore the womtool JAR at that location.
 
 Specifying inputs to WDL workflows with Cromwell
@@ -47,7 +47,7 @@ Cromwell passes inputs to WDL workflows via a JSON file which looks like:
     ...
   }
 
-Add `-i <input_file>.json` to your Cromwell run command to pass the input file.
+Add `-i <input_file>.json` to your Cromwell run command to pass in the input file.
 
 If the WDL workflow you're running uses containers (e.g. Docker) then file inputs to the workflow cannot be symlinks.
 If the files are symlinks, you'll get something like "file does not exist" errors. Instead of symlinks, use hardlinks.
@@ -55,7 +55,7 @@ If the files are symlinks, you'll get something like "file does not exist" error
 Specifying Cromwell output locations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:ref:`_Cromwells_execution_directory` is confusingly organized, so it's hard to find the outputs of a Cromwell run
+:ref:`_Cromwells_execution_directory` is confusingly organized, so it's hard to find the outputs of the final tasks(s) in a Cromwell run
 if you don't tell it to put them anywhere specific. Instead, add an options JSON file to your Cromwell run with `-o <option_file>.json`
 and tell it to put the workflow's outputs in the location you'd like:
 
@@ -72,10 +72,11 @@ Here are the steps for running it with Cromwell:
 
 #. See :ref:`_cromwell_configuration` below for setting up your cromwell configuration.
 #. If you're running with Docker containers, see :ref:`_Using_Singularity_to_run_Docker_containers` for setting up your :code:`.bashrc` file to make singularity work on Expanse,
-   and then cache the singularity images before you start your job, also documented there.
+   and then cache the singularity images before you start your job (also documented there).
 #. Start by :ref:`_getting_an_interactive_node_on_Expanse`. You should set that to last for as long as the entire WDL workflow you are running with Cromwell.
    Depending on how long it will take, consider :ref:`_increasing_job_runtime_up_to_one_week`.
-#. If you want to enable call-caching, stand up the MySQL server on the interactive node (see below) 
+#. To enable :ref:`call-caching <_call_caching_with_Cromwell>`, (create the necessary directories, if this is your first time) and stand up the MySQL server on the interactive node (and
+   then create the cromwell database, if this is your first time)
 #. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL> | tee <your_logfile>.txt` 
    to run the WDL using Cromwell. Feel free to omit the input and options flags if you're not using them.
 
