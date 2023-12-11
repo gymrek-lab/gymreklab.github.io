@@ -77,7 +77,9 @@ Here are the steps you need for running Cromwell the first time:
 And here are the steps you'll perform each time you run Cromwell:
 
 #. Start by :ref:`getting_an_interactive_node_on_Expanse`. You should set that to last for as long as the entire WDL workflow you are running with Cromwell.
-   Depending on how long it will take, consider :ref:`increasing_job_runtime_up_to_one_week`.
+   Depending on how long it will take, consider :ref:`increasing_job_runtime_up_to_one_week`. If you're submitting jobs to the cluster by running with the :code:`SLURM` configuration,
+   this head node does not need much memory (4GB should be fine). If you're running everything on the head node with the :code:`Local` configuration, then grab as much memory as your
+   pipeline will need at any one time.
 #. Enable :ref:`call-caching <call_caching_with_Cromwell>`, which outlines the following steps:
    
    #. First time only: create the necessary directories

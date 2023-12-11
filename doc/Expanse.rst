@@ -148,11 +148,26 @@ To make singularity work, I add the following to my :code:`.bashrc`:
     export SINGULARITY_TMPDIR="/scratch/$USER/job_$SLURM_JOB_ID"
   fi
 
+Caching Singularity images
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to cache a singularity image on disk from a Docker source for the GWAS pipeline, and don't
+need to interact with Singularity beyond that, grab an interactive node and on it simply run
+
+.. code-block:: bash
+   
+   singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
+
+Running with Singularity images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you want to run inside a singularity image, first grab an interactive node (or put this in a script that you submit) and then:
 
 .. code-block:: bash
 
   singularity exec --containall docker://<docker_image_url> <command>
+
+Singularity should only be used on compute nodes, not the login nodes.
 
 You'll notice the first time you run a new docker image Singularity takes a while (~10min) building
 it into a singularity image. They are cached at :code:`$SINGUALRITY_CACHEDIR` if that's set
@@ -164,13 +179,7 @@ Any calls to :code:`singularity exec|shell|pull` will cache the image. I wouldn'
 trust that the cache is thread-safe, so if you're going to kick off a bunch
 of jobs, either cache the image before hand, or have them all check.
 
-To cache the image beforehand:
-
-.. code-block:: bash
-   
-   singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
-
-or, to check in a synchronized manner:
+To cache the image beforehand, see above. To check in a synchronized manner:
 
 .. code-block:: bash
   
@@ -182,7 +191,6 @@ or, to check in a synchronized manner:
    LOCK_FILE=$CACHE_DIR/singularity_pull_flock
    flock --verbose --exclusive --timeout 900 $LOCK_FILE \
    SINGULARITY_TMPDIR=/scratch/$USER/job_$SLURM_JOB_ID singularity exec --containall docker://<docker_image_url> echo "successfully pulled image"
-
 
 Singularity run tips
 ^^^^^^^^^^^^^^^^^^^^

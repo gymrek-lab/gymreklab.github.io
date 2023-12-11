@@ -13,7 +13,9 @@ First, check out `my paper's repository <https://github.com/LiterallyUniqueLogin
 Then, choose a phenotype you want to perform the GWAS against.
 You can explore UKB phenotypes `here <https://biobank.ndph.ox.ac.uk/showcase/index.cgi>`__.
 You'll need the data field ID of the phenotype, and the data field IDs of any fields
-you wish to use as categorical covariates.
+you wish to use as categorical covariates. Sex, age at measurement, and genetic PCs 1-40
+calculated by the UKB team `here <https://www.nature.com/articles/s41586-018-0579-z>`_ are
+automatically included as covariates and should not be specified in the input file below.
 
 Caveats:
 
@@ -22,7 +24,10 @@ Caveats:
   (otherwise age calculations will be thrown off or may crash)
 * Currently, only categorical covariates are supported
 
-Create a json file for input, setting script_dir to the root of the git repo you checked out above, and all the others as appropriate:
+Create a json file for input, setting script_dir to the root of the git repo you checked out above, and all the others as appropriate.
+Covariate and phenotype IDs should be integers, don't include a suffix similar to :code:`-0.0` specifying the
+measurement number and the array number. If you do not wish to include covariates, simply pass in empty lists - do 
+not omit the full covariate lines from the input json file.
 
 .. code-block:: json
 
@@ -37,7 +42,8 @@ Create a json file for input, setting script_dir to the root of the git repo you
 Running the GWAS
 ----------------
 
-Then, get set up with :ref:`WDL_with_Cromwell_on_Expanse`, including the bit about Singularity.
+Then, get set up with :ref:`WDL_with_Cromwell_on_Expanse`, including the bit about Docker and Singularity
+which are needed for this pipeline.
 The two docker containers you'll want to cache with Singularity prior to your run are 
 :code:`quay.io/thedevilinthedetails/work/ukb_strs:v1.3` and
 :code:`quay.io/thedevilinthedetails/work/ukb_strs:v1.4`
