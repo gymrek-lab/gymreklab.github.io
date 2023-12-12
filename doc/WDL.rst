@@ -62,8 +62,13 @@ and tell it to put the workflow's outputs in the location you'd like:
 .. code-block:: json
 
   {
-    "final_workflow_outputs_dir": "<your_output_directory>"
+    "final_workflow_outputs_dir": "<your_output_directory>",
+    "use_relative_output_paths": true
   }
+
+Note that this will cause Cromwell to fail after the workflow has all but succeeded
+if any of your workflow's file outputs have the same file names
+(thus leading to a conflict when you want them in the same directory).
 
 Running
 ^^^^^^^
