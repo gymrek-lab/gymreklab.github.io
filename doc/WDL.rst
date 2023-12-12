@@ -170,11 +170,8 @@ After that, if this is your first time running MySQL this way, you'll need to ru
 
 .. code-block:: bash
 
-   # start an interactive my sql session
-   mysql -h localhost -P 3306 --protocol tcp -u root -ppass cromwell
-   # from within the mysql prompt
-   create database cromwell;
-   exit;
+   mysql -h localhost -P 3306 --protocol tcp -u root -ppass \
+   < <(echo "create database cromwell;" )
 
 You should now (finally!) be good to go with call caching.
 
