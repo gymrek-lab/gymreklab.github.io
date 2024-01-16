@@ -37,7 +37,7 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
 
 6. Connect your Zoom microphone to the room's microphone. In FAH 4002, you can select *"Line In (USB Capture SDI+ Line In)"* from among the list of options. You might want to double-check that someone on zoom can hear someone else on the opposite side of the room.
 
-    .. figure:: hhttps://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/62f62c91-5676-4034-ab2b-e056f416c401
+    .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/62f62c91-5676-4034-ab2b-e056f416c401
         :alt: Setting up video in FAH 4002
         :align: center
         :width: 400px
