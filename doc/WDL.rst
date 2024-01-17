@@ -7,7 +7,7 @@ WDL is a configuration language. You use an executor to run it. If you're using 
 you'll use Cromwell as the executor. If you're using DNANexus, you'll use dxCompiler.
 
 The first sections below are about getting set up with those executors on the platform you're using.
-You should read those whether you're planning on writing your own WDL or running someone else's. 
+You should read those whether you're planning on writing your own WDL or running someone else's.
 
 After that there's some information if you're planning to learn to write your own WDL workflows.
 Note that each executor has different constraints on the WDL you write, so if you're writing your own WDL,
@@ -28,7 +28,7 @@ Getting Cromwell
 
 First, install java.
 
-Jonathan compiled Cromwell from source with two changes to make it run better on Expanse. You can access that JAR 
+Jonathan compiled Cromwell from source with two changes to make it run better on Expanse. You can access that JAR
 at :code:`/expanse/projects/gymreklab/jmargoli/ukbiobank/utilities/cromwell-86-90af36d-SNAP-600ReadWaitTimeout-FingerprintNoTimestamp.jar`.
 
 Alternatively, you can download Cromwell's official JAR file from `here <https://github.com/broadinstitute/cromwell/releases>`__. You can
@@ -47,7 +47,7 @@ Cromwell passes inputs to WDL workflows via a JSON file which looks like:
     "...": "..."
   }
 
-Add `-i <input_file>.json` to your Cromwell run command to pass in the input file.
+Add :code:`-i <input_file>.json` to your Cromwell run command to pass in the input file.
 
 If the WDL workflow you're running uses containers (e.g. Docker) then file inputs to the workflow cannot be symlinks.
 If the files are symlinks, you'll get something like "file does not exist" errors. Instead of symlinks, use hardlinks.
@@ -56,7 +56,7 @@ Specifying Cromwell output locations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :ref:`Cromwells_execution_directory` is confusingly organized, so it's hard to find the outputs of the final tasks(s) in a Cromwell run
-if you don't tell it to put them anywhere specific. Instead, add an options JSON file to your Cromwell run with `-o <option_file>.json`
+if you don't tell it to put them anywhere specific. Instead, add an options JSON file to your Cromwell run with :code:`-o <option_file>.json`
 and tell it to put the workflow's outputs in the location you'd like:
 
 .. code-block:: json
@@ -86,12 +86,12 @@ And here are the steps you'll perform each time you run Cromwell:
    this head node does not need much memory (4GB should be fine). If you're running everything on the head node with the :code:`Local` configuration, then grab as much memory as your
    pipeline will need at any one time.
 #. Enable :ref:`call-caching <call_caching_with_Cromwell>`, which outlines the following steps:
-   
+
    #. First time only: create the necessary directories
    #. Each time: stand up the MySQL server on the interactive node
    #. First time only: create the the cromwell database
 
-#. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL_workflow> | tee <your_logfile>.txt` 
+#. From the interactive node, execute the command :code:`java -Dconfig.file=<path_to_config> -jar <path_to_cromwell>.jar run -i <input_file>.json -o <options_file>.json <path_to_WDL_workflow> | tee <your_logfile>.txt`
    to run the WDL using Cromwell. Feel free to omit the input and options flags if you're not using them.
 
 Note: Cromwell has a server mode where you stand it up and can inspect running jobs through a web interface. As I (Jonathan) haven't
@@ -106,8 +106,8 @@ If a task failed and you want to inspect its intermediate inputs/outputs for deb
 Configuration
 ^^^^^^^^^^^^^
 
-I (Jonathan) recommend you make a copy of my config `here <https://github.com/LiterallyUniqueLogin/ukbiobank_strs/blob/master/workflow/cromwell.conf>`.
-Another reference is the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`_
+I (Jonathan) recommend you make a copy of my config `here <https://github.com/LiterallyUniqueLogin/ukbiobank_strs/blob/master/workflow/cromwell.conf>`__.
+Another reference is the `example config <https://github.com/broadinstitute/cromwell/blob/develop/cromwell.example.backends/cromwell.examples.conf>`__
 from Cromwell's docs, but it doesn't explain everything or have every option you might want.
 
 After copying my config, you will need to:
@@ -115,7 +115,7 @@ After copying my config, you will need to:
 * swap my email address for yours
 * Either set up :ref:`call_caching_with_Cromwell`, or set :code:`call-caching.enabled = False`.
   If you disable it, then every time you run a job it will be run again from the beginning instead of reusing intermediate results that finished successfully.
-* When running jobs, if you want to run them all on the cluster, make sure under backend that :code:`default = "SLURM"`. If you only have a small number of jobs and 
+* When running jobs, if you want to run them all on the cluster, make sure under backend that :code:`default = "SLURM"`. If you only have a small number of jobs and
   you'd rather run them on your local node for debugging purposes or because the Expanse queue is backed up right now, instead change that to :code:`default = "Local"`
 
 Note that this is configured to put cromwell's execution directory in the subfolder :code:`cromwell-executions` of wherever you launch Cromwell from.
@@ -184,7 +184,7 @@ Debugging MySQL issues
 ~~~~~~~~~~~~~~~~~~~~~~
 
 To take down the MySQL server, just kill the process spawned by that command.
-   
+
 Note: I've configured the MySQL database with a dummy user and password (user = root, password = pass)
 which is not secure. I'm just assuming the Expanse nodes are secure enough already and no one
 malicious is on them. Also, this uses the default MySQL port (3306). You may need to change that
@@ -222,7 +222,7 @@ that should return output something like:
 
 *Debugging tip if the mysql log at path3 says* :code:`another process is using this socket`
 
-Delete the lock files at `<path2>/*lock`, kill the mysql server and then restart it and it should work.
+Delete the lock files at :code:`cromwell-executions/mysql_var_run_mysqld/*lock`, kill the mysql server and then restart it and it should work.
 
 *Debugging tip*: Opening an interactive session with the MySQL server for debugging purposes:
 
@@ -235,15 +235,15 @@ Notice there is no space between the -p and the password, unlike all the other f
 Unexpected call caching behaviors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If you set the docker runtime attribute for a task
-then Cromwell insists on looking up the 
-corresponding docker image and using its digest (i.e. hash code) 
+then Cromwell insists on looking up the
+corresponding docker image and using its digest (i.e. hash code)
 as one of the keys for caching that task. This is unintuitive because it's not just using the string
 in the runtime attribute as the cache key (see `here <https://github.com/broadinstitute/cromwell/issues/2048>`__).
 Moreover, if cromwell can't figure out how to locate the docker image's digest during this process,
 then it simply refuses to try to load the call from cache at all, with a very inspecific
 log message to the effect of "task not eligible for call caching".
 Because of this design choice, I'm not sure if you can get Cromwell
-call caching to work with local docker image tarballs, which cause the image digest lookup step to fail. 
+call caching to work with local docker image tarballs, which cause the image digest lookup step to fail.
 
 Another surprising behavior is that call caching seems to be backend specific
 (though I've not seen this confirmed in the docs), so for instance
@@ -272,7 +272,7 @@ Cromwell runs its executions (including task inputs and outputs) in :code:`cromw
 Worfklow run ids are unhelpful randomly generated strings. To figure out which belongs to your
 most recent run, you can look at the logs on the terminal for that run, or use
 :code:`ls -t` to sort them by recency, e.g. :code:`cd cromwell-executions/<workflow_name> | ls -t | head -1`.
-Once you're in the your workflow run's folder, you should see one folder named `call-<task_alias>`
+Once you're in the your workflow run's folder, you should see one folder named :code:`call-<task_alias>`
 for each task called in the workflow. The task folder will contain two important directories :code:`inputs` and :code:`executions`.
 :code:`inputs` contains a bunch of subfolders with random numbers, each of which contain one or more input files (input files
 originally stored in the same directory will be put into the same inputs subdirectory). Note that input files will be named
@@ -282,22 +282,22 @@ in this directory correspond to which inputs in the task. :code:`executions` con
 * :code:`rc` contains the return code of the task (if it completed)
 * :code:`script.submit` is the script used to submit the task to SLURM (not sure if this is present on local runs)
 * :code:`stdout.submit` and :code:`stderr.submit` are the stdout/err for the job submission to SLURM.
-* :code:`script` contains the script that Cromwell executed to run this task on a SLRUM node (which is the command section of the task wrapped in 
+* :code:`script` contains the script that Cromwell executed to run this task on a SLRUM node (which is the command section of the task wrapped in
   some autogenerated code)
-* :code:`stdout` and :code:`stderr` are the stdout/err for the actual run of the task (if you didn't capture them inside 
+* :code:`stdout` and :code:`stderr` are the stdout/err for the actual run of the task (if you didn't capture them inside
   WDL with :code:`stdout()` or :code:`stderr()`).
 * All the output files generated by the task should be in this folder as well.
   If you move task outputs from this folders they will no longer be available for call caching,
   so don't do that. Instead, hard or symlink them to another location.
 
-If the task was call cached, then instead `call-<task_alias>` will contain `cacheCopy/execution` as a subdirectory
+If the task was call cached, then instead :code:`call-<task_alias>` will contain :code:`cacheCopy/execution` as a subdirectory
 and there will be no inputs folder you can cross reference against (which can make debugging harder).
 
 If the workflow you called in turn called subworkflows, those workflows will be represented by nested folders between
 the base workflow and the end task leaf, looking something like:
 :code:`cromwell-executions/<workflow_name>/<workflow_run_id>/call-<subworkflow_alias>/<subworkflow_name>/<subworkflow_run_id>/call-...`
-If a task or subworkflow is called in a scatter block, then between the `call-<alias>` folder and its
-usual contents there will be a bunch of `shard-<number>` folders which contain each of the scattered subcalls. All this nesting
+If a task or subworkflow is called in a scatter block, then between the :code:`call-<alias>` folder and its
+usual contents there will be a bunch of :code:`shard-<number>` folders which contain each of the scattered subcalls. All this nesting
 can get a bit overwhelming when you're trying to debug.
 
 Cromwell's outputs will keep growing as you keep running it if you don't delete them. And due to randomized workflow run IDs it'll be very
@@ -312,7 +312,11 @@ Constraints (important if you're writing your own WDL)
 Unlike Cromwell, dxCompiler supports WDL 1.1. So if you don't need your WDL to be cross-platform,
 you can use those features.
 
-dxCompiler's implementation of WDL has a few limitations, read them `here <https://github.com/dnanexus/dxCompiler#Limitations>`_.
+If you are running WDL 1.0 in dxCompiler, note that dxCompiler will not allow casts from Strings to
+Ints implicitly like Cromwell would. Since WDL 1.0 has no support for explicit casts, this is just impossible
+in this use case. As a workaround in some cases, if you want to read a data structure of Ints, use read_json().
+
+dxCompiler's implementation of WDL has a few limitations, read them `here <https://github.com/dnanexus/dxCompiler#Limitations>`__.
 
 Additionally, you'll want your tasks' custom runtime attribute that denotes their timelimits
 to be called :code:`dx_timeout`. (Cromwell is agnostic to what attribute you
@@ -334,7 +338,7 @@ the command from that shell in order to get access to your conda environment. To
 get around this, I've written the following script:
 
 .. code-block:: bash
-  
+
   #!/bin/bash
   #filename: envsetup
 
@@ -351,16 +355,16 @@ and I include it in my container with the following Dockerfile commands:
   RUN mkdir /container_install
   COPY envsetup /container_install/envsetup
   RUN chmod a+rx /container_install/envsetup
- 
-and then in the command sections of my WDL tasks I simply write 
+
+and then in the command sections of my WDL tasks I simply write
 
 .. code-block:: text
-    
+
   command <<<
     envsetup <mycommand> <arg1> ...
   >>>
 
-(`This Dockerfile <https://github.com/fritzsedlazeck/parliament2/blob/master/Dockerfile>`_
+(`This Dockerfile <https://github.com/fritzsedlazeck/parliament2/blob/master/Dockerfile>`__
 suggests an alternative by mucking directly with env variables to simulate
 a conda activation, but that seems like a bad idea)
 
@@ -369,9 +373,9 @@ Running
 
 1. Install the DNA nexus command line tools vended through pip: :code:`pip3 install dxpy`.
 2. Run :code:`dx login` and :code:`dx select <project name>`.
-3. Download :code:`dxCompiler` from the releases section of its `github page <https://github.com/dnanexus/dxCompiler>`_.
-   A detailed breakdown of its features is hidden at `this hard to find page <https://github.com/dnanexus/dxCompiler/blob/develop/doc/ExpertOptions.md>`_
-4. Compiling a WDL file for UKB RAP: 
+3. Download :code:`dxCompiler` from the releases section of its `github page <https://github.com/dnanexus/dxCompiler>`__.
+   A detailed breakdown of its features is hidden at `this hard to find page <https://github.com/dnanexus/dxCompiler/blob/develop/doc/ExpertOptions.md>`__
+4. Compiling a WDL file for UKB RAP:
    :code:`java -jar dxCompiler-2.10.4.jar compile <yourfile.wdl> -project <project-name> -folder <DNANexus directory to put the compiled workflow in>`
 5. Running the file: :code:`dx run <workflow directory>/<workflow name>`
 
@@ -396,9 +400,9 @@ Learning WDL
 
 I recommend these links for learning WDL. There are also good tutorials you can find for parts of the spec you're confused by.
 
-* `WDL 1.0 spec <https://github.com/openwdl/wdl/blob/main/versions/1.0/SPEC.md>`_
+* `WDL 1.0 spec <https://github.com/openwdl/wdl/blob/main/versions/1.0/SPEC.md>`__
   (it's quite readable!)
-* `differences between WDL versions <https://github.com/openwdl/wdl/blob/main/versions/Differences.md>`_
+* `differences between WDL versions <https://github.com/openwdl/wdl/blob/main/versions/Differences.md>`__
 
 WDL Gotchas
 ^^^^^^^^^^^
@@ -412,7 +416,7 @@ WDL Gotchas
   :code:`Int x_plus_one = x + 1` and then :code:`my_array[x_plus_one]`.
 * There is no array slicing. If you want to scatter over :code:`item in my_array[1:]`, instead
   scatter over :code:`idx in range(length(my_array)-1)` and manually access the array at
-  `Int idx_plus_one = idx + 1`
+  :code:`Int idx_plus_one = idx + 1`
 * If you want to create an array literal that's easier to specify via a list comprehension than to type it all out,
   do so by writing out the expression inside a scatter block in a worfklow. There's no way to get list comprehensions to work
   anywhere in tasks or within the input or output sections of a workflow.
@@ -434,7 +438,7 @@ Using Docker containers from WDL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You'll likely want to specify a container within each tasks' :code:`docker` runtime flag as that's
-necessary to execute your WDL on cloud platforms. (Cromwell doesn't support the 
+necessary to execute your WDL on cloud platforms. (Cromwell doesn't support the
 equivalent :code:`container` flag).
 
 Constraints imposed by runtime environments:
@@ -454,7 +458,7 @@ quay.io is my cloud container registry of choice. Terminology:
 * Project quay - an open source version of Red Hat Quay where you can
   deploy and stand up your own private container registry
 
-It's my container registry of choice because it has free accounts 
+It's my container registry of choice because it has free accounts
 (though this isn't super clear from their pricing docs), doesn't charge
 for public containers, and because at least
 so far I haven't found any pull restrictions. If you do run into issues,
@@ -464,7 +468,7 @@ isn't such an issue (only $7/mo.) but Yang couldn't figure out how to get
 the authentication to work on UKB RAP so that you could log in from each task
 before pulling the docker container so as to circumvent the pull limit.
 
-Repositories in quay.io start as private, even on the free account 
+Repositories in quay.io start as private, even on the free account
 which in theory hasn't paid for private repos (not sure why?).
 After pushing to them for the first time,
 sign into the web interface, select the repo, click on the wheel icon

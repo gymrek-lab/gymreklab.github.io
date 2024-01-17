@@ -5,7 +5,7 @@ Last update: 2023/01/10
 
 Expanse uses SLURM to schedule and run jobs
 
-`Expanse user guide <https://www.sdsc.edu/support/user_guides/expanse.html>`_
+`Expanse user guide <https://www.sdsc.edu/support/user_guides/expanse.html>`__
 
 Getting an account, logging in and setting up
 ---------------------------------------------
@@ -43,7 +43,7 @@ Grabbing an interactive node
 
    srun --partition=ind-shared --pty --nodes=1 --ntasks-per-node=1 --mem=50G -t 24:00:00 --wait=0 --account=ddp268 /bin/bash
 
-``--pty`` is what specifically makes this treated as an interactive session
+:code:``--pty`` is what specifically makes this treated as an interactive session
 
 Running a script noninteractively with SLURM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -88,7 +88,7 @@ than necessary.
 Some notes:
 
 * The output flag determines the file that stdout is written to. This must be a file, not a directory.
-  You can use some placeholders in the output location such as `%x` for job name and `%j` for job id.
+  You can use some placeholders in the output location such as :code:`%x` for job name and :code:`%j` for job id.
 * Use the error flag to choose stderr's output location, if not specified goes to the output location.
 * There may be an optional shebang line at the start of the file, but no blank or other lines
   between the beginning  and the :code:`#SBATCH` lines
@@ -134,7 +134,7 @@ containers in a secure manner on cluster computers.
 
 Terminology:
 
-* `SingularityCE <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_ is open source
+* `SingularityCE <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`__ is open source
 * Sylabs is the company that owns SingularityPro which is just
   a supported version of singularity
 
@@ -204,7 +204,7 @@ Singularity run tips
 * To run a shell script:
   :code:`singularity exec --containall docker://<docker_image_url> /bin/bash -c "<script>"`
 * Use :code:`--containall` to not bring in any information from the outside
-  environment into the container (e.g. unwanted mount points like `$HOME`,
+  environment into the container (e.g. unwanted mount points like :code:`$HOME`,
   env variables, etc.) This makes runs actually reproducible.
 * Use :code:`--bind <outsider_location>:<inside_location>` to mount files/directories.
   Add this flag multiple times to mount multiple files/directories

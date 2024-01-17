@@ -8,13 +8,13 @@ written for the UKB blood-traits imputed STRs paper.
 Setting up the GWAS and WDL inputs
 ----------------------------------
 
-First, check out `my paper's repository <https://github.com/LiterallyUniqueLogin/ukbiobank_strs>`_ into some directory you manage.
+First, check out `my paper's repository <https://github.com/LiterallyUniqueLogin/ukbiobank_strs>`__ into some directory you manage.
 
 Then, choose a phenotype you want to perform the GWAS against.
 You can explore UKB phenotypes `here <https://biobank.ndph.ox.ac.uk/showcase/index.cgi>`__.
 You'll need the data field ID of the phenotype, and the data field IDs of any fields
 you wish to use as categorical covariates. Sex, age at measurement, and genetic PCs 1-40
-calculated by the UKB team `here <https://www.nature.com/articles/s41586-018-0579-z>`_ are
+calculated by the UKB team `here <https://www.nature.com/articles/s41586-018-0579-z>`__ are
 automatically included as covariates and should not be specified in the input file below.
 
 Caveats:
@@ -56,7 +56,7 @@ If you want to run the GWAS only in a specific subpopulation of the UKB, see :re
 What the GWAS does
 ------------------
 
-The full details are in the methods of the paper `here <https://www.biorxiv.org/content/10.1101/2022.08.01.502370v3>`_. In short, this pipeline:
+The full details are in the methods of the paper `here <https://www.biorxiv.org/content/10.1101/2022.08.01.502370v3>`__. In short, this pipeline:
 
 * Gets a sample list of QCed, unrelated white brits that has the specified phenotype and each specified covariate
 * Includes age at time of measurement, genetic PCs and sex as additional covariates.
