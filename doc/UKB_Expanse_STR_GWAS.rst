@@ -12,19 +12,40 @@ First, check out `my paper's repository <https://github.com/LiterallyUniqueLogin
 
 Then, choose a phenotype you want to perform the GWAS against.
 You can explore UKB phenotypes `here <https://biobank.ndph.ox.ac.uk/showcase/index.cgi>`__.
-You'll need the data field ID of the phenotype, and the data field IDs of any fields
-you wish to use as categorical covariates. Sex, age at measurement, and genetic PCs 1-40
-calculated by the UKB team `here <https://www.nature.com/articles/s41586-018-0579-z>`__ are
-automatically included as covariates and should not be specified in the input file below.
+
+There are two ways to incorporate phenotypes into the pipeline - you can use the pipeline's steps for loading phenotypes, or you can create your own and hand it off
+to the pipeline. The following QC steps will be done either way:
+
+* participants failing sample QC will be removed
+* subsetting to unrelated individuals will be done after the phenotype is loaded
+* sex and genetic PCs 1-40 as calculated by the UKB team `here <https://www.nature.com/articles/s41586-018-0579-z>`__
+  will be automatically added as covariates and should not be added by you.
+
+Having the pipeline load the phenotype for you
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You'll need the data field ID of the phenotype,
+and the data field IDs of any fields
+you wish to use as categorical covariates. In addition to the sex and genetic PC covariates mentioned above,
+age at measurement will be included as a covariate
+and should not be listed as a covariate by you.
 
 Caveats:
 
 * Currently, only continuous phenotypes are supported.
 * Those continuous phenotypes must have been measured at the UKB assessment visits
   (otherwise age calculations will be thrown off or may crash)
-* Currently, only categorical covariates are supported
+* Currently, only categorical covariates are supported, and those must also be measured per assessment visit.
 
-Create a json file for input, setting script_dir to the root of the git repo you checked out above, and all the others as appropriate.
+With the IDs your provide, the pipeline takes the measurement of the phenotype for each person from the first assessment where the phenotype was measured.
+Assessment visit numbers will be added as indicator covariates. If too few participant phenotype measurements are drawn from a specific asessment,
+those participants and that asessment visit indicator will be excluded. Participant covariate values will be drawn from the same visits
+that the phenotype values are drawn from. Then the categorical covariates will be turned into indicator covariates, and again,
+indicator covariates with too few corresponding participants will be dropped along with those participants. The
+phenotypes and covariates section of `my paper's methods <https://www.sciencedirect.com/science/article/pii/S2666979X23003026#sec4>`__
+explains this in slightly cleaner language.
+
+For your next step, create a json file for input, setting script_dir to the root of the git repo you checked out above, and all the others as appropriate.
 Covariate and phenotype IDs should be integers, don't include a suffix similar to :code:`-0.0` specifying the
 measurement number and the array number. If you do not wish to include covariates, simply pass in empty lists - do 
 not omit the full covariate lines from the input json file.
@@ -37,6 +58,33 @@ not omit the full covariate lines from the input json file.
     "expanse_gwas.phenotype_id": "its_data_field_ID",
     "expanse_gwas.categorical_covariate_names": ["a_list_of_categorical_covariates"],
     "expanse_gwas.categorical_covariate_ids": ["their_IDs"]
+  }
+
+Passing your own phenotype into the pipeline
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create a :code:`.npy` file using numpy's save function containing a 2D array. The first column should
+contain sample IDs, the second should contain the phenotype you're interested in, and any subsequent columns
+should contain covariates. You will need to include age as one of those covariate columns if you are interested in
+that covariate. All covariates will be treated linearly, so you will need to turn any categorical covariates with more than 2 values into
+multiple indicator variables yourself before writing out the file. You will also need to manually remove any
+sample rows from the array based on your own filtering needs, say for phenotype or covariate missingness, or too
+few samples for a specific categorical covariate value.
+
+Additionally, create a file with one line per covariate containing the covariate names. And create a readme file describing your phenotype and covariate loading and QC steps
+(it can be empty) to pass to the workflow.
+
+Then, create a json file for input, setting script_dir to the root of the git repo you checked out above. 
+It should contain the following fields.
+
+.. code-block:: json
+
+  {
+    "expanse_gwas.script_dir": "repo_source"
+    "expanse_gwas.phenotype_name": "your_phenotype_name",
+    "expanse_gwas.premade_pheno_npy": "your_phenotype_npy_file",
+    "expanse_gwas.premade_pheno_covar_names": "your_covar_names_file",
+    "expanse_gwas.premade_pheno_readme": "your_readme_file",
   }
 
 Running the GWAS
