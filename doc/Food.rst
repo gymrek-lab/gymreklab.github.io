@@ -16,7 +16,7 @@ Domino's Pizza
 3. Start making your order online at least 2.5 hrs ahead of the event time. (Everyone orders pizza during lunch time, so the sooner you make the order, the more likely they will be to deliver it on time.) For a really large party (of 40, for example), I would submit the order 3 or 4 hrs ahead of time. You might even want to call them to confirm they received it and can handle it, especially for such a large group.
 4. When specifying the delivery options, you should use Dominos' detailed dropdown menu for the UCSD campus. It has nearly every building on campus! For delivery to Franlin Antonio Hall, I usually pick "Bldg 603 - W C - Atkinson Hall" from the dropdown menu and in the delivery instructions I say to meet at the corner of Equality Ln and Voigt Dr.
 
-    .. figure:: https://drive.google.com/uc?export=view&id=1Q3LVcZfzcRm1wgbbaDSaAZJNzViFgJh7
+    .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/6b1b7f24-4fc6-48a4-ba00-6c0d0607c8a2
         :alt: FAH Delivery Instructions
         :align: center
         :width: 400px
