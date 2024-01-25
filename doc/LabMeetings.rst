@@ -20,7 +20,7 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
     You should connect **both** the HDMI cable and the USB cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
     If needed, you can use the white USB Type-C adapter to connect to both cables like `this <https://drive.google.com/file/d/1CItoMXvJZ3ulQaZqI65ScLRaIbQMhJwX>`_.
 
-    .. figure:: https://drive.google.com/uc?export=view&id=1CItoMXvJZ3ulQaZqI65ScLRaIbQMhJwX
+    .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/1e7c1362-d30d-4f0b-8f12-a77aaeac3cb8
         :alt: Proper dongle setup
         :align: center
         :width: 400px
@@ -30,15 +30,15 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
 4. Display the Zoom window via the projector. `Screenshare your slides from Zoom <https://support.zoom.us/hc/en-us/articles/201362153-Sharing-your-screen-or-desktop-on-Zoom#top1>`_.
 5. Connect your Zoom video to the room's camera. In FAH 4002, you can select the second of the *"USB Capture SDI+"* options.
 
-    .. figure:: https://drive.google.com/uc?export=view&id=1ynzFmmV0UMNqKNkzVpfiHPi5heDyYIv4
-        :alt: Proper dongle setup
+    .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/b789919b-6d93-4ddb-812d-21c4aa0f1276
+        :alt: Setting up audio in FAH 4002
         :align: center
         :width: 400px
 
 6. Connect your Zoom microphone to the room's microphone. In FAH 4002, you can select *"Line In (USB Capture SDI+ Line In)"* from among the list of options. You might want to double-check that someone on zoom can hear someone else on the opposite side of the room.
 
-    .. figure:: https://drive.google.com/uc?export=view&id=1l8h0EdrPTsMATmPFfqnWukNf-J2L_6rB
-        :alt: Proper dongle setup
+    .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/62f62c91-5676-4034-ab2b-e056f416c401
+        :alt: Setting up video in FAH 4002
         :align: center
         :width: 400px
 

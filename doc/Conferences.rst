@@ -11,7 +11,7 @@ Here are some helpful tips!
 2. Leave at least 0.5 inches of padding on all sides of your poster just in case the printer requires it
 3. When placing figures onto your poster, try to use vector image formats (.svg, .pdf, etc) rather than raster formats (.png, .jpg, etc).
 
-    .. figure:: https://drive.google.com/uc?export=view&id=13Hp9l29kWCPMD6Vx8Hyn0Jew33vhmWWe
+    .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/4f1a241a-f47f-4702-8719-76026161f31c
         :alt: Raster vs vector images
         :align: center
         :width: 400px
@@ -34,19 +34,19 @@ Here are some helpful tips!
     a. Go to `their online portal <https://ucsdimprints.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF2gL05u6lNHBp6AwVlPfgDQIgaPc5Cokq4RKYVvn2cx3C2V0adSszgU#!/CategoryHome/9>`_ to create an order and submit a PDF of your poster. (Use `this link <https://blink.ucsd.edu/facilities/tritonprint/index.html>`_ to navigate to the portal if the former doesn't work.)
     b. After logging in, click on "Signs and Banners" and then "BUY NOW" under the category: "POSTERS, CHARTS, AND DISPLAYS".
 
-        .. figure:: https://drive.google.com/uc?export=view&id=1pwk6h6HRwcOubx1zFZrrnakd3KhLyFt1
+        .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/efd10f1d-c2d6-42ab-a97f-57eb1a8d79af
             :alt: Navigating the online print shop portal
             :align: center
             :width: 400px
 
     c. Make sure to specify the right number of pages, the size, and the media (recommended: 36 Lb Heavyweight Coated Bond):
 
-        .. figure:: https://drive.google.com/uc?export=view&id=11_EA9pM2pW2Z_2ePhJ4UZwah9KLVGM_K
+        .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/3f794299-7690-4f1a-b9f0-4e2c9dc067e1
             :alt: Poster print settings 1
             :align: center
             :width: 400px
 
-        .. figure:: https://drive.google.com/uc?export=view&id=1tZbcl3TTKH7g9lQLkcOWO55WD0otI6lD
+        .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/08a5faad-43ed-4a27-ac76-629821288bb4
             :alt: Poster print settings 2
             :align: center
             :width: 400px
