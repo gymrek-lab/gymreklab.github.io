@@ -1,53 +1,52 @@
 TSCC
 ====
 
-Last update: 2020/08/31
+Last update: 2024/01/25
 
 Official docs
 -------------
-* The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
+* The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc_2.html>`_
 * The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
+* The `old tscc 1.0 user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
+* THe `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
 
 Logging in
 ----------
-:code:`ssh <user>@tscc.sdsc.edu`
+:code:`ssh <user>@login.tscc.sdsc.edu`
 
-* This will put you on a node such as `tscc-login1.sdsc.edu` or `tscc-login11.sdsc.edu` or `tscc-login2.sdsc.edu`.
-  You can also ssh into  those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
+* This will put you on a node such as `login1.sdsc.edu` or `login11.sdsc.edu` or `login2.sdsc.edu`.
+  You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
 The login nodes are often quite slow because there are too many users on them, and you're not supposed to run code that's
 at all computationally burdensome there. So if you want to use tscc as a workstation, you should immediately try to grab an
-interactive session. :code:`qsub -I -l walltime=<n>:00:00 -l nodes=1:ppn=1 -q home` where :code:`<n>` is the max
-number of hours you plan to work. That will wait till it can find a slot on our home node and then log you into
-that node. (Note: :code:`qsub`'s user interface sucks, if you mistype that command it will hang forever without
-telling you that's what happened. You should see :code:`qsub: waiting for job 22409571.tscc-mgr7.local to start`
-if you typed the command correctly)
+interactive session. :code:`srun --partition=condo --pty --nodes=1 --ntasks-per-node=4 -t <n>:00:00 --wait=0 --qos=condo --export=ALL /bin/bash` where :code:`<n>` is the max
+number of hours you plan to work. That will wait till it can find a slot on the condo node and then log you into
+that node.
 
-In the unlikely event that our home node is full of work, this will hang till space opens up (up to 8 hours).
+In the unlikely event that our condo node is full of work, this will hang till space opens up.
 
 Any time your internet connection gets disrupted (depending on your settings, when your computer falls asleep) the 
-interactive session will be killed along with any jobs you were running. AFAIK there is no way to preserve processes
-between interactive sessions (i.e. saving sessions with :code:`tmux` won't work). You can ssh directly back in to 
-the node which your interactive session was on, but the scheduler will kill processes you start, so that's not a soltuion.
+interactive session will be killed along with any jobs you were running. To preserve processes
+between interactive sessions, you should use :code:`tmux` or :ref:`screen <snorlax-screen>` on the login node *before* you start the interactive session.
 
 Filesystem locations
 --------------------
-We have 100TB of space in :code:`/projects/ps-gymreklab`, which is where all of our files are stored. Your personal
-storage directory is :code:`/projects/ps-gymreklab/<user>`. Your home directory for config and the like is
-:code:`/home/<user>`, don't store any large files there.
+We have 100TB of space in :code:`/tscc/projects/ps-gymreklab`, which is where all of our files are stored. Your personal
+storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. Your home directory for config and the like is
+:code:`/tscc/nfs/home/<user>`, don't store any large files there, since you'll only get 100 GB there.
 
-Communal lab resources are in :code:`/projects/ps-gymreklab/resources/`. Feel free to contribute to these as appropriate.
+Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Feel free to contribute to these as appropriate.
 
-* :code:`/projects/ps-gymreklab/resources/source` contains downloaded software (though I (Jonathan) personally recommend
+* :code:`/tscc/projects/ps-gymreklab/resources/source` contains downloaded software (though I (Jonathan) personally recommend
   you create a conda environment which you personally manage and ensure the stability of).
-* :code:`/projects/ps-gymreklab/resources/dbase` contains reference genome builds for humans and mice and other
+* :code:`/tscc/projects/ps-gymreklab/resources/dbase` contains reference genome builds for humans and mice and other
   non-project-specific datasets
-* :code:`/projects/ps-gymreklab/resources/datasets` contains project-specific datasets that are shared across the lab.
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets` contains project-specific datasets that are shared across the lab.
 
 Sharing files with Snorlax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you ssh into snorlax, you can access :code:`/projects/ps-gymreklab` (on TSCC) as :code:`/gymreklab-tscc` on Snorlax.
+If you ssh into snorlax, you can access :code:`/tscc/projects/ps-gymreklab` (on TSCC) as :code:`/gymreklab-tscc` on Snorlax.
 You cannot access Snorlax files from TSCC, so if you want to move files to/from Snorlax you'll need to be logged in to Snorlax.
 There are some wonky permissions issues - if you write files into the tscc drive while on Snorlax, your user on tscc may not
 be able to modify those files.
@@ -56,53 +55,48 @@ Submitting jobs
 ---------------
 Jobs are scripts that the cluster runs for you. 
 
-To submit a job, write a :code:`*.pbs` file and then run :code:`qsub <file>.pbs`.
-PBS files are bash script files with PBS specific comments at the top.
+To submit a job, write a :code:`*.slurm` file and then run :code:`sbatch <file>.slurm`.
+SLURM files are bash script files with SLURM specific comments at the top.
 Example:
 
 .. code-block:: bash
 
   #!/bin/bash
-  #PBS -q <queue>
-  #PBS -N <job_title>
-  #PBS -l nodes=1:ppn=1
-  #PBS -l walltime=<hours>:00:00
-  #PBS -o <log_dir>
-  #PBS -e <log_dir>
-  #PBS -V
-  #PBS -M <your email>
-  #PBS -m a
+  #SBATCH --partition <partition>
+  #SBATCH -N <job_title>
+  #SBATCH -l nodes=1:ppn=1
+  #SBATCH -l walltime=<hours>:00:00
+  #SBATCH -o <log_dir>
+  #SBATCH -e <log_dir>
+  #SBATCH -V
+  #SBATCH -M <your email>
+  #SBATCH -m a
   
   # ... do something ... 
 
-Google PBS to look up more information about these flags. Note that the PBS implementation on TSCC is likely to be slightly
+Google SLURM to look up more information about these flags. Note that the SLURM implementation on TSCC is likely to be slightly
 different than the implementation elsewhere, so online information won't be 100% accurate. In terms of naming conventions:
-tscc uses the job scheduler called `Torque`, `qsub` is the name of the command to submit a job to `Torque` and `PBS` is the 
-file format that `qsub` expects.
+tscc uses the job scheduler called SLURM and `sbatch` is the name of the command to submit a job to `SLURM`.
 
-The general workflow is to submit many jobs using the same PBS file, each with slightly different environment variable inputs
+The general workflow is to submit many jobs using the same SLURM file, each with slightly different environment variable inputs
 telling them to work on different input files. See below.
 
 Notes:
 
-* As above, :code:`qsub`'s user interface sucks. If you mistype the file it may hang forever without telling you. If successful
-  qsub should immediately return having printed out the name of your job, e.g. :code:`22409804.tscc-mgr7.local` telling you 
-  that's what happened. 
-* Aside from the first shebang line, PBS will stop looking for settings after the first line that does not start with :code:`#PBS`.
+* Aside from the first shebang line, SLURM will stop looking for settings after the first line that does not start with :code:`#SBATCH`.
   This includes blank lines and lines with comments.
 * Your job will be allocated memory in proportion to the number of processors your request. If you request 1 core and are assigned a node with 128GB
   of memory and 28 cores (the smaller of the two architectures of hotel nodes), your process will be allocated 128GB/28 = 4.57GB of memory and will
   be killed it if it exceeds that limit. If you want more memory, request more processors per node accordingly. (e.g. :code:`ppn=4`)
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
   passing). Instead, just submit more jobs
-* You can have max 1500 jobs in the queues at once.
 * If :code:`<log_dir>` is mistyped, the job will not run. Double check that location before you submit.
-* None of the PBS settings can access environment variables. If you want to set a value (e.g. the log directory) dynamically, you'll
-  need to dynamically generate the PBS file.
+* None of the SLURM settings can access environment variables. If you want to set a value (e.g. the log directory) dynamically, you'll
+  need to dynamically generate the SLURM file.
 
-Queues
-^^^^^^
-We have access to three queues: :code:`condo`, :code:`hotel` and :code:`home`. Nodes on :code:`hotel` have a minimum of 28 cores and 4.57GB memory/core.
+Partitions
+^^^^^^^^^^
+We have access to three partitions: :code:`condo` and :code:`hotel`. Nodes on :code:`hotel` have a minimum of 28 cores and 4.57GB memory/core.
 I do not know about the specs of the other nodes.
 
 First consider :code:`condo`
@@ -125,26 +119,26 @@ If you need more than 8 hours, consider :code:`hotel`:
 
 Env Variables and Submitting Many Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To pass an environment variable to a job, make sure the :code:`#PBS -V` flag is set in the PBS file and run
-:code:`qsub <file>.pbs -V "<var1>=<value1>,<var2>=<value2>,..."`. You should then be able to access those
+To pass an environment variable to a job, make sure the :code:`#SBATCH -V` flag is set in the SLURM file and run
+:code:`sbatch <file>.slurm -V "<var1>=<value1>,<var2>=<value2>,..."`. You should then be able to access those
 values in the script using :code:`$var1` and so on.
 
 Here's an example for how to submit many jobs. Suppose your current directory is::
 
-  process-vcf.pbs
+  process-vcf.slurm
   vcfs_dir/
     vcf1.vcf.gz
     vcf2.vcf.gz
     ...
 
-:code:`process-vcf.pbs`:
+:code:`process-vcf.slurm`:
 
 .. code-block:: bash
 
   #!/bin/bash
-  #PBS -V
-  #PBS other settings
-  #PBS ...
+  #SBATCH -V
+  #SBATCH other settings
+  #SBATCH ...
   
   # echo the input args so you can distinguish betweeen jobs from their log files
   echo "Working on VCF $VCF" 
@@ -155,7 +149,7 @@ Here's an example for how to submit many jobs. Suppose your current directory is
 
 To launch the jobs::
 
-  for vcf in vcfs_dir ; do qsub process-vcf.pbs -V "VCF=$vcf" ; done
+  for vcf in vcfs_dir ; do sbatch process-vcf.slurm -V "VCF=$vcf" ; done
 
 Managing jobs
 -------------
