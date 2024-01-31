@@ -63,18 +63,19 @@ Example:
 
   #!/bin/bash
   #SBATCH --partition <partition>
-  #SBATCH -N <job_title>
-  #SBATCH -l nodes=1:ppn=1
-  #SBATCH -l walltime=<hours>:00:00
-  #SBATCH -o <log_dir>
-  #SBATCH -e <log_dir>
+  #SBATCH --qos <partition>
+  #SBATCH --job-name <job_title>
+  #SBATCH --nodes 1
+  #SBATCH --ntasks-per-node 2
+  #SBATCH -t <hours>:00:00
+  #SBATCH --output slurm-%j.out-%N
+  #SBATCH --output slurm-%j.err-%N             # Optional, for separating standard error
   #SBATCH -V
-  #SBATCH -M <your email>
-  #SBATCH -m a
+  #SBATCH --export=ALL
   
   # ... do something ... 
 
-Google SLURM to look up more information about these flags. Note that the SLURM implementation on TSCC is likely to be slightly
+Google "SLURM" to look up more information about these flags. Note that the SLURM implementation on TSCC is likely to be slightly
 different than the implementation elsewhere, so online information won't be 100% accurate. In terms of naming conventions:
 tscc uses the job scheduler called SLURM and `sbatch` is the name of the command to submit a job to `SLURM`.
 
@@ -96,7 +97,9 @@ Notes:
 
 Partitions
 ^^^^^^^^^^
-We have access to three partitions: :code:`condo` and :code:`hotel`. Nodes on :code:`hotel` have a minimum of 28 cores and 4.57GB memory/core.
+..
+  TODO: check whether we still have a home parition
+We have access to two partitions: :code:`condo` and :code:`hotel`. Nodes on :code:`hotel` have a minimum of 28 cores and 4.57GB memory/core.
 I do not know about the specs of the other nodes.
 
 First consider :code:`condo`
