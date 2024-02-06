@@ -35,7 +35,7 @@ Taco Villa
 ~~~~~~~~~~
 1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of burritos people want. In the past, I've provided `the following options <https://www.tacovillasd.com/#burritos>`_ since they seem to cover all of the meats: Bean & Cheese, Pollo Asado, Veggie Avocado, Fish, Al Pastor, Carne Asada, and Shrimp. Make sure to specify that everyone should vote only for one option! Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount (for "Bean and Cheese" and "Carne Asada," respectively). You should also order one extra Veggie Avocado because there is always at least one person who forgets to respond to the poll.
 2. To order the burritos, I usually order online 2.5-3 hrs before the event and ask them to have it ready ~40 minutes before the event. They might want you to provide credit card info over the phone, but you may want to pay for everything in-person in case anyone else adds their name to the order in the last minute.
-3. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in the FAH loading dock that the FAH building manager has given us permission to borrow.
+3. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in :ref:`the FAH loading dock <food-loadingdock>` that you can use.
 4. Once at Taco Villa, try to grab some salsa, lemons, and other condiments, as well.
 5. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
@@ -44,7 +44,7 @@ Rubio's
 1. I usually order the "Family Taco Kits" under their "Family Meals" menu. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of meat people want. In the past, I've provided the following options: Chicken, Steak, Fish, Shrimp, and Vegetarian. For 15-16 people, I usually order 3 taco kits (one chicken, one steak, and one shrimp). Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount.
 2. Rubio's offers a vast array of ordering options for the taco kits. I usually try to get a mix of everything: corn/flour tortillas, different kinds of rice, different beans, different sauces, limes, cheese, etc. See `here <https://drive.google.com/file/d/1ZdZOidkk5E_WFE5UG0ME0_OL_zuGVf3r>`_ for a screenshot of my typical order. Make sure that you order catering utensils attached with every taco kit.
 3. I usually order online 2-2.5 hrs before the event and ask them to have it ready ~30 minutes before the event. You will need to provide credit card info online.
-4. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in the FAH loading dock that the FAH building manager has given us permission to borrow. Note that you might need to show them the email confirmation before they will give you the food.
+4. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in :ref:`the FAH loading dock <food-loadingdock>` that you can use. Note that you might need to show them the email confirmation before they will give you the food.
 5. Before the event, it can help to lay out all of the food in a decently organized fashion. Do not throw out any of the bags until after the event in case you need them for carrying stuff afterward!
 6. After the event, try to consolidate leftovers into a single taco kit container. Throw out the remaining containers in the FAH loading dock according to the instructions below. Put the leftover sauces, chips, and taco kit in the fridge.
 7. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
@@ -54,6 +54,12 @@ General Questions
 How should I pay?
 -----------------
 Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for the lab credit card info when you're ready to order. You can find her in `her office or you can call her office phone <https://gymreklab.com/contact.html>`_. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
+
+.. _food-loadingdock
+
+How do I access the FAH loading dock?
+-------------------------------------
+The FAH loading dock has black wagons that you can borrow for carrying food. You can access the loading dock via the basement level of FAH (labeled "LL" in the elevator). After exiting the elevator, go through the doors on the opposite wall and through to the end of the hall, and then turn left.
 
 .. _food-reimbursement:
 
@@ -69,6 +75,6 @@ What should I do after the event?
 ---------------------------------
 If there are a lot of crumbs and things lying around, please wipe down the surfaces of the meeting room with the sanitizing wipes provided in the corner.
 
-**Don't dispose of large trash items in the trash bins of the meeting room!** FAH facilities has asked that we refrain from overloading the trash bins on the fourth floor with pizza boxes or leftover containers. Instead, you can dump the trash into one of the black wagons in the FAH loading dock. You can access the loading dock via the basement level of FAH. Go to the end of the hall and turn left.
+**Don't dispose of large trash items in the trash bins of the meeting room!** FAH facilities has asked that we refrain from overloading the trash bins on the fourth floor with pizza boxes or leftover containers. Instead, you can dump the trash into one of the black wagons in the FAH loading dock.
 
 You can return plates and knapkins to wherever you found them: either Arya's desk drawer or the kitchen. You can put any leftover food in the kitchen fridge. Message the #food channel of the `collaboratory Slack <https://join.slack.com/t/cpg-collaboratory>`_ to let them know that there's free food!
