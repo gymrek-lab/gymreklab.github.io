@@ -36,7 +36,7 @@ Taco Villa
 1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of burritos people want. In the past, I've provided `the following options <https://www.tacovillasd.com/#burritos>`_ since they seem to cover all of the meats: Bean & Cheese, Pollo Asado, Veggie Avocado, Fish, Al Pastor, Carne Asada, and Shrimp. Make sure to specify that everyone should vote only for one option! Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount (for "Bean and Cheese" and "Carne Asada," respectively). You should also order one extra Veggie Avocado because there is always at least one person who forgets to respond to the poll.
 2. To order the burritos, I usually order online 2.5-3 hrs before the event and ask them to have it ready ~40 minutes before the event. They might want you to provide credit card info over the phone, but you may want to pay for everything in-person in case anyone else adds their name to the order in the last minute.
 3. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in :ref:`the FAH loading dock <food-loadingdock>` that you can use.
-4. Once at Taco Villa, try to grab some salsa, lemons, and other condiments, as well.
+4. Once at Taco Villa, try to grab some salsa, lemons, and other condiments, as well. Before you leave, count the burritos to ensure there aren't any missing.
 5. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 Rubio's
