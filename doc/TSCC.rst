@@ -61,17 +61,17 @@ Example:
 
 .. code-block:: bash
 
-  #!/bin/bash
+  #!/usr/bin/env bash
+  #SBATCH --export ALL
   #SBATCH --partition <partition>
   #SBATCH --qos <partition>
   #SBATCH --job-name <job_title>
   #SBATCH --nodes 1
-  #SBATCH --ntasks-per-node 2
-  #SBATCH -t <hours>:00:00
+  #SBATCH --ntasks 1
+  #SBATCH --cpus-per-task 2
+  #SBATCH --time <hours>:00:00
   #SBATCH --output slurm-%j.out-%N
   #SBATCH --output slurm-%j.err-%N             # Optional, for separating standard error
-  #SBATCH -V
-  #SBATCH --export=ALL
   
   # ... do something ... 
 
@@ -122,8 +122,8 @@ If you need more than 8 hours, consider :code:`hotel`:
 
 Env Variables and Submitting Many Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To pass an environment variable to a job, make sure the :code:`#SBATCH -V` flag is set in the SLURM file and run
-:code:`sbatch <file>.slurm -V "<var1>=<value1>,<var2>=<value2>,..."`. You should then be able to access those
+To pass an environment variable to a job, make sure the :code:`#SBATCH --export ALL` flag is set in the SLURM file or run
+:code:`sbatch <file>.slurm --export "<var1>=<value1>,<var2>=<value2>,..."`. You should then be able to access those
 values in the script using :code:`$var1` and so on.
 
 Here's an example for how to submit many jobs. Suppose your current directory is::
@@ -138,8 +138,7 @@ Here's an example for how to submit many jobs. Suppose your current directory is
 
 .. code-block:: bash
 
-  #!/bin/bash
-  #SBATCH -V
+  #!/usr/bin/env bash
   #SBATCH other settings
   #SBATCH ...
   
@@ -152,7 +151,29 @@ Here's an example for how to submit many jobs. Suppose your current directory is
 
 To launch the jobs::
 
-  for vcf in vcfs_dir ; do sbatch process-vcf.slurm -V "VCF=$vcf" ; done
+  for vcf in vcfs_dir ; do sbatch --export "VCF=$vcf" process-vcf.slurm; done
+
+You can also pass arguments to any :code:`.slurm` script just as you would a regular bash script. Consider the following example.
+
+.. code-block:: bash
+
+  #!/usr/bin/env bash
+  #SBATCH other settings
+  #SBATCH ...
+
+  # copy the first argument of the script into the "VCF" variable
+  VCF="$1"
+  
+  # echo the input args so you can distinguish betweeen jobs from their log files
+  echo "Working on VCF $VCF" 
+  >&2 echo "Working on VCF $VCF"
+
+  # ... do something with a vcf ... 
+  process $VCF
+
+To launch the jobs::
+
+  for vcf in vcfs_dir ; do sbatch process-vcf.slurm "$vcf"; done
 
 Managing jobs
 -------------
