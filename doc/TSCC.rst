@@ -75,8 +75,7 @@ Example:
   
   # ... do something ... 
 
-Google "SLURM" to look up more information about these flags. Note that the SLURM implementation on TSCC is likely to be slightly
-different than the implementation elsewhere, so online information won't be 100% accurate. In terms of naming conventions:
+Google "SLURM" to look up more information about these flags. In terms of naming conventions:
 tscc uses the job scheduler called SLURM and `sbatch` is the name of the command to submit a job to `SLURM`.
 
 The general workflow is to submit many jobs using the same SLURM file, each with slightly different environment variable inputs
@@ -177,8 +176,8 @@ To launch the jobs::
 
 Managing jobs
 -------------
-Listing current jobs: :code:`qstat -u <user>`. To look at a single job, use :code:`qstat -r <jobid>`.
-To list maximum information about a job, use :code:`qstat -f -r <jobid>`
+Listing current jobs: :code:`squeue -u <user>`. To look at a single job, use :code:`squeue -j <jobid>`.
+To list maximum information about a job, use :code:`squeue -l -j <jobid>`
 
 * States are Q for queued, R for running, C for cancelled, and D for done. (if I recall correctly)
 
@@ -190,7 +189,7 @@ To look at the stdout of a currently running job: :code:`qpeek <jobID>`. To look
 :code:`qpeek` will no longer work.
 
 To delete a running or queued job: :code:`qdel <jobID>`. To delete all running or queued jobs:
-:code:`qstat -u <user> | cut -f1 | cut -f1 -d | xargs qdel`
+:code:`squeue -u <user> | cut -f1 | cut -f1 -d | xargs qdel`
 
 To figure out why a job is queued use 'why queued?' :code:`yqd <jobid>`.
 
