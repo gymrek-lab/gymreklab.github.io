@@ -50,7 +50,7 @@ Rubio's
 7. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 Ike's Sandwiches
-~~~~~~~
+~~~~~~~~~~~
 1. The catering options provide half sandwiches per person but are generally too expensive and too much food. Instead, order half sandwiches per person by doing the following: (1) provide a few sandwich choices for people to choose from (e.g. a veggie option, a chicken option, and a beef option), (2) have people vote for their choices and (3) if n people vote for a particular sandwich type, order ceil(n/2) of that sandwich.
 2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is not required and entirely up to you.
 3. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
