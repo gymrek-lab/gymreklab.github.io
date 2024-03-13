@@ -5,9 +5,8 @@ Last update: 2024/01/25
 
 Official docs
 -------------
-* The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc_2.html>`_
+* The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
 * The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
-* The `old tscc 1.0 user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
 * THe `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
 
 Logging in
