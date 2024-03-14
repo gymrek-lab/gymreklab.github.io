@@ -97,6 +97,7 @@ Partitions
 ^^^^^^^^^^
 ..
   TODO: check whether we still have a home parition
+
 We have access to two partitions: :code:`condo` and :code:`hotel`. Nodes on :code:`hotel` have a minimum of 28 cores and 4.57GB memory/core.
 I do not know about the specs of the other nodes.
 
