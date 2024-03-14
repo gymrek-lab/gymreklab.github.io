@@ -63,6 +63,8 @@ This example uses port 8888 as an example. You'll have to use a different port i
 
 You can try ports in the range 1024+. 5000 is typically in use for WebSTR development. Other ports may be reserved for use by other programs or used by labmates. If you know how to check which ports are available, feel free to submit a PR and update this page :). (see https://gymreklabgithubio.readthedocs.io/en/latest/LabWebsite.html).
 
+.. _snorlax-screen:
+
 Use ``screen`` to keep things running even with spotty internet
 ---------------------------------------------------------------
 If your ssh connection dies because of a choppy internet connection, your Jupyter instance will die, too. You can run jupyter from within a ``screen`` session to make it persist. Let's adapt the instructions from above.
