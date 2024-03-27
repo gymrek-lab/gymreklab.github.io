@@ -3,6 +3,10 @@
 Attending Conferences
 =====================
 
+Travel and reimbursement guidelines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://docs.google.com/document/d/1v414-VEuYpOuHidq2AlqxrvjSTfj16QdpaXrVsSOi0U
+
 Creating a poster
 ~~~~~~~~~~~~~~~~~
 Here are some helpful tips!
