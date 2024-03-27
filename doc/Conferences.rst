@@ -5,6 +5,7 @@ Attending Conferences
 
 Travel and reimbursement guidelines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You can be reimbursed for conference-related expenses. Refer to these guidelines from Dorit:
 https://docs.google.com/document/d/1v414-VEuYpOuHidq2AlqxrvjSTfj16QdpaXrVsSOi0U
 
 Creating a poster
