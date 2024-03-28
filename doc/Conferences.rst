@@ -18,6 +18,7 @@ If you prefer that I will submit your reimbursement report, please follow these 
 **Before the business trip:**
 1. `Add me as your delegate <https://support.ucsd.edu/finance?id=kb_article_view&sys_kb_id=287c8670dba5d8104cd8f06e0f9619d1>`_ on your SAP Concur account. 
 2. Email me the trip/conference details as soon you know them for submission: `Travel Request <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0032013&sys_kb_id=0edbfb231b2c711048e9cae5604bcb98&table=kb_knowledge>`_
+
     Remember, the request must be pre-authorized by our Financial Unit :underline:`before` the trip.
 
 **Important Information for your trip:**
