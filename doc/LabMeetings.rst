@@ -1,6 +1,8 @@
 Gymrek Lab Meetings
 ===================
 
+.. _labmeetings-schedule:
+
 General meeting info
 ---------------------
 

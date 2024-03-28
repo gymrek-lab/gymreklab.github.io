@@ -5,19 +5,27 @@ Onboarding
 
 If you are new to the group, this page has a list of things you should do to get set up with helpful lab resources.
 
-* Get an account on our lab server, snorlax_. 
+* Get an account on our lab server, :ref:`Snorlax <snorlax>`. 
 
 * Request permission to join the "Gymrek Lab" google calendar and our mailing list gymrek-lab AT googlegroups DOT com. 
 
-* Request an account on our slack channel (https://gymreklab.slack.com/).
+* Request an account on our slack channels (https://gymreklab.slack.com/ and https://cpg-collaboratory.slack.com)
 
-* Take a look at the schedule_ for lab meetings to note when you or others are presenting research talks or journal clubs.
+* Take a look at :ref:`the schedule for lab meetings <labmeetings-schedule>` to note when you or others are presenting research talks or journal clubs.
 
 * Request access to our shared Google Drive where you can find additional resources.
 
-* If you will be working in the wet lab, please see the wetlab_ onboarding page.
+* If you will be working in the wet lab, please see the :ref:`wetlab onboarding page <wetlab>`.
 
 To request access to any of these resources, email gymreklab-help AT googlegroups DOT com and someone will help you out.
+
+You should also add a picture of yourself to `the lab website <https://gymreklab.com/people>`_! Just follow :ref:`these directions <labwebsite-add-your-photo>`. Note that this process should automatically give you access to our `Github organization <https://github.com/gymrek-lab>`_, as well.
+
+.. TODO: set up lab website PRs to automatically give access to the org
+
+To get access to our lab's computing resources on Expanse, just follow :ref:`these directions <expanse-get-account>`.
+
+Finally, you should request badge access to our lab by filling out `this form <https://ucsd.co1.qualtrics.com/jfe/form/SV_4SB1zEZdwfLeljE>`_. You should mark that you are requesting access to our collaboratory, the "Center for Precision Genomics" (CPG).
 
 
 Slack overview
@@ -39,6 +47,4 @@ There are many channels on slack. Most are for specific projects that you will b
 
 * "random" used to have things like free food announcements. But can be for anything you want to discuss, work related or not.
 
-.. _snorlax: https://gymreklabgithubio.readthedocs.io/en/latest/Snorlax.html
-.. _schedule: https://gymreklabgithubio.readthedocs.io/en/latest/LabMeetingSchedule.html
-.. _wetlab: https://gymreklabgithubio.readthedocs.io/en/latest/WetLab.html
+* "food" for announcing free food and surveying preferences when catering for an event

@@ -7,6 +7,8 @@ Expanse uses SLURM to schedule and run jobs
 
 `Expanse user guide <https://www.sdsc.edu/support/user_guides/expanse.html>`_
 
+.. _expanse-get-account:
+
 Getting an account, logging in and setting up
 ---------------------------------------------
 
