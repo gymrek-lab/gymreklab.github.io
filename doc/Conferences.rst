@@ -19,14 +19,17 @@ If you prefer that I will submit your reimbursement report, please follow these 
 1. `Add me as your delegate <https://support.ucsd.edu/finance?id=kb_article_view&sys_kb_id=287c8670dba5d8104cd8f06e0f9619d1>`_ on your SAP Concur account. 
 2. Email me the trip/conference details as soon you know them for submission: `Travel Request <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0032013&sys_kb_id=0edbfb231b2c711048e9cae5604bcb98&table=kb_knowledge>`_
 
-    Remember, the request must be pre-authorized by our Financial Unit :underline:`before` the trip.
+    Remember, the request must be pre-authorized by our Financial Unit *before* the trip.
 
 **Important Information for your trip:**
-1. :underline:`Meals & Tips`: While traveling for business within the continental US for 1-29 days, you can be reimbursed for meal and tip expenses up to a daily maximum of $79.
-    :underline:`Lodging`: Hotel stays can be reimbursed up to $275 per night, excluding taxes and mandatory hotel fees. More information about meals and lodging expenses can be found `here <https://blink.ucsd.edu/travel/travel-policy/meals-lodging/index.html>`_. If you choose to share a room with another lab member, only the lab member whose name appears on the receipt may submit the receipt for reimbursement.
+1. *Meals & Tips*: While traveling for business within the continental US for 1-29 days, you can be reimbursed for meal and tip expenses up to a daily maximum of $79.
+
+    *Lodging*: Hotel stays can be reimbursed up to $275 per night, excluding taxes and mandatory hotel fees. More information about meals and lodging expenses can be found `here <https://blink.ucsd.edu/travel/travel-policy/meals-lodging/index.html>`_. If you choose to share a room with another lab member, only the lab member whose name appears on the receipt may submit the receipt for reimbursement.
+
     Raid share - 
-2. :underline:`Receipts`: Keep all receipts for meals, lodging, and other travel expenses.
-3. :underline:`Bookings`: Ensure your hotel and flight reservations are booked in your name.
+
+2. *Receipts*: Keep all receipts for meals, lodging, and other travel expenses.
+3. *Bookings*: Ensure your hotel and flight reservations are booked in your name.
 
 **After your trip:**
 1. Please organize your receipts in the `reimbursement report <https://docs.google.com/spreadsheets/d/1gJxdq_XuJDynoe1ogz0oXi4LKm_Wp4tgGrSjdEPevM0>`_
@@ -63,7 +66,7 @@ Here are some helpful tips!
 
 6. Our logos can be found in `the lab Google Drive <https://drive.google.com/drive/folders/1-egL2EVfTh7wH4wmfFcruGtJMplnPVQQ>`_. For UCSD's, you can refer to `this Jacobs School of Engineering webpage <https://jacobsschool.ucsd.edu/logos>`_. Also, consider displaying your email and a QR code link to your GitHub repo or documentation.
 7. The cheapest place to print posters is probably on campus at the print shop at `UCSD Campus Curbside Pickup <https://maps.app.goo.gl/FseyUa62wk3Qztu5A>`_. You can request reimbursement as part of your conference expenses afterwards.
-    a. Go to `their online portal <https://ucsdimprints.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF2gL05u6lNHBp6AwVlPfgDQIgaPc5Cokq4RKYVvn2cx3C2V0adSszgU#!/CategoryHome/9>`_ to create an order and submit a PDF of your poster. (Use `this link <https://blink.ucsd.edu/facilities/tritonprint/index.html>`_ to navigate to the portal if the former doesn't work.)
+    a. Go to `their online portal <https://ucsdimprints.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF2gL05u6lNHBp6AwVlPfgDQIgaPc5Cokq4RKYVvn2cx3C2V0adSszgU#!/CategoryHome/9>`_ to create an order and submit a PDF of your poster. (Use `this link <https://blink.ucsd.edu/facilities/tritonprint/index.html>`__ to navigate to the portal if the former doesn't work.)
     b. After logging in, click on "Signs and Banners" and then "BUY NOW" under the category: "POSTERS, CHARTS, AND DISPLAYS".
 
         .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/efd10f1d-c2d6-42ab-a97f-57eb1a8d79af
