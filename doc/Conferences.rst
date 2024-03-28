@@ -9,6 +9,31 @@ You can be reimbursed for conference-related expenses. Refer to these guidelines
 
 https://docs.google.com/document/d/1v414-VEuYpOuHidq2AlqxrvjSTfj16QdpaXrVsSOi0U
 
+Before your upcoming trip or conference, please take a moment to review the UCSD policies regarding `Travel Highlights <https://blink.ucsd.edu/travel/_files/TravelPolicyHighlights.pdf>`_.
+
+If you wish to submit independently for reimbursement use SAP Concur and follow `this link <https://support.ucsd.edu/services?id=kb_article_view&sysparm_article=KB0032014>`_ for more info on how to do it.
+
+If you prefer that I will submit your reimbursement report, please follow these steps:
+
+**Before the business trip:**
+1. `Add me as your delegate <https://support.ucsd.edu/finance?id=kb_article_view&sys_kb_id=287c8670dba5d8104cd8f06e0f9619d1>`_ on your SAP Concur account. 
+2. Email me the trip/conference details as soon you know them for submission: `Travel Request <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0032013&sys_kb_id=0edbfb231b2c711048e9cae5604bcb98&table=kb_knowledge>`_
+    Remember, the request must be pre-authorized by our Financial Unit :underline:`before` the trip.
+
+**Important Information for your trip:**
+1. :underline:`Meals & Tips`: While traveling for business within the continental US for 1-29 days, you can be reimbursed for meal and tip expenses up to a daily maximum of $79.
+    :underline:`Lodging`: Hotel stays can be reimbursed up to $275 per night, excluding taxes and mandatory hotel fees. More information about meals and lodging expenses can be found `here <https://blink.ucsd.edu/travel/travel-policy/meals-lodging/index.html>`_. If you choose to share a room with another lab member, only the lab member whose name appears on the receipt may submit the receipt for reimbursement.
+    Raid share - 
+2. :underline:`Receipts`: Keep all receipts for meals, lodging, and other travel expenses.
+3. :underline:`Bookings`: Ensure your hotel and flight reservations are booked in your name.
+
+**After your trip:**
+1. Please organize your receipts in the `reimbursement report <https://docs.google.com/spreadsheets/d/1gJxdq_XuJDynoe1ogz0oXi4LKm_Wp4tgGrSjdEPevM0>`_
+2. Scan your receipts separately, save them as PDF/JPG, and send them to me.
+
+As always, let Dorit know if you have any questions.
+
+
 Creating a poster
 ~~~~~~~~~~~~~~~~~
 Here are some helpful tips!
