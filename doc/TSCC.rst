@@ -13,12 +13,12 @@ Logging in
 ----------
 :code:`ssh <user>@login.tscc.sdsc.edu`
 
-* This will put you on a node such as `login1.sdsc.edu` or `login11.sdsc.edu` or `login2.sdsc.edu`.
+* This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
 The login nodes are often quite slow because there are too many users on them, and you're not supposed to run code that's
 at all computationally burdensome there. So if you want to use tscc as a workstation, you should immediately try to grab an
-interactive session. :code:`srun --partition=condo --pty --nodes=1 --ntasks-per-node=4 -t <n>:00:00 --wait=0 --qos=condo --export=ALL /bin/bash` where :code:`<n>` is the max
+interactive session. :code:`srun --partition=condo --account=ddp268 --pty --nodes=1 --ntasks-per-node=4 -t <n>:00:00 --wait=0 --qos=condo --export=ALL /bin/bash` where :code:`<n>` is the max
 number of hours you plan to work. That will wait till it can find a slot on the condo node and then log you into
 that node.
 
@@ -63,6 +63,7 @@ Example:
   #!/usr/bin/env bash
   #SBATCH --export ALL
   #SBATCH --partition <partition>
+  #SBATCH --account ddp268
   #SBATCH --qos <partition>
   #SBATCH --job-name <job_title>
   #SBATCH --nodes 1
