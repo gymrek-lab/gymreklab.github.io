@@ -27,9 +27,7 @@ If you prefer for Dorit to submit your reimbursement report, please follow these
 
 1. *Meals & Tips*: While traveling for business within the continental US for 1-29 days, you can be reimbursed for meal and tip expenses up to a daily maximum of $79.
 
-*Lodging*: Hotel stays can be reimbursed up to $275 per night, excluding taxes and mandatory hotel fees. More information about meals and lodging expenses can be found `here <https://blink.ucsd.edu/travel/travel-policy/meals-lodging/index.html>`_. If you choose to share a room with another lab member, only the lab member whose name appears on the receipt may submit the receipt for reimbursement.
-
-Raid share - 
+*Lodging*: Hotel stays can be reimbursed up to $275 per night, excluding taxes and mandatory hotel fees. If you choose to share a room with another lab member, only the lab member whose name appears on the receipt may submit the receipt for reimbursement. More information about meals and lodging expenses can be found `here <https://blink.ucsd.edu/travel/travel-policy/meals-lodging/index.html>`_.
 
 2. *Receipts*: Keep all receipts for meals, lodging, and other travel expenses.
 
