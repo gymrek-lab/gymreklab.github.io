@@ -85,6 +85,7 @@ Notes:
 
 * Aside from the first shebang line, SLURM will stop looking for settings after the first line that does not start with :code:`#SBATCH`.
   This includes blank lines and lines with comments.
+* The value for :code:`--account` is specific to our lab. If you aren't in our lab, you can use :code:`sacctmgr show assoc user=$USER format=account` to determine your lab's account.
 * Your job will be allocated memory in proportion to the number of processors your request. If you request 1 core and are assigned a node with 128GB
   of memory and 28 cores (the smaller of the two architectures of hotel nodes), your process will be allocated 128GB/28 = 4.57GB of memory and will
   be killed it if it exceeds that limit. If you want more memory, request more processors per node accordingly. (e.g. :code:`ppn=4`)
