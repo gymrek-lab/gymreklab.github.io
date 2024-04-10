@@ -100,7 +100,7 @@ Notes:
 * The value for :code:`--account` is specific to our lab. If you aren't in our lab, you can use :code:`sacctmgr show assoc user=$USER format=account` to determine your lab's account.
 * If you don't use the "--mem" option to specify how much memory you need, your job will be allocated 1 GB of memory per core.
   So, for example, if you ask for 4 CPU cores in your job but don't specify the memory, then by default you will get 4 GB of memory.
-  If you want more memory, you can either request more processors (e.g. :code:`--cpus-per-task 4`) or explicitly specify the memory (e.g. :code:`--mem 2G `).
+  If you want more memory, you can either request more processors (ex: :code:`--cpus-per-task 4`) or explicitly specify the memory (ex: :code:`--mem 2G`).
   Note that the lab will be charged according to both the number of processors and amount of memory that you request, so it's best to request as few of both resources as you need.
   For more details about job charging, refer to the `TSCC website <https://www.sdsc.edu/support/user_guides/tscc.html#condo_job_charging>`__.
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
