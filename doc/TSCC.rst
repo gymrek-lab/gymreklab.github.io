@@ -111,26 +111,20 @@ Partitions
   TODO: check whether we still have a home parition
 
 We have access to two partitions: :code:`condo` and :code:`hotel`. There are two types of hotel nodes: (1) 36 cores, 192 GB of memory; (2) 28 cores, 128 GB of memory. Nodes on :code:`condo` have varying specifications.
-TSCC 1.0 had a :code:`home` partition that was accessible by only members of our lab. On TSCC 2.0, this has been removed. You should use :code:`condo` instead.
+
+Note: TSCC 1.0 had a :code:`home` partition that was accessible by only members of our lab. On TSCC 2.0, this has been removed. You should use :code:`condo` instead.
 
 First consider :code:`condo`
 
 * We have a large number of compute hours here, and they are cheap
-* Jobs are limited to 8 hrs.
+* Jobs may be `preempted <https://slurm.schedmd.com/preempt.html>`_ after 8 hrs but can run for up to 14 days
 * The architectures of condo nodes vary wildly - if you might hit the mem/core or cores/node limit, go to hotel where (last I checked) you always get at least 4.57 GB memory/node and at least up to 28 cores/node.
-
-If you have a single long running job, consider :code:`home`
-
-* The node we own.
-* People use this for interactive sessions, please do not take all the cores on this node for you processes.
-* Jobs have no time limit.
-* Jobs are guaranteed to start in 8 hours.
 
 If you need more than 8 hours, consider :code:`hotel`:
 
 * Compute hours are more expensive here than on :code:`condo`
-* Max walltime is 1 week (168 hours)
-If your job(s) need many processors or a lot of memory on :code:`hotel`, please send a message in the :code:`#computing` channel of our Slack to give everyone a heads up. At any given time, members of our lab cannot **collectively** use more than 36 processors and 192 GB of memory on :code:`hotel`. To check whether these limits have changed, you can run the following.
+* Max walltime is 7 days (168 hours)
+* If your job(s) need many processors or a lot of memory on :code:`hotel`, please send a message in the :code:`#computing` channel of our Slack to give everyone a heads up. At any given time, members of our lab cannot **collectively** use more than 36 processors and 192 GB of memory on :code:`hotel`. To check whether these limits have changed, you can run the following.
 
 .. code-block:: bash
 
