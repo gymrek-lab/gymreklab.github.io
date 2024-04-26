@@ -225,6 +225,10 @@ Managing funds
 :code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
 so I'm not actually sure what this output means.
 
+Using jupyter
+-------------
+Follow `these instructions <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_ to set up and run Jupyter from TSCC.
+
 Using snakemake
 ---------------
 To integrate Snakemake with SLURM, you must first install the SLURM snakemake executor along with Snakemake. Create a new environment with both packages:
