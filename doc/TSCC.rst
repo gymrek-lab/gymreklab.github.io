@@ -7,7 +7,7 @@ Official docs
 -------------
 * The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
 * The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
-* THe `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
+* The `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
 
 Logging in
 ----------
@@ -224,3 +224,38 @@ Managing funds
 --------------
 :code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
 so I'm not actually sure what this output means.
+
+Using snakemake
+---------------
+To integrate Snakemake with SLURM, you must first install the SLURM snakemake executor along with Snakemake. Create a new environment with both packages:
+
+.. code-block:: bash
+  conda create -y -n snakemake -c conda-forge -c bioconda snakemake-executor-plugin-slurm 'snakemake>=8'
+  conda activate snakemake
+
+When structuring your Snakemake project, please consider using `the official recommended directory structure <https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility>`_ and `template <https://github.com/snakemake-workflows/snakemake-workflow-template>`_.
+
+Within the top level directory of the project (where the :code:`config/` and :code:`workflow/` directories are located), I recommend creating a :code:`profile/` directory. Inside that folder, create another directory called :code:`slurm` and a file named :code:`config.yaml`.
+You can store default arguments/options to :code:`snakemake` in the :code:`config.yaml` file. For SLURM, I suggest including the following lines:
+
+.. code-block::
+  jobs: 32
+  cores: 32
+  use-conda: true
+  latency-wait: 60
+  keep-going: true
+  conda-frontend: conda
+
+  executor: slurm
+  default-resources:
+    slurm_account: ddp268
+    slurm_partition: condo
+    runtime: 30
+    nodes: 1
+    slurm_extra: "'--qos=condo'"
+
+This will configure Snakemake to automatically submit the steps of your workflow as SLURM jobs. It will ensure that at most 32 jobs are running simultaneously and at most 32 CPUs are in use simultaneously. You can increase these values if you'd like, but please be mindful of requesting too many resources at once so that you're not impacting the work of others in our lab.
+
+By default, this configuration will submit jobs to the :code:`condo` queue and allocate 30 minutes for each job. But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them as resources in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
+
+Please note that if you try to run Snakemake from a login node, it will simply hang indefinitely. For this reason, I recommend creating a :code:`.slurm` batch script for running Snakemake according to the instructions above. You can also run it from an interactive node.
