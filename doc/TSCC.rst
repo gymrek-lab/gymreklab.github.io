@@ -235,7 +235,7 @@ Get Slack notifications when your jobs finish
 
     echo 'slack(){ curl -X POST --data-urlencode "payload={\"text\": \"$1\"}" <webhook-url>; } && export -f slack' >> ~/.bashrc
 
-4. Close and re-open your terminal / ssh connection or run :code:`source ~/.bashrc`
+4. Close and re-open your terminal / ssh connection or run :code:`source ~/.bashrc`. You should now be able to send yourself a Slack message by typing :code:`slack 'hello world'`
 5. Create your job script and make sure to specify :code:`#SBATCH --export ALL` at the top. At the end of your job script, add something like the following.
 
   .. code-block:: bash
