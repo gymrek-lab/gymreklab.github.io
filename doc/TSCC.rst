@@ -227,13 +227,13 @@ so I'm not actually sure what this output means.
 
 Get Slack notifications when your jobs finish
 ---------------------------------------------
-1. Add `Slack's Incoming Webhooks App <https://slack.com/apps/A0F7XDUAZ-incoming-webhooks>`_ to your workspace and during the set up, make the app post to your own personal channel (ex: :code`@arya`_).
+1. Add `Slack's Incoming Webhooks App <https://slack.com/apps/A0F7XDUAZ-incoming-webhooks>`_ to your workspace and during the set up, make the app post to your own personal channel (ex: :code:`@arya`).
 2. Once you've added the app, make note of the webhook URL it provides.
-3. Execute the following command to define a command named :code:`slack` in your :code:`~/.bashrc`, making sure to replace :code:`<webhook-url>` with the webhook URL from step 2.
+3. Execute the following command to define a command named :code:`slack` in your :code:`~/.bashrc` file, making sure to replace :code:`WEBHOOK_URL` with the webhook URL from step 2.
 
   .. code-block:: bash
 
-    echo 'slack(){ curl -X POST --data-urlencode "payload={\"text\": \"$1\"}" <webhook-url>; } && export -f slack' >> ~/.bashrc
+    echo 'slack(){ curl -X POST --data-urlencode "payload={\"text\": \"$1\"}" WEBHOOK_URL; } && export -f slack' >> ~/.bashrc
 
 4. Close and re-open your terminal / ssh connection or run :code:`source ~/.bashrc`. You should now be able to send yourself a Slack message by typing :code:`slack 'hello world'`
 5. Create your job script and make sure to specify :code:`#SBATCH --export ALL` at the top. At the end of your job script, add something like the following.
