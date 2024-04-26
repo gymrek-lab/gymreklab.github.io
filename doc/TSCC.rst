@@ -62,6 +62,8 @@ You cannot access Snorlax files from TSCC, so if you want to move files to/from 
 There are some wonky permissions issues - if you write files into the tscc drive while on Snorlax, your user on tscc may not
 be able to modify those files.
 
+.. _tscc-submitting-jobs:
+
 Submitting jobs
 ---------------
 Jobs are scripts that the cluster runs for you. 
@@ -88,7 +90,7 @@ Example:
   # ... do something ... 
 
 Google "SLURM" to look up more information about these flags. In terms of naming conventions:
-tscc uses the job scheduler called SLURM and `sbatch` is the name of the command to submit a job to `SLURM`
+TSCC uses the job scheduler called SLURM and `sbatch` is the name of the command to submit a job to `SLURM`
 
 The general workflow is to submit many jobs using the same SLURM file, each with slightly different environment variable inputs
 telling them to work on different input files. See below.
@@ -111,9 +113,6 @@ Notes:
 
 Partitions
 ^^^^^^^^^^
-..
-  TODO: check whether we still have a home parition
-
 We have access to two partitions: :code:`condo` and :code:`hotel`. There are two types of hotel nodes: (1) 36 cores, 192 GB of memory; (2) 28 cores, 128 GB of memory. Nodes on :code:`condo` have varying specifications.
 
 Note: TSCC 1.0 had a :code:`home` partition that was accessible by only members of our lab. On TSCC 2.0, this has been removed. You should use :code:`condo` instead.
@@ -220,13 +219,8 @@ Debugging jobs the OS killed
 
 The OS normally kills jobs because you ran over your memory limit.
 
-Managing funds
---------------
-:code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
-so I'm not actually sure what this output means.
-
 Get Slack notifications when your jobs finish
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Add `Slack's Incoming Webhooks App <https://slack.com/apps/A0F7XDUAZ-incoming-webhooks>`_ to your workspace and during the set up, make the app post to your own personal channel (ex: :code:`@arya`).
 2. Once you've added the app, make note of the webhook URL it provides.
 3. Execute the following command to define a command named :code:`slack` in your :code:`~/.bashrc` file, making sure to replace :code:`WEBHOOK_URL` with the webhook URL from step 2.
@@ -242,15 +236,21 @@ Get Slack notifications when your jobs finish
 
     slack "your job terminated with exit status $?"
 
-Using jupyter
+Managing funds
+--------------
+:code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
+so I'm not actually sure what this output means.
+
+Using Jupyter
 -------------
 Looking for a way to edit code that you've stored on TSCC?
-Before considering :code:`jupyter`, you may want to try `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
+
+Before considering Jupyter, you may want to try `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
 
 Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 Make sure to perform any :code:`conda` installations on an interactive node. Also, please note that you will need to perform a few extra steps to use :code:`jupyter` on TSCC, as described in the section `Usage on an HPC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html#usage-on-an-hpc>`_
 
-Using snakemake
+Using Snakemake
 ---------------
 To integrate Snakemake with SLURM, you must first install the SLURM Snakemake executor along with Snakemake.
 Create a new environment with both packages:
@@ -295,5 +295,53 @@ But you can override any of the values in the :code:`default-resources` section 
 Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_
 
 Please note that if you try to run Snakemake from a login node, it will simply hang indefinitely.
-For this reason, I recommend creating a :code:`.slurm` batch script for running Snakemake according to the instructions above.
-You can also run it from an interactive node.
+For this reason, I recommend running Snakemake from an interactive node or creating a :code:`.slurm` batch script for running Snakemake according to :ref:`the instructions above <tscc-submitting-jobs>`.
+Here's an example of one.
+
+.. code-block:: bash
+
+  #!/usr/bin/env bash
+  #SBATCH --export ALL
+  #SBATCH --partition condo
+  #SBATCH --account ddp268
+  #SBATCH --qos condo
+  #SBATCH --job-name smk
+  #SBATCH --nodes 1
+  #SBATCH --ntasks 1
+  #SBATCH --cpus-per-task 1
+  #SBATCH --time 1:00:00
+  #SBATCH --output /dev/null
+
+  # An example bash script demonstrating how to run the entire snakemake pipeline
+  # This script creates a log file in the execution directory
+
+  # clear anything left over in the log file
+  echo ""> log
+
+  # try to find and activate the snakemake conda env if we need it
+  if ! command -v 'snakemake' &>/dev/null && \
+    command -v 'conda' &>/dev/null && \
+    [ "$CONDA_DEFAULT_ENV" != "snakemake" ] && \
+    conda info --envs | grep "$CONDA_ROOT/snakemake" &>/dev/null; then
+          echo "Snakemake not detected. Attempting to switch to snakemake environment." >> log
+          eval "$(conda shell.bash hook)"
+          conda activate snakemake
+  fi
+
+  # Pass any parameters to this script as additional arguments to snakemake via "$@"
+  # For example, to execute a dry-run: 'sbatch smk.slurm -np' instead of 'sbatch smk.slurm'
+  snakemake \
+  --workflow-profile profile/slurm \
+  --rerun-trigger {mtime,params,input} \
+  "$@" &>log
+
+  exit_code="$?"
+  if command -v 'slack' &>/dev/null; then
+      if [ "$exit_code" -eq 0 ]; then
+          slack "snakemake finished successfully" &>/dev/null
+      else
+          slack "snakemake failed" &>/dev/null
+          slack "$(tail -n4 log)" &>/dev/null
+      fi
+  fi
+  exit "$exit_code"
