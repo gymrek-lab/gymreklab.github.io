@@ -234,6 +234,7 @@ Using snakemake
 To integrate Snakemake with SLURM, you must first install the SLURM snakemake executor along with Snakemake. Create a new environment with both packages:
 
 .. code-block:: bash
+
   conda create -y -n snakemake -c conda-forge -c bioconda snakemake-executor-plugin-slurm 'snakemake>=8'
   conda activate snakemake
 
@@ -243,6 +244,7 @@ Within the top level directory of the project (where the :code:`config/` and :co
 You can store default arguments/options to :code:`snakemake` in the :code:`config.yaml` file. For SLURM, I suggest including the following lines:
 
 .. code-block::
+
   jobs: 32
   cores: 32
   use-conda: true
