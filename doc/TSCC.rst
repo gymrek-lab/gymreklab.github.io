@@ -88,7 +88,7 @@ Example:
   # ... do something ... 
 
 Google "SLURM" to look up more information about these flags. In terms of naming conventions:
-tscc uses the job scheduler called SLURM and `sbatch` is the name of the command to submit a job to `SLURM`.
+tscc uses the job scheduler called SLURM and `sbatch` is the name of the command to submit a job to `SLURM`
 
 The general workflow is to submit many jobs using the same SLURM file, each with slightly different environment variable inputs
 telling them to work on different input files. See below.
@@ -98,7 +98,7 @@ Notes:
 * Aside from the first shebang line, SLURM will stop looking for settings after the first line that does not start with :code:`#SBATCH`.
   This includes blank lines and lines with comments.
 * The value for :code:`--account` is specific to our lab. If you aren't in our lab, you can use :code:`sacctmgr show assoc user=$USER format=account` to determine your lab's account.
-* If you don't use the "--mem" option to specify how much memory you need, your job will be allocated 1 GB of memory per core.
+* If you don't use the :code:`--mem` option to specify how much memory you need, your job will be allocated 1 GB of memory per core.
   So, for example, if you ask for 4 CPU cores in your job but don't specify the memory, then by default you will get 4 GB of memory.
   If you want more memory, you can either request more processors (ex: :code:`--cpus-per-task 4`) or explicitly specify the memory (ex: :code:`--mem 2G`).
   Note that the lab will be charged according to both the number of processors and amount of memory that you request, so it's best to request as few of both resources as you need.
@@ -231,22 +231,22 @@ Get Slack notifications when your jobs finish
 2. Once you've added the app, make note of the webhook URL it provides.
 3. Execute the following command to define a command named :code:`slack` in your :code:`~/.bashrc`, making sure to replace :code:`<webhook-url>` with the webhook URL from step 2.
 
-  ..code-block:: bash
+  .. code-block:: bash
 
     echo 'slack(){ curl -X POST --data-urlencode "payload={\"text\": \"$1\"}" <webhook-url>; } && export -f slack' >> ~/.bashrc
 
 4. Close and re-open your terminal / ssh connection or run :code:`source ~/.bashrc`
 5. Create your job script and make sure to specify :code:`#SBATCH --export ALL` at the top. At the end of your job script, add something like the following.
 
-  ..code-block:: bash
+  .. code-block:: bash
 
     slack "your job terminated with exit status $?"
 
 Using jupyter
 -------------
-Looking for a way to edit code that you've stored on TSCC? Before considering :code:`jupyter`, you may also want to `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up.
+Looking for a way to edit code that you've stored on TSCC? Before considering :code:`jupyter`, you may want to try `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
 
-Otherwise, you can follow `these instructions <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_ to set up and run Jupyter from TSCC.
+Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 
 Using snakemake
 ---------------
@@ -259,7 +259,7 @@ To integrate Snakemake with SLURM, you must first install the SLURM Snakemake ex
 
 When structuring your Snakemake project, please consider using `the official recommended directory structure <https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility>`_ and `template <https://github.com/snakemake-workflows/snakemake-workflow-template>`_.
 
-Within the top level directory of the project (where the :code:`config/` and :code:`workflow/` directories are located), I recommend creating a :code:`profile/` directory. Inside that folder, create another directory called :code:`slurm` and a file named :code:`config.yaml`. When executing Snakemake, you can specify the path to this profile via :code:`--workflow-profile profile/slurm`.
+Within the top level directory of the project (where the :code:`config/` and :code:`workflow/` directories are located), I recommend creating a :code:`profile/` directory. Inside that folder, create another directory called :code:`slurm` and a file named :code:`config.yaml`. When executing Snakemake, you can specify the path to this profile via :code:`--workflow-profile profile/slurm`
 
 You should store default arguments/options to :code:`snakemake` in the :code:`config.yaml` file. For SLURM, I suggest including the following lines:
 
