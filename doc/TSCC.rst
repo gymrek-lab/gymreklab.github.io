@@ -225,13 +225,32 @@ Managing funds
 :code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
 so I'm not actually sure what this output means.
 
+Get Slack notifications when your jobs finish
+---------------------------------------------
+1. Add `Slack's Incoming Webhooks App <https://slack.com/apps/A0F7XDUAZ-incoming-webhooks>`_ to your workspace and during the set up, make the app post to your own personal channel (ex: :code`@arya`_).
+2. Once you've added the app, make note of the webhook URL it provides.
+3. Execute the following command to define a command named :code:`slack` in your :code:`~/.bashrc`, making sure to replace :code:`<webhook-url>` with the webhook URL from step 2.
+
+  ..code-block:: bash
+
+    echo 'slack(){ curl -X POST --data-urlencode "payload={\"text\": \"$1\"}" <webhook-url>; } && export -f slack' >> ~/.bashrc
+
+4. Close and re-open your terminal / ssh connection or run :code:`source ~/.bashrc`
+5. Create your job script and make sure to specify :code:`#SBATCH --export ALL` at the top. At the end of your job script, add something like the following.
+
+  ..code-block:: bash
+
+    slack "your job terminated with exit status $?"
+
 Using jupyter
 -------------
-Follow `these instructions <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_ to set up and run Jupyter from TSCC.
+Looking for a way to edit code that you've stored on TSCC? Before considering :code:`jupyter`, you may also want to `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up.
+
+Otherwise, you can follow `these instructions <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_ to set up and run Jupyter from TSCC.
 
 Using snakemake
 ---------------
-To integrate Snakemake with SLURM, you must first install the SLURM snakemake executor along with Snakemake. Create a new environment with both packages:
+To integrate Snakemake with SLURM, you must first install the SLURM Snakemake executor along with Snakemake. Create a new environment with both packages:
 
 .. code-block:: bash
 
@@ -240,8 +259,9 @@ To integrate Snakemake with SLURM, you must first install the SLURM snakemake ex
 
 When structuring your Snakemake project, please consider using `the official recommended directory structure <https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility>`_ and `template <https://github.com/snakemake-workflows/snakemake-workflow-template>`_.
 
-Within the top level directory of the project (where the :code:`config/` and :code:`workflow/` directories are located), I recommend creating a :code:`profile/` directory. Inside that folder, create another directory called :code:`slurm` and a file named :code:`config.yaml`.
-You can store default arguments/options to :code:`snakemake` in the :code:`config.yaml` file. For SLURM, I suggest including the following lines:
+Within the top level directory of the project (where the :code:`config/` and :code:`workflow/` directories are located), I recommend creating a :code:`profile/` directory. Inside that folder, create another directory called :code:`slurm` and a file named :code:`config.yaml`. When executing Snakemake, you can specify the path to this profile via :code:`--workflow-profile profile/slurm`.
+
+You should store default arguments/options to :code:`snakemake` in the :code:`config.yaml` file. For SLURM, I suggest including the following lines:
 
 .. code-block::
 
@@ -254,14 +274,14 @@ You can store default arguments/options to :code:`snakemake` in the :code:`confi
 
   executor: slurm
   default-resources:
+    nodes: 1
+    runtime: 30
     slurm_account: ddp268
     slurm_partition: condo
-    runtime: 30
-    nodes: 1
     slurm_extra: "'--qos=condo'"
 
 This will configure Snakemake to automatically submit the steps of your workflow as SLURM jobs. It will ensure that at most 32 jobs are running simultaneously and at most 32 CPUs are in use simultaneously. You can increase these values if you'd like, but please be mindful of requesting too many resources at once so that you're not impacting the work of others in our lab.
 
-By default, this configuration will submit jobs to the :code:`condo` queue and allocate 30 minutes for each job. But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them as resources in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
+By default, this configuration will submit jobs to the :code:`condo` queue and allocate 30 minutes for each job. But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
 
 Please note that if you try to run Snakemake from a login node, it will simply hang indefinitely. For this reason, I recommend creating a :code:`.slurm` batch script for running Snakemake according to the instructions above. You can also run it from an interactive node.
