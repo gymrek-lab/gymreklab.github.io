@@ -259,7 +259,7 @@ Make sure to perform any :code:`conda` installations on an interactive node. Als
 Using graphical applications
 ----------------------------
 It's easy to execute applications with graphics (like IGV or matplotlib) on TSCC!
-Graphical applications typically rely on a port number defined in an environment variabled called :ref:`$DISPLAY`.
+Graphical applications typically rely on a port number defined in an environment variabled called :code:`$DISPLAY`.
 When you run IGV, it will attach itself to this port and send you graphical messages according to a standard called *X11*.
 On the receiving end, your laptop or local computer interprets these messages through the port using an application called *an X11 client*.
 The X11 client will use the messages to figure out how to display your IGV window on your computer.
