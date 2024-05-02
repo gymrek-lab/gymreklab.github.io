@@ -11,10 +11,16 @@ Official docs
 
 Logging in
 ----------
-:code:`ssh <user>@login.tscc.sdsc.edu`
+.. code-block:: bash
+
+  ssh <user>@login.tscc.sdsc.edu
 
 * This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
+
+* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`
+
+* Windows users can use `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_
 
 The login nodes are often quite slow because there are too many users on them, and you're not supposed to run code that's
 at all computationally burdensome there. So if you want to use tscc as a workstation, you should immediately try to grab an
@@ -249,6 +255,32 @@ Before considering Jupyter, you may want to try `VSCode's Remote Development Ext
 
 Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 Make sure to perform any :code:`conda` installations on an interactive node. Also, please note that you will need to perform a few extra steps to use :code:`jupyter` on TSCC, as described in the section `Usage on an HPC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html#usage-on-an-hpc>`_
+
+Using graphical applications
+----------------------------
+It's easy to execute applications with graphics (like IGV or matplotlib) on TSCC!
+Graphical applications typically rely on a port number defined in an environment variabled called :ref:`$DISPLAY`.
+When you run IGV, it will attach itself to this port and send you graphical messages according to a standard called *X11*.
+On the receiving end, your laptop or local computer interprets these messages through the port using an application called *an X11 client*.
+The X11 client will use the messages to figure out how to display your IGV window on your computer.
+
+..
+  TODO: figure out how to set up an X11 client on Macs
+
+1. First, you'll need to install and set up an X11 client on your laptop. Windows users relying on Windows Subsystem Linux can skip this step, since `WSL has a built-in X11 client <https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps>`_.
+2. When ssh-ing into TSCC, make sure to forward the :code:`$DISPLAY` variable through the tunnel by passing the :code:`-X` parameter to TSCC.
+
+.. code-block:: bash
+
+  ssh -X <user>@login.tscc.sdsc.edu
+
+3. When grabbing an interactive node, make sure to forward the :code:`$DISPLAY` variable to the node by passing the :code:`--x11` parameter to :code:`srun`.
+
+.. code-block:: bash
+
+  srun --x11 ...
+
+4. Now, just run your graphical application on the interactive node! A window should pop up when your display is ready.
 
 Using Snakemake
 ---------------
