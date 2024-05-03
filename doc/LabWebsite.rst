@@ -41,7 +41,9 @@ Editing pages on GitHub
 +++++++++++++++++++++++
 1. First, log into GitHub and navigate to our GitHub repository here: https://github.com/gymrek-lab/gymreklab.github.io/tree/master/doc
 
-2. .. dropdown:: If you haven't already, create a new branch so that your changes do not conflict with anyone else's
+2. If you haven't already, create a new branch so that your changes do not conflict with anyone else's
+
+  .. dropdown:: Detailed steps
 
     a. Click on "master" in the menu on the left side
     b. Type your new branch name in the search box
@@ -59,37 +61,45 @@ Editing pages on GitHub
 
   If you create a new page, make sure to list it in our table of contents in the :code:`doc/index.rst` file.
 
-5. Save your changes to GitHub:
+5. Save your changes to GitHub.
 
-  a. Click on the "Source Control" tab in the menu on the right
-  b. Add a short commit message that describes your changes
-  c. Click "Commit and Push"
+  .. dropdown:: Detailed steps
 
-  .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/github_commit_and_push.png
+    a. Click on the "Source Control" tab in the menu on the right
+    b. Add a short commit message that describes your changes
+    c. Click "Commit and Push"
+
+    .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/github_commit_and_push.png
 
 6. Feel free to make more changes and commits as needed. Once you're ready, open a pull request by choosing your branch from the dropdown under "compare: master":
 
   https://github.com/gymrek-lab/gymreklab.github.io/compare
 
-  .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/creating_pr.png
+  .. dropdown:: Details
+
+    .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/creating_pr.png
 
 7. Click "Create pull request" and then add an informative title and description of your changes. Then click "Create pull request" again.
 
-8. Ask someone to review your pull request:
+8. Ask someone to review your pull request.
 
-  a. Click on the gear icon in the top/right corner
-  b. Start typing the GitHub username of someone capable of giving you helpful feedback on your changes
-  c. Choose that person from the search results
+  .. dropdown:: Detailed steps
 
-  .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/choosing_a_reviewer.png
+    a. Click on the gear icon in the top/right corner
+    b. Start typing the GitHub username of someone capable of giving you helpful feedback on your changes
+    c. Choose that person from the search results
+
+    .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/choosing_a_reviewer.png
 
 9. A bot will automatically build a preview of the wiki with your changes. If the build succeeds, you should see a green check mark next to your latest commit. Otherwise, there should be a red X.
 
-  If your build succeeded, you can view the built preview by clicking on the green check mark and then the "Details" link
+  .. dropdown:: More details
 
-  Otherwise, you can view a log of the error messages by clicking on the red X. If the build failed, you should add another commit to fix it.
+    If your build succeeded, you can view the built preview by clicking on the green check mark and then the "Details" link
 
-  .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/previewing_the_docs.png
+    Otherwise, you can view a log of the error messages by clicking on the red X. If the build failed, you should add another commit to fix it.
+
+    .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/previewing_the_docs.png
 
 10. Once the build succeeds and a reviewer has approved your pull request, scroll down to the bottom of the pull request and click "Merge". You're done! Just wait a few minutes for your changes to go live.
 
