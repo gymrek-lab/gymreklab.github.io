@@ -43,9 +43,9 @@ Editing pages on GitHub
 
 2. If you haven't already, create a new branch so that your changes do not conflict with anyone else's:
 
-  a. Click on "main" in the menu on the left side
+  a. Click on "master" in the menu on the left side
   b. Type your new branch name in the search box
-  c. Then click "Create branch from main"
+  c. Then click "Create branch from master"
 
   For example, to create a new branch named tutorial:
 
@@ -67,7 +67,7 @@ Editing pages on GitHub
 
   .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/github_commit_and_push.png
 
-6. Feel free to make more changes and commits as needed. Once you're ready, open a pull request by choosing your branch from the dropdown under "compare: main":
+6. Feel free to make more changes and commits as needed. Once you're ready, open a pull request by choosing your branch from the dropdown under "compare: master":
 
   https://github.com/gymrek-lab/gymreklab.github.io/compare
 
