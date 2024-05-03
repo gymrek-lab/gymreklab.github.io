@@ -7,7 +7,7 @@ Main lab website
 The lab website (gymreklab.com) is generated using Github pages from this repository: https://github.com/gymrek-lab/gymreklab.github.io
 
 If you are not yet part of our GitHub organization, you should :ref:`fork our repository and add your photo to the lab webpage <labwebsite-add-your-photo>`.
-Once your pull request is approved and merged, you will automatically become added to our GitHub org and will no longer need to fork this repository to make edits to it.
+Once your pull request is approved and merged, someone will add you to our GitHub org and you will no longer need to fork this repository to make edits to it.
 
 .. _labwebsite-add-your-photo:
 
@@ -28,10 +28,33 @@ Below is the workflow for adding your photo to the lab webpage. Follow a similar
 
 4. On the home page of your repo, click "Pull request" to submit a pull request which someone can then review and merge to the final site.
 
+  In the body of your pull request, please request to be added to `our GitHub organization <https://github.com/gymrek-lab>`_ if aren't already a member.
+
 Ideally, if you're doing more than minor edits, first preview changes locally using the steps below before submitting a pull request.
 
-Making edits to the internal lab website
-----------------------------------------
+Making changes to gymreklab.com
++++++++++++++++++++++++++++++++
+
+To make edits to the main website, first clone the repo to your local computer.
+
+.. code-block:: bash
+
+   git clone https://github.com/gymrek-lab/gymreklab.github.io/
+   cd gymreklab.github.io/
+
+You'll need to have jekyll installed (https://jekyllrb.com/docs/installation/).
+
+Then type
+
+.. code-block:: bash
+
+   bundle exec jekyll build
+   bundle exec jekyll serve
+
+If all went well, you can navigate to: localhost:4000 in your web browser to preview the changes.
+
+Internal lab website
+--------------------
 
 The lab internal website (this site) is generated from the ``doc/`` folder within the repository https://github.com/gymrek-lab/gymreklab.github.io using sphinx. It is hosted on readthedocs.
 
@@ -108,23 +131,11 @@ Editing pages locally
 To build the docs locally, make sure sphinx is installed (e.g. :code:`conda install sphinx`) then within the :code:`doc/` directory, type :code:`make html`. This 
 will build the html files in the :code:`_build/` directory, which you can preview them in your web browser.
 
-Making changes to gymreklab.com
--------------------------------
+Creating a repository in our GitHub organization
+------------------------------------------------
 
-To make edits to the main website, first clone the repo to your local computer.
+Creating a repository in `our GitHub organization <https://github.com/gymrek-lab>`_ allows you to request code reviews from anyone in the lab! It also ensures that future lab members have proper permissions to maintain your code once you leave.
 
-.. code-block:: bash
+If you've already created a repository outside of the lab's GitHub org, you can still transfer ownership to our org by following `these directions <https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository#transferring-a-repository-owned-by-your-personal-account>`_.
 
-   git clone https://github.com/gymrek-lab/gymreklab.github.io/
-   cd gymreklab.github.io/
-
-You'll need to have jekyll installed (https://jekyllrb.com/docs/installation/).
-
-Then type
-
-.. code-block:: bash
-
-   bundle exec jekyll build
-   bundle exec jekyll serve
-
-If all went well, you can navigate to: localhost:4000 in your web browser to preview the changes.
+Please note that you will not have admin permissions to a repository that you transfer or create in our org, but you can ask Arya to create a maintenance team with administrator privileges for your repository.
