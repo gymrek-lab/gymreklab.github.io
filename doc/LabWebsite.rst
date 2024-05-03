@@ -118,13 +118,13 @@ Editing pages on GitHub
 
   .. dropdown:: More details
 
-    If your build succeeded, you can view the built preview by clicking on the green check mark and then the "Details" link. The built preview will be hosted at a temporary website. You can share the link to this site to get feedback from other people.
+    If your build succeeded, you can preview it by clicking on the green check mark and then the "Details" link. The preview will be hosted at a temporary website. You can share the link to this site to get feedback from other people.
 
     Otherwise, you can view a log of the error messages by clicking on the red X. If the build failed, you should add another commit to fix it.
 
     .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/previewing_the_docs.png
 
-10. Once the build succeeds and a reviewer has approved your pull request, scroll down to the bottom of the pull request and click "Merge". You're done! Just wait a few minutes for your changes to go live.
+10. Once the build succeeds and a reviewer has approved your pull request, scroll down to the bottom of the pull request and click "Merge pull request". You're done! Just wait a few minutes for your changes to go live.
 
 Editing pages locally
 +++++++++++++++++++++
@@ -138,4 +138,4 @@ Creating a repository in `our GitHub organization <https://github.com/gymrek-lab
 
 If you've already created a repository outside of the lab's GitHub org, you can still transfer ownership to our org by following `these directions <https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository#transferring-a-repository-owned-by-your-personal-account>`_.
 
-Please note that you will not have admin permissions to a repository that you transfer or create in our org, but you can ask Arya to create a maintenance team with administrator privileges for your repository.
+Please note that you will not have admin permissions to a repository that you transfer or create in our org, but you can ask `an org admin <https://github.com/orgs/gymrek-lab/teams/admins>`_ to create a maintenance team with administrator privileges for your repository.
