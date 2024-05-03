@@ -41,7 +41,7 @@ Editing pages on GitHub
 +++++++++++++++++++++++
 1. First, log into GitHub and navigate to our GitHub repository here: https://github.com/gymrek-lab/gymreklab.github.io/tree/master/doc
 
-2. If you haven't already, create a new branch so that your changes do not conflict with anyone else's:
+2. .. dropdown:: If you haven't already, create a new branch so that your changes do not conflict with anyone else's
 
   a. Click on "master" in the menu on the left side
   b. Type your new branch name in the search box
