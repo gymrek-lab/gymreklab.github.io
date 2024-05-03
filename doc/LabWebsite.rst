@@ -118,7 +118,7 @@ Editing pages on GitHub
 
   .. dropdown:: More details
 
-    If your build succeeded, you can view the built preview by clicking on the green check mark and then the "Details" link
+    If your build succeeded, you can view the built preview by clicking on the green check mark and then the "Details" link. The built preview will be hosted at a temporary website. You can share the link to this site to get feedback from other people.
 
     Otherwise, you can view a log of the error messages by clicking on the red X. If the build failed, you should add another commit to fix it.
 
