@@ -43,13 +43,13 @@ Editing pages on GitHub
 
 2. .. dropdown:: If you haven't already, create a new branch so that your changes do not conflict with anyone else's
 
-  a. Click on "master" in the menu on the left side
-  b. Type your new branch name in the search box
-  c. Then click "Create branch from master"
+    a. Click on "master" in the menu on the left side
+    b. Type your new branch name in the search box
+    c. Then click "Create branch from master"
 
-  For example, to create a new branch named tutorial:
+    For example, to create a new branch named tutorial:
 
-  .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/creating_new_github_branch.png
+    .. image:: https://raw.githubusercontent.com/bioinfo-ucsd/wiki/3f99ade31c5f2daaaed93cf00d1b67980a9e28da/wiki/images/creating_new_github_branch.png
 
   If you've already created a new branch, you can instead switch to it by selecting it from the search menu.
 
