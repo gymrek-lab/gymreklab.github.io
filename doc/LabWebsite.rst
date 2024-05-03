@@ -128,8 +128,8 @@ Editing pages on GitHub
 
 Editing pages locally
 +++++++++++++++++++++
-To build the docs locally, make sure sphinx is installed (e.g. :code:`conda install sphinx`) then within the :code:`doc/` directory, type :code:`make html`. This 
-will build the html files in the :code:`_build/` directory, which you can preview them in your web browser.
+To build the docs locally, make sure sphinx is installed (e.g. :code:`conda install sphinx`) then within the :code:`doc/` directory, type :code:`make html`.
+This will build the html files in the :code:`_build/` directory. You can then preview them in your web browser.
 
 Creating a repository in our GitHub organization
 ------------------------------------------------
