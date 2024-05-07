@@ -246,6 +246,16 @@ Get Slack notifications when your jobs finish
 
     slack "your job terminated with exit status $?"
 
+Installing software
+-------------------
+The best practice is for each user of TSCC to use :code:`Miniconda ("Miniconda3 Linux 64-bit") <https://docs.anaconda.com/free/miniconda/#latest-miniconda-installer-links>`_ to install software. You can install it in your home directory.
+
+If you are feeling lazy, you can also use :code:`module` system to load preconfigured software tools.
+Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
+Please note that software available through the module system is usually out of date and cannot be easily updated.
+It's also unlikely that your collaborators/reviewers will be able to figure out which versions of the software you used.
+For these reasons, we do not recommend using the :code:`module` system.
+
 Managing funds
 --------------
 :code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
