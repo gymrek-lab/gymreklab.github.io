@@ -3,7 +3,7 @@
 Ordering Food for the Lab
 =========================
 
-Choose from the catering locations listed below. Note that you'll need to get prior approval from Melissa for anywhere besides Domino's.
+Choose from the catering locations listed below. **Note that you'll need to get prior approval from Melissa** for anywhere besides Domino's.
 
 If you'd like to order from somewhere that isn't listed here, you'll also need to keep the order <$200, in addition to requesting prior approval from Melissa. Afterwards, please also update this page with instructions for ordering from that location, so that others can order from there again in the future.
 

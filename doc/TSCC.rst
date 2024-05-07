@@ -20,7 +20,7 @@ Logging in
 
 * To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`
 
-* Windows users can use `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_
+* If you are running Windows, you can use the `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_ to acquire a Linux terminal with SSH
 
 The login nodes are often quite slow because there are too many users on them, and you're not supposed to run code that's
 at all computationally burdensome there. So if you want to use tscc as a workstation, you should immediately try to grab an
@@ -48,9 +48,9 @@ Filesystem locations
 --------------------
 We have 100TB of space in :code:`/tscc/projects/ps-gymreklab`, which is where all of our files are stored. Your personal
 storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. Your home directory for config and the like is
-:code:`/tscc/nfs/home/<user>`, don't store any large files there, since you'll only get 100 GB there.
+:code:`/tscc/nfs/home/<user>`, but don't store any large files there, since you'll only get 100 GB there.
 
-If you need some extra space just for a few months, consider using your Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
+If you need some extra space just for a few months, consider using your personal Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
 
 Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Feel free to contribute to these as appropriate.
 
@@ -59,6 +59,10 @@ Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Fe
 * :code:`/tscc/projects/ps-gymreklab/resources/dbase` contains reference genome builds for humans and mice and other
   non-project-specific datasets
 * :code:`/tscc/projects/ps-gymreklab/resources/datasets` contains project-specific datasets that are shared across the lab.
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/ukbiobank` contains our local copy of the UK Biobank. You must have the proper Unix permissions to read these files. Ask Melissa to add you on the UK Biobank portal and then ask to be added to the :code:`gymreklab-ukb` group afterwards.
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/1000Genomes` contains files for the 1000 Genomes dataset
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/gtex` contains the GTEX dataset
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/pangenome` contains pangenome files
 
 Sharing files with Snorlax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -341,6 +345,7 @@ Here's an example of one.
   #SBATCH --nodes 1
   #SBATCH --ntasks 1
   #SBATCH --cpus-per-task 1
+  #SBATCH --mem 2G
   #SBATCH --time 1:00:00
   #SBATCH --output /dev/null
 
@@ -377,3 +382,22 @@ Here's an example of one.
       fi
   fi
   exit "$exit_code"
+
+Let's assume that you name the file :code:`run.bash` and mark it as executable with :code:`chmod u+x run.bash`.
+Then you can run it on an interactive node with:
+
+.. code-block:: bash
+
+  ./run.bash
+
+Or on a login node with:
+
+.. code-block:: bash
+
+  sbatch run.bash
+
+You can override the default :code:`sbatch` parameters or :code:`snakemake` profile values directly from the command-line. For example, you can perform `a dry-run <https://snakemake.readthedocs.io/en/stable/executing/cli.html#useful-command-line-arguments>`_ of the workflow like this:
+
+.. code-block:: bash
+
+  sbatch --time 0:10:00 run.bash -np
