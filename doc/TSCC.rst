@@ -118,8 +118,12 @@ Notes:
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
   passing). Instead, just submit more jobs
 * If :code:`<log_dir>` is mistyped, the job will not run. Double check that location before you submit.
+* There may be an optional shebang line at the start of the file, but no blank or other lines between the beginning and the :code:`#SBATCH` lines
 * None of the SLURM settings can access environment variables. If you want to set a value (e.g. the log directory) dynamically, you'll
   need to dynamically generate the SLURM file.
+* SLURM does not support using environment variables in :code:`#SBATCH` lines in scripts. If you wish to use
+  environment variables to set such values, you must pass them to the :code:`sbatch` command directly
+  (e.g. :code:`sbatch --output=$SOMEWHERE/out slurm_script.sh`) 
 
 Partitions
 ^^^^^^^^^^
@@ -205,14 +209,10 @@ Managing jobs
 Listing current jobs: :code:`squeue -u <user>`. To look at a single job, use :code:`squeue -j <jobid>`.
 To list maximum information about a job, use :code:`squeue -l -j <jobid>`
 
-* States are Q for queued, R for running, C for cancelled, and D for done. (if I recall correctly)
+The output flag determines the file that stdout is written to. This must be a file, not a directory.
+You can use some placeholders in the output location such as `%x` for job name and `%j` for job id.
 
-If your jobs are called :code:`22409804.tscc-mgr7.local` then :code:`22409804` is the job ID.
-
-To look at the stdout of a currently running job: :code:`qpeek <jobID>`. To look at the stderr
-:code:`qpeek -e <jobID>`. Once the jobs finish the stdout and stderr will be written to the files
-:code:`<log_dir>/<jobName>.o<jobID>` and :code:`<log_dir>/<jobName>.e<jobID>` respectively and 
-:code:`qpeek` will no longer work.
+Use the error flag to choose stderr's output location. If not specifie, it will go to the output location.
 
 To delete a running or queued job: :code:`scancel <jobID>`. To delete all running or queued jobs:
 :code:`scancel -u $USER`
@@ -221,13 +221,13 @@ To figure out why a job is queued use :code:`scontrol show job <your_job_number>
 
 Debugging jobs the OS killed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#. Look at the output file :code:`<log_dir>/<jobName>.o<jobID>`, the first line should contain the node
-   name. (e.g. :code:`Nodes: tscc-5-7`)
-#. ssh into the node (you can do this to any node, but if you run a large process the OS will kill you because
-   you have not been scheduled to that node)
-#. Scan the os logs for a killed process `dmesg -T | grep <jobid>`
-
-The OS normally kills jobs because you ran over your memory limit.
+#. Look at the standard output and standard error files. Any error messages should be there.
+#. ssh into the node. You can do this to any node, but if you run a large process the OS will kill you because
+  you have not been scheduled to that node. You can figure out the name of the node assigned to your job using
+  :code:`squeue` once the status of the job is "RUNNING".
+#. Scan the os logs for a killed process :code:`dmesg -T | grep <jobid>`
+#. If there are any messages stating that your job was "Killed", its usually a sign that you ran out of memory.
+  You can request more memory by resubmitting the job with the :code:`--mem` parameter. For ex: :code:`--mem 8G`
 
 Get Slack notifications when your jobs finish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
