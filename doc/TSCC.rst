@@ -14,6 +14,7 @@ Getting access
 Email tscc-support AT sdsc DOT edu from your UCSD email and CC Melissa. You can include the following in your email.
 
   Hello TSCC Support,
+
   I'm a new member of the Gymrek lab. Is there any chance that you can create a TSCC account for me and add me to the Gymrek Lab group (gymreklab-group:\*:11136)?
 
 Logging in
@@ -54,8 +55,8 @@ between interactive sessions, you should use :code:`tmux` or :ref:`screen <snorl
 Filesystem locations
 --------------------
 We have 100TB of space in :code:`/tscc/projects/ps-gymreklab`, which is where all of our files are stored. Your personal
-storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. Your home directory for config and the like is
-:code:`/tscc/nfs/home/<user>`, but don't store any large files there, since you'll only get 100 GB there.
+storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. (If this directory doesn't yet exist, feel free to create it with the :code:`mkdir` command.
+Your home directory for config and the like is :code:`/tscc/nfs/home/<user>`, but don't store any large files there, since you'll only get 100 GB there.
 
 If you need some extra space just for a few months, consider using your personal Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
 
