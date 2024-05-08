@@ -137,6 +137,10 @@ First consider :code:`condo`
 * Jobs may be `preempted <https://slurm.schedmd.com/preempt.html>`_ after 8 hrs but can run for up to 14 days
 * The architectures of condo nodes vary wildly - if you might hit the mem/core or cores/node limit, go to hotel where (last I checked) you always get at least 4.57 GB memory/node and at least up to 28 cores/node.
 
+.. warning::
+  As of the migration to TSCC 2.0 (in Jan 2024), our lab no longer has a hotel allocation!
+  But we will continue to include the :code:`hotel` documentation below in case we ever obtain an allocation again.
+
 If you need more than 8 hours, consider :code:`hotel`:
 
 * Compute hours are more expensive here than on :code:`condo`
@@ -268,8 +272,11 @@ For these reasons, we do not recommend using the :code:`module` system.
 
 Managing funds
 --------------
-:code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
-so I'm not actually sure what this output means.
+.. code-block:: bash
+
+  /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A ddp268
+
+Refer to `this page of the TSCC docs <https://www.sdsc.edu/support/user_guides/tscc.html#tscc_client>`_ for more info.
 
 Using Jupyter
 -------------
