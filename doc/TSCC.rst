@@ -9,6 +9,13 @@ Official docs
 * The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
 * The `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
 
+Getting access
+--------------
+Email tscc-support AT sdsc DOT edu from your UCSD email and CC Melissa. You can include the following in your email:
+
+  Hello TSCC Support,
+  I'm a new member of the Gymrek lab. Is there any chance that you can create a TSCC account for me and add me to the Gymrek Lab group (gymreklab-group:*:11136)?
+
 Logging in
 ----------
 .. code-block:: bash
