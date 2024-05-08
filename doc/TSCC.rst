@@ -11,10 +11,10 @@ Official docs
 
 Getting access
 --------------
-Email tscc-support AT sdsc DOT edu from your UCSD email and CC Melissa. You can include the following in your email:
+Email tscc-support AT sdsc DOT edu from your UCSD email and CC Melissa. You can include the following in your email.
 
   Hello TSCC Support,
-  I'm a new member of the Gymrek lab. Is there any chance that you can create a TSCC account for me and add me to the Gymrek Lab group (gymreklab-group:*:11136)?
+  I'm a new member of the Gymrek lab. Is there any chance that you can create a TSCC account for me and add me to the Gymrek Lab group (gymreklab-group:\*:11136)?
 
 Logging in
 ----------
