@@ -222,12 +222,9 @@ To figure out why a job is queued use :code:`scontrol show job <your_job_number>
 Debugging jobs the OS killed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #. Look at the standard output and standard error files. Any error messages should be there.
-#. ssh into the node. You can do this to any node, but if you run a large process the OS will kill you because
-  you have not been scheduled to that node. You can figure out the name of the node assigned to your job using
-  :code:`squeue` once the status of the job is "RUNNING".
+#. ssh into the node. You can do this to any node, but if you run a large process the OS will kill you because you have not been scheduled to that node. You can figure out the name of the node assigned to your job using :code:`squeue` once the status of the job is "RUNNING".
 #. Scan the os logs for a killed process :code:`dmesg -T | grep <jobid>`
-#. If there are any messages stating that your job was "Killed", its usually a sign that you ran out of memory.
-  You can request more memory by resubmitting the job with the :code:`--mem` parameter. For ex: :code:`--mem 8G`
+#. If there are any messages stating that your job was "Killed", its usually a sign that you ran out of memory. You can request more memory by resubmitting the job with the :code:`--mem` parameter. For ex: :code:`--mem 8G`
 
 Get Slack notifications when your jobs finish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,12 +245,25 @@ Get Slack notifications when your jobs finish
 
 Installing software
 -------------------
-The best practice is for each user of TSCC to use :code:`Miniconda ("Miniconda3 Linux 64-bit") <https://docs.anaconda.com/free/miniconda/#latest-miniconda-installer-links>`_ to install software. You can install it in your home directory.
+The best practice is for each user of TSCC to use Miniconda to install their own software. Run these commands to download, install, and configure Miniconda properly on TSCC:
+
+.. code-block:: bash
+
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  bash Miniconda3-latest-Linux-x86_64.sh -b -u
+  source ~/miniconda3/bin/activate
+  conda init bash
+  conda config --remove channels defaults
+  conda config --add channels nodefaults
+  conda config --add channels bioconda
+  conda config --add channels conda-forge
+  conda config --set channel_priority strict
 
 If you are feeling lazy, you can also use :code:`module` system to load preconfigured software tools.
 Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
 Please note that software available through the module system is usually out of date and cannot be easily updated.
 It's also unlikely that your collaborators/reviewers will be able to figure out which versions of the software you used.
+(Unlike with conda, there isn't a way to share your module environments with non-TSCC users.)
 For these reasons, we do not recommend using the :code:`module` system.
 
 Managing funds
