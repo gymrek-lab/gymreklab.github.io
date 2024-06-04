@@ -159,7 +159,12 @@ If you need more than 8 hours, consider :code:`hotel`:
 
     sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
 
-So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit.
+So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://sdsc.edu/support/user_guides/tscc.html#tscc_client>`_. For example, you can get a lot of information by using the `tscc_client`:
+
+... code-block:: bash
+
+    module load sdsc
+    tscc_client -A ddp268
 
 Env Variables and Submitting Many Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
