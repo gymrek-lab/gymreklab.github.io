@@ -5,27 +5,30 @@ Attending Conferences
 
 Policies in our lab
 ~~~~~~~~~~~~~~~~~~~
-The lab can fund one major conference per year (see below for some options).
-Before submitting any abstract or paper please be sure to first get my approval and that of any co-authors on the work. 
-If you are able to obtain funding help (e.g. travel awards available through GEPA or elsewhere, see more notes on this below) you may also attend an additional meeting. In many cases existing travel awards will not cover everything and I might be able to cover the difference, but you should check with me first.
-Conferences that are local and therefore do not require travel/lodging costs generally do not count toward the above, but again you should check with me first before registering.
-Generally, to attend a conference you must submit an abstract and plan to present your work. This requirement is waived if it is your first year in the lab, in which case you likely would not have had enough time to have something to present yet.
+* The lab can fund one major conference per year per student
+* Before submitting any abstract or paper please be sure to first get Melissa's approval and that of any co-authors on the work
+* If you are able to obtain funding help (e.g. travel awards available through GEPA or elsewhere) you may also attend an additional meeting. In many cases existing travel awards will not cover everything and I might be able to cover the difference, but you should check with Melissa first
+
+    Finally, regarding finding funding for meetings: there are many options available, but you might need to do some digging to find them. GEPA in UCSD has a lot of information about many conferences available for students. In many cases, financial assistance is prioritized for students who show an emphasis on leadership and/or how the research gives back to the community. Beyond GEPA, some conferences will have specific travel awards available. Some departments (e.g. CSE) may also sometimes offer travel awards. We can work on compiling a list of these as a group.
+
+* Conferences that are local and therefore do not require travel/lodging costs generally do not count toward the above, but again you should check with Melissa first before registering
+* Generally, to attend a conference you must submit an abstract and plan to present your work. This requirement is waived if it is your first year in the lab, in which case you likely would not have had enough time to have something to present yet
 
 Some conferences we attend
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-American Society of Human Genetics (ASHG): this is the biggest human genetics meeting of the year. This conference is very broad and is relevant to almost all of our work. This meeting is huge (thousands of participants) which is good and bad. It is a big honor and great opportunity for exposure to give a talk at ASHG. Many people announce their latest and greatest new work and technologies here. On the other hand, because ASHG is so huge it can be hard to meet new people and can be a bit overwhelming.
-Biology of Genomes: This is a much smaller meeting held at Cold Spring Harbor in Long Island NY. It is not all genetics and includes some broader genomics applications. My opinion is that everyone should get to a Cold Spring Harbor meeting at least once as a trainee. The setting is much more intimate than ASHG, where everyone is stuck on the CSHL campus (which is quite pretty) for several days and there are many more opportunities to meet new people.
-RECOMB: RECOMB is much more methods and computational biology focused. You might remember when RECOMB was held at San Diego a couple years ago. It is a strong community of people who really care about methods details and I always end up learning something new and coming away with new methods ideas at this meeting. It typically alternates between the US and non-US locations every other year.
+* `American Society of Human Genetics (ASHG) <https://www.ashg.org/meetings>`_: this is the biggest human genetics meeting of the year. This conference is very broad and is relevant to almost all of our work. This meeting is huge (thousands of participants) which is good and bad. It is a big honor and great opportunity for exposure to give a talk at ASHG. Many people announce their latest and greatest new work and technologies here. On the other hand, because ASHG is so huge it can be hard to meet new people and can be a bit overwhelming.
+* `Biology of Genomes <https://meetings.cshl.edu/meetings.aspx?meet=GENOME>`_: This is a much smaller meeting held at Cold Spring Harbor in Long Island NY. It is not all genetics and includes some broader genomics applications. My opinion is that everyone should get to a Cold Spring Harbor meeting at least once as a trainee. The setting is much more intimate than ASHG, where everyone is stuck on the CSHL campus (which is quite pretty) for several days and there are many more opportunities to meet new people.
+* `RECOMB <https://recomb.org>`_: RECOMB is much more methods and computational biology focused. You might remember when RECOMB was held at San Diego a couple years ago. It is a strong community of people who really care about methods details and I always end up learning something new and coming away with new methods ideas at this meeting. It typically alternates between the US and non-US locations every other year.
 
 Other options specific to our field are
-AGBT which has more of a technology flavor,
-Genome Informatics which is more methods focused but maybe a bit less so than RECOMB,
-Gordon Research Conferences (GRC) which are held on very specific topics and typically occur in ski-resort type settings closer to the CSHL feel
-The computational genomics summer institute (CGSI) at UCLA. 
+* `AGBT <https://www.agbt.org/events/general-meeting>`_ which has more of a technology flavor
+* `Genome Informatics <https://meetings.cshl.edu/meetings.aspx?meet=info>`_ which is more methods focused but maybe a bit less so than RECOMB
+* `Gordon Research Conferences (GRC) <https://www.grc.org>`_ which are held on very specific topics and typically occur in ski-resort type settings closer to the CSHL feel
+* The `computational genomics summer institute (CGSI) <http://computationalgenomics.bioinformatics.ucla.edu>`_ at UCLA
 
 There are also meetings that are more general (not just bioinformatics) but you should also consider attending:
-SACNAS: Society for the Advancement of Chicanos/Hispanics and Native Americans in Science. All are welcome, but with emphasis on Hispanic / Latinx students.
-ABRCMS: Annual Biomedical Research Conference for Minoritized Scientists. All Welcome, emphasis on African American students.
+* `SACNAS: Society for the Advancement of Chicanos/Hispanics and Native Americans in Science <https://projects.iq.harvard.edu/sacnasharvard/what-sacnas>`_. All are welcome, but with emphasis on Hispanic / Latinx students
+* `ABRCMS: Annual Biomedical Research Conference for Minoritized Scientists <https://www.abrcms.org>`_. All Welcome, emphasis on African American students
 
 Travel and reimbursement guidelines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
