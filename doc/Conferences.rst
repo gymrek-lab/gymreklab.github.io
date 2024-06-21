@@ -10,6 +10,7 @@ Policies in our lab
 * If you are able to obtain funding help (e.g. travel awards available through GEPA or elsewhere) you may also attend an additional meeting. In many cases existing travel awards will not cover everything and Melissa might be able to cover the difference, but you should check with her first
 
     There are many external funding options available, but you might need to do some digging to find them:
+
     * GEPA in UCSD has a lot of information about many conferences available for students. In many cases, financial assistance is prioritized for students who show an emphasis on leadership and/or how the research gives back to the community
     * Some conferences will have specific travel awards available
     * Some departments (e.g. CSE) may also sometimes offer travel awards
