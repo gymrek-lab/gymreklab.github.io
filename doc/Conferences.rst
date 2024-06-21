@@ -7,9 +7,13 @@ Policies in our lab
 ~~~~~~~~~~~~~~~~~~~
 * The lab can fund one major conference per year per student
 * Before submitting any abstract or paper please be sure to first get Melissa's approval and that of any co-authors on the work
-* If you are able to obtain funding help (e.g. travel awards available through GEPA or elsewhere) you may also attend an additional meeting. In many cases existing travel awards will not cover everything and I might be able to cover the difference, but you should check with Melissa first
+* If you are able to obtain funding help (e.g. travel awards available through GEPA or elsewhere) you may also attend an additional meeting. In many cases existing travel awards will not cover everything and Melissa might be able to cover the difference, but you should check with her first
 
-    Finally, regarding finding funding for meetings: there are many options available, but you might need to do some digging to find them. GEPA in UCSD has a lot of information about many conferences available for students. In many cases, financial assistance is prioritized for students who show an emphasis on leadership and/or how the research gives back to the community. Beyond GEPA, some conferences will have specific travel awards available. Some departments (e.g. CSE) may also sometimes offer travel awards. We can work on compiling a list of these as a group.
+    There are many external funding options available, but you might need to do some digging to find them:
+    * GEPA in UCSD has a lot of information about many conferences available for students. In many cases, financial assistance is prioritized for students who show an emphasis on leadership and/or how the research gives back to the community
+    * Some conferences will have specific travel awards available
+    * Some departments (e.g. CSE) may also sometimes offer travel awards
+    * `GPSA <https://gpsa.ucsd.edu/grad-resources/funding/travel-grants.html>`_ offers travel grants for graduate students
 
 * Conferences that are local and therefore do not require travel/lodging costs generally do not count toward the above, but again you should check with Melissa first before registering
 * Generally, to attend a conference you must submit an abstract and plan to present your work. This requirement is waived if it is your first year in the lab, in which case you likely would not have had enough time to have something to present yet
