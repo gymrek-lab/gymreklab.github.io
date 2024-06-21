@@ -25,13 +25,15 @@ Some conferences we attend
 * `Biology of Genomes <https://meetings.cshl.edu/meetings.aspx?meet=GENOME>`_: This is a much smaller meeting held at Cold Spring Harbor in Long Island NY. It is not all genetics and includes some broader genomics applications. My opinion is that everyone should get to a Cold Spring Harbor meeting at least once as a trainee. The setting is much more intimate than ASHG, where everyone is stuck on the CSHL campus (which is quite pretty) for several days and there are many more opportunities to meet new people.
 * `RECOMB <https://recomb.org>`_: RECOMB is much more methods and computational biology focused. You might remember when RECOMB was held at San Diego a couple years ago. It is a strong community of people who really care about methods details and I always end up learning something new and coming away with new methods ideas at this meeting. It typically alternates between the US and non-US locations every other year.
 
-Other options specific to our field are
+Other options specific to our field are:
+
 * `AGBT <https://www.agbt.org/events/general-meeting>`_ which has more of a technology flavor
 * `Genome Informatics <https://meetings.cshl.edu/meetings.aspx?meet=info>`_ which is more methods focused but maybe a bit less so than RECOMB
 * `Gordon Research Conferences (GRC) <https://www.grc.org>`_ which are held on very specific topics and typically occur in ski-resort type settings closer to the CSHL feel
 * The `computational genomics summer institute (CGSI) <http://computationalgenomics.bioinformatics.ucla.edu>`_ at UCLA
 
 There are also meetings that are more general (not just bioinformatics) but you should also consider attending:
+
 * `SACNAS: Society for the Advancement of Chicanos/Hispanics and Native Americans in Science <https://projects.iq.harvard.edu/sacnasharvard/what-sacnas>`_. All are welcome, but with emphasis on Hispanic / Latinx students
 * `ABRCMS: Annual Biomedical Research Conference for Minoritized Scientists <https://www.abrcms.org>`_. All Welcome, emphasis on African American students
 
