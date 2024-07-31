@@ -351,6 +351,7 @@ The best practice is for each user of TSCC to use conda to install their own sof
 
 If you are feeling lazy, you can also use the :code:`module` system to load preconfigured software tools.
 Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
+
 .. warning::
   Software available through the module system is usually out of date and cannot be easily updated.
   It's also unlikely that collaborators/reviewers will be able to run your code once you're ready to share it with them, since,
