@@ -26,7 +26,21 @@ Logging in
 * This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
-* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`
+* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
+
+.. code-block:: txt
+
+  Host *
+      ControlMaster auto
+      ControlPath ~/.ssh/ssh_mux_%h_%p_%r
+      ControlPersist 1
+      ServerAliveInterval 100
+  
+  Host tscc
+      HostName login1.tscc.sdsc.edu
+      ForwardX11 yes
+      User YOUR_USERNAME_GOES_HERE
+
 
 * If you are running Windows, you can use the `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_ to acquire a Linux terminal with SSH
 
@@ -55,7 +69,14 @@ between interactive sessions, you should use :code:`tmux` or :ref:`screen <snorl
 Filesystem locations
 --------------------
 We have 100TB of space in :code:`/tscc/projects/ps-gymreklab`, which is where all of our files are stored. Your personal
-storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. (If this directory doesn't yet exist, feel free to create it with the :code:`mkdir` command.
+storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. (If this directory doesn't yet exist, feel free to create it with the :code:`mkdir` command.)
+
+You can check the available storage in the shared mount with the following command.
+
+.. code-block:: bash
+
+    df -h | grep -E '^Filesystem|gymreklab' | column -t
+
 Your home directory for config and the like is :code:`/tscc/nfs/home/<user>`, but don't store any large files there, since you'll only get 100 GB there.
 
 If you need some extra space just for a few months, consider using your personal Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
@@ -67,10 +88,61 @@ Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Fe
 * :code:`/tscc/projects/ps-gymreklab/resources/dbase` contains reference genome builds for humans and mice and other
   non-project-specific datasets
 * :code:`/tscc/projects/ps-gymreklab/resources/datasets` contains project-specific datasets that are shared across the lab.
-* :code:`/tscc/projects/ps-gymreklab/resources/datasets/ukbiobank` contains our local copy of the UK Biobank. You must have the proper Unix permissions to read these files. Ask Melissa to add you on the UK Biobank portal and then ask to be added to the :code:`gymreklab-ukb` group afterwards.
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/ukbiobank` contains our local copy of the UK Biobank. You must have the proper Unix permissions to read these files. First, create an account `here <https://ams.ukbiobank.ac.uk/ams>`_ and then once that's approved, ask Melissa to add you on the UK Biobank portal and the :code:`gymreklab-ukb` Unix group.
 * :code:`/tscc/projects/ps-gymreklab/resources/datasets/1000Genomes` contains files for the 1000 Genomes dataset
 * :code:`/tscc/projects/ps-gymreklab/resources/datasets/gtex` contains the GTEX dataset
 * :code:`/tscc/projects/ps-gymreklab/resources/datasets/pangenome` contains pangenome files
+
+Access TSCC files locally on your computer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can upload and download files from TSCC using the `scp` command. Assuming you've configured a host in your `~/.ssh/config` named `tscc`, you would download chrM of the hg19 reference genome like this, for example.
+
+.. code-block:: bash
+
+    scp -r tscc:/tscc/projects/ps-gymreklab/resources/dbase/human_by_chrom/hg19/chrM.fa .
+
+However, if you would like to download many files from TSCC or edit files on TSCC in real time, you may opt to mount TSCC as a network drive, instead. A program called `sshfs` will allow you to view and edit TSCC files on your computer and keep them synced with TSCC.
+
+To set up :code:`sshfs`, you must first download and install it. With `homebrew <https://docs.brew.sh/Installation>`_ on MacOS, you can do :code:`brew install sshfs` or on Ubuntu or `Ubuntu <https://apps.microsoft.com/detail/9pdxgncfsczv>`_ on `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_, you can just do :code:`sudo apt install sshfs`. Next, simply add the following snippet to your :code:`~/.bashrc`:
+
+.. code-block:: bash
+
+    # mount a remote drive over ssh
+    # arg 1: the hostname of the server, as specified in your ssh config
+    # arg 2 (optional): the mount directory; defaults to arg1 in the current directory
+    sshopen() {
+        # perform validation checks, first
+        command -v sshfs >/dev/null 2>&1 || { echo >&2 "error: sshfs is not installed"; return 1; }
+        grep -q '^user_allow_other' /etc/fuse.conf || { echo >&2 "error: please uncomment the 'user_allow_other' option in /etc/fuse.conf"; return 1; }
+        ssh -q "$1" exit >/dev/null || { echo >&2 "error: cannot connect to '$1' via ssh; check that '$1' is in your ~/.ssh/config"; return 1; }
+        [ -d "${2:-$1}" ] && { ls -1qA "${2:-$1}" | grep -q .; } >/dev/null 2>&1 && { echo >&2 "error: '${2:-$1}' is not an empty directory; is it already mounted?"; return 1; }
+        # set up a trap to exit the mount before attempting to create it
+        trap "cd \"$PWD\" && { fusermount -u \"${2:-$1}\"; rmdir \"${2:-$1}\"; }" EXIT && mkdir -p "${2:-$1}" && {
+            # ServerAlive settings prevent the ssh connection from dying unexpectedly
+            # cache_timeout controls the number of seconds before sshfs retrieves new files from the server
+            sshfs -o allow_other,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,cache_timeout=900,follow_symlinks "$1": "${2:-$1}"
+        } || {
+            # if the sshfs command didn't work, store the exit code, clean up the dir and the trap, and then return the exit code
+            local exit_code=$?
+            rmdir "${2:-$1}" && trap - EXIT
+            return $exit_code
+        }
+    }
+
+After sourcing your :code:`~/.bashrc` you should now be able to run :code:`sshopen tscc`! This will create a folder in your working directory with all of your files from TSCC. The network mount will be automatically disconnected when you close your terminal.
+
+Some notes on usage:
+* Depending on your network connection, :code:`sshopen` might choke on large files. Consider using :code:`scp` for such files, instead.
+* In order to reduce network usage, sshopen will only retrieve new files from the server every 15 minutes. If you want this to happen more frequently, just change the cache_timeout setting in the sshfs command.
+* The unmount will fail if any processes are still utilizing files in the mount, so you should close your File Explorer or any other applications before you close your terminal window. If the unmount fails, you can always unmount manually: :code:`pkill sshfs && rmdir tscc` will kill the :code:`sshfs` command and delete the mounted folder.
+
+Syncing TSCC files with Google Drive or OneDrive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ever wanted to share your plots with a collaborator or your PI? But you have too many and they're updated too often to use :code:`scp` to download and reupload each time?
+
+Consider using :code:`rclone` to automatically sync your files with a cloud storage provider! You can install :code:`rclone` `using conda <https://anaconda.org/conda-forge/rclone>`_ and then configure it according to the instructions for `Google Drive <https://rclone.org/drive>`_ or for `OneDrive <https://rclone.org/onedrive>`_.
+
+When configuring :code:`rclone`, you should answer **No** to the question *Use web browser to automatically authenticate rclone with remote?*. You can instead follow their directions to install :code:`rclone` on your laptop or personal computer to get the appropriate token. Or, if that doesn't work, you can try using the (less secure) `SSH tunneling approach <https://rclone.org/remote_setup/#configuring-using-ssh-tunnel>`_.
 
 Sharing files with Snorlax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -262,26 +334,49 @@ Get Slack notifications when your jobs finish
 
 Installing software
 -------------------
-The best practice is for each user of TSCC to use Miniconda to install their own software. Run these commands to download, install, and configure Miniconda properly on TSCC:
+The best practice is for each user of TSCC to use conda to install their own software. Run these commands to download, install, and configure conda properly on TSCC:
 
 .. code-block:: bash
 
-  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-  bash Miniconda3-latest-Linux-x86_64.sh -b -u
-  source ~/miniconda3/bin/activate
+  wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+  bash Miniforge3-Linux-x86_64.sh -b -u
+  rm Miniforge3-Linux-x86_64.sh
+  source ~/miniforge3/bin/activate
   conda init bash
-  conda config --remove channels defaults
   conda config --add channels nodefaults
   conda config --add channels bioconda
   conda config --add channels conda-forge
   conda config --set channel_priority strict
+  conda update -y --all
 
-If you are feeling lazy, you can also use :code:`module` system to load preconfigured software tools.
+If you are feeling lazy, you can also use the :code:`module` system to load preconfigured software tools.
 Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
-Please note that software available through the module system is usually out of date and cannot be easily updated.
-It's also unlikely that your collaborators/reviewers will be able to figure out which versions of the software you used.
-(Unlike with conda, there isn't a way to share your module environments with non-TSCC users.)
-For these reasons, we do not recommend using the :code:`module` system.
+.. warning::
+  Software available through the module system is usually out of date and cannot be easily updated.
+  It's also unlikely that collaborators/reviewers will be able to run your code once you're ready to share it with them, since,
+  unlike with conda, the module system doesn't offer a way to share your software environment with non-TSCC users.
+  For these reasons, we do not recommend using the :code:`module` system.
+
+Using containers
+----------------
+You can also load software via containers. Unfortunately, Docker is not available on TSCC and cannot be installed. Instead, you can use singularity (which was recently renamed to apptainer). First, run :code:`module load singularity` to make the :code:`singularity` command available. Refer to `the apptainer documentation <https://apptainer.org/documentation>`_ for usage information.
+
+For example, to grab a bash shell with TRTools:
+
+.. code-block:: bash
+
+  singularity shell --bind /tscc docker://quay.io/biocontainers/trtools:6.0.1--pyhdfd78af_0
+
+Or, to run the :code:`dumpSTR --help` command, for example:
+
+.. code-block:: bash
+
+  singularity exec --bind /tscc docker://quay.io/biocontainers/trtools:6.0.1--pyhdfd78af_0 dumpSTR --help
+
+You can find containers for all Bioconda packages on `the Biocontainers registry <https://biocontainers.pro/registry>`_.
+
+.. warning::
+  You must provide :code:`--bind /tscc` if you want to have access to files in the :code:`/tscc` directory within the container.
 
 Managing funds
 --------------
