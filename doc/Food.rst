@@ -51,8 +51,12 @@ Rubio's
 
 Ike's Sandwiches
 ~~~~~~~~~~~~~~~~
-1. The catering options provide half sandwiches per person but are generally too expensive and too much food. Instead, order half sandwiches per person by doing the following: (1) provide a few sandwich choices for people to choose from (e.g. a veggie option, a chicken option, and a beef option), (2) have people vote for their choices and (3) if n people vote for a particular sandwich type, order ceil(n/2) of that sandwich.
-2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is not required and entirely up to you.
+1. The catering options provide half sandwiches per person but are generally too expensive and too much food. Instead, order half sandwiches per person by doing the following: (1) provide a few sandwich choices for people to choose from (e.g. a veggie option, a chicken option, and a beef option), (2) have people vote for their choices and (3) if n people vote for a particular sandwich type, order ceil(n/2) of that sandwich. In the past, we've provided the following options:
+    a. :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar. [1610 cal]
+    b. :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American. [1400 cal]
+    c. :pig: DA VINCI: Turkey, Ham, Salami, Italian Dressing, Provolone. [1380 cal]
+    d. :leafy_green: SOMETIMES I'M A VEGETARIAN: Marinated Artichoke Hearts, Mushrooms, Pesto, Provolone. [1300 cal]
+2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is certainly not required and entirely up to you.
 3. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
 4. Order online 2-2.5 hours before the event and request delivery to FAH (3180 Voigt Dr, La Jolla CA 92093) for 0.5-1 hour before the meeting. You will need to provide credit info online.
 5. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
