@@ -55,10 +55,10 @@ Ike's Sandwiches
 
     .. code-block:: md
 
-        :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar. [1610 cal]
-        :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American. [1400 cal]
-        :pig: DA VINCI: Turkey, Ham, Salami, Italian Dressing, Provolone. [1380 cal]
-        :leafy_green: SOMETIMES I'M A VEGETARIAN: Marinated Artichoke Hearts, Mushrooms, Pesto, Provolone. [1300 cal]
+        - :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar. [1610 cal]
+        - :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American. [1400 cal]
+        - :pig: DA VINCI: Turkey, Ham, Salami, Italian Dressing, Provolone. [1380 cal]
+        - :leafy_green: SOMETIMES I'M A VEGETARIAN: Marinated Artichoke Hearts, Mushrooms, Pesto, Provolone. [1300 cal]
 
 2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is certainly not required and entirely up to you.
 3. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
