@@ -53,7 +53,7 @@ Ike's Sandwiches
 ~~~~~~~~~~~~~~~~
 1. The catering options provide half sandwiches per person but are generally too expensive and too much food. Instead, order half sandwiches per person by doing the following: (1) provide a few sandwich choices for people to choose from (e.g. a veggie option, a chicken option, and a beef option), (2) have people vote for their choices and (3) if n people vote for a particular sandwich type, order ceil(n/2) of that sandwich. In the past, we've provided the following options:
 
-    ... code-block: md
+    .. code-block:: md
 
         :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar. [1610 cal]
         :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American. [1400 cal]
