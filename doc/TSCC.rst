@@ -132,8 +132,9 @@ To set up :code:`sshfs`, you must first download and install it. With `homebrew 
 After sourcing your :code:`~/.bashrc` you should now be able to run :code:`sshopen tscc`! This will create a folder in your working directory with all of your files from TSCC. The network mount will be automatically disconnected when you close your terminal.
 
 Some notes on usage:
+
 * Depending on your network connection, :code:`sshopen` might choke on large files. Consider using :code:`scp` for such files, instead.
-* In order to reduce network usage, sshopen will only retrieve new files from the server every 15 minutes. If you want this to happen more frequently, just change the cache_timeout setting in the sshfs command.
+* In order to reduce network usage, sshopen will only retrieve new files from the server every 15 minutes. If you want this to happen more frequently, just change the :code:`cache_timeout` setting in the sshfs command.
 * The unmount will fail if any processes are still utilizing files in the mount, so you should close your File Explorer or any other applications before you close your terminal window. If the unmount fails, you can always unmount manually: :code:`pkill sshfs && rmdir tscc` will kill the :code:`sshfs` command and delete the mounted folder.
 
 Syncing TSCC files with Google Drive or OneDrive
