@@ -234,7 +234,7 @@ If you need more than 8 hours, consider :code:`hotel`:
 
 So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://sdsc.edu/support/user_guides/tscc.html#tscc_client>`_. For example, you can get a lot of information by using the `tscc_client`:
 
-... code-block:: bash
+.. code-block:: bash
 
     module load sdsc
     tscc_client -A ddp268
@@ -242,8 +242,12 @@ So if you start a 36-core / 192GB memory job (or multiple jobs that use either a
 Env Variables and Submitting Many Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To pass an environment variable to a job, make sure the :code:`#SBATCH --export ALL` flag is set in the SLURM file or run
-:code:`sbatch <file>.slurm --export "<var1>=<value1>,<var2>=<value2>,..."`. You should then be able to access those
-values in the script using :code:`$var1` and so on.
+
+.. code-block:: bash
+
+    sbatch <file>.slurm --export "<var1>=<value1>,<var2>=<value2>,..."
+
+You should then be able to access those values in the script using :code:`$var1` and so on.
 
 Here's an example for how to submit many jobs. Suppose your current directory is::
 
@@ -349,6 +353,9 @@ The best practice is for each user of TSCC to use conda to install their own sof
   conda config --add channels conda-forge
   conda config --set channel_priority strict
   conda update -y --all
+
+.. note::
+    Make sure to never install software with conda on a login node! It will take a long time and slow down the login node for other TSCC users.
 
 If you are feeling lazy, you can also use the :code:`module` system to load preconfigured software tools.
 Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
