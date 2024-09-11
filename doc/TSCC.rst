@@ -145,6 +145,12 @@ Consider using :code:`rclone` to automatically sync your files with a cloud stor
 
 When configuring :code:`rclone`, you should answer **No** to the question *Use web browser to automatically authenticate rclone with remote?*. You can instead follow their directions to install :code:`rclone` on your laptop or personal computer to get the appropriate token. Or, if that doesn't work, you can try using the (less secure) `SSH tunneling approach <https://rclone.org/remote_setup/#configuring-using-ssh-tunnel>`_.
 
+Read up on the `rclone commands <https://rclone.org/commands>`_ to figure out how to use it. For example, to upload a single file to Google Drive:
+
+.. code-block:: bash
+
+    rclone copyto FILEPATH_ON_TSCC gdrive:FILEPATH_ON_GDRIVE
+
 Sharing files with Snorlax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
