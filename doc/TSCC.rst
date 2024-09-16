@@ -358,7 +358,8 @@ The best practice is for each user of TSCC to use conda to install their own sof
   conda config --add channels bioconda
   conda config --add channels conda-forge
   conda config --set channel_priority strict
-  conda update -y --all
+  conda config --set auto_activate_base false
+  conda update -n base -y --all
 
 .. note::
     Make sure to never install software with conda on a login node! It will take a long time and slow down the login node for other TSCC users.
