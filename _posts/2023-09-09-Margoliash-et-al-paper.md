@@ -40,7 +40,7 @@ A list of those STRs (if any) is available at the URL:
 
 https://margoliash-et-al-2023.s3.amazonaws.com/associations/{population}\_{phenotype}\_str\_gwas\_results.filtered.tab
 
-## SNP association tests, by phenotype
+## SNP and indel association tests, by phenotype
 
 These files were generated using plink2.
 The columns are described [here](https://www.cog-genomics.org/plink/2.0/formats#glm_linear).
@@ -49,7 +49,7 @@ but that is rounded to 100 in the column name.
 
 URLs are of the form:  
 
-https://margoliash-et-al-2023.s3.amazonaws.com/associations/white\_british\_{phenotype}\_str\_gwas\_results.tab.gz
+https://margoliash-et-al-2023.s3.amazonaws.com/associations/white\_british\_{phenotype}\_snp\_gwas\_results.tab.gz
 
 Note that SNP association testing was only performed in the White British population.
 
