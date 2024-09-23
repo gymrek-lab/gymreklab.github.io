@@ -40,6 +40,19 @@ A list of those STRs (if any) is available at the URL:
 
 https://margoliash-et-al-2023.s3.amazonaws.com/associations/{population}\_{phenotype}\_str\_gwas\_results.filtered.tab
 
+## SNP association tests, by phenotype
+
+These files were generated using plink2.
+The columns are described [here](https://www.cog-genomics.org/plink/2.0/formats#glm_linear).
+The L100 and U100 columns are actually the lower and upper bounds of the 100\*(1-5e-8) confidence intervals,
+but that is rounded to 100 in the column name.
+
+URLs are of the form:  
+
+https://margoliash-et-al-2023.s3.amazonaws.com/associations/white\_british\_{phenotype}\_str\_gwas\_results.tab.gz
+
+Note that SNP association testing was only performed in the White British population.
+
 ## Tarballs of fine-mapping outputs by phenotype
 
 Each tarball contains two summary tables: finemapping\_first\_pass.tab and finemapping\_followup.tab, describing the results
