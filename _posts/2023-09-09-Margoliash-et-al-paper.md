@@ -20,7 +20,7 @@ Association statistics referred to in the text are from the White British popula
 in the White British population were performed genome-wide, while STR association tests in the other populations were performed in 
 fine-mapping regions identified by the White British association tests.
 
-URLs are of the form:  
+The URL for each population, phenotype pair is of the form:
 
 https://margoliash-et-al-2023.s3.amazonaws.com/associations/{population}\_{phenotype}\_str\_gwas\_results.tab.gz
 
@@ -36,7 +36,7 @@ Populations are:
 Phenotypes are written exactly as listed in Supplementary Table 1.
 
 We filtered STRs with total minor allele dosage less than 20. This amounted to very few STRs for each population, phenotype combination.
-A list of those STRs (if any) is available at the URL: 
+A list of those STRs (if any) is available at the URL:
 
 https://margoliash-et-al-2023.s3.amazonaws.com/associations/{population}\_{phenotype}\_str\_gwas\_results.filtered.tab
 
@@ -47,7 +47,7 @@ The columns are described [here](https://www.cog-genomics.org/plink/2.0/formats#
 The L100 and U100 columns are actually the lower and upper bounds of the 100\*(1-5e-8) confidence intervals,
 but that is rounded to 100 in the column name.
 
-URLs are of the form:  
+The URL for each phenotype is of the form:
 
 https://margoliash-et-al-2023.s3.amazonaws.com/associations/white\_british\_{phenotype}\_snp\_gwas\_results.tab.gz
 
@@ -62,6 +62,6 @@ fine-mapping was only performed in the White British population.
 
 The README for these files is [here](/2023/09/08/Margoliash-et-al-finemapping-README.html).
 
-URLs are of the form:  
+The URL for each phenotype is of the form:
 
 https://margoliash-et-al-2023.s3.amazonaws.com/finemapping/finemapping\_{phenotype}.tgz
