@@ -9,6 +9,8 @@ Official docs
 * The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
 * The `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
 
+.. _tscc-access:
+
 Getting access
 --------------
 Email tscc-support AT sdsc DOT edu from your UCSD email and CC Melissa. You can include the following in your email.
