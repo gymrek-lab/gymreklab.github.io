@@ -3,9 +3,7 @@
 Onboarding
 ==========
 
-If you are new to the group, this page has a list of things you should do to get set up with helpful lab resources.
-
-* Get an account on our lab server, :ref:`Snorlax <snorlax>`. 
+If you are new to the group, this page has a list of things you can do to get set up with helpful lab resources.
 
 * Request permission to join the "Gymrek Lab" google calendar and our mailing list gymrek-lab AT googlegroups DOT com. 
 
@@ -23,7 +21,7 @@ You should also add a picture of yourself to `the lab website <https://gymreklab
 
 .. TODO: set up lab website PRs to automatically give access to the org
 
-To get access to our lab's computing resources on Expanse, just follow :ref:`these directions <expanse-get-account>`.
+To get access to our lab's computing resources on Snorlax, TSCC, or Expanse, just follow :ref:`these directions <computeresources>`.
 
 Finally, you should request badge access to our lab by filling out `this form <https://ucsd.co1.qualtrics.com/jfe/form/SV_4SB1zEZdwfLeljE>`_. You should mark that you are requesting access to our collaboratory, the "Center for Precision Genomics" (CPG).
 
