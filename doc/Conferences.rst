@@ -89,14 +89,14 @@ Here are some helpful tips!
         :align: center
         :width: 400px
 
-    a. Raster is the traditional format that you're probably familiar with. It stores colors for each pixel in your image. By contrast, vector formats store each component of your figure as an object. For example, a line in your image will be defined in vector format by a start position, end position, and color -- rather than a series of black pixels.
+    a. Raster is the traditional format that you're probably familiar with. It stores colors for each pixel in your image. By contrast, vector formats store each component of your figure as *an object*. For example, a line in your image will be defined in vector format by a start position, end position, and color -- rather than a series of black pixels.
     b. If you place a raster image on your poster, there's a good chance it will appear blurry when printed. The advantage of vector formats is that they can be rescaled to any arbitrary size and will never appear blurry!
     c. If you use matplotlib or pandas to create your figures, you can easily just change the desired output filename from ".png" to ".pdf" to create a vector version of the figure.
 
     .. warning::
         Some images (like Manhattan plots) will have so many objects in them that Adobe Illustrator will freeze and crash when you try to load them. For situations like these, it's best to import them as PNG. To minimize blurrines, you can try to recreate the figure with a high DPI (or PPI) and then resize it down within Illustrator.
 
-4. When creating your poster, try to use software that will allow you to import and export vector (_not_ raster) images. For example, you should avoid Google slides/drawings because it will allow exporting as PDF but does not support importing plots as PDFs or SVGs.
+4. When creating your poster, try to use software that will allow you to import and export vector (*not* raster) images. For example, you should avoid Google slides/drawings because it will allow exporting as PDF but does not support importing plots as PDFs or SVGs.
     
     Adobe illustrator is probably the best option. You can email Dorit to ask for a license.
     
