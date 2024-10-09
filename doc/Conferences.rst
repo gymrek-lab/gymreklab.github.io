@@ -89,14 +89,25 @@ Here are some helpful tips!
         :align: center
         :width: 400px
 
-    a. Raster is the traditional format that you're probably familiar with. It stores colors for each pixel in your image. By contrast, vector formats store each component of your figure as an object. For example, a line in your image will be defined in vector format by a start position, end position, and color -- rather than a series of black pixels.
+    a. Raster is the traditional format that you're probably familiar with. It stores colors for each pixel in your image. By contrast, vector formats store each component of your figure as *an object*. For example, a line in your image will be defined in vector format by a start position, end position, and color -- rather than a series of black pixels.
     b. If you place a raster image on your poster, there's a good chance it will appear blurry when printed. The advantage of vector formats is that they can be rescaled to any arbitrary size and will never appear blurry!
     c. If you use matplotlib or pandas to create your figures, you can easily just change the desired output filename from ".png" to ".pdf" to create a vector version of the figure.
 
     .. warning::
         Some images (like Manhattan plots) will have so many objects in them that Adobe Illustrator will freeze and crash when you try to load them. For situations like these, it's best to import them as PNG. To minimize blurrines, you can try to recreate the figure with a high DPI (or PPI) and then resize it down within Illustrator.
 
-4. When creating your poster, try to use software that will allow you to work with vector (as opposed to raster) images. So don't use google slides/drawings! Adobe illustrator is probably the best option. You can ask Dorit to get you a license. After you're done, export your poster as a PDF rather than a PNG.
+4. When creating your poster, try to use software that will allow you to import and export vector (*not* raster) images. For example, you should avoid Google slides/drawings because it will allow exporting as PDF but does not support importing plots as PDFs or SVGs.
+    
+    Adobe illustrator is probably the best option. You can email Dorit to ask for a license.
+    
+    However, please note that Illustrator can be a steep learning curve if you don't have a lot of experience with it yet. In that case, you may opt for the hybrid option:
+
+        1. Start with Google slides/drawings and import your plots as rasterized PNGs
+        2. Export your canvas to PDF once you like how it looks
+        3. Import that PDF into Illustrator
+        4. Replace all of the embedded PNG plots with vectorized PDF versions in Illustrator
+        5. Once you're done, export the final canvas as a vectorized PDF in Illustrator
+
 5. You can find some old lab posters in `the lab's Google Drive <https://drive.google.com/drive/folders/1ora8McmJShuJeiwb1hCSrsKWEiMoAxCs>`_.
 
     .. note::
@@ -104,7 +115,7 @@ Here are some helpful tips!
 
 6. Our logos can be found in `the lab Google Drive <https://drive.google.com/drive/folders/1-egL2EVfTh7wH4wmfFcruGtJMplnPVQQ>`_. For UCSD's, you can refer to `this Jacobs School of Engineering webpage <https://jacobsschool.ucsd.edu/logos>`_. Also, consider displaying your email and a QR code link to your GitHub repo or documentation.
 7. The cheapest place to print posters is probably on campus at the print shop at `UCSD Campus Curbside Pickup <https://maps.app.goo.gl/FseyUa62wk3Qztu5A>`_. You can request reimbursement as part of your conference expenses afterwards.
-    a. Go to `their online portal <https://ucsdimprints.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF2gL05u6lNHBp6AwVlPfgDQIgaPc5Cokq4RKYVvn2cx3C2V0adSszgU#!/CategoryHome/9>`_ to create an order and submit a PDF of your poster. (Use `this link <https://blink.ucsd.edu/facilities/tritonprint/index.html>`__ to navigate to the portal if the former doesn't work.)
+    a. Go to `their online portal <https://ucsdimprints.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF2gL05u6lNHBp6AwVlPfgDQIgaPc5Cokq4RKYVvn2cx3C2V0adSszgU#!/CategoryHome/9>`_ to create an order and submit **a vectorized PDF** of your poster. (Use `this link <https://blink.ucsd.edu/facilities/tritonprint/index.html>`__ to navigate to the portal if the former doesn't work.)
     b. After logging in, click on "Signs and Banners" and then "BUY NOW" under the category: "POSTERS, CHARTS, AND DISPLAYS".
 
         .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/efd10f1d-c2d6-42ab-a97f-57eb1a8d79af
