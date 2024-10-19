@@ -1,13 +1,23 @@
 TSCC
 ====
 
-Last update: 2024/01/25
+Last update: 2024/10/08
 
 Official docs
 -------------
 * The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
 * The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
 * The `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
+
+.. _tscc-access:
+
+Getting access
+--------------
+Email tscc-support AT sdsc DOT edu from your UCSD email and CC Melissa. You can include the following in your email.
+
+  Hello TSCC Support,
+
+  I'm a new member of the Gymrek lab. Is there any chance that you can create a TSCC account for me and add me to the Gymrek Lab group (gymreklab-group:\*:11136)?
 
 Logging in
 ----------
@@ -18,9 +28,23 @@ Logging in
 * This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
-* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`
+* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
 
-* Windows users can use `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_
+.. code-block:: text
+
+  Host *
+      ControlMaster auto
+      ControlPath ~/.ssh/ssh_mux_%h_%p_%r
+      ControlPersist 1
+      ServerAliveInterval 100
+  
+  Host tscc
+      HostName login1.tscc.sdsc.edu
+      ForwardX11 yes
+      User YOUR_USERNAME_GOES_HERE
+
+
+* If you are running Windows, you can use the `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_ to acquire a Linux terminal with SSH
 
 The login nodes are often quite slow because there are too many users on them, and you're not supposed to run code that's
 at all computationally burdensome there. So if you want to use tscc as a workstation, you should immediately try to grab an
@@ -47,10 +71,17 @@ between interactive sessions, you should use :code:`tmux` or :ref:`screen <snorl
 Filesystem locations
 --------------------
 We have 100TB of space in :code:`/tscc/projects/ps-gymreklab`, which is where all of our files are stored. Your personal
-storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. Your home directory for config and the like is
-:code:`/tscc/nfs/home/<user>`, don't store any large files there, since you'll only get 100 GB there.
+storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. (If this directory doesn't yet exist, feel free to create it with the :code:`mkdir` command.)
 
-If you need some extra space just for a few months, consider using your Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
+You can check the available storage in the shared mount with the following command.
+
+.. code-block:: bash
+
+    df -h | grep -E '^Filesystem|gymreklab' | column -t
+
+Your home directory for config and the like is :code:`/tscc/nfs/home/<user>`, but don't store any large files there, since you'll only get 100 GB there.
+
+If you need some extra space just for a few months, consider using your personal Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
 
 Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Feel free to contribute to these as appropriate.
 
@@ -59,6 +90,68 @@ Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Fe
 * :code:`/tscc/projects/ps-gymreklab/resources/dbase` contains reference genome builds for humans and mice and other
   non-project-specific datasets
 * :code:`/tscc/projects/ps-gymreklab/resources/datasets` contains project-specific datasets that are shared across the lab.
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/ukbiobank` contains our local copy of the UK Biobank. You must have the proper Unix permissions to read these files. First, create an account `here <https://ams.ukbiobank.ac.uk/ams>`_ and then once that's approved, ask Melissa to add you on the UK Biobank portal and the :code:`gymreklab-ukb` Unix group.
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/1000Genomes` contains files for the 1000 Genomes dataset
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/gtex` contains the GTEX dataset
+* :code:`/tscc/projects/ps-gymreklab/resources/datasets/pangenome` contains pangenome files
+
+Access TSCC files locally on your computer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can upload and download files from TSCC using the `scp` command. Assuming you've configured a host in your `~/.ssh/config` named `tscc`, you would download chrM of the hg19 reference genome like this, for example.
+
+.. code-block:: bash
+
+    scp -r tscc:/tscc/projects/ps-gymreklab/resources/dbase/human_by_chrom/hg19/chrM.fa .
+
+However, if you would like to download many files from TSCC or edit files on TSCC in real time, you may opt to mount TSCC as a network drive, instead. A program called `sshfs` will allow you to view and edit TSCC files on your computer and keep them synced with TSCC.
+
+To set up :code:`sshfs`, you must first download and install it. With `homebrew <https://docs.brew.sh/Installation>`_ on MacOS, you can do :code:`brew install sshfs` or on Ubuntu or `Ubuntu <https://apps.microsoft.com/detail/9pdxgncfsczv>`_ on `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_, you can just do :code:`sudo apt install sshfs`. Next, simply add the following snippet to your :code:`~/.bashrc`:
+
+.. code-block:: bash
+
+    # mount a remote drive over ssh
+    # arg 1: the hostname of the server, as specified in your ssh config
+    # arg 2 (optional): the mount directory; defaults to arg1 in the current directory
+    sshopen() {
+        # perform validation checks, first
+        command -v sshfs >/dev/null 2>&1 || { echo >&2 "error: sshfs is not installed"; return 1; }
+        grep -q '^user_allow_other' /etc/fuse.conf || { echo >&2 "error: please uncomment the 'user_allow_other' option in /etc/fuse.conf"; return 1; }
+        ssh -q "$1" exit >/dev/null || { echo >&2 "error: cannot connect to '$1' via ssh; check that '$1' is in your ~/.ssh/config"; return 1; }
+        [ -d "${2:-$1}" ] && { ls -1qA "${2:-$1}" | grep -q .; } >/dev/null 2>&1 && { echo >&2 "error: '${2:-$1}' is not an empty directory; is it already mounted?"; return 1; }
+        # set up a trap to exit the mount before attempting to create it
+        trap "cd \"$PWD\" && { fusermount -u \"${2:-$1}\"; rmdir \"${2:-$1}\"; }" EXIT && mkdir -p "${2:-$1}" && {
+            # ServerAlive settings prevent the ssh connection from dying unexpectedly
+            # cache_timeout controls the number of seconds before sshfs retrieves new files from the server
+            sshfs -o allow_other,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,cache_timeout=900,follow_symlinks "$1": "${2:-$1}"
+        } || {
+            # if the sshfs command didn't work, store the exit code, clean up the dir and the trap, and then return the exit code
+            local exit_code=$?
+            rmdir "${2:-$1}" && trap - EXIT
+            return $exit_code
+        }
+    }
+
+After sourcing your :code:`~/.bashrc` you should now be able to run :code:`sshopen tscc`! This will create a folder in your working directory with all of your files from TSCC. The network mount will be automatically disconnected when you close your terminal.
+
+Some notes on usage:
+
+* Depending on your network connection, :code:`sshopen` might choke on large files. Consider using :code:`scp` for such files, instead.
+* In order to reduce network usage, sshopen will only retrieve new files from the server every 15 minutes. If you want this to happen more frequently, just change the :code:`cache_timeout` setting in the sshfs command.
+* The unmount will fail if any processes are still utilizing files in the mount, so you should close your File Explorer or any other applications before you close your terminal window. If the unmount fails, you can always unmount manually: :code:`pkill sshfs && rmdir tscc` will kill the :code:`sshfs` command and delete the mounted folder.
+
+Syncing TSCC files with Google Drive or OneDrive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ever wanted to share your plots with a collaborator or your PI? But you have too many and they're updated too often to use :code:`scp` to download and reupload each time?
+
+Consider using :code:`rclone` to automatically sync your files with a cloud storage provider! You can install :code:`rclone` `using conda <https://anaconda.org/conda-forge/rclone>`_ and then configure it according to the instructions for `Google Drive <https://rclone.org/drive>`_ or for `OneDrive <https://rclone.org/onedrive>`_.
+
+When configuring :code:`rclone`, you should answer **No** to the question *Use web browser to automatically authenticate rclone with remote?*. You can instead follow their directions to install :code:`rclone` on your laptop or personal computer to get the appropriate token. Or, if that doesn't work, you can try using the (less secure) `SSH tunneling approach <https://rclone.org/remote_setup/#configuring-using-ssh-tunnel>`_.
+
+Read up on the `rclone commands <https://rclone.org/commands>`_ to figure out how to use it. For example, to upload a single file to Google Drive:
+
+.. code-block:: bash
+
+    rclone copyto FILEPATH_ON_TSCC gdrive:FILEPATH_ON_GDRIVE
 
 Sharing files with Snorlax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,8 +207,12 @@ Notes:
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
   passing). Instead, just submit more jobs
 * If :code:`<log_dir>` is mistyped, the job will not run. Double check that location before you submit.
+* There may be an optional shebang line at the start of the file, but no blank or other lines between the beginning and the :code:`#SBATCH` lines
 * None of the SLURM settings can access environment variables. If you want to set a value (e.g. the log directory) dynamically, you'll
   need to dynamically generate the SLURM file.
+* SLURM does not support using environment variables in :code:`#SBATCH` lines in scripts. If you wish to use
+  environment variables to set such values, you must pass them to the :code:`sbatch` command directly
+  For example, you can use :code:`--output` as a command-line parameter as in :code:`sbatch --output=$SOMEWHERE/out slurm_script.sh` to override :code:`--output` in the header of the script.
 
 Partitions
 ^^^^^^^^^^
@@ -129,6 +226,10 @@ First consider :code:`condo`
 * Jobs may be `preempted <https://slurm.schedmd.com/preempt.html>`_ after 8 hrs but can run for up to 14 days
 * The architectures of condo nodes vary wildly - if you might hit the mem/core or cores/node limit, go to hotel where (last I checked) you always get at least 4.57 GB memory/node and at least up to 28 cores/node.
 
+.. warning::
+  As of the migration to TSCC 2.0 (in Jan 2024), our lab no longer has a hotel allocation!
+  But we will continue to include the :code:`hotel` documentation below in case we ever obtain an allocation again.
+
 If you need more than 8 hours, consider :code:`hotel`:
 
 * Compute hours are more expensive here than on :code:`condo`
@@ -139,13 +240,22 @@ If you need more than 8 hours, consider :code:`hotel`:
 
     sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
 
-So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit.
+So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://sdsc.edu/support/user_guides/tscc.html#tscc_client>`_. For example, you can get a lot of information by using the `tscc_client`:
+
+.. code-block:: bash
+
+    module load sdsc
+    tscc_client -A ddp268
 
 Env Variables and Submitting Many Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To pass an environment variable to a job, make sure the :code:`#SBATCH --export ALL` flag is set in the SLURM file or run
-:code:`sbatch <file>.slurm --export "<var1>=<value1>,<var2>=<value2>,..."`. You should then be able to access those
-values in the script using :code:`$var1` and so on.
+
+.. code-block:: bash
+
+    sbatch <file>.slurm --export "<var1>=<value1>,<var2>=<value2>,..."
+
+You should then be able to access those values in the script using :code:`$var1` and so on.
 
 Here's an example for how to submit many jobs. Suppose your current directory is::
 
@@ -201,14 +311,10 @@ Managing jobs
 Listing current jobs: :code:`squeue -u <user>`. To look at a single job, use :code:`squeue -j <jobid>`.
 To list maximum information about a job, use :code:`squeue -l -j <jobid>`
 
-* States are Q for queued, R for running, C for cancelled, and D for done. (if I recall correctly)
+The output flag determines the file that stdout is written to. This must be a file, not a directory.
+You can use some placeholders in the output location such as `%x` for job name and `%j` for job id.
 
-If your jobs are called :code:`22409804.tscc-mgr7.local` then :code:`22409804` is the job ID.
-
-To look at the stdout of a currently running job: :code:`qpeek <jobID>`. To look at the stderr
-:code:`qpeek -e <jobID>`. Once the jobs finish the stdout and stderr will be written to the files
-:code:`<log_dir>/<jobName>.o<jobID>` and :code:`<log_dir>/<jobName>.e<jobID>` respectively and 
-:code:`qpeek` will no longer work.
+Use the error flag to choose stderr's output location. If not specified, it will go to the output location.
 
 To delete a running or queued job: :code:`scancel <jobID>`. To delete all running or queued jobs:
 :code:`scancel -u $USER`
@@ -217,13 +323,10 @@ To figure out why a job is queued use :code:`scontrol show job <your_job_number>
 
 Debugging jobs the OS killed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#. Look at the output file :code:`<log_dir>/<jobName>.o<jobID>`, the first line should contain the node
-   name. (e.g. :code:`Nodes: tscc-5-7`)
-#. ssh into the node (you can do this to any node, but if you run a large process the OS will kill you because
-   you have not been scheduled to that node)
-#. Scan the os logs for a killed process `dmesg -T | grep <jobid>`
-
-The OS normally kills jobs because you ran over your memory limit.
+#. Look at the standard output and standard error files. Any error messages should be there.
+#. ssh into the node while the job is running. You can do this to any node, but if you run a large process the OS will kill you because you have not been scheduled to that node. You can figure out the name of the node assigned to your job using :code:`squeue -u $USER` once the status of the job is "RUNNING".
+#. Scan the os logs for a job once it's been killed via :code:`dmesg -T | grep <jobid>`. You can get the jobid from :code:`squeue -u $USER`
+#. If there are any messages stating that your job was "Killed", its usually a sign that you ran out of memory. You can request more memory by resubmitting the job with the :code:`--mem` parameter. For ex: :code:`--mem 8G`
 
 Get Slack notifications when your jobs finish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -242,10 +345,64 @@ Get Slack notifications when your jobs finish
 
     slack "your job terminated with exit status $?"
 
+Installing software
+-------------------
+The best practice is for each user of TSCC to use conda to install their own software. Run these commands to download, install, and configure conda properly on TSCC:
+
+.. code-block:: bash
+
+  wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+  bash Miniforge3-Linux-x86_64.sh -b -u
+  rm Miniforge3-Linux-x86_64.sh
+  source ~/miniforge3/bin/activate
+  conda init bash
+  conda config --add channels nodefaults
+  conda config --add channels bioconda
+  conda config --add channels conda-forge
+  conda config --set channel_priority strict
+  conda config --set auto_activate_base false
+  conda update -n base -y --all
+
+.. note::
+    Make sure to never install software with conda on a login node! It will take a long time and slow down the login node for other TSCC users.
+
+If you are feeling lazy, you can also use the :code:`module` system to load preconfigured software tools.
+Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
+
+.. warning::
+  Software available through the module system is usually out of date and cannot be easily updated.
+  It's also unlikely that collaborators/reviewers will be able to run your code once you're ready to share it with them, since,
+  unlike with conda, the module system doesn't offer a way to share your software environment with non-TSCC users.
+  For these reasons, we do not recommend using the :code:`module` system.
+
+Using containers
+----------------
+You can also load software via containers. Unfortunately, Docker is not available on TSCC and cannot be installed. Instead, you can use singularity (which was recently renamed to apptainer). First, run :code:`module load singularity` to make the :code:`singularity` command available. Refer to `the apptainer documentation <https://apptainer.org/documentation>`_ for usage information.
+
+For example, to grab a bash shell with TRTools:
+
+.. code-block:: bash
+
+  singularity shell --bind /tscc docker://quay.io/biocontainers/trtools:6.0.1--pyhdfd78af_0
+
+Or, to run the :code:`dumpSTR --help` command, for example:
+
+.. code-block:: bash
+
+  singularity exec --bind /tscc docker://quay.io/biocontainers/trtools:6.0.1--pyhdfd78af_0 dumpSTR --help
+
+You can find containers for all Bioconda packages on `the Biocontainers registry <https://biocontainers.pro/registry>`_.
+
+.. warning::
+  You must provide :code:`--bind /tscc` if you want to have access to files in the :code:`/tscc` directory within the container.
+
 Managing funds
 --------------
-:code:`gbalance -u <user>` will show the balance for our group, but I don't know how to see the balance on hotel vs condo,
-so I'm not actually sure what this output means.
+.. code-block:: bash
+
+  /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A ddp268
+
+Refer to `this page of the TSCC docs <https://www.sdsc.edu/support/user_guides/tscc.html#tscc_client>`_ for more info.
 
 Using Jupyter
 -------------
@@ -341,6 +498,7 @@ Here's an example of one.
   #SBATCH --nodes 1
   #SBATCH --ntasks 1
   #SBATCH --cpus-per-task 1
+  #SBATCH --mem 2G
   #SBATCH --time 1:00:00
   #SBATCH --output /dev/null
 
@@ -377,3 +535,22 @@ Here's an example of one.
       fi
   fi
   exit "$exit_code"
+
+Let's assume that you name the file :code:`run.bash` and mark it as executable with :code:`chmod u+x run.bash`.
+Then you can run it on an interactive node with:
+
+.. code-block:: bash
+
+  ./run.bash
+
+Or on a login node with:
+
+.. code-block:: bash
+
+  sbatch run.bash
+
+You can override the default :code:`sbatch` parameters or :code:`snakemake` profile values directly from the command-line. For example, you can perform `a dry-run <https://snakemake.readthedocs.io/en/stable/executing/cli.html#useful-command-line-arguments>`_ of the workflow like this:
+
+.. code-block:: bash
+
+  sbatch --time 0:10:00 run.bash -np
