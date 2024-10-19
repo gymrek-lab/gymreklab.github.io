@@ -212,7 +212,7 @@ Notes:
   need to dynamically generate the SLURM file.
 * SLURM does not support using environment variables in :code:`#SBATCH` lines in scripts. If you wish to use
   environment variables to set such values, you must pass them to the :code:`sbatch` command directly
-  (e.g. :code:`sbatch --output=$SOMEWHERE/out slurm_script.sh`) 
+  For example, you can use :code:`--output` as a command-line parameter as in :code:`sbatch --output=$SOMEWHERE/out slurm_script.sh` to override :code:`--output` in the header of the script.
 
 Partitions
 ^^^^^^^^^^
@@ -314,7 +314,7 @@ To list maximum information about a job, use :code:`squeue -l -j <jobid>`
 The output flag determines the file that stdout is written to. This must be a file, not a directory.
 You can use some placeholders in the output location such as `%x` for job name and `%j` for job id.
 
-Use the error flag to choose stderr's output location. If not specifie, it will go to the output location.
+Use the error flag to choose stderr's output location. If not specified, it will go to the output location.
 
 To delete a running or queued job: :code:`scancel <jobID>`. To delete all running or queued jobs:
 :code:`scancel -u $USER`
@@ -324,8 +324,8 @@ To figure out why a job is queued use :code:`scontrol show job <your_job_number>
 Debugging jobs the OS killed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #. Look at the standard output and standard error files. Any error messages should be there.
-#. ssh into the node. You can do this to any node, but if you run a large process the OS will kill you because you have not been scheduled to that node. You can figure out the name of the node assigned to your job using :code:`squeue` once the status of the job is "RUNNING".
-#. Scan the os logs for a killed process :code:`dmesg -T | grep <jobid>`
+#. ssh into the node while the job is running. You can do this to any node, but if you run a large process the OS will kill you because you have not been scheduled to that node. You can figure out the name of the node assigned to your job using :code:`squeue -u $USER` once the status of the job is "RUNNING".
+#. Scan the os logs for a job once it's been killed via :code:`dmesg -T | grep <jobid>`. You can get the jobid from :code:`squeue -u $USER`
 #. If there are any messages stating that your job was "Killed", its usually a sign that you ran out of memory. You can request more memory by resubmitting the job with the :code:`--mem` parameter. For ex: :code:`--mem 8G`
 
 Get Slack notifications when your jobs finish
