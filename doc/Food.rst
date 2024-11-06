@@ -55,16 +55,18 @@ Ike's Sandwiches
 
     .. code-block:: md
 
-        - :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar. [1610 cal]
-        - :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American. [1400 cal]
-        - :pig: DA VINCI: Turkey, Ham, Salami, Italian Dressing, Provolone. [1380 cal]
-        - :leafy_green: SOMETIMES I'M A VEGETARIAN: Marinated Artichoke Hearts, Mushrooms, Pesto, Provolone. [1300 cal]
+        - :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar
+        - :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American
+        - :cow: Hollywould’s SF Cheesesteak: Steak, Mushrooms, Provolone
+        - :pig: DA VINCI: Turkey, Ham, Salami, Italian Dressing, Provolone
+        - :leafy_green: SOMETIMES I'M A VEGETARIAN: Marinated Artichoke Hearts, Mushrooms, Pesto, Provolone
 
 2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is certainly not required and entirely up to you.
-3. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
-4. Order online 2-2.5 hours before the event and request delivery to FAH (3180 Voigt Dr, La Jolla CA 92093) for 0.5-1 hour before the meeting. You will need to provide credit info online.
-5. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
-6. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
+3. Note that Melissa does not usually reply to the poll but should always be included in the headcount. She usually prefers a beef option like *Hollywould’s SF Cheesesteak*.
+4. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
+5. Order online 2-2.5 hours before the event and request delivery to FAH (3180 Voigt Dr, La Jolla CA 92093) for 0.5-1 hour before the meeting. You will need to provide credit info online.
+6. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
+7. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 General Questions
 ~~~~~~~~~~~~~~~~~
