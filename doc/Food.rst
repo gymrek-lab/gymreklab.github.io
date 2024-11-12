@@ -72,7 +72,7 @@ General Questions
 ~~~~~~~~~~~~~~~~~
 How should I pay?
 -----------------
-Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for the lab credit card info when you're ready to order. You can find her in `her office or you can call her office phone <https://gymreklab.com/contact.html>`_. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
+Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Dorit for the lab credit card info when you're ready to order. You can find her phone number on her profile in the CAST slack. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
 
 .. _food-loadingdock:
 
