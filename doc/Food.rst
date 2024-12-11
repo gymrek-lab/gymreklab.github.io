@@ -1,79 +1,99 @@
+.. _food:
+
 Ordering Food for the Lab
 =========================
 
-Pizza
-~~~~~
-Who should I buy pizza from?
-----------------------------
-I've been using Domino's. It can be hard for delivery drivers to find you on UCSD's campus, but Domino's has a dropdown menu with every building on campus! You can even enter the exact room number, but it's probably easier if you just tell them to deliver to the nearest street or parking lot. You should specify those details in the delivery notes.
+Choose from the catering locations listed below. **Note that you'll need to get prior approval from Melissa** for anywhere besides Domino's.
 
-If you order with Domino's, make sure to look for coupon codes on their website. There's usually one for 20% off.
+If you'd like to order from somewhere that isn't listed here, you'll also need to keep the order <$200, in addition to requesting prior approval from Melissa. Afterwards, please also update this page with instructions for ordering from that location, so that others can order from there again in the future.
 
-How many pizzas should I buy?
------------------------------
-For a party of 15, I usually buy 4-6 large pizzas, but if you're purchasing for a lot more people, you might want to aim for extra large pizzas instead.
+Domino's Pizza
+~~~~~~~~~~~~~~
+1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of toppings people want. In the past, I've offered vegetarian, chicken, pepperoni, and regular cheese options in my polls. Sending out polls helps you get a headcount for the number of pizzas. It also gets you a list of names, which you'll need for requesting reimbursement later (see :ref:`below <food-reimbursement>`). Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount.
+2. It can be hard to judge the number of pizzas you'll need. Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza/>`__, but I'm of the opinion that the estimates they give are always too little.
+    a. **How many pizzas should I buy?** Over time, I've developed my own formula: divide the number of attendees by 3, round up, and then add one. That way, we always have at least a little pizza left over. Note that this isn't a hard and fast rule. For example, if there are more than 15 attendees, I recommend dividing by 4 instead of 3. Or if the number of attendees is just a little smaller than the nearest factor of 3, you might consider making the extra pizza a medium pizza instead of a large. Also, remember to account for attendees who may have voted more than once when you count the attendees!
+    b. **What size pizza should I buy?** In general, it's usually best to buy large pizzas - not extra large. Admittedly, you'll get more "bang for your buck" if you buy extra large pizzas than large pizzas. But if you buy extra large pizzas, be aware of the fact that people will often eat more than if you bought large pizzas -- just because the slices are larger. Also, the extra large pizzas are usually "Brooklyn style" only, which means that the dough is really thin and the toppings usually slide off the pizza when you try to take a bite. For these reasons, I almost always stick to the large pizzas for most occassions and only order extra larges for larger events.
+3. Start making your order online at least 2.5 hrs ahead of the event time. (Everyone orders pizza during lunch time, so the sooner you make the order, the more likely they will be to deliver it on time.) For a really large party (of 40, for example), I would submit the order 3 or 4 hrs ahead of time. You might even want to call them to confirm they received it and can handle it, especially for such a large group.
+4. When specifying the delivery options, you should use Dominos' detailed dropdown menu for the UCSD campus. It has nearly every building on campus! For delivery to Franlin Antonio Hall, I usually pick "Bldg 603 - W C - Atkinson Hall" from the dropdown menu and in the delivery instructions I say to meet at the corner of Equality Ln and Voigt Dr.
 
-Domino's has information about how many pizzas to order `here <https://www.dominos.com/en/about-pizza/how-many-slices-are-in-a-large-pizza>`__, but it's always better to overestimate than to underestimate. I'm of the opinion that the estimates they give are always too little.
+    .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/6b1b7f24-4fc6-48a4-ba00-6c0d0607c8a2
+        :alt: FAH Delivery Instructions
+        :align: center
+        :width: 400px
 
-You'll get more "bang for your buck" if you buy extra large pizzas than large pizzas. But if you buy extra large pizzas, be aware of the fact that people will often eat more than if you bought large pizzas -- just because the slices are larger. Also, the extra large pizzas are usually "Brooklyn style" only, which means that the dough is really thin and the toppings usually slide off the pizza when you try to take a bite. For these reasons, I almost always stick to the large pizzas for most occassions and only order extra larges for larger events.
-
-What kinds of pizza should I buy?
----------------------------------
-I aim for ratios of 1:2:1 for vegetarian : chicken : pepperoni. So if I'm purchasing 4 pizzas, I get 1 vegetarian, 2 chicken, and 1 pepperoni. Sometimes I order 2 pepperoni and 1 chicken, but it's important that there be at least one chicken option in case there are a few people who don't eat red meat / pork. For the vegetarian pizza, I usually order "Pacific Veggie" under *Specialty Pizzas*.
-
-If you know that you'll need to order the pizza ahead of time, you can send out a poll (in the #food channel on Slack) to see what people like. I recommend doing this at least a day before (and preferably, during working hours), in case people don't see it immediately. Sending out a poll can also help you get a list of names for later when you need to request reimbursement (see above). Note that Melissa does not usually reply to the poll but should always be included in the headcount.
-
-Should I add a tip?
--------------------
-Yes. Definitely. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $4-7 (or around 6-7% of the order total).
-
-When should I have them deliver?
---------------------------------
-At least 30 (preferably, 45) minutes before the event. You never know when something will go wrong, and you'll want to leave some time to call them and reorder the pizza if they somehow lost the order. (This hasn't happened to me with Domino's yet, just other providers.)
-
-I submit my order at least 2.5 hrs ahead of the event time. For a really large party (of 40, for example), I would make it 3 or 4 hrs ahead of time. You might even want to call them to confirm they received it and can handle it, especially for such a large group.
-
-If you have the ability to park on campus then it might be easier to just pick it up from them. I have never done this myself, though.
-
-What should I do prior to the event?
-------------------------------------
-Watch for phone calls! They usually call 2-3 minutes before the delivery to confirm the delivery location.
-
-If you don't answer your phone and/or they can't find you at the designated location (for FAH: the corner of Voigt Dr and Equality Ln), they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you.
-
-Be aware that they might deliver early or late. At most, I've seen them deliver 20 minutes early or 40 minutes late.
-
-Also, call them ahead of time to see if they can deliver plates and knapkins. They usually don't have plates -- in which case, you can use some of the lab's paper plates. (Currently, these are stored in the top shelf of the drawer under Arya's desk.) You can ask Dorit to buy new paper plates (every couple months).
+5. Select your pizzas and add them to the cart. For the vegetarian option, I usually get "Pacific Veggie" under *Specialty Pizzas*. Otherwise, you can find a lot of commonly ordered pizzas (like pepperoni) under the *Featured Items* menu.
+6. You can select the delivery time in the menu on the right-hand side. It's best to have them deliver 30 (preferably, 45) minutes before the event. You never know when something will go wrong, and you'll want to leave some time to call them and reorder the pizza if they somehow lost the order.
+7. Domino's always has a coupon code for 20% on their website under *"Coupons"* in the top menu bar. Make sure to apply it to your order!
+8. You're now ready to checkout! At this stage, you should enter your contact info and the delivery instructions (for FAH: "Meet at the corner of Equality Ln and Voigt Dr. Call 3 mins before").
+    You should also add a tip. The drivers apparently don't get reimbursed for the price of gas, so inflation has been hard on them. But the nearest Domino's store is close, so I usually give them just $4-7 (or around 6-7% of the order total).
+9. Do not pay for the order with your credit card! Ask Melissa for the lab credit card info, instead.
+10. After ordering, call Domino's to ask them to include plates and knapkins in their delivery. They might not have plates -- in which case, you can use some of the lab's backup paper plates. (Currently, these are stored in the top shelf of the drawer under Arya's desk.) You can ask Dorit to buy new paper plates (every couple months).
+11. During the delivery time, watch your phone for calls from them. They usually call 2-3 minutes before the delivery to confirm the delivery location. If you don't answer your phone and/or they can't find you at the designated location, they will simply cancel the delivery. They are on a tight schedule and will have limited patience for you. Be aware that they might deliver early or late. At most, I've seen them deliver 20 minutes early or 40 minutes late.
+12. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 Taco Villa
 ~~~~~~~~~~
-1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of burritos people want. In the past, I've provided `the following options <https://www.tacovillasd.com/#burritos>`_ since they seem to cover all of the meats: Bean & Cheese, Pollo Asado, Avocado, Fish, Al Pastor, Carne Asada, and Shrimp. Note that Melissa does not usually reply to the poll but should always be included in the headcount (for Bean and Cheese).
-2. To order the burritos, I usually call Taco Villa 2.5-3 hrs before the event and ask them to have it ready ~40 minutes before the event. You will need to provide credit card info over the phone.
-3. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in the FAH loading dock that the FAH building manager has given us permission to borrow.
+1. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of burritos people want. In the past, I've provided `the following options <https://www.tacovillasd.com/#burritos>`_ since they seem to cover all of the meats: Bean & Cheese, Pollo Asado, Veggie Avocado, Fish, Al Pastor, Carne Asada, and Shrimp. Make sure to specify that everyone should vote only for one option! Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount (for "Bean and Cheese" and "Carne Asada," respectively). You should also order one extra Veggie Avocado because there is always at least one person who forgets to respond to the poll.
+2. To order the burritos, I usually order by phone 2.5-3 hrs before the event and ask them to have it ready ~40 minutes before the event. (**It's important that you order by phone instead of online.** They may not be able to fulfill your entire order if you submit it online.) They might want you to provide credit card info over the phone, but you may want to pay for everything in-person in case anyone else adds their name to the order in the last minute. You may also email them at esperanza AT tacovillasd.com instead of calling over the phone.
+3. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in :ref:`the FAH loading dock <food-loadingdock>` that you can use.
+4. Once at Taco Villa, try to grab some salsa, lemons, and other condiments, as well. Before you leave, count the burritos to ensure there aren't any missing.
+5. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 Rubio's
 ~~~~~~~
-1. I usually order the "Family Taco Kits" under their "Family Meals" menu. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of meat people want. In the past, I've provided the following options: Chicken, Steak, Fish, Shrimp, and Vegetarian. For 15-16 people, I usually order 3 taco kits (one chicken, one steak, and one shrimp). Note that Melissa does not usually reply to the poll but should always be included in the headcount.
+1. I usually order the "Family Taco Kits" under their "Family Meals" menu. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of meat people want. In the past, I've provided the following options: Chicken, Steak, Fish, Shrimp, and Vegetarian. For 15-16 people, I usually order 3 taco kits (one chicken, one steak, and one shrimp). Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount.
 2. Rubio's offers a vast array of ordering options for the taco kits. I usually try to get a mix of everything: corn/flour tortillas, different kinds of rice, different beans, different sauces, limes, cheese, etc. See `here <https://drive.google.com/file/d/1ZdZOidkk5E_WFE5UG0ME0_OL_zuGVf3r>`_ for a screenshot of my typical order. Make sure that you order catering utensils attached with every taco kit.
 3. I usually order online 2-2.5 hrs before the event and ask them to have it ready ~30 minutes before the event. You will need to provide credit card info online.
-4. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in the FAH loading dock that the FAH building manager has given us permission to borrow.
+4. Recruit someone to help you carry the food back. It can be heavy. There are also black wagons in :ref:`the FAH loading dock <food-loadingdock>` that you can use. Note that you might need to show them the email confirmation before they will give you the food.
 5. Before the event, it can help to lay out all of the food in a decently organized fashion. Do not throw out any of the bags until after the event in case you need them for carrying stuff afterward!
 6. After the event, try to consolidate leftovers into a single taco kit container. Throw out the remaining containers in the FAH loading dock according to the instructions below. Put the leftover sauces, chips, and taco kit in the fridge.
+7. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
+
+Ike's Sandwiches
+~~~~~~~~~~~~~~~~
+1. The catering options provide half sandwiches per person but are generally too expensive and too much food. Instead, order half sandwiches per person by doing the following: (1) provide a few sandwich choices for people to choose from (e.g. a veggie option, a chicken option, and a beef option), (2) have people vote for their choices and (3) if n people vote for a particular sandwich type, order ceil(n/2) of that sandwich. In the past, we've provided the following options:
+
+    .. code-block:: md
+
+        - :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar
+        - :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American
+        - :cow: Hollywould’s SF Cheesesteak: Steak, Mushrooms, Provolone
+        - :pig: DA VINCI: Turkey, Ham, Salami, Italian Dressing, Provolone
+        - :leafy_green: SOMETIMES I'M A VEGETARIAN: Marinated Artichoke Hearts, Mushrooms, Pesto, Provolone
+
+2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is certainly not required and entirely up to you.
+3. Note that Melissa does not usually reply to the poll but should always be included in the headcount. She usually prefers a beef option like *Hollywould’s SF Cheesesteak*.
+4. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
+5. Order online 2-2.5 hours before the event and request delivery to FAH (3180 Voigt Dr, La Jolla CA 92093) for 0.5-1 hour before the meeting. You will need to provide credit info online.
+6. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
+7. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 General Questions
 ~~~~~~~~~~~~~~~~~
 How should I pay?
 -----------------
-Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for her credit card when you're ready to order. If you can't find her, ask Arya.
+Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Dorit for the lab credit card info when you're ready to order. You can find her phone number on her profile in the CAST slack. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
 
-What should I do after the event?
----------------------------------
-You can return plates and knapkins to wherever you found them: either Arya's desk drawer or the kitchen. You can put any leftover food in the kitchen fridge. Message the #food channel of the `collaboratory Slack <https://join.slack.com/t/cpg-collaboratory>`_ to let them know that there's free food!
+.. _food-loadingdock:
 
-Note that FAH facilities has asked that we refrain from overloading the trash bins at FAH with pizza boxes or leftover containers. Instead, you can dump the trash into one of the black wagons in the FAH loading dock. You can access the loading dock via the basement level of FAH. Go to the end of the hall and turn left.
+How do I access the FAH loading dock?
+-------------------------------------
+The FAH loading dock has black wagons that you can borrow for carrying food. You can access the loading dock via the basement level of FAH (labeled "LL" in the elevator). After exiting the elevator, go through the doors on the opposite wall and through to the end of the hall, and then turn left.
 
-If there are a lot of crumbs and things lying around, please wipe down the surfaces of the meeting room with the sanitizing wipes provided in the corner.
+.. _food-reimbursement:
 
 Reimbursement
 -------------
-Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed.
+Email Dorit with a PDF of your receipt as well as a list of each person who ate pizza and their titles (ex: "Graduate Student", "Professor", "Postdoc", etc). CC Melissa or whoever paid. In the body of your email, mention the total cost and explain who should be reimbursed. `Here is an example email <https://docs.google.com/document/d/1xz_NneMW69KFlzqnAXqu4Zo9LqukAGhuVnaie1U5-LQ>`_ you can use. (Note that you will need to be a part of the Gymrek Lab Shared Google Drive to view the doc. See :ref:`the onboarding doc <onboarding>` for instructions on joining it or simply request access if you aren't part of the lab.)
+
+It's best to remove any personal information from PDF receipts before you submit them for reimbursement. Before printing your email receipt as a PDF, you should feel free to delete any information like your phone number or email address. You can use the `Inspect Element <https://yamm.com/blog/how-to-print-email-from-gmail-without-header>`_ trick to do this.
+
+.. _food-cleanup:
+
+What should I do after the event?
+---------------------------------
+If there are a lot of crumbs and things lying around, please wipe down the surfaces of the meeting room with the sanitizing wipes provided in the corner.
+
+**Don't dispose of large trash items in the trash bins of the meeting room!** FAH facilities has asked that we refrain from overloading the trash bins on the fourth floor with pizza boxes or leftover containers. Instead, you can dump the trash into one of the black wagons in the FAH loading dock.
+
+You can return plates and knapkins to wherever you found them: either Arya's desk drawer or the kitchen. You can put any leftover food in the kitchen fridge. Message the #food channel of the `collaboratory Slack <https://join.slack.com/t/cpg-collaboratory>`_ to let them know that there's free food!

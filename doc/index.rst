@@ -12,8 +12,9 @@ This site has internal info relevant to Gymrek Lab members. To find our public-f
 .. toctree::
    :maxdepth: 2
 
-   LabMeetingSchedule
+   LabMeetings
    ComputeResources
+   Conferences
    Onboarding
    LabWebsite
    WetLab
