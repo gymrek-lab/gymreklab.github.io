@@ -66,11 +66,15 @@ Ike's Sandwiches
 5. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
 6. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
+Einstein's Bagels
+~~~~~~~~~~~~~~~~~
+You can order a Baker's dozen with `Doordash <https://www.doordash.com/store/einstein-bros-bagels-san-diego-68498>`_. I usually get the Plain and Honey Almond smears. Make sure to ask for them to be pre-sliced!
+
 General Questions
 ~~~~~~~~~~~~~~~~~
 How should I pay?
 -----------------
-Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for the lab credit card info when you're ready to order. You can find her in `her office or you can call her office phone <https://gymreklab.com/contact.html>`_. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
+Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Dorit for the lab credit card info when you're ready to order. You can find her in `her office or you can call her office phone <https://gymreklab.com/contact.html>`_. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
 
 .. _food-loadingdock:
 
