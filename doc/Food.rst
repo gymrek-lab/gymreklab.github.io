@@ -70,7 +70,10 @@ Ike's Sandwiches
 
 Einstein's Bagels
 ~~~~~~~~~~~~~~~~~
-You can order a Baker's dozen with `Doordash <https://www.doordash.com/store/einstein-bros-bagels-san-diego-68498>`_. I usually get the Plain and Honey Almond smears. Make sure to ask for them to be pre-sliced!
+1. You can order a Baker's dozen with `Doordash <https://www.doordash.com/store/einstein-bros-bagels-san-diego-68498>`_. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of bagels people want. Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount.
+2. I would recommending ordering 1.5 hrs ahead of time, so the food arrives 30 mins ahead of time and you have some buffer time. I usually get the Plain and Honey Almond smears. Make sure to ask for 1) the bagels to be pre-sliced and 2) at least two knives (for the smear)!
+3. You can try to fit any remaining bagels in the lab fridge or take them home.
+4. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 General Questions
 ~~~~~~~~~~~~~~~~~
