@@ -1,6 +1,8 @@
 Gymrek Lab Meetings
 ===================
 
+.. _labmeetings-schedule:
+
 General meeting info
 ---------------------
 
@@ -16,7 +18,7 @@ Presenting
 ----------
 If you are presenting in Franklin Antonio Hall, follow these steps to set up the projector for your presentation.
 
-1. It's best to connect to the projector via the cables provided in the front of the room - rather than connecting wirelessly.
+1. For the audio, it's best to connect to the projector via the cables provided in the front of the room - rather than connecting wirelessly.
     You should connect **both** the HDMI cable and the USB cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
     If needed, you can use the white USB Type-C adapter to connect to both cables like `this <https://drive.google.com/file/d/1CItoMXvJZ3ulQaZqI65ScLRaIbQMhJwX>`_.
 
@@ -35,6 +37,7 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
         :align: center
         :width: 400px
 
+    You might see a slighly different set of options. In that case, you can try all of them and see which ones work.
 6. Connect your Zoom microphone to the room's microphone. In FAH 4002, you can select *"Line In (USB Capture SDI+ Line In)"* from among the list of options. You might want to double-check that someone on zoom can hear someone else on the opposite side of the room.
 
     .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/62f62c91-5676-4034-ab2b-e056f416c401
@@ -42,6 +45,7 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
         :align: center
         :width: 400px
 
-7. Connect your Zoom audio to the room's speakers. In FAH 4002, you can select *"Crestron (Intel(R) Display Audio)"* from among the list of options. Have someone else log into the Zoom and say something through their device.
+    You might see a slighly different set of options. In that case, you can try all of them and see which ones work. The audio should appear as a flickering green signal.
+7. Connect your Zoom audio to the room's speakers. In FAH 4002, you can select the *"Crestron"* option from among the list of options. Have someone else log into the Zoom and say something through their device.
 8. Don't forget to switch to full screen mode on Zoom. Under *"More"* in the top bar, click *"Hide / Show Floating Meeting Control"*.
 9. Knock it out of the park!

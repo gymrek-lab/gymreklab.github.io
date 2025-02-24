@@ -3,7 +3,7 @@
 Ordering Food for the Lab
 =========================
 
-Choose from the catering locations listed below. Note that you'll need to get prior approval from Melissa for anywhere besides Domino's.
+Choose from the catering locations listed below. **Note that you'll need to get prior approval from Melissa** for anywhere besides Domino's.
 
 If you'd like to order from somewhere that isn't listed here, you'll also need to keep the order <$200, in addition to requesting prior approval from Melissa. Afterwards, please also update this page with instructions for ordering from that location, so that others can order from there again in the future.
 
@@ -51,12 +51,22 @@ Rubio's
 
 Ike's Sandwiches
 ~~~~~~~~~~~~~~~~
-1. The catering options provide half sandwiches per person but are generally too expensive and too much food. Instead, order half sandwiches per person by doing the following: (1) provide a few sandwich choices for people to choose from (e.g. a veggie option, a chicken option, and a beef option), (2) have people vote for their choices and (3) if n people vote for a particular sandwich type, order ceil(n/2) of that sandwich.
-2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is not required and entirely up to you.
-3. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
-4. Order online 2-2.5 hours before the event and request delivery to FAH (3180 Voigt Dr, La Jolla CA 92093) for 0.5-1 hour before the meeting. You will need to provide credit info online.
-5. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
-6. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
+1. The catering options provide half sandwiches per person but are generally too expensive and too much food. Instead, order half sandwiches per person by doing the following: (1) provide a few sandwich choices for people to choose from (e.g. a veggie option, a chicken option, and a beef option), (2) have people vote for their choices and (3) if n people vote for a particular sandwich type, order ceil(n/2) of that sandwich. In the past, we've provided the following options:
+
+    .. code-block:: md
+
+        - :chicken: MENAGE A TROIS: Chicken (Halal), Honey Mustard, BBQ Sauce, Real Honey, Pepper Jack, Swiss, Cheddar
+        - :cut_of_meat: MADISON BUMGARNER: Steak, Yellow BBQ Sauce, (Light) Habanero, Pepper Jack, American
+        - :cow: Hollywould’s SF Cheesesteak: Steak, Mushrooms, Provolone
+        - :pig: DA VINCI: Turkey, Ham, Salami, Italian Dressing, Provolone
+        - :leafy_green: SOMETIMES I'M A VEGETARIAN: Marinated Artichoke Hearts, Mushrooms, Pesto, Provolone
+
+2. If you have the bandwidth, you can additionally offer people the choice of picking an arbitrary sandwich as long as they find someone in the lab with whom to split that sandwich. Providing this option is certainly not required and entirely up to you.
+3. Note that Melissa does not usually reply to the poll but should always be included in the headcount. She usually prefers a beef option like *Hollywould’s SF Cheesesteak*.
+4. When ordering the sandwiches, request each half of the sandwich to be wrapped indivudally in the special instructions section. This will make it easier to split the sandwiches. For customizing the sandwiches, I kept it simple: Dutch crunch bread and just lettuce+tomato+onions as toppings. You can also opt to skip the lollipops to reduce waste (although they are sometimes still included).
+5. Order online 2-2.5 hours before the event and request delivery to FAH (3180 Voigt Dr, La Jolla CA 92093) for 0.5-1 hour before the meeting. You will need to provide credit info online.
+6. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
+7. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
 85 Degrees
 ~~~~~~~~~~
@@ -74,7 +84,7 @@ General Questions
 ~~~~~~~~~~~~~~~~~
 How should I pay?
 -----------------
-Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Melissa for the lab credit card info when you're ready to order. You can find her in `her office or you can call her office phone <https://gymreklab.com/contact.html>`_. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
+Do not use your own credit card! (Reimbursement requires Dorit to `register you on Concur <https://support.ucsd.edu/finance?id=kb_article_view&sysparm_article=KB0031969&sys_kb_id=dbdb7b3e1b183810506f64e8624bcbd8>`__.) Ask Dorit for the lab credit card info when you're ready to order. You can find her phone number on her profile in the CAST slack. If you can't get hold of her, contact Arya. **Make sure to submit a reimbursement request (see below) on behalf of the person who paid!**
 
 .. _food-loadingdock:
 

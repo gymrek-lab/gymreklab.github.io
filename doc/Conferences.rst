@@ -3,9 +3,43 @@
 Attending Conferences
 =====================
 
+Policies in our lab
+~~~~~~~~~~~~~~~~~~~
+* The lab can fund one major conference per year per student
+* Before submitting any abstract or paper please be sure to first get Melissa's approval and that of any co-authors on the work
+* If you are able to obtain funding help (e.g. travel awards available through GEPA or elsewhere) you may also attend an additional meeting. In many cases existing travel awards will not cover everything and Melissa might be able to cover the difference, but you should check with her first
+
+    There are many external funding options available, but you might need to do some digging to find them:
+
+    * GEPA in UCSD has a lot of information about many conferences available for students. In many cases, financial assistance is prioritized for students who show an emphasis on leadership and/or how the research gives back to the community
+    * Some conferences will have specific travel awards available
+    * Some departments (e.g. CSE) may also sometimes offer travel awards
+    * `GPSA <https://gpsa.ucsd.edu/grad-resources/funding/travel-grants.html>`_ offers travel grants for graduate students
+
+* Conferences that are local and therefore do not require travel/lodging costs generally do not count toward the above, but again you should check with Melissa first before registering
+* Generally, to attend a conference you must submit an abstract and plan to present your work. This requirement is waived if it is your first year in the lab, in which case you likely would not have had enough time to have something to present yet
+
+Some conferences we attend
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+* `American Society of Human Genetics (ASHG) <https://www.ashg.org/meetings>`_: this is the biggest human genetics meeting of the year. This conference is very broad and is relevant to almost all of our work. This meeting is huge (thousands of participants) which is good and bad. It is a big honor and great opportunity for exposure to give a talk at ASHG. Many people announce their latest and greatest new work and technologies here. On the other hand, because ASHG is so huge it can be hard to meet new people and can be a bit overwhelming.
+* `Biology of Genomes <https://meetings.cshl.edu/meetings.aspx?meet=GENOME>`_: This is a much smaller meeting held at Cold Spring Harbor in Long Island NY. It is not all genetics and includes some broader genomics applications. My opinion is that everyone should get to a Cold Spring Harbor meeting at least once as a trainee. The setting is much more intimate than ASHG, where everyone is stuck on the CSHL campus (which is quite pretty) for several days and there are many more opportunities to meet new people.
+* `RECOMB <https://recomb.org>`_: RECOMB is much more methods and computational biology focused. You might remember when RECOMB was held at UCSD in 2022. It is a strong community of people who really care about methods details and I always end up learning something new and coming away with new methods ideas at this meeting. It typically alternates between the US and non-US locations every other year.
+
+Other options specific to our field are:
+
+* `AGBT <https://www.agbt.org/events/general-meeting>`_ which has more of a technology flavor
+* `Genome Informatics <https://meetings.cshl.edu/meetings.aspx?meet=info>`_ which is more methods focused but maybe a bit less so than RECOMB
+* `Gordon Research Conferences (GRC) <https://www.grc.org>`_ which are held on very specific topics and typically occur in ski-resort type settings closer to the CSHL feel
+* The `computational genomics summer institute (CGSI) <http://computationalgenomics.bioinformatics.ucla.edu>`_ at UCLA
+
+There are also meetings that are more general (not just bioinformatics) but you should also consider attending:
+
+* `SACNAS: Society for the Advancement of Chicanos/Hispanics and Native Americans in Science <https://projects.iq.harvard.edu/sacnasharvard/what-sacnas>`_. All are welcome, but with emphasis on Hispanic / Latinx students
+* `ABRCMS: Annual Biomedical Research Conference for Minoritized Scientists <https://www.abrcms.org>`_. All Welcome, emphasis on African American students
+
 Travel and reimbursement guidelines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-You can be reimbursed for conference-related expenses. Refer to these guidelines from Dorit:
+To get reimbursed for conference-related expenses, please refer to these guidelines from Dorit:
 
 https://docs.google.com/document/d/1v414-VEuYpOuHidq2AlqxrvjSTfj16QdpaXrVsSOi0U
 
@@ -55,14 +89,25 @@ Here are some helpful tips!
         :align: center
         :width: 400px
 
-    a. Raster is the traditional format that you're probably familiar with. It stores colors for each pixel in your image. By contrast, vector formats store each component of your figure as an object. For example, a line in your image will be defined in vector format by a start position, end position, and color -- rather than a series of black pixels.
+    a. Raster is the traditional format that you're probably familiar with. It stores colors for each pixel in your image. By contrast, vector formats store each component of your figure as *an object*. For example, a line in your image will be defined in vector format by a start position, end position, and color -- rather than a series of black pixels.
     b. If you place a raster image on your poster, there's a good chance it will appear blurry when printed. The advantage of vector formats is that they can be rescaled to any arbitrary size and will never appear blurry!
     c. If you use matplotlib or pandas to create your figures, you can easily just change the desired output filename from ".png" to ".pdf" to create a vector version of the figure.
 
     .. warning::
         Some images (like Manhattan plots) will have so many objects in them that Adobe Illustrator will freeze and crash when you try to load them. For situations like these, it's best to import them as PNG. To minimize blurrines, you can try to recreate the figure with a high DPI (or PPI) and then resize it down within Illustrator.
 
-4. When creating your poster, try to use software that will allow you to work with vector (as opposed to raster) images. So don't use google slides/drawings! Adobe illustrator is probably the best option. You can ask Dorit to get you a license. After you're done, export your poster as a PDF rather than a PNG.
+4. When creating your poster, try to use software that will allow you to import and export vector (*not* raster) images. For example, you should avoid Google slides/drawings because it will allow exporting as PDF but does not support importing plots as PDFs or SVGs.
+    
+    Adobe illustrator is probably the best option. You can email Dorit to ask for a license.
+    
+    However, please note that Illustrator can be a steep learning curve if you don't have a lot of experience with it yet. In that case, you may opt for the hybrid option:
+
+        1. Start with Google slides/drawings and import your plots as rasterized PNGs
+        2. Export your canvas to PDF once you like how it looks
+        3. Import that PDF into Illustrator
+        4. Replace all of the embedded PNG plots with vectorized PDF versions in Illustrator
+        5. Once you're done, export the final canvas as a vectorized PDF in Illustrator
+
 5. You can find some old lab posters in `the lab's Google Drive <https://drive.google.com/drive/folders/1ora8McmJShuJeiwb1hCSrsKWEiMoAxCs>`_.
 
     .. note::
@@ -70,7 +115,7 @@ Here are some helpful tips!
 
 6. Our logos can be found in `the lab Google Drive <https://drive.google.com/drive/folders/1-egL2EVfTh7wH4wmfFcruGtJMplnPVQQ>`_. For UCSD's, you can refer to `this Jacobs School of Engineering webpage <https://jacobsschool.ucsd.edu/logos>`_. Also, consider displaying your email and a QR code link to your GitHub repo or documentation.
 7. The cheapest place to print posters is probably on campus at the print shop at `UCSD Campus Curbside Pickup <https://maps.app.goo.gl/FseyUa62wk3Qztu5A>`_. You can request reimbursement as part of your conference expenses afterwards.
-    a. Go to `their online portal <https://ucsdimprints.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF2gL05u6lNHBp6AwVlPfgDQIgaPc5Cokq4RKYVvn2cx3C2V0adSszgU#!/CategoryHome/9>`_ to create an order and submit a PDF of your poster. (Use `this link <https://blink.ucsd.edu/facilities/tritonprint/index.html>`__ to navigate to the portal if the former doesn't work.)
+    a. Go to `their online portal <https://ucsdimprints.myprintdesk.net/DSF/SmartStore.aspx?6xni2of2cF2gL05u6lNHBp6AwVlPfgDQIgaPc5Cokq4RKYVvn2cx3C2V0adSszgU#!/CategoryHome/9>`_ to create an order and submit **a vectorized PDF** of your poster. (Use `this link <https://blink.ucsd.edu/facilities/tritonprint/index.html>`__ to navigate to the portal if the former doesn't work.)
     b. After logging in, click on "Signs and Banners" and then "BUY NOW" under the category: "POSTERS, CHARTS, AND DISPLAYS".
 
         .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/efd10f1d-c2d6-42ab-a97f-57eb1a8d79af

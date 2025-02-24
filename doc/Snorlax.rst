@@ -1,3 +1,5 @@
+.. _snorlax:
+
 Snorlax
 =======
 
@@ -62,6 +64,8 @@ Finally, navigate to your web browser: localhost:8888 to use Jupyter Notebook. I
 This example uses port 8888 as an example. You'll have to use a different port if that one is in use. If you attempt to run Jupyter notebook with a port that's already in use, Jupyter will often try to choose another port number. e.g. if you chose 8888 but that's in use, it might use 8889. If that happens, you'll get an error message when you try to access the URL on your web browser since that will not be the port you exposed with the :code:`-L` option to your ssh command. You'll have to choose a new port, log out of snorlax, and log back in with the correct port.
 
 You can try ports in the range 1024+. 5000 is typically in use for WebSTR development. Other ports may be reserved for use by other programs or used by labmates. If you know how to check which ports are available, feel free to submit a PR and update this page :). (see https://gymreklabgithubio.readthedocs.io/en/latest/LabWebsite.html).
+
+.. _snorlax-screen:
 
 Use ``screen`` to keep things running even with spotty internet
 ---------------------------------------------------------------
