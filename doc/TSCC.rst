@@ -1,13 +1,14 @@
 TSCC
 ====
 
-Last update: 2024/10/08
+Last update: 03/10/2025
 
 Official docs
 -------------
-* The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
-* The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
+* The `tscc description <https://www.sdsc.edu/systems/tscc>`_
+* The `tscc user guide <https://www.sdsc.edu/systems/tscc/user_guide.html>`_
 * The `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
+* The `condo partition <https://www.sdsc.edu/systems/tscc/condo_details.html>`_
 
 .. _tscc-access:
 
@@ -28,7 +29,7 @@ Logging in
 * This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
-* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
+* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=In%20your%20local%20pc%20open%20or%20create%20this%20file>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
 
 .. code-block:: text
 
@@ -203,7 +204,7 @@ Notes:
   So, for example, if you ask for 4 CPU cores in your job but don't specify the memory, then by default you will get 4 GB of memory.
   If you want more memory, you can either request more processors (ex: :code:`--cpus-per-task 4`) or explicitly specify the memory (ex: :code:`--mem 2G`).
   Note that the lab will be charged according to both the number of processors and amount of memory that you request, so it's best to request as few of both resources as you need.
-  For more details about job charging, refer to the `TSCC website <https://www.sdsc.edu/support/user_guides/tscc.html#condo_job_charging>`__.
+  For more details about job charging, refer to the "Job Charging in Condo" section of the `TSCC website <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=Job%20Charging%20in%20Condo>`__.
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
   passing). Instead, just submit more jobs
 * If :code:`<log_dir>` is mistyped, the job will not run. Double check that location before you submit.
@@ -240,7 +241,7 @@ If you need more than 8 hours, consider :code:`hotel`:
 
     sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
 
-So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://sdsc.edu/support/user_guides/tscc.html#tscc_client>`_. For example, you can get a lot of information by using the `tscc_client`:
+So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_. For example, you can get a lot of information by using the `tscc_client`:
 
 .. code-block:: bash
 
@@ -367,7 +368,7 @@ The best practice is for each user of TSCC to use conda to install their own sof
     Make sure to never install software with conda on a login node! It will take a long time and slow down the login node for other TSCC users.
 
 If you are feeling lazy, you can also use the :code:`module` system to load preconfigured software tools.
-Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
+Refer to the "Environment modules" section of `the TSCC documentation <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=Environment%20Modules>`_ for more information.
 
 .. warning::
   Software available through the module system is usually out of date and cannot be easily updated.
@@ -402,13 +403,36 @@ Managing funds
 
   /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A ddp268
 
-Refer to `this page of the TSCC docs <https://www.sdsc.edu/support/user_guides/tscc.html#tscc_client>`_ for more info.
+Refer to `this page of the TSCC docs <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_ for more info.
+
+.. _tscc-vscode:
+
+Using VSCode
+------------
+You can use `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_ to load your project directory on TSCC directly into VSCode!
+
+After installing the `Remote Development Extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_, you should configure it to use the version of SSH that comes up when you type ``which ssh`` in your terminal.
+To do this, add the following entry to VSCode's settings.json file, where ``YOUR_PATH_HERE`` represents the result of ``which ssh``.
+
+.. code-block:: bash
+
+  "remote.SSH.path": "YOUR_PATH_HERE",
+
+If on Windows and using Windows Subsystem for Linux, follow `these directions <https://stackoverflow.com/a/66048792>`_ to set up VSCode to use WSL's SSH. In that case, ``YOUR_PATH_HERE`` would be the path to the ``.bat`` file.
+
+Lastly, confirm that you have configured SSH for "expedited access" as described at the top of this page. In particular, make sure that you've specified the ControlMaster and ControlPersist options. These options will allow VSCode to bypass the two-step verification step when it logs in using your SSH credentials.
+
+Now, whenever you want to open TSCC files in VSCode:
+1. Open a terminal and ssh into TSCC
+2. Open VSCode and use Cmd + Shift + P (or Ctrl + Shift + P) to open the command palette
+3. Search for "Connect to Host" in the command palette
+4. Select tscc from the optionsq
 
 Using Jupyter
 -------------
 Looking for a way to edit code that you've stored on TSCC?
 
-Before considering Jupyter, you may want to try `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
+Before considering Jupyter, you may want to try :ref:`VSCode <tscc-vscode>`, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
 
 Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 Make sure to perform any :code:`conda` installations on an interactive node. Also, please note that you will need to perform a few extra steps to use :code:`jupyter` on TSCC, as described in the section `Usage on an HPC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html#usage-on-an-hpc>`_
