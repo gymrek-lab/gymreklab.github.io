@@ -1,7 +1,7 @@
 TSCC
 ====
 
-Last update: 2024/10/08
+Last update: 03/10/2025
 
 Official docs
 -------------
@@ -405,11 +405,34 @@ Managing funds
 
 Refer to `this page of the TSCC docs <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_ for more info.
 
+.. _tscc-vscode:
+
+Using VSCode
+------------
+You can use `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_ to load your project directory on TSCC directly into VSCode!
+
+After installing the `Remote Development Extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_, you should configure it to use the version of SSH that comes up when you type ``which ssh`` in your terminal.
+To do this, add the following entry to VSCode's settings.json file, where ``YOUR_PATH_HERE`` represents the result of ``which ssh``.
+
+.. code-block:: bash
+
+  "remote.SSH.path": "YOUR_PATH_HERE",
+
+If on Windows and using Windows Subsystem for Linux, follow `these directions <https://stackoverflow.com/a/66048792>`_ to set up VSCode to use WSL's SSH. In that case, ``YOUR_PATH_HERE`` would be the path to the ``.bat`` file.
+
+Lastly, confirm that you have configured SSH for "expedited access" as described at the top of this page. In particular, make sure that you've specified the ControlMaster and ControlPersist options. These options will allow VSCode to bypass the two-step verification step when it logs in using your SSH credentials.
+
+Now, whenever you want to open TSCC files in VSCode:
+1. Open a terminal and ssh into TSCC
+2. Open VSCode and use Cmd + Shift + P (or Ctrl + Shift + P) to open the command palette
+3. Search for "Connect to Host" in the command palette
+4. Select tscc from the optionsq
+
 Using Jupyter
 -------------
 Looking for a way to edit code that you've stored on TSCC?
 
-Before considering Jupyter, you may want to try `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
+Before considering Jupyter, you may want to try :ref:`VSCode <tscc-vscode>`, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
 
 Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 Make sure to perform any :code:`conda` installations on an interactive node. Also, please note that you will need to perform a few extra steps to use :code:`jupyter` on TSCC, as described in the section `Usage on an HPC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html#usage-on-an-hpc>`_
