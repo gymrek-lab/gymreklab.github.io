@@ -204,7 +204,7 @@ Notes:
   So, for example, if you ask for 4 CPU cores in your job but don't specify the memory, then by default you will get 4 GB of memory.
   If you want more memory, you can either request more processors (ex: :code:`--cpus-per-task 4`) or explicitly specify the memory (ex: :code:`--mem 2G`).
   Note that the lab will be charged according to both the number of processors and amount of memory that you request, so it's best to request as few of both resources as you need.
-  For more details about job charging, refer to the `TSCC website <https://www.sdsc.edu/support/user_guides/tscc.html#condo_job_charging>`__.
+  For more details about job charging, refer to the "Job Charging in Condo" section of the `TSCC website <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=Job%20Charging%20in%20Condo>`__.
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
   passing). Instead, just submit more jobs
 * If :code:`<log_dir>` is mistyped, the job will not run. Double check that location before you submit.
@@ -241,7 +241,7 @@ If you need more than 8 hours, consider :code:`hotel`:
 
     sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
 
-So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://sdsc.edu/support/user_guides/tscc.html#tscc_client>`_. For example, you can get a lot of information by using the `tscc_client`:
+So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_. For example, you can get a lot of information by using the `tscc_client`:
 
 .. code-block:: bash
 
@@ -368,7 +368,7 @@ The best practice is for each user of TSCC to use conda to install their own sof
     Make sure to never install software with conda on a login node! It will take a long time and slow down the login node for other TSCC users.
 
 If you are feeling lazy, you can also use the :code:`module` system to load preconfigured software tools.
-Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
+Refer to the "Environment modules" section of `the TSCC documentation <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=Environment%20Modules>`_ for more information.
 
 .. warning::
   Software available through the module system is usually out of date and cannot be easily updated.
@@ -403,7 +403,7 @@ Managing funds
 
   /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A ddp268
 
-Refer to `this page of the TSCC docs <https://www.sdsc.edu/support/user_guides/tscc.html#tscc_client>`_ for more info.
+Refer to `this page of the TSCC docs <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_ for more info.
 
 Using Jupyter
 -------------
