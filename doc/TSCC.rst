@@ -5,9 +5,10 @@ Last update: 2024/10/08
 
 Official docs
 -------------
-* The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
-* The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
+* The `tscc description <https://www.sdsc.edu/systems/tscc>`_
+* The `tscc user guide <https://www.sdsc.edu/systems/tscc/user_guide.html>`_
 * The `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
+* The `condo partition <https://www.sdsc.edu/systems/tscc/condo_details.html>`_
 
 .. _tscc-access:
 
@@ -28,7 +29,7 @@ Logging in
 * This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
-* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
+* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=In%20your%20local%20pc%20open%20or%20create%20this%20file>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
 
 .. code-block:: text
 
