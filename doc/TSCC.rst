@@ -525,11 +525,15 @@ Here's an example of one.
   #SBATCH --mem 2G
   #SBATCH --time 1:00:00
   #SBATCH --output /dev/null
+  #SBATCH --signal=B:SIGUSR1@5
 
   # An example bash script demonstrating how to run the entire snakemake pipeline
   # This script creates a log file in the execution directory
 
-  # clear anything left over in the log file
+  # Before we do anything, let's ensure that we get notified in case this job times out
+  trap "command -v slack &>/dev/null && slack \"TIMEOUT: snakemake job\"" SIGUSR1
+
+  # Clear anything left over in the log file
   echo ""> log
 
   # try to find and activate the snakemake conda env if we need it
@@ -542,14 +546,17 @@ Here's an example of one.
           conda activate snakemake
   fi
 
-  # Pass any parameters to this script as additional arguments to snakemake via "$@"
-  # For example, to execute a dry-run: 'sbatch smk.slurm -np' instead of 'sbatch smk.slurm'
+  # You can pass additional arguments to snakemake by passing extra parameters to this script
+  # For example, to execute a dry-run: 'sbatch run.bash -n' instead of 'sbatch run.bash'
   snakemake \
   --workflow-profile profile/slurm \
   --rerun-trigger {mtime,params,input} \
-  "$@" &>log
+  "$@" &>log &
 
-  exit_code="$?"
+  wait $!
+  exit_code=$?
+
+  # Send a slack message to notify us that the job completed
   if command -v 'slack' &>/dev/null; then
       if [ "$exit_code" -eq 0 ]; then
           slack "snakemake finished successfully" &>/dev/null
@@ -577,4 +584,4 @@ You can override the default :code:`sbatch` parameters or :code:`snakemake` prof
 
 .. code-block:: bash
 
-  sbatch --time 0:10:00 run.bash -np
+  sbatch --time 0:10:00 run.bash -n
