@@ -26,7 +26,7 @@ Logging in
 
   ssh <user>@login.tscc.sdsc.edu
 
-* This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
+* This will put you on a node such as `login1.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
 * To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=In%20your%20local%20pc%20open%20or%20create%20this%20file>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
@@ -47,9 +47,12 @@ Logging in
 
 * If you are running Windows, you can use the `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_ to acquire a Linux terminal with SSH
 
-The login nodes are often quite slow because there are too many users on them, and you're not supposed to run code that's
-at all computationally burdensome there. So if you want to use tscc as a workstation, you should immediately try to grab an
-interactive session. I like to add the following to my `~/.bashrc` file.
+tldr: Single-step setup
+-----------------------
+
+You're not supposed to run code that's at all computationally burdensome on the login nodes. So if you want to use
+tscc as a workstation, you should immediately grab an interactive session after logging in.
+I like to add the following to my `~/.bashrc` file.
 
 .. code-block:: bash
 
@@ -61,7 +64,7 @@ interactive session. I like to add the following to my `~/.bashrc` file.
 
 Then, when I need a interactive node, I just execute :code:`qsubi <n>` where :code:`<n>` is the max
 number of hours you plan to work. That will wait till it can find a slot on the condo node and then log you into
-that node.
+that node. To exit the node, just run the :code:`exit` command or press Ctrl+D.
 
 In the unlikely event that our condo node is full of work, this will hang till space opens up.
 
@@ -83,6 +86,9 @@ You can check the available storage in the shared mount with the following comma
 Your home directory for config and the like is :code:`/tscc/nfs/home/<user>`, but don't store any large files there, since you'll only get 100 GB there.
 
 If you need some extra space just for a few months, consider using your personal Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
+
+.. warning::
+  It can be slow to read files from the shared network mount (:code:`/tscc/projects/ps-gymreklab`), so if your job is I/O intensive, you might see a speed improvement by reading files from the node-local scratch space instead. Copy the inputs of the job to the scratch space (:code:`/scratch/$USER/job_$SLURM_JOBID`) at the beginning of your job and then read from the copies instead of the originals.
 
 Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Feel free to contribute to these as appropriate.
 
@@ -241,7 +247,7 @@ If you need more than 8 hours, consider :code:`hotel`:
 
     sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
 
-So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_. For example, you can get a lot of information by using the `tscc_client`:
+So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing our account usage and allocation, read `the section of the TSCC docs titled "Managing Your User Account" <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_. For example, you can get a lot of information by using the `tscc_client`:
 
 .. code-block:: bash
 
@@ -506,6 +512,10 @@ You can increase these values if you'd like, but please be mindful of requesting
 By default, this configuration will submit jobs to the :code:`condo` queue and allocate 10 minutes for each job.
 But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
 Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_
+
+..
+  TODO: Explain how to configure Snakemake to copy input files to node-local scratch space automatically but explain the caveat: that *all* inputs and outputs must be declared
+  See https://github.com/snakemake/snakemake/issues/522#issuecomment-2206161578 and https://snakemake.github.io/snakemake-plugin-catalog/plugins/storage/fs.html#further-details
 
 Please note that if you try to run Snakemake from a login node, it will simply hang indefinitely.
 For this reason, I recommend running Snakemake from an interactive node or creating a :code:`.slurm` batch script for running Snakemake according to :ref:`the instructions above <tscc-submitting-jobs>`.
