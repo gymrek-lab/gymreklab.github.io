@@ -1,7 +1,7 @@
 TSCC
 ====
 
-Last update: 03/10/2025
+Last update: 05/05/2025
 
 Official docs
 -------------
@@ -486,16 +486,18 @@ Inside that folder, create another directory called :code:`slurm` and a file wit
 When executing Snakemake, you can specify the path to this profile via :code:`--workflow-profile profile/slurm`
 
 You should store default arguments/options to :code:`snakemake` in the :code:`config.yaml` file.
-For SLURM, I suggest including the following lines:
+For SLURM, I like to use the following:
 
 .. code-block::
 
   jobs: 16
   cores: 16
   use-conda: true
-  latency-wait: 60
+  latency-wait: 30
   keep-going: true
+  printshellcmds: true
   conda-frontend: conda
+  shadow-prefix: /tscc/lustre/ddn/scratch/$USER
 
   executor: slurm
   default-resources:
@@ -511,7 +513,17 @@ You can increase these values if you'd like, but please be mindful of requesting
 
 By default, this configuration will submit jobs to the :code:`condo` queue and allocate 10 minutes for each job.
 But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
-Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_
+Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_.
+
+.. code-block::
+
+  rule somerule:
+      input: ...
+      output: ...
+      threads: 1
+      resources:
+          runtime=10,
+          mem_mb = 4000, # 4GB
 
 ..
   TODO: Explain how to configure Snakemake to copy input files to node-local scratch space automatically but explain the caveat: that *all* inputs and outputs must be declared
