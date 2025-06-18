@@ -191,7 +191,7 @@ Example:
   #SBATCH --cpus-per-task 2
   #SBATCH --time <hours>:00:00
   #SBATCH --output slurm-%j.out-%N
-  #SBATCH --output slurm-%j.err-%N             # Optional, for separating standard error
+  #SBATCH --error slurm-%j.err-%N             # Optional, for separating standard error
   
   # ... do something ... 
 
