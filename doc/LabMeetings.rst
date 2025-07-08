@@ -23,7 +23,7 @@ With Airtame
 1. We especially recommend connecting via Airtame if you have a Mac. If you have a Windows laptop, you will need to `download the Airtame app <https://airtame.com/download>`_ first.
 2. You can skip this step if you have a Mac. Otherwise, if you have a Windows laptop, you must connect to the audio via the cables provided in the front of the room.
     You should connect **only** the USB cable and not the HDMI cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
-    If needed, you can use the white USB Type-C adapter to connect to the cable like `this <https://drive.google.com/file/d/12OwqAF9nPCQWQfT6tc0mzFmkecly1meO>`_.
+    If needed, you can use the white USB Type-C adapter to connect to the cable like `this <https://drive.google.com/file/d/12OwqAF9nPCQWQfT6tc0mzFmkecly1meO>`__.
 
     .. figure:: https://github.com/user-attachments/assets/0d701677-5a6f-4290-9da8-975b77e3c717
         :alt: Proper dongle setup for Airtame on Windows
@@ -58,7 +58,7 @@ Without airtame
 ===============
 1. Connect to the projector via the cables provided in the front of the room - rather than connecting wirelessly.
     You should connect **both** the HDMI cable and the USB cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
-    If needed, you can use the white USB Type-C adapter to connect to both cables like `this <https://drive.google.com/file/d/1CItoMXvJZ3ulQaZqI65ScLRaIbQMhJwX>`_.
+    If needed, you can use the white USB Type-C adapter to connect to both cables like `this <https://drive.google.com/file/d/1CItoMXvJZ3ulQaZqI65ScLRaIbQMhJwX>`__.
 
     .. figure:: https://github.com/gymrek-lab/gymreklab.github.io/assets/23412689/1e7c1362-d30d-4f0b-8f12-a77aaeac3cb8
         :alt: Proper dongle setup
