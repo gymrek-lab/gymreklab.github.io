@@ -160,6 +160,12 @@ Read up on the `rclone commands <https://rclone.org/commands>`_ to figure out ho
 
     rclone copyto FILEPATH_ON_TSCC gdrive:FILEPATH_ON_GDRIVE
 
+Or, to simply copy all files in the current directory:
+
+.. code-block:: bash
+
+    rclone copyto . gdrive:FILEPATH_ON_GDRIVE
+
 Sharing files with Snorlax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
