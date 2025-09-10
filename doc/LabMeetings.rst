@@ -23,7 +23,7 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
 With Airtame
 ============
 1. We especially recommend connecting via Airtame if you have a Mac. If you have a Windows laptop, you will need to `download the Airtame app <https://airtame.com/download>`_ first.
-2. You can skip this step if you have a Mac. Otherwise, if you have a Windows laptop, you must connect to the audio via the cables provided in the front of the room.
+2. If you have a Windows laptop, you must connect to the audio via the cables provided in the front of the room. You can skip this step if you have a Mac.
     You should connect **only** the USB cable and *not* the HDMI cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
     If needed, you can use the white USB Type-C adapter to connect to the cable like `this <https://drive.google.com/file/d/12OwqAF9nPCQWQfT6tc0mzFmkecly1meO>`__.
 
@@ -33,7 +33,7 @@ With Airtame
         :width: 400px
 
 3. Connect your laptop to the room's Wi-Fi.
-4. If you're using a Mac, connect to the room via "Screen Mirroring". Refer to the `"Mirror your Mac on a TV" section  of these instructions <https://support.apple.com/guide/mac-help/stream-video-and-audio-with-airplay-mchld7e543a0/mac#mchle1ebe2f3>`_. Otherwise, if you're using a Windows laptop, open the Airtame app and `select the appropriate room <https://help.airtame.com/hc/en-us/articles/5308404680349-How-to-screen-share-using-Windows-Mac-or-Linux>`_.
+4. If you're using a Mac, connect to the room via "Screen Mirroring". Refer to the `"Mirror your Mac on a TV" section of these instructions <https://support.apple.com/guide/mac-help/stream-video-and-audio-with-airplay-mchld7e543a0/mac#mchle1ebe2f3>`_. Otherwise, if you're using a Windows laptop, open the Airtame app and `select the appropriate room <https://help.airtame.com/hc/en-us/articles/5308404680349-How-to-screen-share-using-Windows-Mac-or-Linux>`_.
 5. Since all lab meetings are hybrid, you should run zoom during the meeting. Log into the lab's zoom meeting now. You can find the Zoom link on the lab meeting schedule.
 6. Display the Zoom window via the projector. `Screenshare your slides from Zoom <https://support.zoom.us/hc/en-us/articles/201362153-Sharing-your-screen-or-desktop-on-Zoom#top1>`_.
 7. If you're using Windows, connect your Zoom video to the room's camera. In FAH 4002, you can select the second of the *"USB Capture SDI+"* options.
