@@ -16,13 +16,13 @@ Refer to :ref:`these instructions <food>` for ordering food if you've been assig
 
 Presenting
 ----------
-If you are presenting in Franklin Antonio Hall, follow these steps to set up the projector for your presentation.
+If you are presenting in Franklin Antonio Hall, follow these steps to set up the projector for your presentation. We recommend using Airtime.
 
 .. _labmeetings-presenting-airtame:
 
 Connecting with Airtame
 ^^^^^^^^^^^^^^^^^^^^^^^
-1. We especially recommend connecting via Airtame if you have a Mac. If you have a Windows laptop, you will need to `download the Airtame app <https://airtame.com/download>`_ first.
+1. We especially recommend connecting via Airtame if you have a Mac. If you have a Windows laptop, you will need to `download the Airtame app <https://airtame.com/download>`_ first, so you might prefer to :ref:`connect without Airtame <labmeetings-presenting-no-airtame>`.
 2. If you have a Windows laptop, you must connect to the audio via the cables provided in the front of the room. You can skip this step if you have a Mac.
     You should connect **only** the USB cable and *not* the HDMI cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
     If needed, you can use the white USB Type-C adapter to connect to the cable like `this <https://drive.google.com/file/d/12OwqAF9nPCQWQfT6tc0mzFmkecly1meO>`__.
