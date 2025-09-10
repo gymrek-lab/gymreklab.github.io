@@ -27,7 +27,7 @@ Connecting with Airtame
     You should connect **only** the USB cable and *not* the HDMI cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
     If needed, you can use the white USB Type-C adapter to connect to the cable like `this <https://drive.google.com/file/d/12OwqAF9nPCQWQfT6tc0mzFmkecly1meO>`__.
 
-    .. figure:: images/Proper Dongle Setup for FAH - Airtame on Windows.jpg
+    .. figure:: ../images/ProperDongleSetupforFAH-AirtameonWindows.jpg
         :alt: Proper dongle setup for Airtame on Windows
         :align: center
         :width: 400px
