@@ -20,8 +20,8 @@ If you are presenting in Franklin Antonio Hall, follow these steps to set up the
 
 .. _labmeetings-presenting-airtame:
 
-With Airtame
-============
+Connecting with Airtame
+^^^^^^^^^^^^^^^^^^^^^^^
 1. We especially recommend connecting via Airtame if you have a Mac. If you have a Windows laptop, you will need to `download the Airtame app <https://airtame.com/download>`_ first.
 2. If you have a Windows laptop, you must connect to the audio via the cables provided in the front of the room. You can skip this step if you have a Mac.
     You should connect **only** the USB cable and *not* the HDMI cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
@@ -58,8 +58,8 @@ With Airtame
 
 .. _labmeetings-presenting-no-airtame:
 
-Without Airtame
-===============
+Connecting without Airtame
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Connect to the projector via the cables provided in the front of the room - rather than connecting wirelessly.
     You should connect **both** the HDMI cable and the USB cable to your laptop. The USB cable lets you connect to the room's speaker and microphone.
     If needed, you can use the white USB Type-C adapter to connect to both cables like `this <https://drive.google.com/file/d/1CItoMXvJZ3ulQaZqI65ScLRaIbQMhJwX>`__.
