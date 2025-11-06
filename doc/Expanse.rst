@@ -5,7 +5,7 @@ Last update: 2023/01/10
 
 Expanse uses SLURM to schedule and run jobs
 
-`Expanse user guide <https://www.sdsc.edu/support/user_guides/expanse.html>`_
+`Expanse user guide <https://www.sdsc.edu/support/user_guides/expanse.html>`__
 
 .. _expanse-get-account:
 
@@ -36,15 +36,21 @@ on the login nodes, which will cause weird error messages if you try to use them
 
 First: :code:`module load slurm`. I like to put this in my `.bashrc`
 
-Grabbing an interactive job:
+.. _getting_an_interactive_node_on_expanse:
+
+Grabbing an interactive node
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
    srun --partition=ind-shared --pty --nodes=1 --ntasks-per-node=1 --mem=50G -t 24:00:00 --wait=0 --account=ddp268 /bin/bash
 
-``--pty`` is what specifically makes this treated as an interactive session
+:code:``--pty`` is what specifically makes this treated as an interactive session
 
-To run a script noninteractively with SLURM: first add special :code:`SBATCH` flags to the script
+Running a script noninteractively with SLURM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+First add special :code:`SBATCH` flags to the script
 
 .. code-block:: bash
 
@@ -84,7 +90,7 @@ than necessary.
 Some notes:
 
 * The output flag determines the file that stdout is written to. This must be a file, not a directory.
-  You can use some placeholders in the output location such as `%x` for job name and `%j` for job id.
+  You can use some placeholders in the output location such as :code:`%x` for job name and :code:`%j` for job id.
 * Use the error flag to choose stderr's output location, if not specified goes to the output location.
 * There may be an optional shebang line at the start of the file, but no blank or other lines
   between the beginning  and the :code:`#SBATCH` lines
@@ -92,8 +98,17 @@ Some notes:
   environment variables to set such values, you must pass them to the :code:`sbatch` command directly
   (e.g. :code:`sbatch --output=$SOMEWHERE/out slurm_script.sh`) 
 
-Managing jobs
--------------
+.. _increasing_job_runtime_up_to_one_week:
+
+Increasing job runtime up to one week
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You should be able to submit jobs/grab interactive nodes for up to two days. If you want to be able to do so for up to a week,
+* first ask the Expanse team for :code:`ind-shared-oneweek` permissions
+* then add :code:`--qos ind-shared-oneweek` to your interactive node/noninteractive job submission and increase the time you're requesting for that node/job.
+
+Managing noninteractive jobs
+----------------------------
 
 * :code:`squeue -u <user>` - look at your jobs
 * :code:`-p <partition>` - look at a specific partition
@@ -121,7 +136,7 @@ containers in a secure manner on cluster computers.
 
 Terminology:
 
-* `SingularityCE <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`_ is open source
+* `SingularityCE <https://docs.sylabs.io/guides/3.10/user-guide/index.html>`__ is open source
 * Sylabs is the company that owns SingularityPro which is just
   a supported version of singularity
 
@@ -135,11 +150,26 @@ To make singularity work, I add the following to my :code:`.bashrc`:
     export SINGULARITY_TMPDIR="/scratch/$USER/job_$SLURM_JOB_ID"
   fi
 
-The general idea is, first grab an interactive node (or put this in a script that you submit) and then:
+Caching Singularity images
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to cache a singularity image on disk from a Docker source for the GWAS pipeline, and don't
+need to interact with Singularity beyond that, grab an interactive node and on it simply run
+
+.. code-block:: bash
+   
+   singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
+
+Running with Singularity images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to run inside a singularity image, first grab an interactive node (or put this in a script that you submit) and then:
 
 .. code-block:: bash
 
   singularity exec --containall docker://<docker_image_url> <command>
+
+Singularity should only be used on compute nodes, not the login nodes.
 
 You'll notice the first time you run a new docker image Singularity takes a while (~10min) building
 it into a singularity image. They are cached at :code:`$SINGUALRITY_CACHEDIR` if that's set
@@ -151,13 +181,7 @@ Any calls to :code:`singularity exec|shell|pull` will cache the image. I wouldn'
 trust that the cache is thread-safe, so if you're going to kick off a bunch
 of jobs, either cache the image before hand, or have them all check.
 
-To cache the image beforehand:
-
-.. code-block:: bash
-   
-   singularity exec docker://<docker_image_url> /bin/bash -c "echo pulled the image"
-
-or, to check in a synchronized manner:
+To cache the image beforehand, see above. To check in a synchronized manner:
 
 .. code-block:: bash
   
@@ -169,7 +193,6 @@ or, to check in a synchronized manner:
    LOCK_FILE=$CACHE_DIR/singularity_pull_flock
    flock --verbose --exclusive --timeout 900 $LOCK_FILE \
    SINGULARITY_TMPDIR=/scratch/$USER/job_$SLURM_JOB_ID singularity exec --containall docker://<docker_image_url> echo "successfully pulled image"
-
 
 Singularity run tips
 ^^^^^^^^^^^^^^^^^^^^
@@ -183,7 +206,7 @@ Singularity run tips
 * To run a shell script:
   :code:`singularity exec --containall docker://<docker_image_url> /bin/bash -c "<script>"`
 * Use :code:`--containall` to not bring in any information from the outside
-  environment into the container (e.g. unwanted mount points like `$HOME`,
+  environment into the container (e.g. unwanted mount points like :code:`$HOME`,
   env variables, etc.) This makes runs actually reproducible.
 * Use :code:`--bind <outsider_location>:<inside_location>` to mount files/directories.
   Add this flag multiple times to mount multiple files/directories
