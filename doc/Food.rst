@@ -68,6 +68,15 @@ Ike's Sandwiches
 6. Keep your phone with you as the delivery person will contact you if they have any questions about the address. Meet them outside FAH.
 7. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
 
+85 Degrees
+~~~~~~~~~~
+1. 85 degrees is a great option for ordering snacks for lab meeting. But, they don't have catering options or discounts.  
+2. A day before the event (and preferably during working hours), send out a poll (in the #food channel on Slack) to see what kinds of breads people want from 85 degrees. In the past, I've offered pork sung, milk pudding, red bean, and cheese dog bread options in my poll. Sending out polls helps you get a headcount for the number of breads. It also gets you a list of names, which you'll need for requesting reimbursement later (see :ref:`below <food-reimbursement>`). Note that Melissa (and Kelly if you're ordering for CAST) do not usually reply to the poll but should always be included in the headcount. You can choose any 3-4 popular breads that are most likely to be found on most days and provide them as an option on poll to get an estimate for how many breads you should get. It is recommended to get 3-4 extra breads to account for additional people joining, otherwise the lab meeting food plans might go rye.
+3. 85 degrees provides 10 piece bread box sets in some very specific locations that can only be ordered through Doordash and it has its limitations as you don't get to choose any breads that come in that box set. I personally don't recommend this option.
+4. Easiest way to get breads from 85 degrees is to either order individual breads over Doordash or go pick them up from UTC location. It is recommended to order them same day or pick them up same day morning so that its more fresh.
+5. After the event, make sure to :ref:`clean up the meeting room <food-cleanup>` and :ref:`submit your receipt <food-reimbursement>` for reimbursement. Refer to the directions below.
+
+
 General Questions
 ~~~~~~~~~~~~~~~~~
 How should I pay?
