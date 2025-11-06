@@ -18,11 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'GymrekLab'
-copyright = '2020, GymrekLab'
-author = 'GymrekLab'
-
-# The full version, including alpha/beta/rc tags
-release = 'v0'
+copyright = '2020, Gymrek Lab'
+author = 'Gymrek Lab'
 
 master_doc = 'index'
 
