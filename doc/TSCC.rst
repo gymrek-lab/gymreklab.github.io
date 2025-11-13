@@ -1,14 +1,13 @@
 TSCC
 ====
 
-Last update: 05/05/2025
+Last update: 2024/10/08
 
 Official docs
 -------------
-* The `tscc description <https://www.sdsc.edu/systems/tscc>`_
-* The `tscc user guide <https://www.sdsc.edu/systems/tscc/user_guide.html>`_
+* The `tscc user guide <https://www.sdsc.edu/support/user_guides/tscc.html>`_
+* The `tscc description <https://www.sdsc.edu/services/hpc/hpc_systems.html#tscc>`_
 * The `tscc 2.0 transitional workshow video <https://youtu.be/U_JGz-sQoV4?si=vFXfDWSIribuTLzd>`_
-* The `condo partition <https://www.sdsc.edu/systems/tscc/condo_details.html>`_
 
 .. _tscc-access:
 
@@ -26,10 +25,10 @@ Logging in
 
   ssh <user>@login.tscc.sdsc.edu
 
-* This will put you on a node such as `login1.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`
+* This will put you on a node such as `login1.tscc.sdsc.edu` or `login11.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`.
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
-* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=In%20your%20local%20pc%20open%20or%20create%20this%20file>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
+* To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/support/user_guides/tscc.html#Log_in>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
 
 .. code-block:: text
 
@@ -47,12 +46,9 @@ Logging in
 
 * If you are running Windows, you can use the `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_ to acquire a Linux terminal with SSH
 
-tldr: Single-step setup
------------------------
-
-You're not supposed to run code that's at all computationally burdensome on the login nodes. So if you want to use
-tscc as a workstation, you should immediately grab an interactive session after logging in.
-I like to add the following to my `~/.bashrc` file.
+The login nodes are often quite slow because there are too many users on them, and you're not supposed to run code that's
+at all computationally burdensome there. So if you want to use tscc as a workstation, you should immediately try to grab an
+interactive session. I like to add the following to my `~/.bashrc` file.
 
 .. code-block:: bash
 
@@ -64,7 +60,7 @@ I like to add the following to my `~/.bashrc` file.
 
 Then, when I need a interactive node, I just execute :code:`qsubi <n>` where :code:`<n>` is the max
 number of hours you plan to work. That will wait till it can find a slot on the condo node and then log you into
-that node. To exit the node, just run the :code:`exit` command or press Ctrl+D.
+that node.
 
 In the unlikely event that our condo node is full of work, this will hang till space opens up.
 
@@ -86,9 +82,6 @@ You can check the available storage in the shared mount with the following comma
 Your home directory for config and the like is :code:`/tscc/nfs/home/<user>`, but don't store any large files there, since you'll only get 100 GB there.
 
 If you need some extra space just for a few months, consider using your personal Lustre *scratch* directory (:code:`/tscc/lustre/ddn/scratch/$USER`). Files here are deleted automatically after 90 days but there is more than 2 PB available, shared over all of the users of TSCC. Otherwise, if you simply need some extra space just until your job finishes running, you can refer to :code:`/scratch/$USER/job_$SLURM_JOBID` within your jobscript. This storage will be deleted once your job dies, but it's better than Lustre scratch for I/O intensive jobs.
-
-.. warning::
-  It can be slow to read files from the shared network mount (:code:`/tscc/projects/ps-gymreklab`), so if your job is I/O intensive, you might see a speed improvement by reading files from the node-local scratch space instead. Copy the inputs of the job to the scratch space (:code:`/scratch/$USER/job_$SLURM_JOBID`) at the beginning of your job and then read from the copies instead of the originals.
 
 Communal lab resources are in :code:`/tscc/projects/ps-gymreklab/resources/`. Feel free to contribute to these as appropriate.
 
@@ -160,12 +153,6 @@ Read up on the `rclone commands <https://rclone.org/commands>`_ to figure out ho
 
     rclone copyto FILEPATH_ON_TSCC gdrive:FILEPATH_ON_GDRIVE
 
-Or, to simply copy all files in the current directory:
-
-.. code-block:: bash
-
-    rclone copyto . gdrive:FILEPATH_ON_GDRIVE
-
 Sharing files with Snorlax
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -197,7 +184,7 @@ Example:
   #SBATCH --cpus-per-task 2
   #SBATCH --time <hours>:00:00
   #SBATCH --output slurm-%j.out-%N
-  #SBATCH --error slurm-%j.err-%N             # Optional, for separating standard error
+  #SBATCH --output slurm-%j.err-%N             # Optional, for separating standard error
   
   # ... do something ... 
 
@@ -216,7 +203,7 @@ Notes:
   So, for example, if you ask for 4 CPU cores in your job but don't specify the memory, then by default you will get 4 GB of memory.
   If you want more memory, you can either request more processors (ex: :code:`--cpus-per-task 4`) or explicitly specify the memory (ex: :code:`--mem 2G`).
   Note that the lab will be charged according to both the number of processors and amount of memory that you request, so it's best to request as few of both resources as you need.
-  For more details about job charging, refer to the "Job Charging in Condo" section of the `TSCC website <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=Job%20Charging%20in%20Condo>`__.
+  For more details about job charging, refer to the `TSCC website <https://www.sdsc.edu/support/user_guides/tscc.html#condo_job_charging>`__.
 * Don't request more than one node per job. That means you would be managing inter-node inter-process communication yourself. (e.g. message 
   passing). Instead, just submit more jobs
 * If :code:`<log_dir>` is mistyped, the job will not run. Double check that location before you submit.
@@ -253,7 +240,7 @@ If you need more than 8 hours, consider :code:`hotel`:
 
     sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
 
-So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing our account usage and allocation, read `the section of the TSCC docs titled "Managing Your User Account" <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_. For example, you can get a lot of information by using the `tscc_client`:
+So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing your account usage, read `the section of the TSCC docs titled "Managing Your User Account" <https://sdsc.edu/support/user_guides/tscc.html#tscc_client>`_. For example, you can get a lot of information by using the `tscc_client`:
 
 .. code-block:: bash
 
@@ -380,7 +367,7 @@ The best practice is for each user of TSCC to use conda to install their own sof
     Make sure to never install software with conda on a login node! It will take a long time and slow down the login node for other TSCC users.
 
 If you are feeling lazy, you can also use the :code:`module` system to load preconfigured software tools.
-Refer to the "Environment modules" section of `the TSCC documentation <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=Environment%20Modules>`_ for more information.
+Refer to `the TSCC documentation <https://www.sdsc.edu/support/user_guides/tscc.html#env_modules>`_ for more information.
 
 .. warning::
   Software available through the module system is usually out of date and cannot be easily updated.
@@ -415,36 +402,13 @@ Managing funds
 
   /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A ddp268
 
-Refer to `this page of the TSCC docs <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_ for more info.
-
-.. _tscc-vscode:
-
-Using VSCode
-------------
-You can use `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_ to load your project directory on TSCC directly into VSCode!
-
-After installing the `Remote Development Extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_, you should configure it to use the version of SSH that comes up when you type ``which ssh`` in your terminal.
-To do this, add the following entry to VSCode's settings.json file, where ``YOUR_PATH_HERE`` represents the result of ``which ssh``.
-
-.. code-block:: bash
-
-  "remote.SSH.path": "YOUR_PATH_HERE",
-
-If on Windows and using Windows Subsystem for Linux, follow `these directions <https://stackoverflow.com/a/66048792>`_ to set up VSCode to use WSL's SSH. In that case, ``YOUR_PATH_HERE`` would be the path to the ``.bat`` file.
-
-Lastly, confirm that you have configured SSH for "expedited access" as described at the top of this page. In particular, make sure that you've specified the ControlMaster and ControlPersist options. These options will allow VSCode to bypass the two-step verification step when it logs in using your SSH credentials.
-
-Now, whenever you want to open TSCC files in VSCode:
-1. Open a terminal and ssh into TSCC
-2. Open VSCode and use Cmd + Shift + P (or Ctrl + Shift + P) to open the command palette
-3. Search for "Connect to Host" in the command palette
-4. Select tscc from the optionsq
+Refer to `this page of the TSCC docs <https://www.sdsc.edu/support/user_guides/tscc.html#tscc_client>`_ for more info.
 
 Using Jupyter
 -------------
 Looking for a way to edit code that you've stored on TSCC?
 
-Before considering Jupyter, you may want to try :ref:`VSCode <tscc-vscode>`, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
+Before considering Jupyter, you may want to try `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
 
 Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 Make sure to perform any :code:`conda` installations on an interactive node. Also, please note that you will need to perform a few extra steps to use :code:`jupyter` on TSCC, as described in the section `Usage on an HPC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html#usage-on-an-hpc>`_
@@ -492,18 +456,16 @@ Inside that folder, create another directory called :code:`slurm` and a file wit
 When executing Snakemake, you can specify the path to this profile via :code:`--workflow-profile profile/slurm`
 
 You should store default arguments/options to :code:`snakemake` in the :code:`config.yaml` file.
-For SLURM, I like to use the following:
+For SLURM, I suggest including the following lines:
 
 .. code-block::
 
   jobs: 16
   cores: 16
   use-conda: true
-  latency-wait: 30
+  latency-wait: 60
   keep-going: true
-  printshellcmds: true
   conda-frontend: conda
-  shadow-prefix: /tscc/lustre/ddn/scratch/$USER
 
   executor: slurm
   default-resources:
@@ -519,21 +481,7 @@ You can increase these values if you'd like, but please be mindful of requesting
 
 By default, this configuration will submit jobs to the :code:`condo` queue and allocate 10 minutes for each job.
 But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
-Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_.
-
-.. code-block::
-
-  rule somerule:
-      input: ...
-      output: ...
-      threads: 1
-      resources:
-          runtime=10,
-          mem_mb = 4000, # 4GB
-
-..
-  TODO: Explain how to configure Snakemake to copy input files to node-local scratch space automatically but explain the caveat: that *all* inputs and outputs must be declared
-  See https://github.com/snakemake/snakemake/issues/522#issuecomment-2206161578 and https://snakemake.github.io/snakemake-plugin-catalog/plugins/storage/fs.html#further-details
+Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_
 
 Please note that if you try to run Snakemake from a login node, it will simply hang indefinitely.
 For this reason, I recommend running Snakemake from an interactive node or creating a :code:`.slurm` batch script for running Snakemake according to :ref:`the instructions above <tscc-submitting-jobs>`.
@@ -553,15 +501,11 @@ Here's an example of one.
   #SBATCH --mem 2G
   #SBATCH --time 1:00:00
   #SBATCH --output /dev/null
-  #SBATCH --signal=B:SIGUSR1@5
 
   # An example bash script demonstrating how to run the entire snakemake pipeline
   # This script creates a log file in the execution directory
 
-  # Before we do anything, let's ensure that we get notified in case this job times out
-  trap "command -v slack &>/dev/null && slack \"TIMEOUT: snakemake job\"" SIGUSR1
-
-  # Clear anything left over in the log file
+  # clear anything left over in the log file
   echo ""> log
 
   # try to find and activate the snakemake conda env if we need it
@@ -574,17 +518,14 @@ Here's an example of one.
           conda activate snakemake
   fi
 
-  # You can pass additional arguments to snakemake by passing extra parameters to this script
-  # For example, to execute a dry-run: 'sbatch run.bash -n' instead of 'sbatch run.bash'
+  # Pass any parameters to this script as additional arguments to snakemake via "$@"
+  # For example, to execute a dry-run: 'sbatch smk.slurm -np' instead of 'sbatch smk.slurm'
   snakemake \
   --workflow-profile profile/slurm \
   --rerun-trigger {mtime,params,input} \
-  "$@" &>log &
+  "$@" &>log
 
-  wait $!
-  exit_code=$?
-
-  # Send a slack message to notify us that the job completed
+  exit_code="$?"
   if command -v 'slack' &>/dev/null; then
       if [ "$exit_code" -eq 0 ]; then
           slack "snakemake finished successfully" &>/dev/null
@@ -612,4 +553,4 @@ You can override the default :code:`sbatch` parameters or :code:`snakemake` prof
 
 .. code-block:: bash
 
-  sbatch --time 0:10:00 run.bash -n
+  sbatch --time 0:10:00 run.bash -np
