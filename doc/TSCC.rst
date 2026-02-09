@@ -29,6 +29,8 @@ Logging in
 * This will put you on a node such as `login1.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
+.. _tscc-ssh-expedited:
+
 * To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=In%20your%20local%20pc%20open%20or%20create%20this%20file>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
 
 .. code-block:: text
@@ -424,21 +426,25 @@ Using VSCode
 You can use `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_ to load your project directory on TSCC directly into VSCode!
 
 After installing the `Remote Development Extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_, you should configure it to use the version of SSH that comes up when you type ``which ssh`` in your terminal.
-To do this, add the following entry to VSCode's settings.json file, where ``YOUR_PATH_HERE`` represents the result of ``which ssh``.
+To do this, add the following entry to `VSCode's settings.json file <https://code.visualstudio.com/docs/editor/settings#_user-settings>`_, where ``YOUR_PATH_HERE`` represents the result of ``which ssh`` on your local system. Note that I also recommend disabling dynamic forwarding to workaround `this issue <https://github.com/microsoft/vscode-remote-release/issues/8132>`_.
 
 .. code-block:: bash
 
   "remote.SSH.path": "YOUR_PATH_HERE",
+  "remote.SSH.enableDynamicForwarding": false,
 
-If on Windows and using Windows Subsystem for Linux, follow `these directions <https://stackoverflow.com/a/66048792>`_ to set up VSCode to use WSL's SSH. In that case, ``YOUR_PATH_HERE`` would be the path to the ``.bat`` file.
+If on Windows and using Windows Subsystem for Linux, follow `these directions <https://stackoverflow.com/a/66048792>`_ to set up VSCode to use WSL's SSH. In that case, ``YOUR_PATH_HERE`` would be the path to the ``.bat`` file.  Also, make sure to copy your SSH configuration and credentials (into ``C:\Users\USER\.ssh``), as recommended in that post. If you run into any issues, refer to `the original thread <https://github.com/microsoft/vscode-remote-release/issues/937>`_ about this and `the most popular solution <https://gist.github.com/diablodale/54756043c395d712053cf0d50a86086a>`_ on that thread.
 
-Lastly, confirm that you have configured SSH for "expedited access" as described at the top of this page. In particular, make sure that you've specified the ControlMaster and ControlPersist options. These options will allow VSCode to bypass the two-step verification step when it logs in using your SSH credentials.
+Lastly, confirm that you have configured SSH for :ref:`expedited access <tscc-ssh-expedited>` as described at the top of this page. In particular, make sure that you've specified the ControlMaster and ControlPersist options. These options will allow VSCode to bypass the two-step verification step when it logs in using your SSH credentials. However, this will only work if you've already logged into TSCC via ssh in your terminal.
 
 Now, whenever you want to open TSCC files in VSCode:
+
 1. Open a terminal and ssh into TSCC
 2. Open VSCode and use Cmd + Shift + P (or Ctrl + Shift + P) to open the command palette
 3. Search for "Connect to Host" in the command palette
-4. Select tscc from the optionsq
+4. Select tscc from the options
+
+Once you have performed steps 2-4 once, you should be able to access it as an option in the "Remote Explorer" panel on the left-hand side from now on.
 
 Using Jupyter
 -------------
