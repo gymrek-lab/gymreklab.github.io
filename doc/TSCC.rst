@@ -60,15 +60,15 @@ I like to add the following to my `~/.bashrc` file.
 
     qsubi(){
         # arg1: the number of hours requested (defaults to 4)
-        # arg2: the partition (defaults to condo)
-        srun --partition=${2:-condo} --account=ddp268 --pty --nodes=1 --ntasks 1 --cpus-per-task=4 -t ${1:-4}:00:00 --wait=0 --qos=${2:-condo} --export=ALL /bin/bash
+        # arg2: the partition (defaults to hotel)
+        srun --partition=${2:-hotel} --account=htl149 --pty --nodes=1 --ntasks 1 --cpus-per-task=4 -t ${1:-4}:00:00 --wait=0 --qos=${2:-hotel} --export=ALL /bin/bash
     }
 
 Then, when I need a interactive node, I just execute :code:`qsubi <n>` where :code:`<n>` is the max
-number of hours you plan to work. That will wait till it can find a slot on the condo node and then log you into
+number of hours you plan to work. That will wait till it can find a slot on the hotel node and then log you into
 that node. To exit the node, just run the :code:`exit` command or press Ctrl+D.
 
-In the unlikely event that our condo node is full of work, this will hang till space opens up.
+In the unlikely event that the hotel node is full of work, this will hang till space opens up.
 
 Any time your internet connection gets disrupted (depending on your settings, when your computer falls asleep) the 
 interactive session will be killed along with any jobs you were running. To preserve processes
@@ -191,7 +191,7 @@ Example:
   #!/usr/bin/env bash
   #SBATCH --export ALL
   #SBATCH --partition <partition>
-  #SBATCH --account ddp268
+  #SBATCH --account htl149
   #SBATCH --qos <partition>
   #SBATCH --job-name <job_title>
   #SBATCH --nodes 1
@@ -233,7 +233,7 @@ Partitions
 ^^^^^^^^^^
 We have access to two partitions: :code:`condo` and :code:`hotel`. There are two types of hotel nodes: (1) 36 cores, 192 GB of memory; (2) 28 cores, 128 GB of memory. Nodes on :code:`condo` have varying specifications.
 
-Note: TSCC 1.0 had a :code:`home` partition that was accessible by only members of our lab. On TSCC 2.0, this has been removed. You should use :code:`condo` instead.
+Note: TSCC 1.0 had a :code:`home` partition that was accessible by only members of our lab. On TSCC 2.0, this has been removed. You should use :code:`hotel` instead.
 
 First consider :code:`condo`
 
@@ -245,6 +245,9 @@ First consider :code:`condo`
   As of the migration to TSCC 2.0 (in Jan 2024), our lab no longer has a hotel allocation!
   But we will continue to include the :code:`hotel` documentation below in case we ever obtain an allocation again.
 
+.. warning::
+  As of Oct 2025, our lab no longer has a condo allocation! Users should use :code:`hotel` instead.
+
 If you need more than 8 hours, consider :code:`hotel`:
 
 * Compute hours are more expensive here than on :code:`condo`
@@ -253,14 +256,14 @@ If you need more than 8 hours, consider :code:`hotel`:
 
 .. code-block:: bash
 
-    sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
+    sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-htl149
 
 So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing our account usage and allocation, read `the section of the TSCC docs titled "Managing Your User Account" <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_. For example, you can get a lot of information by using the `tscc_client`:
 
 .. code-block:: bash
 
     module load sdsc
-    tscc_client -A ddp268
+    tscc_client -A htl149
 
 Env Variables and Submitting Many Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -415,7 +418,7 @@ Managing funds
 --------------
 .. code-block:: bash
 
-  /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A ddp268
+  /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A htl149
 
 Refer to `this page of the TSCC docs <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_ for more info.
 
@@ -522,15 +525,15 @@ For SLURM, I like to use the following:
   default-resources:
     nodes: 1
     runtime: 10
-    slurm_account: ddp268
-    slurm_partition: condo
-    slurm_extra: "'--qos=condo'"
+    slurm_account: htl149
+    slurm_partition: hotel
+    slurm_extra: "'--qos=hotel'"
 
 This will configure Snakemake to automatically submit the steps of your workflow as SLURM jobs.
 It will ensure that at most 16 jobs are running simultaneously and at most 16 CPUs are in use simultaneously.
 You can increase these values if you'd like, but please be mindful of requesting too many resources at once so that you're not impacting the work of others in our lab.
 
-By default, this configuration will submit jobs to the :code:`condo` queue and allocate 10 minutes for each job.
+By default, this configuration will submit jobs to the :code:`hotel` queue and allocate 10 minutes for each job.
 But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
 Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_.
 
@@ -556,9 +559,9 @@ Here's an example of one.
 
   #!/usr/bin/env bash
   #SBATCH --export ALL
-  #SBATCH --partition condo
-  #SBATCH --account ddp268
-  #SBATCH --qos condo
+  #SBATCH --partition hotel
+  #SBATCH --account htl149
+  #SBATCH --qos hotel
   #SBATCH --job-name smk
   #SBATCH --nodes 1
   #SBATCH --ntasks 1
