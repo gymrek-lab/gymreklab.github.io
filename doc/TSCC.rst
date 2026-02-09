@@ -532,9 +532,9 @@ Each step in the workflow will be allocated 1 CPU by default unless you request 
   rule somerule:
       input: ...
       output: ...
-      threads: 1
+      threads: 1 # 1 CPU
       resources:
-          runtime=10,
+          runtime=10, # 10 mins
           mem_mb = 4000, # 4GB
 
 ..
