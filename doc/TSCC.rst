@@ -447,7 +447,11 @@ Now, whenever you want to open TSCC files in VSCode:
 Once you have performed steps 2-4 once, you should be able to access it as an option in the "Remote Explorer" panel on the left-hand side from now on.
 
 On subsequent attempts to connect, you might run into an error stating that it could not establish the connection. I haven't figured out why this happens yet. Just click "Retry" and it should reconnect without issue.
-<img width="500" alt="reconnect-error" src="https://github.com/user-attachments/assets/b03a8335-3ed4-40db-a4ae-fb46a9380289" />
+
+    .. figure:: https://github.com/user-attachments/assets/b03a8335-3ed4-40db-a4ae-fb46a9380289
+        :alt: ReconnectingVSCodeTSCC
+        :align: center
+        :width: 350px
 
 Using Jupyter
 -------------
