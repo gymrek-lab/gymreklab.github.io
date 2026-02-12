@@ -1,7 +1,7 @@
 TSCC
 ====
 
-Last update: 05/05/2025
+Last update: 02/09/2026
 
 Official docs
 -------------
@@ -29,20 +29,19 @@ Logging in
 * This will put you on a node such as `login1.tscc.sdsc.edu` or `login2.tscc.sdsc.edu`
   You can also ssh into those nodes directly (e.g. if you have :code:`tmux` sessions saved on one of them)
 
+.. _tscc-ssh-expedited:
+
 * To configure ssh for expedited access, consider following the directions under the section *Linux or Mac* on `the TSCC user guide <https://www.sdsc.edu/systems/tscc/user_guide.html#:~:text=In%20your%20local%20pc%20open%20or%20create%20this%20file>`_ to add an entry to your :code:`~/.ssh/config`. Here's an example. Remember to replace :code:`YOUR_USERNAME_GOES_HERE`! Afterwards, you should be able to log in with a simple: :code:`ssh tscc` command.
 
 .. code-block:: text
 
-  Host *
+  Host tscc
+      HostName login1.tscc.sdsc.edu
+      User YOUR_USERNAME_GOES_HERE
       ControlMaster auto
       ControlPath ~/.ssh/ssh_mux_%h_%p_%r
       ControlPersist 1
       ServerAliveInterval 100
-  
-  Host tscc
-      HostName login1.tscc.sdsc.edu
-      ForwardX11 yes
-      User YOUR_USERNAME_GOES_HERE
 
 
 * If you are running Windows, you can use the `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_ to acquire a Linux terminal with SSH
@@ -58,15 +57,15 @@ I like to add the following to my `~/.bashrc` file.
 
     qsubi(){
         # arg1: the number of hours requested (defaults to 4)
-        # arg2: the partition (defaults to condo)
-        srun --partition=${2:-condo} --account=ddp268 --pty --nodes=1 --ntasks 1 --cpus-per-task=4 -t ${1:-4}:00:00 --wait=0 --qos=${2:-condo} --export=ALL /bin/bash
+        # arg2: the partition (defaults to hotel)
+        srun --partition=${2:-hotel} --account=htl149 --pty --nodes=1 --ntasks 1 --cpus-per-task=4 -t ${1:-4}:00:00 --wait=0 --qos=${2:-hotel} --export=ALL /bin/bash
     }
 
 Then, when I need a interactive node, I just execute :code:`qsubi <n>` where :code:`<n>` is the max
-number of hours you plan to work. That will wait till it can find a slot on the condo node and then log you into
+number of hours you plan to work. That will wait till it can find a slot on the hotel node and then log you into
 that node. To exit the node, just run the :code:`exit` command or press Ctrl+D.
 
-In the unlikely event that our condo node is full of work, this will hang till space opens up.
+In the unlikely event that the hotel node is full of work, this will hang till space opens up.
 
 Any time your internet connection gets disrupted (depending on your settings, when your computer falls asleep) the 
 interactive session will be killed along with any jobs you were running. To preserve processes
@@ -189,7 +188,7 @@ Example:
   #!/usr/bin/env bash
   #SBATCH --export ALL
   #SBATCH --partition <partition>
-  #SBATCH --account ddp268
+  #SBATCH --account htl149
   #SBATCH --qos <partition>
   #SBATCH --job-name <job_title>
   #SBATCH --nodes 1
@@ -231,7 +230,7 @@ Partitions
 ^^^^^^^^^^
 We have access to two partitions: :code:`condo` and :code:`hotel`. There are two types of hotel nodes: (1) 36 cores, 192 GB of memory; (2) 28 cores, 128 GB of memory. Nodes on :code:`condo` have varying specifications.
 
-Note: TSCC 1.0 had a :code:`home` partition that was accessible by only members of our lab. On TSCC 2.0, this has been removed. You should use :code:`condo` instead.
+Note: TSCC 1.0 had a :code:`home` partition that was accessible by only members of our lab. On TSCC 2.0, this has been removed. You should use :code:`hotel` instead.
 
 First consider :code:`condo`
 
@@ -243,6 +242,9 @@ First consider :code:`condo`
   As of the migration to TSCC 2.0 (in Jan 2024), our lab no longer has a hotel allocation!
   But we will continue to include the :code:`hotel` documentation below in case we ever obtain an allocation again.
 
+.. warning::
+  As of Oct 2025, our lab no longer has a condo allocation! Users should use :code:`hotel` instead.
+
 If you need more than 8 hours, consider :code:`hotel`:
 
 * Compute hours are more expensive here than on :code:`condo`
@@ -251,14 +253,14 @@ If you need more than 8 hours, consider :code:`hotel`:
 
 .. code-block:: bash
 
-    sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-ddp268
+    sacctmgr show qos format=Name%20,priority,gracetime,PreemptExemptTime,maxwall,MaxTRES%30,GrpTRES%30 where qos=hcg-htl149
 
 So if you start a 36-core / 192GB memory job (or multiple jobs that use either a total of 36 cores OR a total of 192GB memory), then everyone else in our lab who submits to the :code:`hotel` partition will see their jobs wait in the queue until yours are finished. These limits are set according to the number of nodes that our lab has contributed to the :code:`hotel` partition. Jobs submitted to the :code:`condo` partition are not subject to this group limit. For more information about account limits, including info about viewing our account usage and allocation, read `the section of the TSCC docs titled "Managing Your User Account" <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_. For example, you can get a lot of information by using the `tscc_client`:
 
 .. code-block:: bash
 
     module load sdsc
-    tscc_client -A ddp268
+    tscc_client -A htl149
 
 Env Variables and Submitting Many Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -413,7 +415,7 @@ Managing funds
 --------------
 .. code-block:: bash
 
-  /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A ddp268
+  /cm/shared/apps/sdsc/1.0/bin/tscc_client.sh -A htl149
 
 Refer to `this page of the TSCC docs <https://www.sdsc.edu/systems/tscc/user_guide.html#narrow-wysiwyg-7>`_ for more info.
 
@@ -424,27 +426,41 @@ Using VSCode
 You can use `VSCode's Remote Development Extension <https://code.visualstudio.com/docs/remote/ssh>`_ to load your project directory on TSCC directly into VSCode!
 
 After installing the `Remote Development Extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_, you should configure it to use the version of SSH that comes up when you type ``which ssh`` in your terminal.
-To do this, add the following entry to VSCode's settings.json file, where ``YOUR_PATH_HERE`` represents the result of ``which ssh``.
+To do this, add the following entry to `VSCode's settings.json file <https://code.visualstudio.com/docs/editor/settings#_user-settings>`_, where ``YOUR_PATH_HERE`` represents the result of ``which ssh`` on your local system. Note that I also recommend disabling dynamic forwarding to workaround `this issue <https://github.com/microsoft/vscode-remote-release/issues/8132>`_.
 
 .. code-block:: bash
 
   "remote.SSH.path": "YOUR_PATH_HERE",
+  "remote.SSH.enableDynamicForwarding": false,
 
-If on Windows and using Windows Subsystem for Linux, follow `these directions <https://stackoverflow.com/a/66048792>`_ to set up VSCode to use WSL's SSH. In that case, ``YOUR_PATH_HERE`` would be the path to the ``.bat`` file.
+If on Windows and using Windows Subsystem for Linux, follow `these directions <https://stackoverflow.com/a/66048792>`_ to set up VSCode to use WSL's SSH. In that case, ``YOUR_PATH_HERE`` would be the path to the ``.bat`` file (ex: ``C:\\Windows\\System32\\OpenSSH\\ssh-wsl.bat``).  Also, make sure to copy your SSH configuration and credentials (into ``C:\Users\USER\.ssh``), as recommended in that post. If you run into any issues, refer to `the original thread <https://github.com/microsoft/vscode-remote-release/issues/937>`_ about this and `the most popular solution <https://gist.github.com/diablodale/54756043c395d712053cf0d50a86086a>`_ on that thread.
 
-Lastly, confirm that you have configured SSH for "expedited access" as described at the top of this page. In particular, make sure that you've specified the ControlMaster and ControlPersist options. These options will allow VSCode to bypass the two-step verification step when it logs in using your SSH credentials.
+Lastly, confirm that you have configured SSH for :ref:`expedited access <tscc-ssh-expedited>` as described at the top of this page. In particular, make sure that you've specified the ControlMaster and ControlPersist options. These options will allow VSCode to bypass the two-step verification step when it logs in using your SSH credentials. However, this will only work if you've already logged into TSCC via ssh in your terminal.
 
 Now, whenever you want to open TSCC files in VSCode:
-1. Open a terminal and ssh into TSCC
+
+1. Open a separate terminal and ssh into TSCC
 2. Open VSCode and use Cmd + Shift + P (or Ctrl + Shift + P) to open the command palette
 3. Search for "Connect to Host" in the command palette
-4. Select tscc from the optionsq
+4. Select tscc from the options
+
+Once you have performed steps 2-4 once, you should be able to access it as an option in the "Remote Explorer" panel on the left-hand side from now on.
+
+On subsequent attempts to connect, you might run into this error stating that it could not establish the connection. I haven't figured out why this happens yet. Just click "Retry" and it should reconnect without issue:
+
+    .. figure:: https://github.com/user-attachments/assets/b03a8335-3ed4-40db-a4ae-fb46a9380289
+        :alt: ReconnectingVSCodeTSCC
+        :align: center
+        :width: 350px
 
 Using Jupyter
 -------------
 Looking for a way to edit code that you've stored on TSCC?
 
 Before considering Jupyter, you may want to try :ref:`VSCode <tscc-vscode>`, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
+
+.. warning::
+  Editing Jupyter notebooks with VSCode can be finicky. If you run into an issue when trying to save your notebooks, make sure that you have set up VSCode as described :ref:`above <tscc-vscode>` and, if you hadn't configured it correctly, try removing any unnecessary extensions installed on TSCC by VSCode.
 
 Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 Make sure to perform any :code:`conda` installations on an interactive node. Also, please note that you will need to perform a few extra steps to use :code:`jupyter` on TSCC, as described in the section `Usage on an HPC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html#usage-on-an-hpc>`_
@@ -509,15 +525,15 @@ For SLURM, I like to use the following:
   default-resources:
     nodes: 1
     runtime: 10
-    slurm_account: ddp268
-    slurm_partition: condo
-    slurm_extra: "'--qos=condo'"
+    slurm_account: htl149
+    slurm_partition: hotel
+    slurm_extra: "'--qos=hotel'"
 
 This will configure Snakemake to automatically submit the steps of your workflow as SLURM jobs.
 It will ensure that at most 16 jobs are running simultaneously and at most 16 CPUs are in use simultaneously.
 You can increase these values if you'd like, but please be mindful of requesting too many resources at once so that you're not impacting the work of others in our lab.
 
-By default, this configuration will submit jobs to the :code:`condo` queue and allocate 10 minutes for each job.
+By default, this configuration will submit jobs to the :code:`hotel` queue and allocate 10 minutes for each job.
 But you can override any of the values in the :code:`default-resources` section on a per-rule basis by specifying them in the `resources directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ of a rule.
 Each step in the workflow will be allocated 1 CPU by default unless you request additonal CPUs via `the threads directive <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#threads>`_.
 
@@ -526,9 +542,9 @@ Each step in the workflow will be allocated 1 CPU by default unless you request 
   rule somerule:
       input: ...
       output: ...
-      threads: 1
+      threads: 1 # 1 CPU
       resources:
-          runtime=10,
+          runtime=10, # 10 mins
           mem_mb = 4000, # 4GB
 
 ..
@@ -543,9 +559,9 @@ Here's an example of one.
 
   #!/usr/bin/env bash
   #SBATCH --export ALL
-  #SBATCH --partition condo
-  #SBATCH --account ddp268
-  #SBATCH --qos condo
+  #SBATCH --partition hotel
+  #SBATCH --account htl149
+  #SBATCH --qos hotel
   #SBATCH --job-name smk
   #SBATCH --nodes 1
   #SBATCH --ntasks 1
