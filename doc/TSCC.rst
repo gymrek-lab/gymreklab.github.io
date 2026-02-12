@@ -35,16 +35,13 @@ Logging in
 
 .. code-block:: text
 
-  Host *
+  Host tscc
+      HostName login1.tscc.sdsc.edu
+      User YOUR_USERNAME_GOES_HERE
       ControlMaster auto
       ControlPath ~/.ssh/ssh_mux_%h_%p_%r
       ControlPersist 1
       ServerAliveInterval 100
-  
-  Host tscc
-      HostName login1.tscc.sdsc.edu
-      ForwardX11 yes
-      User YOUR_USERNAME_GOES_HERE
 
 
 * If you are running Windows, you can use the `Windows Subsystem for Linux <https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command>`_ to acquire a Linux terminal with SSH
@@ -442,7 +439,7 @@ Lastly, confirm that you have configured SSH for :ref:`expedited access <tscc-ss
 
 Now, whenever you want to open TSCC files in VSCode:
 
-1. Open a terminal and ssh into TSCC
+1. Open a separate terminal and ssh into TSCC
 2. Open VSCode and use Cmd + Shift + P (or Ctrl + Shift + P) to open the command palette
 3. Search for "Connect to Host" in the command palette
 4. Select tscc from the options
@@ -461,6 +458,9 @@ Using Jupyter
 Looking for a way to edit code that you've stored on TSCC?
 
 Before considering Jupyter, you may want to try :ref:`VSCode <tscc-vscode>`, which is usually easier to set up. You can also edit Jupyter notebooks with VSCode.
+
+.. warning::
+  Editing Jupyter notebooks with VSCode can be finicky. If you run into an issue when trying to save your notebooks, make sure that you have set up VSCode as described :ref:`above <tscc-vscode>` and, if you hadn't configured it correctly, try removing any unnecessary extensions installed on TSCC by VSCode.
 
 Otherwise, you can follow `these instructions to set up and run Jupyter from TSCC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html>`_.
 Make sure to perform any :code:`conda` installations on an interactive node. Also, please note that you will need to perform a few extra steps to use :code:`jupyter` on TSCC, as described in the section `Usage on an HPC <https://bioinfo-ucsd-wiki.readthedocs.io/docs/jupyter_setup.html#usage-on-an-hpc>`_
