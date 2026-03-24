@@ -13,6 +13,6 @@ Setting up the AnVIL account
 ----------------------------
 
 #. Create an AnVIL account using your UCSD email. Note, you'll need to link the AnVIL account to the dbGAP account and gmail is not allowed to link.
-#. Link the Terra account to NIH account using this `instruction <https://explore.anvilproject.org/>`_. The link only lasts for 15 days.
+#. Link the Terra account to NIH account using this `instruction <https://support.terra.bio/hc/en-us/articles/19124069598235-Access-controlled-data-files-by-linking-your-NIH-account-in-Terra>`_. The link only lasts for 15 days.
 #. Ask Melissa or Yang to create an AnVIL workspace for you to work on.
 
