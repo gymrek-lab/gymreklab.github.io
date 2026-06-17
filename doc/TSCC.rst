@@ -498,7 +498,7 @@ Create a new environment with both packages:
 
 .. code-block:: bash
 
-  conda create -y -n snakemake -c conda-forge -c bioconda snakemake-executor-plugin-slurm 'snakemake>=8'
+  conda create -y -n snakemake -c conda-forge -c bioconda snakemake-scheduler-plugin-firstfit snakemake-executor-plugin-slurm 'snakemake>=9'
   conda activate snakemake
 
 When structuring your Snakemake project, please consider using `the official recommended directory structure <https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility>`_ and `template <https://github.com/snakemake-workflows/snakemake-workflow-template>`_.
@@ -517,6 +517,7 @@ For SLURM, I like to use the following:
   use-conda: true
   latency-wait: 30
   keep-going: true
+  scheduler: firstfit
   printshellcmds: true
   conda-frontend: conda
   shadow-prefix: /tscc/lustre/ddn/scratch/$USER
