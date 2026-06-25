@@ -9,7 +9,7 @@ Creating a new workspace
 ------------------------
 
 1. First, make a copy of `this document <https://docs.google.com/document/d/1RfQB2rTLQh6cyRs8mSMUVDMUC9ttn-WVXj647HDRgxo/edit?tab=t.0#bookmark=id.2nesmcih5hz4>`_ and fill out the workspace name, summary, and description.
-    If your project works with genotype or phenotype data (or anything in the Controlled Tier, including All by All tables), you should also fill out `the section "Getting access to the CDR data" <https://docs.google.com/document/d/1RfQB2rTLQh6cyRs8mSMUVDMUC9ttn-WVXj647HDRgxo/edit?tab=t.0#bookmark=id.6ahr7fb1hf9>`_. Otherwise, please delete this section.
+    If your project works with genotype, phenotype, or All by All data (or anything in the Controlled Tier), you should also fill out `the section "Getting access to the CDR data" <https://docs.google.com/document/d/1RfQB2rTLQh6cyRs8mSMUVDMUC9ttn-WVXj647HDRgxo/edit?tab=t.0#bookmark=id.6ahr7fb1hf9>`_. Otherwise, please delete this section.
 2. Once you've completed the document, send it to Melissa and Yang for approval. They may make suggestions. Yang will create a workspace for you.
 3. Find your workspace in `Verily <https://workbench.verily.com>`_. Go to the Resources tab, then click "+ Data from catalog". Select the data that you need: either the registered tier or controlled tier. Select the version of the data that you'd like to use (or just the most recent version if you're not sure) and the type of data resource (probably at least :code:`vwb-aou-datasets-controlled`). Then click "Next" and fill out the rest of the questions with your answers from the Google Doc.
 4. You can now link the workspace to existing storage buckets or create new ones. Step 3 will add special permissions to your workspace allowing you to link buckets from other workspaces with similar permissions.
@@ -22,3 +22,5 @@ Creating a new workspace
 
     The resource ID is just your own name for the resource.
 5. Once you've added all of your resources, you should be able to view them in the :code:`workspace/` folder within JupyterLab or the terminal.
+
+You can refer to the `Verily Docs <https://support.workbench.verily.com/docs/>`_ to learn how to start a JupyterLab instance, use WDL, add cohorts, or work with the data.
