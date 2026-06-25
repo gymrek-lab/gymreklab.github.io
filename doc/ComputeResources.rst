@@ -19,3 +19,4 @@ If you're just getting started, you'll probably want to choose either TSCC or Ex
    DNANexus.rst
    AWS.rst
    WDL.rst
+   AoU.rst
