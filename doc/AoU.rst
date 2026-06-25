@@ -19,3 +19,6 @@ Creating a new workspace
         :alt: Example of linking to an existing storage bucket
         :align: center
         :width: 400px
+
+    The resource ID is just your own name for the resource.
+5. Once you've added all of your resources, you should be able to view them in the :code:`workspace/` folder within JupyterLab or the terminal.
