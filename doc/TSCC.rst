@@ -76,6 +76,9 @@ Filesystem locations
 We have 100TB of space in :code:`/tscc/projects/ps-gymreklab`, which is where all of our files are stored. Your personal
 storage directory is :code:`/tscc/projects/ps-gymreklab/<user>`. (If this directory doesn't yet exist, feel free to create it with the :code:`mkdir` command.)
 
+.. note::
+  The :code:`ps-gymreklab` folder is hidden from :code:`ls` in the :code:`/tscc/projects` directory but you should still be able to :code:`cd` into the folder.
+
 You can check the available storage in the shared mount with the following command.
 
 .. code-block:: bash
